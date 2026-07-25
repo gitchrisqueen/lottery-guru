@@ -28,6 +28,7 @@ jobs:
 
       - name: Pull results, score, predict, report
         env:
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
         run: lottery-guru daily

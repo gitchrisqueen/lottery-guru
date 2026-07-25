@@ -35,7 +35,7 @@ See [docs/PLAN.md](docs/PLAN.md) for the architecture and
 | `delta` | sample empirical gaps between sorted winners | chance |
 | `positional` | per-position digit frequency (Pick 3/Win 4) | chance |
 | `unpopular` | avoid birthday/sequence combos to reduce jackpot splitting | same matches, better EV-if-win |
-| `llm-fewshot` | Claude with recent-draw context, no training | chance |
+| `llm-fewshot` | LLM (Ollama Cloud by default) with recent-draw context, no training | chance |
 | `llm-tuned` | local MLX model, LoRA-tuned on accumulated history | chance (measured rigorously) |
 
 ## Quickstart
@@ -53,8 +53,21 @@ lottery-guru report              # regenerate REPORT.md
 (`.github/workflows/daily.yml`, 10:15 UTC daily, after NY Open Data's nightly
 batch). Predictions and scores are committed to the repo: git is the database.
 
-The LLM arm activates automatically when `ANTHROPIC_API_KEY` is set
-(add it as a repo secret for CI). Everything else runs with zero keys.
+### LLM arm
+
+Provider-pluggable, auto-detected from credentials:
+
+- **Ollama Cloud** (default, cheap/free tier): create a key at
+  [ollama.com/settings/keys](https://ollama.com/settings/keys) and set
+  `OLLAMA_API_KEY` (as a repo secret for CI). Default model `gpt-oss:20b`;
+  override with `LOTTERY_GURU_LLM_MODEL`.
+- **Local Ollama**: set `OLLAMA_HOST=http://localhost:11434` — no key needed.
+  A fused MLX fine-tune can be imported into Ollama and served the same way.
+- **Anthropic**: set `ANTHROPIC_API_KEY` and
+  `LOTTERY_GURU_LLM_PROVIDER=anthropic` (needs `pip install -e ".[llm]"`).
+
+Without any of these, the LLM arm is skipped cleanly — everything else runs
+with zero keys.
 
 ## Fine-tuning (local, Apple Silicon)
 
