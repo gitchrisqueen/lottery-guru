@@ -1,0 +1,99 @@
+"""Daily orchestration: pull results, generate predictions, score outcomes."""
+from __future__ import annotations
+
+import datetime as dt
+
+from .data import sources, store
+from .evaluation import scoring
+from .games import GAMES, draws_on
+from .strategies import REGISTRY, run_strategy, seeded_rng
+from .strategies import llm as llm_strategy
+
+
+def pull(limit: int = 200) -> dict[str, int]:
+    """Fetch latest draws for all games and merge into the store."""
+    added = {}
+    for game in GAMES.values():
+        draws = sources.fetch_draws(game, limit=limit)
+        added[game.key] = store.merge_draws(game.key, draws)
+    # integrity cross-check against the Texas Lottery feed
+    pb = {d.date: d for d in store.load_draws("powerball") if d.draw_time == "main"}
+    for warning in sources.cross_check_powerball(pb):
+        print(f"WARNING: {warning}")
+    return added
+
+
+def predict(date: dt.date | None = None, include_llm: bool | None = None) -> list[dict]:
+    """Generate predictions for every game drawing on `date` (default today)."""
+    date = date or dt.date.today()
+    date_str = date.isoformat()
+    if include_llm is None:
+        include_llm = llm_strategy.available()
+
+    existing = store.load_json_list("predictions", date_str)
+    seen = {(p["game"], p["draw_time"], p["strategy"]) for p in existing}
+    predictions = list(existing)
+
+    for game, draw_time in draws_on(date):
+        history = [d for d in store.load_draws(game.key) if d.date < date_str]
+        strategies = [name for name, (_, ok) in REGISTRY.items() if ok(game)]
+        for name in strategies:
+            if (game.key, draw_time, name) in seen:
+                continue
+            rng = seeded_rng(name, game.key, date_str, draw_time)
+            pred = run_strategy(name, game, history, rng)
+            predictions.append({
+                "game": game.key,
+                "draw_time": draw_time,
+                "strategy": name,
+                "numbers": list(pred.numbers),
+                "special": pred.special,
+            })
+        if include_llm and (game.key, draw_time, "llm-fewshot") not in seen:
+            rng = seeded_rng("llm-fewshot", game.key, date_str, draw_time)
+            try:
+                pred = llm_strategy.predict_fewshot(game, history, rng)
+                predictions.append({
+                    "game": game.key,
+                    "draw_time": draw_time,
+                    "strategy": "llm-fewshot",
+                    "numbers": list(pred.numbers),
+                    "special": pred.special,
+                })
+            except Exception as exc:  # LLM arm is best-effort; never block the loop
+                print(f"WARNING: llm-fewshot failed for {game.key}/{draw_time}: {exc}")
+
+    if len(predictions) > len(existing):
+        store.save_json_list("predictions", date_str, predictions)
+    return predictions
+
+
+def score_pending() -> int:
+    """Score every prediction whose actual result has arrived. Idempotent."""
+    scored_count = 0
+    draws_cache = {key: {(d.date, d.draw_time): d for d in store.load_draws(key)} for key in GAMES}
+    for date in store.all_dates("predictions"):
+        preds = store.load_json_list("predictions", date)
+        evals = store.load_json_list("evaluations", date)
+        done = {(e["game"], e["draw_time"], e["strategy"]) for e in evals}
+        changed = False
+        for p in preds:
+            key = (p["game"], p["draw_time"], p["strategy"])
+            if key in done:
+                continue
+            actual = draws_cache[p["game"]].get((date, p["draw_time"]))
+            if actual is None:
+                continue  # result not in yet — self-heals on a later run
+            game = GAMES[p["game"]]
+            s = scoring.score(game, p["numbers"], p.get("special"), list(actual.numbers), actual.special)
+            evals.append({
+                **p,
+                "actual_numbers": list(actual.numbers),
+                "actual_special": actual.special,
+                "score": s,
+            })
+            changed = True
+            scored_count += 1
+        if changed:
+            store.save_json_list("evaluations", date, evals)
+    return scored_count

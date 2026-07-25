@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+.env
+.pytest_cache/
+dist/
+build/
+
+# fine-tuning artifacts (large; regenerate locally)
+adapters/
+finetune_data/

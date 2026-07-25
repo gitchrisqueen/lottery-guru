@@ -1,0 +1,45 @@
+name: Daily prediction loop
+
+on:
+  schedule:
+    # 10:15 UTC — after NY Open Data's nightly batch (~07:30-09:00 UTC) lands
+    - cron: "15 10 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-loop
+  cancel-in-progress: false
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e ".[llm]"
+
+      - name: Pull results, score, predict, report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
+        run: lottery-guru daily
+
+      - name: Commit results
+        run: |
+          git config user.name "lottery-guru-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ REPORT.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Daily loop: $(date -u +%F)"
+            git push
+          fi
