@@ -1,0 +1,500 @@
+[
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "random",
+  "numbers": [
+   2,
+   42,
+   43,
+   58,
+   64
+  ],
+  "special": 7,
+  "actual_numbers": [
+   3,
+   4,
+   24,
+   36,
+   47
+  ],
+  "actual_special": 17,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "hot",
+  "numbers": [
+   18,
+   28,
+   52,
+   56,
+   64
+  ],
+  "special": 14,
+  "actual_numbers": [
+   3,
+   4,
+   24,
+   36,
+   47
+  ],
+  "actual_special": 17,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "cold",
+  "numbers": [
+   11,
+   15,
+   23,
+   33,
+   54
+  ],
+  "special": 9,
+  "actual_numbers": [
+   3,
+   4,
+   24,
+   36,
+   47
+  ],
+  "actual_special": 17,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "delta",
+  "numbers": [
+   19,
+   45,
+   50,
+   53,
+   58
+  ],
+  "special": 21,
+  "actual_numbers": [
+   3,
+   4,
+   24,
+   36,
+   47
+  ],
+  "actual_special": 17,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "unpopular",
+  "numbers": [
+   45,
+   54,
+   55,
+   64,
+   65
+  ],
+  "special": 17,
+  "actual_numbers": [
+   3,
+   4,
+   24,
+   36,
+   47
+  ],
+  "actual_special": 17,
+  "score": {
+   "matches": 0,
+   "special_hit": 1,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   1,
+   4,
+   4
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   6,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   8,
+   4,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   6,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   2,
+   9,
+   7
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   6,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   7,
+   8,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   6,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   8,
+   8,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   8,
+   3,
+   2
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   8,
+   3,
+   4
+  ],
+  "special": null,
+  "actual_numbers": [
+   8,
+   3,
+   2
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 2,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   2,
+   9,
+   7
+  ],
+  "special": null,
+  "actual_numbers": [
+   8,
+   3,
+   2
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   8,
+   4,
+   0
+  ],
+  "special": null,
+  "actual_numbers": [
+   8,
+   3,
+   2
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   8,
+   4,
+   2,
+   6
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   0,
+   8,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   5,
+   2,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   0,
+   8,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   0,
+   3,
+   1,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   0,
+   8,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   7,
+   4,
+   2,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   0,
+   8,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   7,
+   8,
+   6,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   1,
+   2,
+   7,
+   9
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   5,
+   2,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   1,
+   2,
+   7,
+   9
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   3,
+   0,
+   1,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   1,
+   2,
+   7,
+   9
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   2,
+   4,
+   6,
+   8
+  ],
+  "special": null,
+  "actual_numbers": [
+   1,
+   2,
+   7,
+   9
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ }
+]

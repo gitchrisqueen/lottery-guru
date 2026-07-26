@@ -56,7 +56,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `positional` | `4` `2` `3` `6` |
 | `random` | `5` `3` `5` `4` |
 
-<sub>Updated 2026-07-26 05:35 UTC</sub>
+<sub>Updated 2026-07-26 10:50 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -66,20 +66,20 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 <!-- SCOREBOARD:START -->
 ### 📊 How it's performing
 
-**21** predictions scored across **1** days. Combined, they've hit **10** numbers where pure chance predicts **7.4** (z = **+1.02**).
+**42** predictions scored across **2** days. Combined, they've hit **16** numbers where pure chance predicts **14.8** (z = **+0.33**).
 
 | Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
 |---|---|---|---|---|---|---|
-| `positional` | 4 | 3 | 1.4 | 0.75/draw | +1.43 | 1 (NY Numbers (Pick 3)) |
-| `cold` | 5 | 3 | 1.8 | 0.60/draw | +0.99 | 1 (Mega Millions) |
-| `random` | 5 | 2 | 1.8 | 0.40/draw | +0.19 | 1 (NY Numbers (Pick 3)) |
-| `hot` | 5 | 2 | 1.8 | 0.40/draw | +0.19 | 1 (NY Numbers (Pick 3)) |
-| `delta` | 1 | 0 | 0.4 | 0.00/draw | -0.64 | 0 |
-| `unpopular` | 1 | 0 | 0.4 | 0.00/draw | -0.64 | 0 |
+| `positional` | 8 | 5 | 2.8 | 0.62/draw | +1.39 | 1 (NY Numbers (Pick 3)) |
+| `hot` | 10 | 5 | 3.5 | 0.50/draw | +0.83 | 2 (NY Numbers (Pick 3)) |
+| `random` | 10 | 3 | 3.5 | 0.30/draw | -0.29 | 1 (NY Numbers (Pick 3)) |
+| `cold` | 10 | 3 | 3.5 | 0.30/draw | -0.29 | 1 (Mega Millions) |
+| `delta` | 2 | 0 | 0.7 | 0.00/draw | -0.91 | 0 |
+| `unpopular` | 2 | 0 | 0.7 | 0.00/draw | -0.91 | 0 |
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-07-26 05:35 UTC</sub>
+<sub>Updated 2026-07-26 10:50 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
