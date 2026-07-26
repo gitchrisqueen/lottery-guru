@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "lottery-guru-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/ REPORT.md
+          git add data/ REPORT.md PREDICTIONS.md README.md
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

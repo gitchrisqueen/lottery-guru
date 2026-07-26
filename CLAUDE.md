@@ -25,6 +25,7 @@ lottery-guru pull --limit 2000    # backfill draw history
 lottery-guru predict [--date YYYY-MM-DD] [--no-llm]
 lottery-guru score                # score predictions whose results arrived (idempotent)
 lottery-guru report               # regenerate REPORT.md
+lottery-guru board                # render PREDICTIONS.md + README marker sections
 lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
 ```
 
@@ -39,7 +40,10 @@ lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
   in `REGISTRY`. The LLM arm (`llm.py`) is provider-pluggable: Ollama
   (default, native `/api/chat` with JSON-schema `format`) or Anthropic.
 - `src/lottery_guru/evaluation/` — scoring vs exact hypergeometric/binomial
-  null moments, cumulative z-tests, REPORT.md rendering.
+  null moments, cumulative z-tests, REPORT.md rendering, and `board.py`
+  (PREDICTIONS.md + the README `PREDICTIONS`/`SCOREBOARD` marker sections).
+  README sections are spliced between HTML comment markers — never hand-edit
+  content inside them; it is regenerated every run.
 - `src/lottery_guru/predictor.py` — daily orchestration; `score_pending()` is
   idempotent and self-heals late-arriving results.
 - `src/lottery_guru/finetune/` — time-ordered JSONL export + MLX-LM LoRA wrapper.

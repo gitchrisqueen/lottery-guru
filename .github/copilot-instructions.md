@@ -18,7 +18,9 @@ copy implying lottery draws are predictable.
 - `src/lottery_guru/data/` — Socrata fetchers, TX cross-check, JSON store
 - `src/lottery_guru/strategies/` — strategy `REGISTRY`; LLM arm in `llm.py`
   (Ollama default via native `/api/chat` + JSON-schema `format`; Anthropic optional)
-- `src/lottery_guru/evaluation/` — hypergeometric/binomial null scoring, z-tests, REPORT.md
+- `src/lottery_guru/evaluation/` — hypergeometric/binomial null scoring, z-tests,
+  REPORT.md, and `board.py` (PREDICTIONS.md + README marker sections — content
+  between `<!-- PREDICTIONS:… -->` / `<!-- SCOREBOARD:… -->` is generated, never hand-edited)
 - `src/lottery_guru/predictor.py` — daily orchestration (idempotent scoring)
 - `src/lottery_guru/finetune/` — time-ordered JSONL export + MLX LoRA training
 - `tests/` — network-free pytest suite

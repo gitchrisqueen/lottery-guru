@@ -21,6 +21,12 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("score", help="score predictions whose results have arrived")
     sub.add_parser("report", help="regenerate REPORT.md")
+
+    p_board = sub.add_parser(
+        "board", help="render latest predictions to PREDICTIONS.md + README section"
+    )
+    p_board.add_argument("--date", default=None, help="default: most recent prediction date")
+
     sub.add_parser("daily", help="pull + score + predict + report (the cron entry point)")
 
     p_ft = sub.add_parser("finetune", help="fine-tuning pipeline")
@@ -37,7 +43,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     from . import predictor
-    from .evaluation import report
+    from .evaluation import board, report
 
     if args.command == "pull":
         added = predictor.pull(limit=args.limit)
@@ -52,11 +58,15 @@ def main(argv: list[str] | None = None) -> int:
     elif args.command == "report":
         report.write_report()
         print("wrote REPORT.md")
+    elif args.command == "board":
+        board.publish(date=args.date)
+        print("wrote PREDICTIONS.md and updated README section")
     elif args.command == "daily":
         added = predictor.pull()
         n = predictor.score_pending()
         preds = predictor.predict()
         report.write_report()
+        board.publish()
         print(json.dumps({"added": added, "scored": n, "predictions": len(preds)}))
     elif args.command == "finetune":
         if args.ft_command == "export":

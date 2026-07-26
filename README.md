@@ -9,6 +9,79 @@ An automated, honest lottery-prediction experiment. Every day it:
 
 Periodically, a local **LLM fine-tuning loop** (MLX on Apple Silicon) trains on the accumulated history to measure whether predictions "improve" over time.
 
+## Today's board
+
+<!-- PREDICTIONS:START -->
+### 🎟️ Predictions for 2026-07-26
+
+_These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
+
+**NY Numbers (Pick 3) — evening**
+
+| Strategy | Predicted |
+|---|---|
+| `cold` | `2` `9` `7` |
+| `hot` | `8` `3` `4` |
+| `llm-fewshot` | `0` `2` `4` |
+| `positional` | `7` `5` `9` |
+| `random` | `8` `1` `2` |
+
+**NY Numbers (Pick 3) — midday**
+
+| Strategy | Predicted |
+|---|---|
+| `cold` | `2` `9` `7` |
+| `hot` | `8` `4` `3` |
+| `llm-fewshot` | `5` `6` `6` |
+| `positional` | `5` `0` `6` |
+| `random` | `8` `5` `8` |
+
+**NY Win 4 — evening**
+
+| Strategy | Predicted |
+|---|---|
+| `cold` | `0` `3` `2` `1` |
+| `hot` | `6` `5` `2` `1` |
+| `llm-fewshot` | `3` `0` `9` `2` |
+| `positional` | `5` `9` `5` `3` |
+| `random` | `7` `7` `0` `6` |
+
+**NY Win 4 — midday**
+
+| Strategy | Predicted |
+|---|---|
+| `cold` | `0` `3` `1` `2` |
+| `hot` | `6` `5` `2` `1` |
+| `llm-fewshot` | `0` `8` `5` `5` |
+| `positional` | `4` `2` `3` `6` |
+| `random` | `5` `3` `5` `4` |
+
+<sub>Updated 2026-07-26 05:34 UTC</sub>
+<!-- PREDICTIONS:END -->
+
+Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
+
+## Track record
+
+<!-- SCOREBOARD:START -->
+### 📊 How it's performing
+
+**21** predictions scored across **1** days. Combined, they've hit **10** numbers where pure chance predicts **7.4** (z = **+1.02**).
+
+| Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
+|---|---|---|---|---|---|---|
+| `positional` | 4 | 3 | 1.4 | 0.75/draw | +1.43 | 1 (NY Numbers (Pick 3)) |
+| `cold` | 5 | 3 | 1.8 | 0.60/draw | +0.99 | 1 (Mega Millions) |
+| `random` | 5 | 2 | 1.8 | 0.40/draw | +0.19 | 1 (NY Numbers (Pick 3)) |
+| `hot` | 5 | 2 | 1.8 | 0.40/draw | +0.19 | 1 (NY Numbers (Pick 3)) |
+| `delta` | 1 | 0 | 0.4 | 0.00/draw | -0.64 | 0 |
+| `unpopular` | 1 | 0 | 0.4 | 0.00/draw | -0.64 | 0 |
+
+_**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
+
+<sub>Updated 2026-07-26 05:34 UTC</sub>
+<!-- SCOREBOARD:END -->
+
 ## The honest part
 
 Lottery draws are independent uniform samples. Well-run lotteries pass every
