@@ -12,51 +12,62 @@ Periodically, a local **LLM fine-tuning loop** (MLX on Apple Silicon) trains on 
 ## Today's board
 
 <!-- PREDICTIONS:START -->
-### 🎟️ Predictions for 2026-07-26
+### 🎟️ Predictions for 2026-07-27
 
 _These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
+
+**Powerball**
+
+| Strategy | Predicted |
+|---|---|
+| `cold` | `11` `15` `23` `33` `54` + `09` |
+| `delta` | `04` `11` `13` `26` `35` + `25` |
+| `hot` | `18` `28` `52` `56` `64` + `14` |
+| `llm-fewshot` | `04` `09` `30` `54` `60` + `11` |
+| `random` | `08` `12` `18` `24` `36` + `18` |
+| `unpopular` | `34` `40` `54` `57` `64` + `14` |
 
 **NY Numbers (Pick 3) — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `2` `9` `7` |
-| `hot` | `8` `3` `4` |
-| `llm-fewshot` | `0` `2` `4` |
-| `positional` | `7` `5` `9` |
-| `random` | `8` `1` `2` |
+| `cold` | `7` `0` `2` |
+| `hot` | `3` `8` `4` |
+| `llm-fewshot` | `8` `0` `3` |
+| `positional` | `4` `0` `3` |
+| `random` | `0` `5` `1` |
 
 **NY Numbers (Pick 3) — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `2` `9` `7` |
-| `hot` | `8` `4` `3` |
-| `llm-fewshot` | `5` `6` `6` |
-| `positional` | `5` `0` `6` |
-| `random` | `8` `5` `8` |
+| `cold` | `7` `0` `2` |
+| `hot` | `3` `8` `4` |
+| `llm-fewshot` | `4` `7` `1` |
+| `positional` | `8` `4` `3` |
+| `random` | `7` `7` `5` |
 
 **NY Win 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `0` `3` `2` `1` |
+| `cold` | `7` `1` `2` `5` |
 | `hot` | `6` `5` `2` `1` |
-| `llm-fewshot` | `3` `0` `9` `2` |
-| `positional` | `5` `9` `5` `3` |
-| `random` | `7` `7` `0` `6` |
+| `llm-fewshot` | `4` `5` `5` `1` |
+| `positional` | `2` `0` `0` `0` |
+| `random` | `0` `2` `6` `2` |
 
 **NY Win 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `0` `3` `1` `2` |
+| `cold` | `1` `7` `0` `5` |
 | `hot` | `6` `5` `2` `1` |
-| `llm-fewshot` | `0` `8` `5` `5` |
-| `positional` | `4` `2` `3` `6` |
-| `random` | `5` `3` `5` `4` |
+| `llm-fewshot` | `7` `3` `5` `9` |
+| `positional` | `4` `2` `2` `2` |
+| `random` | `2` `5` `8` `1` |
 
-<sub>Updated 2026-07-26 10:50 UTC</sub>
+<sub>Updated 2026-07-27 11:24 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -66,20 +77,21 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 <!-- SCOREBOARD:START -->
 ### 📊 How it's performing
 
-**42** predictions scored across **2** days. Combined, they've hit **16** numbers where pure chance predicts **14.8** (z = **+0.33**).
+**62** predictions scored across **3** days. Combined, they've hit **19** numbers where pure chance predicts **21.8** (z = **-0.63**).
 
 | Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
 |---|---|---|---|---|---|---|
-| `positional` | 8 | 5 | 2.8 | 0.62/draw | +1.39 | 1 (NY Numbers (Pick 3)) |
-| `hot` | 10 | 5 | 3.5 | 0.50/draw | +0.83 | 2 (NY Numbers (Pick 3)) |
-| `random` | 10 | 3 | 3.5 | 0.30/draw | -0.29 | 1 (NY Numbers (Pick 3)) |
-| `cold` | 10 | 3 | 3.5 | 0.30/draw | -0.29 | 1 (Mega Millions) |
+| `positional` | 12 | 6 | 4.2 | 0.50/draw | +0.93 | 1 (NY Numbers (Pick 3)) |
+| `hot` | 14 | 6 | 4.9 | 0.43/draw | +0.51 | 2 (NY Numbers (Pick 3)) |
+| `random` | 14 | 4 | 4.9 | 0.29/draw | -0.44 | 1 (NY Numbers (Pick 3)) |
 | `delta` | 2 | 0 | 0.7 | 0.00/draw | -0.91 | 0 |
 | `unpopular` | 2 | 0 | 0.7 | 0.00/draw | -0.91 | 0 |
+| `cold` | 14 | 3 | 4.9 | 0.21/draw | -0.91 | 1 (Mega Millions) |
+| `llm-fewshot` | 4 | 0 | 1.4 | 0.00/draw | -1.25 | 0 |
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-07-26 10:50 UTC</sub>
+<sub>Updated 2026-07-27 11:24 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
