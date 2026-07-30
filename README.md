@@ -12,62 +12,51 @@ Periodically, a local **LLM fine-tuning loop** (MLX on Apple Silicon) trains on 
 ## Today's board
 
 <!-- PREDICTIONS:START -->
-### 🎟️ Predictions for 2026-07-29
+### 🎟️ Predictions for 2026-07-30
 
 _These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
-
-**Powerball**
-
-| Strategy | Predicted |
-|---|---|
-| `cold` | `11` `15` `23` `33` `54` + `09` |
-| `delta` | `13` `15` `27` `32` `48` + `26` |
-| `hot` | `18` `52` `56` `63` `64` + `01` |
-| `llm-fewshot` | `12` `28` `35` `47` `59` + `05` |
-| `random` | `04` `11` `26` `35` `57` + `06` |
-| `unpopular` | `32` `37` `38` `51` `61` + `19` |
 
 **NY Numbers (Pick 3) — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `0` `9` |
+| `cold` | `7` `9` `4` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `7` `5` `9` |
-| `positional` | `2` `5` `0` |
-| `random` | `5` `2` `4` |
+| `llm-fewshot` | `5` `4` `7` |
+| `positional` | `4` `2` `9` |
+| `random` | `9` `2` `1` |
 
 **NY Numbers (Pick 3) — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `0` `9` |
+| `cold` | `7` `9` `4` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `7` `5` `0` |
-| `positional` | `1` `9` `0` |
-| `random` | `5` `7` `6` |
+| `llm-fewshot` | `1` `2` `8` |
+| `positional` | `1` `1` `2` |
+| `random` | `3` `0` `4` |
 
 **NY Win 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `5` `9` `3` `6` |
-| `hot` | `6` `2` `1` `5` |
-| `llm-fewshot` | `1` `3` `4` `7` |
-| `positional` | `5` `2` `1` `5` |
-| `random` | `6` `9` `6` `2` |
+| `cold` | `1` `6` `2` `7` |
+| `hot` | `6` `5` `2` `4` |
+| `llm-fewshot` | `9` `3` `6` `2` |
+| `positional` | `1` `9` `6` `9` |
+| `random` | `2` `6` `9` `7` |
 
 **NY Win 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `5` `9` `3` `1` |
-| `hot` | `6` `2` `1` `5` |
-| `llm-fewshot` | `8` `9` `0` `6` |
-| `positional` | `5` `4` `8` `5` |
-| `random` | `5` `1` `8` `8` |
+| `cold` | `6` `1` `7` `2` |
+| `hot` | `6` `5` `2` `4` |
+| `llm-fewshot` | `7` `4` `2` `4` |
+| `positional` | `8` `7` `8` `1` |
+| `random` | `5` `4` `9` `6` |
 
-<sub>Updated 2026-07-29 11:07 UTC</sub>
+<sub>Updated 2026-07-30 10:56 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -77,21 +66,21 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 <!-- SCOREBOARD:START -->
 ### 📊 How it's performing
 
-**114** predictions scored across **5** days. Combined, they've hit **36** numbers where pure chance predicts **40.1** (z = **-0.69**).
+**135** predictions scored across **6** days. Combined, they've hit **41** numbers where pure chance predicts **47.8** (z = **-1.04**).
 
 | Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
 |---|---|---|---|---|---|---|
-| `hot` | 24 | 10 | 8.4 | 0.42/draw | +0.57 | 2 (NY Numbers (Pick 3)) |
-| `positional` | 20 | 8 | 7.0 | 0.40/draw | +0.40 | 1 (NY Numbers (Pick 3)) |
-| `delta` | 4 | 1 | 1.4 | 0.25/draw | -0.39 | 1 (Powerball) |
-| `random` | 24 | 7 | 8.4 | 0.29/draw | -0.52 | 1 (NY Numbers (Pick 3)) |
-| `cold` | 24 | 7 | 8.4 | 0.29/draw | -0.52 | 1 (Mega Millions) |
-| `llm-fewshot` | 14 | 3 | 4.9 | 0.21/draw | -0.91 | 1 (NY Numbers (Pick 3)) |
-| `unpopular` | 4 | 0 | 1.4 | 0.00/draw | -1.28 | 0 |
+| `positional` | 23 | 9 | 8.1 | 0.39/draw | +0.33 | 1 (NY Numbers (Pick 3)) |
+| `random` | 28 | 10 | 9.9 | 0.36/draw | +0.03 | 1 (NY Numbers (Pick 3)) |
+| `hot` | 28 | 10 | 9.9 | 0.36/draw | +0.03 | 2 (NY Numbers (Pick 3)) |
+| `cold` | 28 | 8 | 9.9 | 0.29/draw | -0.64 | 1 (Mega Millions) |
+| `delta` | 5 | 1 | 1.8 | 0.20/draw | -0.64 | 1 (Powerball) |
+| `llm-fewshot` | 18 | 3 | 6.4 | 0.17/draw | -1.41 | 1 (NY Numbers (Pick 3)) |
+| `unpopular` | 5 | 0 | 1.8 | 0.00/draw | -1.44 | 0 |
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-07-29 11:07 UTC</sub>
+<sub>Updated 2026-07-30 10:56 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
