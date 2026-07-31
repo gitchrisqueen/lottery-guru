@@ -12,51 +12,62 @@ Periodically, a local **LLM fine-tuning loop** (MLX on Apple Silicon) trains on 
 ## Today's board
 
 <!-- PREDICTIONS:START -->
-### 🎟️ Predictions for 2026-07-30
+### 🎟️ Predictions for 2026-07-31
 
 _These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
+
+**Mega Millions**
+
+| Strategy | Predicted |
+|---|---|
+| `cold` | `06` `08` `11` `18` `28` + `11` |
+| `delta` | `02` `21` `22` `45` `58` + `04` |
+| `hot` | `18` `40` `42` `49` `56` + `12` |
+| `llm-fewshot` | `12` `29` `30` `48` `52` + `12` |
+| `random` | `12` `16` `52` `54` `67` + `03` |
+| `unpopular` | `41` `44` `54` `55` `70` + `03` |
 
 **NY Numbers (Pick 3) — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `9` `4` |
+| `cold` | `7` `4` `1` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `5` `4` `7` |
-| `positional` | `4` `2` `9` |
-| `random` | `9` `2` `1` |
+| `llm-fewshot` | `1` `1` `4` |
+| `positional` | `1` `7` `7` |
+| `random` | `4` `3` `5` |
 
 **NY Numbers (Pick 3) — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `9` `4` |
+| `cold` | `7` `4` `6` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `1` `2` `8` |
-| `positional` | `1` `1` `2` |
-| `random` | `3` `0` `4` |
+| `llm-fewshot` | `4` `4` `5` |
+| `positional` | `5` `1` `9` |
+| `random` | `5` `5` `1` |
 
 **NY Win 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `1` `6` `2` `7` |
-| `hot` | `6` `5` `2` `4` |
-| `llm-fewshot` | `9` `3` `6` `2` |
-| `positional` | `1` `9` `6` `9` |
-| `random` | `2` `6` `9` `7` |
+| `cold` | `6` `2` `9` `8` |
+| `hot` | `6` `5` `2` `1` |
+| `llm-fewshot` | `3` `7` `8` `9` |
+| `positional` | `4` `1` `6` `2` |
+| `random` | `1` `7` `5` `3` |
 
 **NY Win 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `6` `1` `7` `2` |
+| `cold` | `6` `2` `9` `8` |
 | `hot` | `6` `5` `2` `4` |
-| `llm-fewshot` | `7` `4` `2` `4` |
-| `positional` | `8` `7` `8` `1` |
-| `random` | `5` `4` `9` `6` |
+| `llm-fewshot` | `5` `3` `6` `8` |
+| `positional` | `7` `8` `1` `9` |
+| `random` | `8` `7` `3` `1` |
 
-<sub>Updated 2026-07-30 10:56 UTC</sub>
+<sub>Updated 2026-07-31 11:08 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -66,21 +77,21 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 <!-- SCOREBOARD:START -->
 ### 📊 How it's performing
 
-**135** predictions scored across **6** days. Combined, they've hit **41** numbers where pure chance predicts **47.8** (z = **-1.04**).
+**150** predictions scored across **7** days. Combined, they've hit **46** numbers where pure chance predicts **53.3** (z = **-1.06**).
 
 | Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
 |---|---|---|---|---|---|---|
-| `positional` | 23 | 9 | 8.1 | 0.39/draw | +0.33 | 1 (NY Numbers (Pick 3)) |
-| `random` | 28 | 10 | 9.9 | 0.36/draw | +0.03 | 1 (NY Numbers (Pick 3)) |
-| `hot` | 28 | 10 | 9.9 | 0.36/draw | +0.03 | 2 (NY Numbers (Pick 3)) |
-| `cold` | 28 | 8 | 9.9 | 0.29/draw | -0.64 | 1 (Mega Millions) |
+| `positional` | 26 | 10 | 9.2 | 0.38/draw | +0.28 | 1 (NY Numbers (Pick 3)) |
+| `random` | 31 | 11 | 11.0 | 0.35/draw | -0.00 | 1 (NY Numbers (Pick 3)) |
+| `hot` | 31 | 10 | 11.0 | 0.32/draw | -0.32 | 2 (NY Numbers (Pick 3)) |
+| `cold` | 31 | 10 | 11.0 | 0.32/draw | -0.32 | 1 (Mega Millions) |
 | `delta` | 5 | 1 | 1.8 | 0.20/draw | -0.64 | 1 (Powerball) |
-| `llm-fewshot` | 18 | 3 | 6.4 | 0.17/draw | -1.41 | 1 (NY Numbers (Pick 3)) |
+| `llm-fewshot` | 21 | 4 | 7.5 | 0.19/draw | -1.34 | 1 (NY Numbers (Pick 3)) |
 | `unpopular` | 5 | 0 | 1.8 | 0.00/draw | -1.44 | 0 |
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-07-30 10:56 UTC</sub>
+<sub>Updated 2026-07-31 11:08 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
