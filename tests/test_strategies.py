@@ -93,3 +93,20 @@ def test_predictions_only_cover_games_drawing_that_day():
                     f"{game.key}/{draw_time} on {date} ({date:%a})")
         # jackpot games never share a day, so a day is never empty of NY draws
         assert scheduled, f"no drawings computed for {date}"
+
+
+def test_jackpot_draw_days_are_exactly_the_gpu_days():
+    """The daily loop only deploys the tuned model when a jackpot game draws.
+    Sun/Thu are NY-only, so the GPU stays off those days."""
+    from lottery_guru.games import GAMES, draws_on
+
+    jackpot_days = {
+        dt.date(2026, 8, 3) + dt.timedelta(days=i)  # Mon .. Sun
+        for i in range(7)
+        if any(g.kind == "jackpot" for g, _ in draws_on(dt.date(2026, 8, 3) + dt.timedelta(days=i)))
+    }
+    assert {d.weekday() for d in jackpot_days} == {0, 1, 2, 4, 5}  # Mon,Tue,Wed,Fri,Sat
+    # every day still has digit-game drawings, so the rest of the loop must run daily
+    for i in range(7):
+        date = dt.date(2026, 8, 3) + dt.timedelta(days=i)
+        assert any(g.kind == "digit" for g, _ in draws_on(date)), date

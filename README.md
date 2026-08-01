@@ -202,9 +202,13 @@ The hosted path uses Fireworks.ai LoRA and runs on two schedules:
   cleanly). Exports the dataset, trains, and commits the tuned model name to
   `data/finetune/fireworks.json`. Manual dispatch takes a `force` input that
   bypasses the gate and a `max_per_game` input for full-history exports.
-- **Daily predictions** — the [daily loop](.github/workflows/daily.yml) brings
+- **Tuned predictions** — the [daily loop](.github/workflows/daily.yml) brings
   the tuned model up, predicts alongside every other arm, and tears it back
   down, so `llm-tuned` is scored against the same null as everything else.
+  It does this only on days a jackpot game draws (Mon/Tue/Wed/Fri/Sat) —
+  Sundays and Thursdays are NY-only, so the GPU stays off and the week costs
+  five sessions instead of seven. Every other arm still predicts all seven
+  days; only the paid arm is trimmed.
 
 Setup: add the repo secret `FIREWORKS_API_KEY`
 ([fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys));

@@ -52,9 +52,10 @@ def main(argv: list[str] | None = None) -> int:
     p_eval.add_argument("--adapter", default=None)
     p_deploy = ft_sub.add_parser(
         "deploy", help="fireworks: on-demand deployment for the recorded tuned model")
-    p_deploy.add_argument("--only-if-drawings", action="store_true",
-                          help="skip cleanly when no game draws today — never pay for GPU time "
-                               "there is nothing to predict with")
+    p_deploy.add_argument("--only-if-drawings", nargs="?", const="any", default=None,
+                          choices=["any", "jackpot", "digit"],
+                          help="skip cleanly when no game of this kind draws today — never pay "
+                               "for GPU time there is nothing to predict with (default: any)")
     p_deploy.add_argument("--date", type=dt.date.fromisoformat, default=None)
     ft_sub.add_parser("teardown", help="fireworks: delete the recorded deployment (stops GPU billing)")
 
@@ -112,9 +113,14 @@ def main(argv: list[str] | None = None) -> int:
             from .finetune import fireworks
             from .games import draws_on
             date = args.date or dt.date.today()
-            if args.only_if_drawings and not draws_on(date):
-                print(f"no drawings on {date} — skipping deployment")
-                return 0
+            if args.only_if_drawings:
+                kind = args.only_if_drawings
+                scheduled = [(g, t) for g, t in draws_on(date)
+                             if kind == "any" or g.kind == kind]
+                if not scheduled:
+                    label = "" if kind == "any" else f"{kind} "
+                    print(f"no {label}drawings on {date} — skipping deployment")
+                    return 0
             record = fireworks.load_record()
             if not fireworks.available() or not record:
                 # expected before the first fine-tune — clean skip, so the

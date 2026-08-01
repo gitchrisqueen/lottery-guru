@@ -29,7 +29,7 @@ lottery-guru board                # render PREDICTIONS.md + README marker sectio
 lottery-guru usage [--summary-only]       # log/report Fireworks usage → data/usage/fireworks.jsonl
 lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
 lottery-guru finetune train --provider fireworks --min-scored-days 60  # hosted (CI; monthly workflow)
-lottery-guru finetune deploy|teardown     # tuned-model GPU deployment (daily loop; teardown stops billing)
+lottery-guru finetune deploy [--only-if-drawings jackpot] | teardown   # tuned-model GPU (teardown stops billing)
 ```
 
 ## Architecture
