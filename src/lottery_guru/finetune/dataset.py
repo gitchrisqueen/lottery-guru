@@ -42,6 +42,8 @@ def export(out_dir: str = "finetune_data", context: int = llm_strategy.CONTEXT_D
     examples: list[dict] = []
     for game in GAMES.values():
         draws = store.load_draws(game.key)
+        if game.era_start:  # never train across rule eras
+            draws = [d for d in draws if d.date >= game.era_start]
         draws = draws[-(max_per_game + context):]
         for i in range(context, len(draws)):
             examples.append(_example(game, draws[i - context:i], draws[i]))

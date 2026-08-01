@@ -33,9 +33,15 @@ def main(argv: list[str] | None = None) -> int:
     ft_sub = p_ft.add_subparsers(dest="ft_command", required=True)
     p_export = ft_sub.add_parser("export", help="export train/valid/test JSONL")
     p_export.add_argument("--out", default="finetune_data")
-    p_train = ft_sub.add_parser("train", help="LoRA fine-tune locally via MLX")
+    p_export.add_argument("--max-per-game", type=int, default=500,
+                          help="most recent draws per game (large value = full history)")
+    p_train = ft_sub.add_parser("train", help="LoRA fine-tune (local MLX or hosted Fireworks)")
     p_train.add_argument("--data", default="finetune_data")
-    p_train.add_argument("--iters", type=int, default=400)
+    p_train.add_argument("--iters", type=int, default=400, help="mlx only")
+    p_train.add_argument("--provider", choices=["mlx", "fireworks"], default="mlx")
+    p_train.add_argument("--epochs", type=int, default=None, help="fireworks only")
+    p_train.add_argument("--min-scored-days", type=int, default=0,
+                         help="fireworks only: skip cleanly (exit 0) below this many scored days")
     p_eval = ft_sub.add_parser("eval", help="held-out test loss, base vs tuned")
     p_eval.add_argument("--data", default="finetune_data")
     p_eval.add_argument("--adapter", default=None)
@@ -71,12 +77,17 @@ def main(argv: list[str] | None = None) -> int:
     elif args.command == "finetune":
         if args.ft_command == "export":
             from .finetune import dataset
-            counts = dataset.export(out_dir=args.out)
+            counts = dataset.export(out_dir=args.out, max_per_game=args.max_per_game)
             print(json.dumps(counts))
         elif args.ft_command == "train":
-            from .finetune import train_mlx
-            path = train_mlx.train(data_dir=args.data, iters=args.iters)
-            print(f"adapter written to {path}")
+            if args.provider == "fireworks":
+                from .finetune import fireworks
+                fireworks.train(data_dir=args.data, epochs=args.epochs,
+                                min_scored_days=args.min_scored_days)
+            else:
+                from .finetune import train_mlx
+                path = train_mlx.train(data_dir=args.data, iters=args.iters)
+                print(f"adapter written to {path}")
         elif args.ft_command == "eval":
             from .finetune import train_mlx
             train_mlx.evaluate(data_dir=args.data, adapter_path=args.adapter)

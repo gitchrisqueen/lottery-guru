@@ -95,8 +95,10 @@ The same commands run locally, so the Mac and CI are interchangeable.
   by default), writes adapters to `adapters/{date}/`, records train/valid loss.
 - `evaluate` — runs base vs tuned on the held-out future window: mean matches vs null,
   valid-JSON rate, per-number marginal chi-square, prediction entropy (mode-collapse detector).
-- Cadence: monthly (or on demand) once ≥60 scored days exist. Hosted alternative documented:
-  Fireworks.ai serverless LoRA (<$1/run) if we ever want the tuned arm callable from CI.
+- Cadence: monthly (or on demand) once ≥60 scored days exist. Hosted path implemented
+  (`finetune/fireworks.py` + `.github/workflows/monthly-finetune.yml`): Fireworks.ai
+  serverless LoRA (<$1/run) trains monthly in CI, commits the tuned model name to
+  `data/finetune/fireworks.json`, and the daily loop's `llm-tuned` arm calls it.
 
 ## Milestones
 

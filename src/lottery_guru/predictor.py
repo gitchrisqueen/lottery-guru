@@ -49,19 +49,26 @@ def predict(date: dt.date | None = None, include_llm: bool | None = None) -> lis
                 "numbers": list(pred.numbers),
                 "special": pred.special,
             })
-        if include_llm and (game.key, draw_time, "llm-fewshot") not in seen:
-            rng = seeded_rng("llm-fewshot", game.key, date_str, draw_time)
+        llm_arms = []
+        if include_llm:
+            llm_arms.append(("llm-fewshot", llm_strategy.predict_fewshot))
+            if llm_strategy.tuned_available():
+                llm_arms.append(("llm-tuned", llm_strategy.predict_tuned))
+        for name, predict_fn in llm_arms:
+            if (game.key, draw_time, name) in seen:
+                continue
+            rng = seeded_rng(name, game.key, date_str, draw_time)
             try:
-                pred = llm_strategy.predict_fewshot(game, history, rng)
+                pred = predict_fn(game, history, rng)
                 predictions.append({
                     "game": game.key,
                     "draw_time": draw_time,
-                    "strategy": "llm-fewshot",
+                    "strategy": name,
                     "numbers": list(pred.numbers),
                     "special": pred.special,
                 })
-            except Exception as exc:  # LLM arm is best-effort; never block the loop
-                print(f"WARNING: llm-fewshot failed for {game.key}/{draw_time}: {exc}")
+            except Exception as exc:  # LLM arms are best-effort; never block the loop
+                print(f"WARNING: {name} failed for {game.key}/{draw_time}: {exc}")
 
     if len(predictions) > len(existing):
         store.save_json_list("predictions", date_str, predictions)

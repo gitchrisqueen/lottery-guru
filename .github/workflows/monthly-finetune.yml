@@ -1,0 +1,81 @@
+name: Monthly fine-tune (Fireworks)
+
+on:
+  schedule:
+    # 12:45 UTC on the 1st — after that day's daily loop (10:15 UTC) commits
+    - cron: "45 12 1 * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Train even below the 60-scored-days gate"
+        type: boolean
+        default: false
+      max_per_game:
+        description: "Most recent draws per game to export (large value = full history)"
+        type: string
+        default: "500"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monthly-finetune
+  cancel-in-progress: false
+
+jobs:
+  finetune:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Export time-ordered train/valid/test JSONL
+        run: lottery-guru finetune export --max-per-game ${{ inputs.max_per_game || '500' }}
+
+      - name: Fine-tune on Fireworks (serverless LoRA)
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
+        run: >
+          lottery-guru finetune train --provider fireworks
+          --min-scored-days ${{ inputs.force && '0' || '60' }}
+
+      - name: Commit tuned-model record
+        run: |
+          git config user.name "lottery-guru-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/finetune/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Monthly fine-tune: $(date -u +%F)"
+            git push
+          fi
+
+      # First tuned predictions land the same day instead of waiting for the
+      # next daily loop; predict() is idempotent, so only llm-tuned rows are new.
+      - name: Predict with the tuned model + refresh report
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+        run: |
+          lottery-guru predict
+          lottery-guru report
+          lottery-guru board
+
+      - name: Commit predictions and report
+        run: |
+          git add data/ REPORT.md PREDICTIONS.md README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Tuned-model predictions: $(date -u +%F)"
+            git push
+          fi

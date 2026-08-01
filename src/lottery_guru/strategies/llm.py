@@ -7,12 +7,15 @@ the no-training LLM control arm. Provider-pluggable:
   OLLAMA_API_KEY) or a local Ollama server (OLLAMA_HOST=http://localhost:11434,
   no key). Cheap/free; the daily loop makes only a handful of tiny calls.
 - **anthropic**: Claude API (ANTHROPIC_API_KEY + the `anthropic` package).
+- **fireworks**: Fireworks.ai OpenAI-compatible endpoint (FIREWORKS_API_KEY).
 
-Selection: LOTTERY_GURU_LLM_PROVIDER=ollama|anthropic, or auto-detected from
-which credentials are present (Ollama wins if both are set).
+Selection: LOTTERY_GURU_LLM_PROVIDER=ollama|anthropic|fireworks, or
+auto-detected from which credentials are present (in that order of priority).
 
-`llm-tuned` (local only): the MLX LoRA-tuned model — see lottery_guru.finetune.
-A fused adapter can be imported into Ollama so this same code path serves it.
+`llm-tuned`: the LoRA-tuned model. Hosted path: the monthly Fireworks
+fine-tune records its output model in data/finetune/fireworks.json and this
+arm calls it serverlessly (needs FIREWORKS_API_KEY). Local path: a fused MLX
+adapter imported into Ollama can be served through the same code paths.
 """
 from __future__ import annotations
 
@@ -27,7 +30,12 @@ from ..games import Game
 from . import Prediction
 
 CONTEXT_DRAWS = 20
-DEFAULT_MODELS = {"ollama": "gpt-oss:20b", "anthropic": "claude-opus-5"}
+DEFAULT_MODELS = {
+    "ollama": "gpt-oss:20b",
+    "anthropic": "claude-opus-5",
+    "fireworks": "accounts/fireworks/models/llama-v3p1-8b-instruct",
+}
+FIREWORKS_INFERENCE_URL = "https://api.fireworks.ai/inference/v1/chat/completions"
 SYSTEM_PROMPT = (
     "You are a lottery number predictor in a measurement experiment. "
     "Reply only with the JSON prediction."
@@ -42,6 +50,8 @@ def provider() -> str | None:
         return "ollama"
     if os.environ.get("ANTHROPIC_API_KEY"):
         return "anthropic"
+    if os.environ.get("FIREWORKS_API_KEY"):
+        return "fireworks"
     return None
 
 
@@ -59,6 +69,8 @@ def available() -> bool:
             return True
         except ImportError:
             return False
+    if prov == "fireworks":
+        return bool(os.environ.get("FIREWORKS_API_KEY"))
     return False
 
 
@@ -165,10 +177,59 @@ def _predict_anthropic(game: Game, history: list[Draw], rng: random.Random) -> P
     return sanitize(game, data.get("numbers", []), data.get("special"), rng)
 
 
+def _predict_fireworks(game: Game, history: list[Draw], rng: random.Random,
+                       model: str | None = None) -> Prediction:
+    resp = requests.post(
+        FIREWORKS_INFERENCE_URL,
+        headers={"Authorization": f"Bearer {os.environ['FIREWORKS_API_KEY']}"},
+        json={
+            "model": model or model_name("fireworks"),
+            "max_tokens": 256,
+            # Fireworks JSON mode with an inline schema
+            "response_format": {"type": "json_object", "schema": _output_schema(game)},
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": build_prompt(game, history)},
+            ],
+        },
+        timeout=120,
+    )
+    resp.raise_for_status()
+    text = resp.json()["choices"][0]["message"].get("content") or "{}"
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        data = {}
+    return sanitize(game, data.get("numbers", []), data.get("special"), rng)
+
+
 def predict_fewshot(game: Game, history: list[Draw], rng: random.Random) -> Prediction:
     prov = provider()
     if prov == "ollama":
         return _predict_ollama(game, history, rng)
     if prov == "anthropic":
         return _predict_anthropic(game, history, rng)
+    if prov == "fireworks":
+        return _predict_fireworks(game, history, rng)
     raise RuntimeError("no LLM provider configured")
+
+
+def tuned_model() -> str | None:
+    """The Fireworks fine-tuned model name, if one has been trained and is callable."""
+    if not os.environ.get("FIREWORKS_API_KEY"):
+        return None
+    from ..finetune import fireworks  # lazy: finetune.dataset imports this module
+
+    record = fireworks.load_record()
+    return record.get("model") if record else None
+
+
+def tuned_available() -> bool:
+    return tuned_model() is not None
+
+
+def predict_tuned(game: Game, history: list[Draw], rng: random.Random) -> Prediction:
+    model = tuned_model()
+    if model is None:
+        raise RuntimeError("no tuned model on record (see data/finetune/fireworks.json)")
+    return _predict_fireworks(game, history, rng, model=model)

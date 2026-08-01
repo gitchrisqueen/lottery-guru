@@ -27,6 +27,7 @@ lottery-guru score                # score predictions whose results arrived (ide
 lottery-guru report               # regenerate REPORT.md
 lottery-guru board                # render PREDICTIONS.md + README marker sections
 lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
+lottery-guru finetune train --provider fireworks --min-scored-days 60  # hosted (CI; monthly workflow)
 ```
 
 ## Architecture
@@ -46,7 +47,10 @@ lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
   content inside them; it is regenerated every run.
 - `src/lottery_guru/predictor.py` — daily orchestration; `score_pending()` is
   idempotent and self-heals late-arriving results.
-- `src/lottery_guru/finetune/` — time-ordered JSONL export + MLX-LM LoRA wrapper.
+- `src/lottery_guru/finetune/` — time-ordered JSONL export + MLX-LM LoRA wrapper
+  (local) + Fireworks.ai serverless LoRA client (`fireworks.py`, run monthly by
+  `.github/workflows/monthly-finetune.yml`; the tuned model name is recorded in
+  `data/finetune/fireworks.json` and served by the `llm-tuned` arm).
 
 ## Hard rules
 
@@ -72,6 +76,9 @@ lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
 | `LOTTERY_GURU_LLM_PROVIDER` | Force `ollama` or `anthropic` |
 | `LOTTERY_GURU_LLM_MODEL` | Override model (default `gpt-oss:20b`) |
 | `ANTHROPIC_API_KEY` | Anthropic provider (optional) |
+| `FIREWORKS_API_KEY` | Fireworks.ai auth: monthly fine-tune + `llm-tuned` arm (repo secret) |
+| `FIREWORKS_ACCOUNT_ID` | Fireworks.ai account slug (optional; auto-resolved from the key) |
+| `LOTTERY_GURU_FT_BASE_MODEL` | Override the Fireworks fine-tune base model |
 | `SOCRATA_APP_TOKEN` | Optional; lifts data.ny.gov throttling |
 
 ## Testing

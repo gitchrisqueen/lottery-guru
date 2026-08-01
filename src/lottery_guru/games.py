@@ -17,6 +17,7 @@ class Game:
     draw_weekdays: tuple[int, ...]  # 0=Mon .. 6=Sun
     draw_times: tuple[str, ...]  # "main" or ("midday", "evening")
     socrata_dataset: str
+    era_start: str | None = None  # first date (ISO) of the current rule era; None = no rule changes
 
 
 GAMES: dict[str, Game] = {
@@ -31,6 +32,7 @@ GAMES: dict[str, Game] = {
         draw_weekdays=(0, 2, 5),  # Mon/Wed/Sat
         draw_times=("main",),
         socrata_dataset="d6yy-54nr",
+        era_start="2015-10-07",  # 5/69 + 1/26 era
     ),
     "megamillions": Game(
         key="megamillions",
@@ -43,6 +45,7 @@ GAMES: dict[str, Game] = {
         draw_weekdays=(1, 4),  # Tue/Fri
         draw_times=("main",),
         socrata_dataset="5xaw-6ayf",
+        era_start="2025-04-08",  # 5/70 + 1/24 era
     ),
     "ny_numbers": Game(
         key="ny_numbers",
