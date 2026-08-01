@@ -24,6 +24,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `delta` | `16` `18` `23` `24` `28` + `14` |
 | `hot` | `18` `21` `36` `52` `64` + `01` |
 | `llm-fewshot` | `01` `28` `30` `33` `41` + `14` |
+| `llm-tuned` | `01` `10` `12` `28` `39` + `12` |
 | `random` | `08` `25` `50` `51` `62` + `05` |
 | `unpopular` | `38` `41` `58` `61` `63` + `08` |
 
@@ -34,6 +35,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `cold` | `7` `6` `1` |
 | `hot` | `8` `3` `5` |
 | `llm-fewshot` | `0` `2` `8` |
+| `llm-tuned` | `6` `3` `7` |
 | `positional` | `6` `2` `3` |
 | `random` | `0` `4` `5` |
 
@@ -44,6 +46,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `cold` | `7` `6` `1` |
 | `hot` | `8` `3` `5` |
 | `llm-fewshot` | `9` `1` `0` |
+| `llm-tuned` | `1` `8` `5` |
 | `positional` | `7` `3` `0` |
 | `random` | `5` `2` `5` |
 
@@ -54,6 +57,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `cold` | `6` `4` `1` `3` |
 | `hot` | `6` `5` `2` `3` |
 | `llm-fewshot` | `9` `9` `9` `2` |
+| `llm-tuned` | `7` `2` `5` `4` |
 | `positional` | `9` `9` `7` `0` |
 | `random` | `2` `8` `3` `6` |
 
@@ -64,10 +68,11 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `cold` | `6` `4` `1` `7` |
 | `hot` | `6` `5` `2` `1` |
 | `llm-fewshot` | `0` `9` `7` `2` |
+| `llm-tuned` | `8` `4` `7` `2` |
 | `positional` | `1` `7` `3` `6` |
 | `random` | `0` `4` `1` `2` |
 
-<sub>Updated 2026-08-01 18:59 UTC</sub>
+<sub>Updated 2026-08-01 19:03 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -91,7 +96,7 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-08-01 18:59 UTC</sub>
+<sub>Updated 2026-08-01 19:03 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
