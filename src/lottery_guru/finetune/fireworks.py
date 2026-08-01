@@ -53,8 +53,7 @@ def _ensure_account() -> str:
         return acct
     try:
         resp = requests.get(f"{API_BASE}/accounts", headers=_headers(), timeout=60)
-        resp.raise_for_status()
-        accounts = resp.json().get("accounts", [])
+        accounts = _check(resp).json().get("accounts", [])
         _resolved_account = accounts[0]["name"].split("/")[-1]
     except Exception as exc:
         raise SystemExit(
@@ -100,6 +99,13 @@ def _headers() -> dict:
     return {"Authorization": f"Bearer {api_key()}"}
 
 
+def _check(resp: requests.Response) -> requests.Response:
+    """raise_for_status, but keep the response body — it carries the real reason."""
+    if resp.status_code >= 400:
+        raise RuntimeError(f"HTTP {resp.status_code} for {resp.url}: {resp.text[:1000]}")
+    return resp
+
+
 def _state(resource: dict) -> str:
     """Normalize 'JOB_STATE_COMPLETED' / 'COMPLETED' / 'READY' style enums."""
     state = resource.get("state", "")
@@ -109,9 +115,27 @@ def _state(resource: dict) -> str:
     return state
 
 
+def _dataset_state(acct: str, dataset_id: str) -> str | None:
+    resp = requests.get(
+        f"{API_BASE}/accounts/{acct}/datasets/{dataset_id}",
+        headers=_headers(), timeout=60,
+    )
+    if resp.status_code == 404:
+        return None
+    return _state(_check(resp).json())
+
+
 def _upload_dataset(dataset_id: str, jsonl_path: Path) -> str:
-    """Create a dataset, upload the JSONL, wait until READY. Returns its name."""
+    """Create a dataset, upload the JSONL, wait until READY. Returns its name.
+
+    Rerun-safe: a dataset that already exists and is READY (e.g. from a failed
+    prior run the same day) is reused as-is.
+    """
     acct = account_id()
+    name = f"accounts/{acct}/datasets/{dataset_id}"
+    if _dataset_state(acct, dataset_id) == "READY":
+        print(f"dataset {dataset_id} already READY — reusing")
+        return name
     example_count = sum(1 for line in jsonl_path.read_text().splitlines() if line.strip())
     resp = requests.post(
         f"{API_BASE}/accounts/{acct}/datasets",
@@ -122,28 +146,21 @@ def _upload_dataset(dataset_id: str, jsonl_path: Path) -> str:
         },
         timeout=60,
     )
-    # 409 = already exists (rerun of a failed job) — safe to re-upload
-    if resp.status_code != 409:
-        resp.raise_for_status()
+    if resp.status_code != 409:  # 409 = exists but not READY; try the upload again
+        _check(resp)
     with jsonl_path.open("rb") as fh:
-        resp = requests.post(
+        _check(requests.post(
             f"{API_BASE}/accounts/{acct}/datasets/{dataset_id}:upload",
             headers=_headers(),
             files={"file": (jsonl_path.name, fh, "application/jsonl")},
             timeout=300,
-        )
-    resp.raise_for_status()
+        ))
     deadline = time.monotonic() + 600
     while time.monotonic() < deadline:
-        resp = requests.get(
-            f"{API_BASE}/accounts/{acct}/datasets/{dataset_id}",
-            headers=_headers(), timeout=60,
-        )
-        resp.raise_for_status()
-        state = _state(resp.json())
+        state = _dataset_state(acct, dataset_id)
         if state == "READY":
-            return f"accounts/{acct}/datasets/{dataset_id}"
-        if state in ("FAILED", "UNSPECIFIED"):
+            return name
+        if state in ("FAILED", "UNSPECIFIED", None):
             raise RuntimeError(f"dataset {dataset_id} entered state {state}")
         time.sleep(POLL_SECONDS)
     raise TimeoutError(f"dataset {dataset_id} not READY after 600s")
@@ -161,20 +178,22 @@ def _start_job(dataset_name: str, eval_dataset_name: str | None,
         body["evaluationDataset"] = eval_dataset_name
     if epochs:
         body["epochs"] = epochs
-    resp = requests.post(
-        f"{API_BASE}/accounts/{acct}/supervisedFineTuningJobs",
-        headers=_headers(), json=body, timeout=60,
-    )
-    resp.raise_for_status()
-    return resp.json()["name"]
+    url = f"{API_BASE}/accounts/{acct}/supervisedFineTuningJobs"
+    resp = requests.post(url, headers=_headers(), json=body, timeout=60)
+    if resp.status_code == 400 and eval_dataset_name:
+        # the optional evaluation dataset is the most likely rejected field —
+        # retry without it rather than losing the run
+        print(f"WARNING: job creation 400 ({resp.text[:300]}); retrying without evaluationDataset")
+        body.pop("evaluationDataset")
+        resp = requests.post(url, headers=_headers(), json=body, timeout=60)
+    return _check(resp).json()["name"]
 
 
 def _wait_for_job(job_name: str) -> dict:
     deadline = time.monotonic() + JOB_TIMEOUT_SECONDS
     while time.monotonic() < deadline:
         resp = requests.get(f"{API_BASE}/{job_name}", headers=_headers(), timeout=60)
-        resp.raise_for_status()
-        job = resp.json()
+        job = _check(resp).json()
         state = _state(job)
         if state == "COMPLETED":
             return job
@@ -199,7 +218,7 @@ def _deploy_serverless(model_name: str) -> bool:
         )
         if resp.status_code == 409:  # already deployed
             return True
-        resp.raise_for_status()
+        _check(resp)
         return True
     except Exception as exc:
         print(f"WARNING: serverless deploy of {model_name} failed ({exc}); "

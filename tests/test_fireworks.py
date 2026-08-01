@@ -86,6 +86,8 @@ class _Resp:
     def __init__(self, payload=None, status_code=200):
         self._payload = payload or {}
         self.status_code = status_code
+        self.url = "https://api.fireworks.ai/test"
+        self.text = json.dumps(self._payload)
 
     def raise_for_status(self):
         if self.status_code >= 400:
@@ -140,6 +142,25 @@ def test_train_happy_path(env, monkeypatch):
     assert record["model"] == "accounts/acct/models/lottery-guru-2026-08-01"
     assert record["deployed"] is True
     assert record["scored_days"] == 70
+
+
+def test_job_create_retries_without_eval_dataset(env, monkeypatch):
+    bodies = []
+
+    def fake_post(url, **kwargs):
+        body = kwargs.get("json")
+        if url.endswith("/supervisedFineTuningJobs"):
+            bodies.append(dict(body))
+            if "evaluationDataset" in body:
+                return _Resp({"error": "unknown field evaluationDataset"}, status_code=400)
+            return _Resp({"name": "accounts/acct/supervisedFineTuningJobs/j1"})
+        return _Resp()
+
+    monkeypatch.setattr(fireworks.requests, "post", fake_post)
+    name = fireworks._start_job("accounts/acct/datasets/d1",
+                                "accounts/acct/datasets/d2", "out-model", None)
+    assert name == "accounts/acct/supervisedFineTuningJobs/j1"
+    assert "evaluationDataset" in bodies[0] and "evaluationDataset" not in bodies[1]
 
 
 def test_train_failed_job_raises(env, monkeypatch):
