@@ -1,0 +1,10 @@
+{
+ "model": "accounts/christopher-queen-xr/models/lottery-guru-2026-08-01",
+ "base_model": "accounts/fireworks/models/qwen3-8b",
+ "job": "accounts/christopher-queen-xr/supervisedFineTuningJobs/dtx9lwik",
+ "dataset": "accounts/christopher-queen-xr/datasets/lottery-guru-train-2026-08-01",
+ "evaluation_dataset": "accounts/christopher-queen-xr/datasets/lottery-guru-valid-2026-08-01",
+ "deployed": false,
+ "scored_days": 8,
+ "trained_at": "2026-08-01T18:39:56.383229+00:00"
+}
