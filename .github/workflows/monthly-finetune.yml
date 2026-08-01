@@ -10,6 +10,10 @@ on:
         description: "Train even below the 60-scored-days gate"
         type: boolean
         default: false
+      max_per_game:
+        description: "Most recent draws per game to export (large value = full history)"
+        type: string
+        default: "500"
 
 permissions:
   contents: write
@@ -33,7 +37,7 @@ jobs:
         run: pip install -e .
 
       - name: Export time-ordered train/valid/test JSONL
-        run: lottery-guru finetune export
+        run: lottery-guru finetune export --max-per-game ${{ inputs.max_per_game || '500' }}
 
       - name: Fine-tune on Fireworks (serverless LoRA)
         env:
@@ -52,5 +56,26 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Monthly fine-tune: $(date -u +%F)"
+            git push
+          fi
+
+      # First tuned predictions land the same day instead of waiting for the
+      # next daily loop; predict() is idempotent, so only llm-tuned rows are new.
+      - name: Predict with the tuned model + refresh report
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+        run: |
+          lottery-guru predict
+          lottery-guru report
+          lottery-guru board
+
+      - name: Commit predictions and report
+        run: |
+          git add data/ REPORT.md PREDICTIONS.md README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Tuned-model predictions: $(date -u +%F)"
             git push
           fi

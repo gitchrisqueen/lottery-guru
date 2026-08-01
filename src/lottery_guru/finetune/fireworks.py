@@ -9,7 +9,8 @@ size).
 
 Env:
     FIREWORKS_API_KEY      required (Bearer auth)
-    FIREWORKS_ACCOUNT_ID   required (the account slug in resource names)
+    FIREWORKS_ACCOUNT_ID   optional (the account slug in resource names;
+                           auto-resolved from the API key when unset)
     LOTTERY_GURU_FT_BASE_MODEL   optional base-model override
 
 The monthly workflow gates on ≥60 scored days (PLAN.md M4): below the gate,
@@ -37,12 +38,35 @@ def api_key() -> str | None:
     return os.environ.get("FIREWORKS_API_KEY")
 
 
+_resolved_account: str | None = None
+
+
 def account_id() -> str | None:
-    return os.environ.get("FIREWORKS_ACCOUNT_ID")
+    return os.environ.get("FIREWORKS_ACCOUNT_ID") or _resolved_account
+
+
+def _ensure_account() -> str:
+    """Return the account slug, resolving it from the API key if needed."""
+    global _resolved_account
+    acct = account_id()
+    if acct:
+        return acct
+    try:
+        resp = requests.get(f"{API_BASE}/accounts", headers=_headers(), timeout=60)
+        resp.raise_for_status()
+        accounts = resp.json().get("accounts", [])
+        _resolved_account = accounts[0]["name"].split("/")[-1]
+    except Exception as exc:
+        raise SystemExit(
+            f"could not auto-resolve the Fireworks account id ({exc}); "
+            "set the FIREWORKS_ACCOUNT_ID env var / repo secret"
+        ) from exc
+    print(f"resolved Fireworks account: {_resolved_account}")
+    return _resolved_account
 
 
 def available() -> bool:
-    return bool(api_key() and account_id())
+    return bool(api_key())
 
 
 def base_model() -> str:
@@ -187,7 +211,8 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
           min_scored_days: int = 0, run_date: dt.date | None = None) -> str | None:
     """Full hosted fine-tune. Returns the tuned model name, or None if gated."""
     if not available():
-        raise SystemExit("FIREWORKS_API_KEY and FIREWORKS_ACCOUNT_ID must be set")
+        raise SystemExit("FIREWORKS_API_KEY must be set")
+    _ensure_account()
     days = scored_days()
     if days < min_scored_days:
         print(f"skipping fine-tune: {days} scored days < gate of {min_scored_days}")

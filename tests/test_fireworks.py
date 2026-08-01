@@ -42,10 +42,32 @@ def test_state_normalization():
     assert fireworks._state({}) == ""
 
 
-def test_train_requires_credentials(env, monkeypatch):
-    monkeypatch.delenv("FIREWORKS_ACCOUNT_ID")
+def test_train_requires_api_key(env, monkeypatch):
+    monkeypatch.delenv("FIREWORKS_API_KEY")
     with pytest.raises(SystemExit):
         fireworks.train()
+
+
+def test_account_id_auto_resolved(env, monkeypatch):
+    monkeypatch.delenv("FIREWORKS_ACCOUNT_ID")
+    monkeypatch.setattr(fireworks, "_resolved_account", None)
+    monkeypatch.setattr(fireworks.requests, "get", lambda url, **k: _Resp(
+        {"accounts": [{"name": "accounts/my-slug"}]}))
+    assert fireworks._ensure_account() == "my-slug"
+    assert fireworks.account_id() == "my-slug"
+    monkeypatch.setattr(fireworks, "_resolved_account", None)
+
+
+def test_account_resolution_failure_is_clear(env, monkeypatch):
+    monkeypatch.delenv("FIREWORKS_ACCOUNT_ID")
+    monkeypatch.setattr(fireworks, "_resolved_account", None)
+
+    def boom(*a, **k):
+        raise RuntimeError("HTTP 401")
+
+    monkeypatch.setattr(fireworks.requests, "get", boom)
+    with pytest.raises(SystemExit, match="FIREWORKS_ACCOUNT_ID"):
+        fireworks._ensure_account()
 
 
 def test_gate_skips_without_network(env, monkeypatch):

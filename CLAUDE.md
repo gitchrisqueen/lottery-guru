@@ -77,7 +77,7 @@ lottery-guru finetune train --provider fireworks --min-scored-days 60  # hosted 
 | `LOTTERY_GURU_LLM_MODEL` | Override model (default `gpt-oss:20b`) |
 | `ANTHROPIC_API_KEY` | Anthropic provider (optional) |
 | `FIREWORKS_API_KEY` | Fireworks.ai auth: monthly fine-tune + `llm-tuned` arm (repo secret) |
-| `FIREWORKS_ACCOUNT_ID` | Fireworks.ai account slug (repo secret; training only) |
+| `FIREWORKS_ACCOUNT_ID` | Fireworks.ai account slug (optional; auto-resolved from the key) |
 | `LOTTERY_GURU_FT_BASE_MODEL` | Override the Fireworks fine-tune base model |
 | `SOCRATA_APP_TOKEN` | Optional; lifts data.ny.gov throttling |
 

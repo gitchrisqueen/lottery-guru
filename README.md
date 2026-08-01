@@ -174,11 +174,12 @@ cadence: monthly, once ≥60 scored days exist.
 The hosted path — Fireworks.ai serverless LoRA, <$1/run — runs automatically
 on the 1st of each month via
 [`monthly-finetune.yml`](.github/workflows/monthly-finetune.yml) once ≥60
-scored days exist (before that it skips cleanly). Setup: add repo secrets
-`FIREWORKS_API_KEY` ([fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys))
-and `FIREWORKS_ACCOUNT_ID` (your account slug, shown in Fireworks account
-settings). The workflow exports the dataset, trains, deploys the LoRA
-serverlessly, and commits the model name to `data/finetune/fireworks.json` —
+scored days exist (before that it skips cleanly). Setup: add the repo secret
+`FIREWORKS_API_KEY` ([fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys));
+the account slug is auto-resolved from the key (set `FIREWORKS_ACCOUNT_ID` to
+override). The workflow exports the dataset, trains, deploys the LoRA
+serverlessly, commits the model name to `data/finetune/fireworks.json`, and
+writes the same-day tuned predictions + refreshed report —
 from the next daily run onward the `llm-tuned` arm predicts with it and gets
 scored against the same null as everything else. Trigger it manually from the
 Actions tab (`force` input bypasses the 60-day gate). Run locally with:
