@@ -16,6 +16,7 @@ def env(monkeypatch, tmp_path):
     monkeypatch.delenv("LOTTERY_GURU_FT_BASE_MODEL", raising=False)
     monkeypatch.delenv("LOTTERY_GURU_FT_LORA_RANK", raising=False)
     monkeypatch.delenv("LOTTERY_GURU_FT_ACCELERATOR", raising=False)
+    monkeypatch.delenv("LOTTERY_GURU_FT_PRECISION", raising=False)
     monkeypatch.setattr(fireworks.time, "sleep", lambda s: None)
     return tmp_path
 
@@ -143,7 +144,8 @@ def test_train_happy_path(env, monkeypatch):
     deploys = [body for method, url, body in calls
                if method == "POST" and url.endswith("/deployments")]
     assert deploys == [{"baseModel": "accounts/acct/models/lottery-guru-2026-08-01",
-                        "acceleratorType": fireworks.DEFAULT_ACCELERATOR}]
+                        "acceleratorType": fireworks.DEFAULT_ACCELERATOR,
+                        "precision": fireworks.DEFAULT_PRECISION}]
 
     record = fireworks.load_record()
     assert record["model"] == "accounts/acct/models/lottery-guru-2026-08-01"
