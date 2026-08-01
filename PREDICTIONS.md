@@ -1,58 +1,58 @@
 # Lottery Guru — Latest Predictions
 
-### 🎟️ Predictions for 2026-07-31
+### 🎟️ Predictions for 2026-08-01
 
 _These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
 
-**Mega Millions**
+**Powerball**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `06` `08` `11` `18` `28` + `11` |
-| `delta` | `02` `21` `22` `45` `58` + `04` |
-| `hot` | `18` `40` `42` `49` `56` + `12` |
-| `llm-fewshot` | `12` `29` `30` `48` `52` + `12` |
-| `random` | `12` `16` `52` `54` `67` + `03` |
-| `unpopular` | `41` `44` `54` `55` `70` + `03` |
+| `cold` | `11` `15` `23` `33` `54` + `09` |
+| `delta` | `16` `18` `23` `24` `28` + `14` |
+| `hot` | `18` `21` `36` `52` `64` + `01` |
+| `llm-fewshot` | `01` `28` `30` `33` `41` + `14` |
+| `random` | `08` `25` `50` `51` `62` + `05` |
+| `unpopular` | `38` `41` `58` `61` `63` + `08` |
 
 **NY Numbers (Pick 3) — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `4` `1` |
+| `cold` | `7` `6` `1` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `1` `1` `4` |
-| `positional` | `1` `7` `7` |
-| `random` | `4` `3` `5` |
+| `llm-fewshot` | `0` `2` `8` |
+| `positional` | `6` `2` `3` |
+| `random` | `0` `4` `5` |
 
 **NY Numbers (Pick 3) — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `4` `6` |
+| `cold` | `7` `6` `1` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `4` `4` `5` |
-| `positional` | `5` `1` `9` |
-| `random` | `5` `5` `1` |
+| `llm-fewshot` | `9` `1` `0` |
+| `positional` | `7` `3` `0` |
+| `random` | `5` `2` `5` |
 
 **NY Win 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `6` `2` `9` `8` |
-| `hot` | `6` `5` `2` `1` |
-| `llm-fewshot` | `3` `7` `8` `9` |
-| `positional` | `4` `1` `6` `2` |
-| `random` | `1` `7` `5` `3` |
+| `cold` | `6` `4` `1` `3` |
+| `hot` | `6` `5` `2` `3` |
+| `llm-fewshot` | `9` `9` `9` `2` |
+| `positional` | `9` `9` `7` `0` |
+| `random` | `2` `8` `3` `6` |
 
 **NY Win 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `6` `2` `9` `8` |
-| `hot` | `6` `5` `2` `4` |
-| `llm-fewshot` | `5` `3` `6` `8` |
-| `positional` | `7` `8` `1` `9` |
-| `random` | `8` `7` `3` `1` |
+| `cold` | `6` `4` `1` `7` |
+| `hot` | `6` `5` `2` `1` |
+| `llm-fewshot` | `0` `9` `7` `2` |
+| `positional` | `1` `7` `3` `6` |
+| `random` | `0` `4` `1` `2` |
 
-<sub>Updated 2026-07-31 11:08 UTC</sub>
+<sub>Updated 2026-08-01 10:49 UTC</sub>

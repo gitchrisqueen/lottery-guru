@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-07-31 11:08 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
+_Generated 2026-08-01 10:49 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
 
 ## Powerball
 
@@ -21,12 +21,12 @@ Null expectation: 0.3571 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| hot | 2 | 1 | 0.714 | 0.361 | 0.7178 | 0 |
-| cold | 2 | 1 | 0.714 | 0.361 | 0.7178 | 0 |
-| llm-fewshot | 1 | 0 | 0.357 | -0.639 | 0.5228 | 0 |
-| unpopular | 2 | 0 | 0.714 | -0.904 | 0.3662 | 0 |
-| random | 2 | 0 | 0.714 | -0.904 | 0.3662 | 0 |
-| delta | 2 | 0 | 0.714 | -0.904 | 0.3662 | 0 |
+| hot | 3 | 2 | 1.071 | 0.959 | 0.3375 | 0 |
+| cold | 3 | 2 | 1.071 | 0.959 | 0.3375 | 0 |
+| llm-fewshot | 2 | 0 | 0.714 | -0.904 | 0.3662 | 0 |
+| unpopular | 3 | 0 | 1.071 | -1.107 | 0.2684 | 0 |
+| random | 3 | 0 | 1.071 | -1.107 | 0.2684 | 0 |
+| delta | 3 | 0 | 1.071 | -1.107 | 0.2684 | 0 |
 
 ## NY Numbers (Pick 3)
 
@@ -34,11 +34,11 @@ Null expectation: 0.3000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| hot | 12 | 7 | 3.6 | 1.889 | 0.0589 | 0 |
-| random | 12 | 6 | 3.6 | 1.333 | 0.1824 | 0 |
-| cold | 12 | 5 | 3.6 | 0.778 | 0.4367 | 0 |
-| positional | 12 | 4 | 3.6 | 0.222 | 0.8241 | 0 |
-| llm-fewshot | 8 | 2 | 2.4 | -0.272 | 0.7855 | 0 |
+| hot | 14 | 8 | 4.2 | 1.955 | 0.0506 | 0 |
+| cold | 14 | 7 | 4.2 | 1.44 | 0.1498 | 0 |
+| random | 14 | 6 | 4.2 | 0.926 | 0.3545 | 0 |
+| llm-fewshot | 10 | 3 | 3.0 | -0.0 | 1.0 | 0 |
+| positional | 14 | 4 | 4.2 | -0.103 | 0.9181 | 0 |
 
 ## NY Win 4
 
@@ -46,9 +46,9 @@ Null expectation: 0.4000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| positional | 14 | 6 | 5.6 | 0.178 | 0.8586 | 0 |
-| random | 14 | 4 | 5.6 | -0.713 | 0.476 | 0 |
-| cold | 14 | 4 | 5.6 | -0.713 | 0.476 | 0 |
-| llm-fewshot | 10 | 2 | 4.0 | -1.054 | 0.2918 | 0 |
-| hot | 14 | 2 | 5.6 | -1.604 | 0.1088 | 0 |
+| positional | 16 | 7 | 6.4 | 0.25 | 0.8026 | 0 |
+| random | 16 | 5 | 6.4 | -0.583 | 0.5597 | 0 |
+| llm-fewshot | 12 | 3 | 4.8 | -0.866 | 0.3865 | 0 |
+| hot | 16 | 4 | 6.4 | -1.0 | 0.3173 | 0 |
+| cold | 16 | 4 | 6.4 | -1.0 | 0.3173 | 0 |
 
