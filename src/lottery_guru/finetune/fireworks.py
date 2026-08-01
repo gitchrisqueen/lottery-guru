@@ -273,7 +273,12 @@ def teardown() -> bool:
         print("no active deployment on record")
         return False
     name = record["deployment"]
-    resp = requests.delete(f"{API_BASE}/{name}", headers=_headers(), timeout=60)
+    resp = requests.delete(
+        f"{API_BASE}/{name}", headers=_headers(),
+        # a recently-used deployment refuses deletion without this
+        params={"ignoreChecks": "true", "ignore_checks": "true"},
+        timeout=60,
+    )
     if resp.status_code != 404:
         _check(resp)
     record["deployed"] = False
@@ -301,8 +306,11 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
     # after training), skip straight to deployment instead of paying to retrain.
     existing = load_record()
     if existing and existing.get("model", "").endswith(tag):
-        print(f"model {existing['model']} already trained today — deploying it")
-        _deploy_and_record(existing)
+        if existing.get("deployed"):
+            print(f"model {existing['model']} already trained and deployed today")
+        else:
+            print(f"model {existing['model']} already trained today — deploying it")
+            _deploy_and_record(existing)
         return existing["model"]
 
     train_path = Path(data_dir) / "train.jsonl"

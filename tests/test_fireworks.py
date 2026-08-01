@@ -205,10 +205,16 @@ def test_teardown_deletes_deployment_and_flips_record(env, monkeypatch):
         "inference_model": "accounts/acct/models/m1#accounts/acct/deployments/dep1",
     })
     deleted = []
-    monkeypatch.setattr(fireworks.requests, "delete",
-                        lambda url, **k: (deleted.append(url), _Resp())[1])
+
+    def fake_delete(url, **kwargs):
+        deleted.append((url, kwargs.get("params", {})))
+        return _Resp()
+
+    monkeypatch.setattr(fireworks.requests, "delete", fake_delete)
     assert fireworks.teardown() is True
-    assert deleted == [f"{fireworks.API_BASE}/accounts/acct/deployments/dep1"]
+    url, params = deleted[0]
+    assert url == f"{fireworks.API_BASE}/accounts/acct/deployments/dep1"
+    assert params.get("ignoreChecks") == "true"  # recently-used deployments refuse deletion otherwise
     record = fireworks.load_record()
     assert record["deployed"] is False
     assert "deployment" not in record
