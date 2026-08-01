@@ -73,11 +73,24 @@ def test_tuned_unavailable_without_key_or_record(monkeypatch, tmp_path):
     assert llm.tuned_available() is False  # key but no trained-model record
 
 
-def test_tuned_available_with_key_and_record(monkeypatch, tmp_path):
+def test_tuned_available_with_key_and_deployed_record(monkeypatch, tmp_path):
     _clear(monkeypatch)
     monkeypatch.setattr(store, "DATA_DIR", tmp_path)
-    fireworks.save_record({"model": "accounts/acct/models/lottery-guru-2026-08-01"})
+    fireworks.save_record({
+        "model": "accounts/acct/models/lottery-guru-2026-08-01",
+        "deployed": True,
+        "inference_model": "accounts/acct/models/lottery-guru-2026-08-01#accounts/acct/deployments/d1",
+    })
     assert llm.tuned_available() is False  # record but no key
     monkeypatch.setenv("FIREWORKS_API_KEY", "fw")
-    assert llm.tuned_model() == "accounts/acct/models/lottery-guru-2026-08-01"
+    assert llm.tuned_model() == (
+        "accounts/acct/models/lottery-guru-2026-08-01#accounts/acct/deployments/d1")
     assert llm.tuned_available() is True
+
+
+def test_tuned_unavailable_when_deployment_torn_down(monkeypatch, tmp_path):
+    _clear(monkeypatch)
+    monkeypatch.setattr(store, "DATA_DIR", tmp_path)
+    monkeypatch.setenv("FIREWORKS_API_KEY", "fw")
+    fireworks.save_record({"model": "accounts/acct/models/m1", "deployed": False})
+    assert llm.tuned_available() is False

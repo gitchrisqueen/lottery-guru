@@ -45,6 +45,8 @@ def main(argv: list[str] | None = None) -> int:
     p_eval = ft_sub.add_parser("eval", help="held-out test loss, base vs tuned")
     p_eval.add_argument("--data", default="finetune_data")
     p_eval.add_argument("--adapter", default=None)
+    ft_sub.add_parser("deploy", help="fireworks: on-demand deployment for the recorded tuned model")
+    ft_sub.add_parser("teardown", help="fireworks: delete the recorded deployment (stops GPU billing)")
 
     args = parser.parse_args(argv)
 
@@ -91,6 +93,19 @@ def main(argv: list[str] | None = None) -> int:
         elif args.ft_command == "eval":
             from .finetune import train_mlx
             train_mlx.evaluate(data_dir=args.data, adapter_path=args.adapter)
+        elif args.ft_command == "deploy":
+            from .finetune import fireworks
+            record = fireworks.load_record()
+            if not record:
+                raise SystemExit("no tuned model on record")
+            deployment = fireworks.deploy(record["model"])
+            record.update({"deployed": True, "deployment": deployment,
+                           "inference_model": f"{record['model']}#{deployment}"})
+            fireworks.save_record(record)
+            print(f"deployment ready: {deployment}")
+        elif args.ft_command == "teardown":
+            from .finetune import fireworks
+            fireworks.teardown()
     return 0
 
 

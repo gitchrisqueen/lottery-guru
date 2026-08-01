@@ -64,13 +64,23 @@ jobs:
       - name: Predict with the tuned model + refresh report
         env:
           FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
           OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
         run: |
           lottery-guru predict
           lottery-guru report
           lottery-guru board
 
+      # Always tear down the on-demand deployment — it bills GPU time while up.
+      - name: Tear down deployment
+        if: always()
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
+        run: lottery-guru finetune teardown
+
       - name: Commit predictions and report
+        if: always()
         run: |
           git add data/ REPORT.md PREDICTIONS.md README.md
           if git diff --cached --quiet; then

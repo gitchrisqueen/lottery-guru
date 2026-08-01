@@ -14,6 +14,9 @@ def env(monkeypatch, tmp_path):
     monkeypatch.setenv("FIREWORKS_API_KEY", "fw-key")
     monkeypatch.setenv("FIREWORKS_ACCOUNT_ID", "acct")
     monkeypatch.delenv("LOTTERY_GURU_FT_BASE_MODEL", raising=False)
+    monkeypatch.delenv("LOTTERY_GURU_FT_LORA_RANK", raising=False)
+    monkeypatch.delenv("LOTTERY_GURU_FT_ACCELERATOR", raising=False)
+    monkeypatch.delenv("LOTTERY_GURU_FT_PRECISION", raising=False)
     monkeypatch.setattr(fireworks.time, "sleep", lambda s: None)
     return tmp_path
 
@@ -86,6 +89,8 @@ class _Resp:
     def __init__(self, payload=None, status_code=200):
         self._payload = payload or {}
         self.status_code = status_code
+        self.url = "https://api.fireworks.ai/test"
+        self.text = json.dumps(self._payload)
 
     def raise_for_status(self):
         if self.status_code >= 400:
@@ -109,6 +114,8 @@ def test_train_happy_path(env, monkeypatch):
         calls.append(("POST", url, kwargs.get("json")))
         if url.endswith("/supervisedFineTuningJobs"):
             return _Resp({"name": "accounts/acct/supervisedFineTuningJobs/j1"})
+        if url.endswith("/deployments"):
+            return _Resp({"name": "accounts/acct/deployments/dep1"})
         return _Resp()
 
     def fake_get(url, **kwargs):
@@ -132,14 +139,107 @@ def test_train_happy_path(env, monkeypatch):
         "dataset": "accounts/acct/datasets/lottery-guru-train-2026-08-01",
         "evaluationDataset": "accounts/acct/datasets/lottery-guru-valid-2026-08-01",
         "outputModel": "accounts/acct/models/lottery-guru-2026-08-01",
+        "loraRank": 8,
     }]
-    deploys = [body for method, url, body in calls if url.endswith("/deployedModels")]
-    assert deploys == [{"model": "accounts/acct/models/lottery-guru-2026-08-01"}]
+    deploys = [body for method, url, body in calls
+               if method == "POST" and url.endswith("/deployments")]
+    assert deploys == [{"baseModel": "accounts/acct/models/lottery-guru-2026-08-01",
+                        "acceleratorType": fireworks.ACCELERATOR_CANDIDATES[0],
+                        "precision": fireworks.DEFAULT_PRECISION}]
 
     record = fireworks.load_record()
     assert record["model"] == "accounts/acct/models/lottery-guru-2026-08-01"
     assert record["deployed"] is True
+    assert record["deployment"] == "accounts/acct/deployments/dep1"
+    assert record["inference_model"] == (
+        "accounts/acct/models/lottery-guru-2026-08-01#accounts/acct/deployments/dep1")
     assert record["scored_days"] == 70
+
+
+def test_train_reuses_same_day_model_without_retraining(env, monkeypatch):
+    fireworks.save_record({
+        "model": "accounts/acct/models/lottery-guru-2026-08-01",
+        "deployed": False,
+    })
+    posts = []
+
+    def fake_post(url, **kwargs):
+        posts.append(url)
+        assert "supervisedFineTuningJobs" not in url, "must not retrain same-day model"
+        if url.endswith("/deployments"):
+            return _Resp({"name": "accounts/acct/deployments/dep2"})
+        return _Resp()
+
+    monkeypatch.setattr(fireworks.requests, "post", fake_post)
+    monkeypatch.setattr(fireworks.requests, "get",
+                        lambda url, **k: _Resp({"state": "READY"}))
+    model = fireworks.train(run_date=dt.date(2026, 8, 1))
+    assert model == "accounts/acct/models/lottery-guru-2026-08-01"
+    record = fireworks.load_record()
+    assert record["deployed"] is True
+    assert record["deployment"] == "accounts/acct/deployments/dep2"
+
+
+def test_deploy_falls_through_accelerator_candidates(env, monkeypatch):
+    attempts = []
+
+    def fake_post(url, **kwargs):
+        accel = kwargs["json"]["acceleratorType"]
+        attempts.append(accel)
+        if accel == fireworks.ACCELERATOR_CANDIDATES[2]:  # third candidate has quota
+            return _Resp({"name": "accounts/acct/deployments/dep3"})
+        return _Resp({"message": "no quota"}, status_code=429)
+
+    monkeypatch.setattr(fireworks.requests, "post", fake_post)
+    monkeypatch.setattr(fireworks.requests, "get",
+                        lambda url, **k: _Resp({"state": "READY"}))
+    assert fireworks.deploy("accounts/acct/models/m1") == "accounts/acct/deployments/dep3"
+    assert attempts == list(fireworks.ACCELERATOR_CANDIDATES[:3])
+
+
+def test_teardown_deletes_deployment_and_flips_record(env, monkeypatch):
+    fireworks.save_record({
+        "model": "accounts/acct/models/m1",
+        "deployed": True,
+        "deployment": "accounts/acct/deployments/dep1",
+        "inference_model": "accounts/acct/models/m1#accounts/acct/deployments/dep1",
+    })
+    deleted = []
+
+    def fake_delete(url, **kwargs):
+        deleted.append((url, kwargs.get("params", {})))
+        return _Resp()
+
+    monkeypatch.setattr(fireworks.requests, "delete", fake_delete)
+    assert fireworks.teardown() is True
+    url, params = deleted[0]
+    assert url == f"{fireworks.API_BASE}/accounts/acct/deployments/dep1"
+    assert params.get("ignoreChecks") == "true"  # recently-used deployments refuse deletion otherwise
+    record = fireworks.load_record()
+    assert record["deployed"] is False
+    assert "deployment" not in record
+    assert record["last_deployment"] == "accounts/acct/deployments/dep1"
+    # idempotent second call
+    assert fireworks.teardown() is False
+
+
+def test_job_create_retries_without_eval_dataset(env, monkeypatch):
+    bodies = []
+
+    def fake_post(url, **kwargs):
+        body = kwargs.get("json")
+        if url.endswith("/supervisedFineTuningJobs"):
+            bodies.append(dict(body))
+            if "evaluationDataset" in body:
+                return _Resp({"error": "unknown field evaluationDataset"}, status_code=400)
+            return _Resp({"name": "accounts/acct/supervisedFineTuningJobs/j1"})
+        return _Resp()
+
+    monkeypatch.setattr(fireworks.requests, "post", fake_post)
+    name = fireworks._start_job("accounts/acct/datasets/d1",
+                                "accounts/acct/datasets/d2", "out-model", None)
+    assert name == "accounts/acct/supervisedFineTuningJobs/j1"
+    assert "evaluationDataset" in bodies[0] and "evaluationDataset" not in bodies[1]
 
 
 def test_train_failed_job_raises(env, monkeypatch):

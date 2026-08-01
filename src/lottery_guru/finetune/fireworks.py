@@ -1,11 +1,16 @@
-"""Hosted fine-tuning via Fireworks.ai serverless LoRA. Runs anywhere (CI).
+"""Hosted fine-tuning via Fireworks.ai LoRA. Runs anywhere (CI).
 
 This is the hosted alternative to the local MLX path (train_mlx.py): upload
 the exported chat JSONL as a dataset, run a supervised fine-tuning (LoRA)
 job, and record the resulting model name in data/finetune/fireworks.json so
-the daily loop's `llm-tuned` arm can call it through the OpenAI-compatible
-inference endpoint. Cost: ~$0.50/M training tokens (<$1/run at this dataset
-size).
+the `llm-tuned` arm can call it through the OpenAI-compatible inference
+endpoint. Training cost: ~$0.50/M training tokens.
+
+Serving: Fireworks does not serve LoRA fine-tunes serverlessly — inference
+needs an on-demand (dedicated GPU) deployment billed while it exists. The
+monthly workflow deploys ephemerally (train → deploy → predict → teardown),
+and the record's "deployed" flag tells the daily loop whether the tuned arm
+is currently callable.
 
 Env:
     FIREWORKS_API_KEY      required (Bearer auth)
@@ -29,9 +34,20 @@ import requests
 from ..data import store
 
 API_BASE = "https://api.fireworks.ai/v1"
-DEFAULT_BASE_MODEL = "accounts/fireworks/models/llama-v3p1-8b-instruct"
+DEFAULT_BASE_MODEL = "accounts/fireworks/models/qwen3-8b"
+DEFAULT_LORA_RANK = 8
+# Tried in order until one is accepted AND has quota (Tier 2 grants B200-class
+# quota; A100 quota is 0 on this account). LOTTERY_GURU_FT_ACCELERATOR overrides.
+ACCELERATOR_CANDIDATES = (
+    "NVIDIA_B200_180GB",
+    "NVIDIA_H200_141GB",
+    "NVIDIA_H100_80GB",
+    "NVIDIA_A100_80GB",
+)
+DEFAULT_PRECISION = "BF16"
 POLL_SECONDS = 30
 JOB_TIMEOUT_SECONDS = 3 * 3600
+DEPLOY_TIMEOUT_SECONDS = 1800
 
 
 def api_key() -> str | None:
@@ -53,8 +69,7 @@ def _ensure_account() -> str:
         return acct
     try:
         resp = requests.get(f"{API_BASE}/accounts", headers=_headers(), timeout=60)
-        resp.raise_for_status()
-        accounts = resp.json().get("accounts", [])
+        accounts = _check(resp).json().get("accounts", [])
         _resolved_account = accounts[0]["name"].split("/")[-1]
     except Exception as exc:
         raise SystemExit(
@@ -100,6 +115,13 @@ def _headers() -> dict:
     return {"Authorization": f"Bearer {api_key()}"}
 
 
+def _check(resp: requests.Response) -> requests.Response:
+    """raise_for_status, but keep the response body — it carries the real reason."""
+    if resp.status_code >= 400:
+        raise RuntimeError(f"HTTP {resp.status_code} for {resp.url}: {resp.text[:1000]}")
+    return resp
+
+
 def _state(resource: dict) -> str:
     """Normalize 'JOB_STATE_COMPLETED' / 'COMPLETED' / 'READY' style enums."""
     state = resource.get("state", "")
@@ -109,9 +131,27 @@ def _state(resource: dict) -> str:
     return state
 
 
+def _dataset_state(acct: str, dataset_id: str) -> str | None:
+    resp = requests.get(
+        f"{API_BASE}/accounts/{acct}/datasets/{dataset_id}",
+        headers=_headers(), timeout=60,
+    )
+    if resp.status_code == 404:
+        return None
+    return _state(_check(resp).json())
+
+
 def _upload_dataset(dataset_id: str, jsonl_path: Path) -> str:
-    """Create a dataset, upload the JSONL, wait until READY. Returns its name."""
+    """Create a dataset, upload the JSONL, wait until READY. Returns its name.
+
+    Rerun-safe: a dataset that already exists and is READY (e.g. from a failed
+    prior run the same day) is reused as-is.
+    """
     acct = account_id()
+    name = f"accounts/{acct}/datasets/{dataset_id}"
+    if _dataset_state(acct, dataset_id) == "READY":
+        print(f"dataset {dataset_id} already READY — reusing")
+        return name
     example_count = sum(1 for line in jsonl_path.read_text().splitlines() if line.strip())
     resp = requests.post(
         f"{API_BASE}/accounts/{acct}/datasets",
@@ -122,28 +162,21 @@ def _upload_dataset(dataset_id: str, jsonl_path: Path) -> str:
         },
         timeout=60,
     )
-    # 409 = already exists (rerun of a failed job) — safe to re-upload
-    if resp.status_code != 409:
-        resp.raise_for_status()
+    if resp.status_code != 409:  # 409 = exists but not READY; try the upload again
+        _check(resp)
     with jsonl_path.open("rb") as fh:
-        resp = requests.post(
+        _check(requests.post(
             f"{API_BASE}/accounts/{acct}/datasets/{dataset_id}:upload",
             headers=_headers(),
             files={"file": (jsonl_path.name, fh, "application/jsonl")},
             timeout=300,
-        )
-    resp.raise_for_status()
+        ))
     deadline = time.monotonic() + 600
     while time.monotonic() < deadline:
-        resp = requests.get(
-            f"{API_BASE}/accounts/{acct}/datasets/{dataset_id}",
-            headers=_headers(), timeout=60,
-        )
-        resp.raise_for_status()
-        state = _state(resp.json())
+        state = _dataset_state(acct, dataset_id)
         if state == "READY":
-            return f"accounts/{acct}/datasets/{dataset_id}"
-        if state in ("FAILED", "UNSPECIFIED"):
+            return name
+        if state in ("FAILED", "UNSPECIFIED", None):
             raise RuntimeError(f"dataset {dataset_id} entered state {state}")
         time.sleep(POLL_SECONDS)
     raise TimeoutError(f"dataset {dataset_id} not READY after 600s")
@@ -156,25 +189,30 @@ def _start_job(dataset_name: str, eval_dataset_name: str | None,
         "baseModel": base_model(),
         "dataset": dataset_name,
         "outputModel": f"accounts/{acct}/models/{output_model_id}",
+        # explicit LoRA — omitting loraRank means full-parameter tuning,
+        # which most base models reject ("model is not tunable")
+        "loraRank": int(os.environ.get("LOTTERY_GURU_FT_LORA_RANK", DEFAULT_LORA_RANK)),
     }
     if eval_dataset_name:
         body["evaluationDataset"] = eval_dataset_name
     if epochs:
         body["epochs"] = epochs
-    resp = requests.post(
-        f"{API_BASE}/accounts/{acct}/supervisedFineTuningJobs",
-        headers=_headers(), json=body, timeout=60,
-    )
-    resp.raise_for_status()
-    return resp.json()["name"]
+    url = f"{API_BASE}/accounts/{acct}/supervisedFineTuningJobs"
+    resp = requests.post(url, headers=_headers(), json=body, timeout=60)
+    if resp.status_code == 400 and eval_dataset_name:
+        # the optional evaluation dataset is the most likely rejected field —
+        # retry without it rather than losing the run
+        print(f"WARNING: job creation 400 ({resp.text[:300]}); retrying without evaluationDataset")
+        body.pop("evaluationDataset")
+        resp = requests.post(url, headers=_headers(), json=body, timeout=60)
+    return _check(resp).json()["name"]
 
 
 def _wait_for_job(job_name: str) -> dict:
     deadline = time.monotonic() + JOB_TIMEOUT_SECONDS
     while time.monotonic() < deadline:
         resp = requests.get(f"{API_BASE}/{job_name}", headers=_headers(), timeout=60)
-        resp.raise_for_status()
-        job = resp.json()
+        job = _check(resp).json()
         state = _state(job)
         if state == "COMPLETED":
             return job
@@ -186,25 +224,68 @@ def _wait_for_job(job_name: str) -> dict:
     raise TimeoutError(f"fine-tuning job {job_name} still running after {JOB_TIMEOUT_SECONDS}s")
 
 
-def _deploy_serverless(model_name: str) -> bool:
-    """Best-effort serverless LoRA deployment so inference can reach the model.
+def deploy(model_name: str) -> str:
+    """Create an on-demand deployment for the tuned model and wait until READY.
 
-    Some base models are auto-servable; on others this call is required. A
-    failure here should not lose the training run, so it only warns.
+    Fireworks no longer serves LoRA fine-tunes serverlessly — they need a
+    dedicated (on-demand) deployment, billed by GPU time while it exists.
+    Callers should tear it down when done (see teardown()).
     """
-    try:
+    override = os.environ.get("LOTTERY_GURU_FT_ACCELERATOR")
+    candidates = (override,) if override else ACCELERATOR_CANDIDATES
+    resp = None
+    for accelerator in candidates:
         resp = requests.post(
-            f"{API_BASE}/accounts/{account_id()}/deployedModels",
-            headers=_headers(), json={"model": model_name}, timeout=60,
+            f"{API_BASE}/accounts/{account_id()}/deployments",
+            headers=_headers(),
+            json={
+                "baseModel": model_name,
+                "acceleratorType": accelerator,  # required for non-embeddings engines
+                "precision": os.environ.get("LOTTERY_GURU_FT_PRECISION", DEFAULT_PRECISION),
+            },
+            timeout=60,
         )
-        if resp.status_code == 409:  # already deployed
-            return True
-        resp.raise_for_status()
-        return True
-    except Exception as exc:
-        print(f"WARNING: serverless deploy of {model_name} failed ({exc}); "
-              f"deploy manually with: firectl deploy {model_name}")
+        if resp.status_code < 400:
+            break
+        print(f"accelerator {accelerator} rejected ({resp.status_code}: {resp.text[:200]})")
+    name = _check(resp).json()["name"]
+    print(f"created deployment {name}, waiting for READY ...")
+    deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS
+    while time.monotonic() < deadline:
+        resp = requests.get(f"{API_BASE}/{name}", headers=_headers(), timeout=60)
+        state = _state(_check(resp).json())
+        if state == "READY":
+            return name
+        if state in ("FAILED", "DELETING"):
+            raise RuntimeError(f"deployment {name} entered state {state}")
+        print(f"deployment {name}: {state or 'PENDING'} ...")
+        time.sleep(POLL_SECONDS)
+    raise TimeoutError(f"deployment {name} not READY after {DEPLOY_TIMEOUT_SECONDS}s")
+
+
+def teardown() -> bool:
+    """Delete the deployment recorded in fireworks.json to stop GPU billing.
+
+    Idempotent: no record, no deployment, or already-deleted all no-op.
+    """
+    record = load_record()
+    if not record or not record.get("deployment"):
+        print("no active deployment on record")
         return False
+    name = record["deployment"]
+    resp = requests.delete(
+        f"{API_BASE}/{name}", headers=_headers(),
+        # a recently-used deployment refuses deletion without this
+        params={"ignoreChecks": "true", "ignore_checks": "true"},
+        timeout=60,
+    )
+    if resp.status_code != 404:
+        _check(resp)
+    record["deployed"] = False
+    record["last_deployment"] = record.pop("deployment")
+    save_record(record)
+    print(f"deleted deployment {name}")
+    return True
 
 
 def train(data_dir: str = "finetune_data", epochs: int | None = None,
@@ -220,6 +301,18 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
 
     run_date = run_date or dt.date.today()
     tag = run_date.isoformat()
+
+    # Rerun-safe: if today's model already trained (e.g. a prior run failed
+    # after training), skip straight to deployment instead of paying to retrain.
+    existing = load_record()
+    if existing and existing.get("model", "").endswith(tag):
+        if existing.get("deployed"):
+            print(f"model {existing['model']} already trained and deployed today")
+        else:
+            print(f"model {existing['model']} already trained today — deploying it")
+            _deploy_and_record(existing)
+        return existing["model"]
+
     train_path = Path(data_dir) / "train.jsonl"
     valid_path = Path(data_dir) / "valid.jsonl"
     if not train_path.exists():
@@ -238,16 +331,34 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
     job = _wait_for_job(job_name)
 
     model_name = job.get("outputModel") or f"accounts/{account_id()}/models/{output_model_id}"
-    deployed = _deploy_serverless(model_name)
-    save_record({
+    record = {
         "model": model_name,
         "base_model": base_model(),
         "job": job_name,
         "dataset": dataset_name,
         "evaluation_dataset": eval_dataset_name,
-        "deployed": deployed,
+        "deployed": False,
         "scored_days": days,
         "trained_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-    })
+    }
+    save_record(record)  # persist the training result before risking deployment
+    _deploy_and_record(record)
     print(f"tuned model: {model_name} (record: {record_path()})")
     return model_name
+
+
+def _deploy_and_record(record: dict) -> None:
+    """Deploy the record's model and mark it servable; a failure only warns."""
+    model_name = record["model"]
+    try:
+        deployment = deploy(model_name)
+    except Exception as exc:
+        print(f"WARNING: deployment failed ({exc}); the tuned model exists but is not servable "
+              f"until deployed (lottery-guru finetune deploy)")
+    else:
+        record.update({
+            "deployed": True,
+            "deployment": deployment,
+            "inference_model": f"{model_name}#{deployment}",
+        })
+        save_record(record)
