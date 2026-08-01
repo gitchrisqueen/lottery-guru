@@ -1,3 +1,4 @@
+import datetime as dt
 import random
 
 import pytest
@@ -76,3 +77,19 @@ def test_llm_sanitize_recovers_from_garbage():
     pred3 = llm_strategy.sanitize(game3, [11, 3], None, rng)
     assert len(pred3.numbers) == 3
     assert all(0 <= n <= 9 for n in pred3.numbers)
+
+
+def test_predictions_only_cover_games_drawing_that_day():
+    """No arm may predict a drawing that will not occur (and none may be missed)."""
+    from lottery_guru.games import GAMES, draws_on
+
+    for offset in range(14):  # two full weeks covers every game's schedule
+        date = dt.date(2026, 8, 1) + dt.timedelta(days=offset)
+        scheduled = {(g.key, t) for g, t in draws_on(date)}
+        for game in GAMES.values():
+            drawing_today = date.weekday() in game.draw_weekdays
+            for draw_time in game.draw_times:
+                assert ((game.key, draw_time) in scheduled) == drawing_today, (
+                    f"{game.key}/{draw_time} on {date} ({date:%a})")
+        # jackpot games never share a day, so a day is never empty of NY draws
+        assert scheduled, f"no drawings computed for {date}"
