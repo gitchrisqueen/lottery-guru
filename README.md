@@ -174,25 +174,41 @@ lottery-guru finetune eval --adapter adapters/<date>   # base vs tuned, held-out
 Splits are strictly time-ordered (train past → test future). Recommended
 cadence: monthly, once ≥60 scored days exist.
 
-## Fine-tuning (hosted, automated monthly)
+## Fine-tuning (hosted, automated)
 
-The hosted path — Fireworks.ai serverless LoRA, <$1/run — runs automatically
-on the 1st of each month via
-[`monthly-finetune.yml`](.github/workflows/monthly-finetune.yml) once ≥60
-scored days exist (before that it skips cleanly). Setup: add the repo secret
-`FIREWORKS_API_KEY` ([fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys));
+The hosted path uses Fireworks.ai LoRA and runs on two schedules:
+
+- **Monthly retrain** — [`monthly-finetune.yml`](.github/workflows/monthly-finetune.yml),
+  1st of each month, once ≥60 scored days exist (before that it skips
+  cleanly). Exports the dataset, trains, and commits the tuned model name to
+  `data/finetune/fireworks.json`. Manual dispatch takes a `force` input that
+  bypasses the gate and a `max_per_game` input for full-history exports.
+- **Daily predictions** — the [daily loop](.github/workflows/daily.yml) brings
+  the tuned model up, predicts alongside every other arm, and tears it back
+  down, so `llm-tuned` is scored against the same null as everything else.
+
+Setup: add the repo secret `FIREWORKS_API_KEY`
+([fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys));
 the account slug is auto-resolved from the key (set `FIREWORKS_ACCOUNT_ID` to
-override). The workflow exports the dataset, trains, deploys the LoRA
-serverlessly, commits the model name to `data/finetune/fireworks.json`, and
-writes the same-day tuned predictions + refreshed report —
-from the next daily run onward the `llm-tuned` arm predicts with it and gets
-scored against the same null as everything else. Trigger it manually from the
-Actions tab (`force` input bypasses the 60-day gate). Run locally with:
+override). Training needs a Tier 2 account (add $50 in credits) for GPU quota.
+
+**Serving costs GPU time.** Fireworks does not serve LoRA fine-tunes
+serverlessly — inference needs an on-demand deployment billed while it exists,
+so the daily loop keeps one alive only for the few minutes it takes to
+predict. Teardown runs even when the loop fails or is cancelled, and also
+sweeps any orphaned `lottery-guru` deployment it finds, because a leaked one
+bills indefinitely. Check [the dashboard](https://app.fireworks.ai/dashboard/deployments)
+if a run ever ends without a clean teardown; `lottery-guru finetune teardown`
+removes anything left over. `LOTTERY_GURU_FT_ACCELERATOR` pins a cheaper GPU
+class when your account has quota for one.
+
+Run locally with:
 
 ```bash
-lottery-guru finetune export
-FIREWORKS_API_KEY=... FIREWORKS_ACCOUNT_ID=... \
-  lottery-guru finetune train --provider fireworks
+lottery-guru finetune export --max-per-game 100000   # full current-era history
+FIREWORKS_API_KEY=... lottery-guru finetune train --provider fireworks
+FIREWORKS_API_KEY=... lottery-guru finetune deploy   # then predict, then:
+FIREWORKS_API_KEY=... lottery-guru finetune teardown # ALWAYS, to stop billing
 ```
 
 ## Data sources

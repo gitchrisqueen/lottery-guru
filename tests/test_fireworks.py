@@ -197,6 +197,54 @@ def test_deploy_falls_through_accelerator_candidates(env, monkeypatch):
     assert attempts == list(fireworks.ACCELERATOR_CANDIDATES[:3])
 
 
+def test_deploy_reuses_live_deployment_instead_of_double_billing(env, monkeypatch):
+    fireworks.save_record({
+        "model": "accounts/acct/models/m1",
+        "deployed": True,
+        "deployment": "accounts/acct/deployments/live1",
+    })
+
+    def boom_post(*a, **k):
+        raise AssertionError("must not create a second deployment")
+
+    monkeypatch.setattr(fireworks.requests, "post", boom_post)
+    monkeypatch.setattr(fireworks.requests, "get",
+                        lambda url, **k: _Resp({"state": "READY"}))
+    assert fireworks.deploy("accounts/acct/models/m1") == "accounts/acct/deployments/live1"
+
+
+def test_teardown_sweeps_orphaned_lottery_guru_deployments(env, monkeypatch):
+    # no record at all — the only trace of the leak is on Fireworks' side
+    deleted = []
+    monkeypatch.setattr(fireworks.requests, "get", lambda url, **k: _Resp({"deployments": [
+        {"name": "accounts/acct/deployments/orphan",
+         "baseModel": "accounts/acct/models/lottery-guru-2026-08-01"},
+        {"name": "accounts/acct/deployments/someone-elses",
+         "baseModel": "accounts/acct/models/unrelated-project"},
+    ]}))
+    monkeypatch.setattr(fireworks.requests, "delete",
+                        lambda url, **k: (deleted.append(url), _Resp())[1])
+    fireworks.teardown()
+    assert deleted == [f"{fireworks.API_BASE}/accounts/acct/deployments/orphan"]
+
+
+def test_teardown_warns_but_does_not_raise_when_delete_fails(env, monkeypatch, capsys):
+    fireworks.save_record({
+        "model": "accounts/acct/models/m1",
+        "deployed": True,
+        "deployment": "accounts/acct/deployments/stuck",
+    })
+    monkeypatch.setattr(fireworks.requests, "delete",
+                        lambda url, **k: _Resp({"message": "nope"}, status_code=500))
+    monkeypatch.setattr(fireworks.requests, "get",
+                        lambda url, **k: _Resp({"deployments": []}))
+    assert fireworks.teardown() is False
+    out = capsys.readouterr().out
+    assert "may still be running and billing" in out
+    # record still says deployed so the leak stays visible rather than silently cleared
+    assert fireworks.load_record()["deployment"] == "accounts/acct/deployments/stuck"
+
+
 def test_teardown_deletes_deployment_and_flips_record(env, monkeypatch):
     fireworks.save_record({
         "model": "accounts/acct/models/m1",
@@ -211,6 +259,8 @@ def test_teardown_deletes_deployment_and_flips_record(env, monkeypatch):
         return _Resp()
 
     monkeypatch.setattr(fireworks.requests, "delete", fake_delete)
+    monkeypatch.setattr(fireworks.requests, "get",
+                        lambda url, **k: _Resp({"deployments": []}))
     assert fireworks.teardown() is True
     url, params = deleted[0]
     assert url == f"{fireworks.API_BASE}/accounts/acct/deployments/dep1"

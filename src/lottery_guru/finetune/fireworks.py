@@ -224,13 +224,46 @@ def _wait_for_job(job_name: str) -> dict:
     raise TimeoutError(f"fine-tuning job {job_name} still running after {JOB_TIMEOUT_SECONDS}s")
 
 
+def _deployment_state(name: str) -> str | None:
+    resp = requests.get(f"{API_BASE}/{name}", headers=_headers(), timeout=60)
+    if resp.status_code == 404:
+        return None
+    return _state(_check(resp).json())
+
+
+def _wait_ready(name: str) -> str:
+    deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS
+    while time.monotonic() < deadline:
+        state = _deployment_state(name)
+        if state == "READY":
+            return name
+        if state in ("FAILED", "DELETING", None):
+            raise RuntimeError(f"deployment {name} entered state {state}")
+        print(f"deployment {name}: {state or 'PENDING'} ...")
+        time.sleep(POLL_SECONDS)
+    raise TimeoutError(f"deployment {name} not READY after {DEPLOY_TIMEOUT_SECONDS}s")
+
+
 def deploy(model_name: str) -> str:
     """Create an on-demand deployment for the tuned model and wait until READY.
 
     Fireworks no longer serves LoRA fine-tunes serverlessly — they need a
     dedicated (on-demand) deployment, billed by GPU time while it exists.
     Callers should tear it down when done (see teardown()).
+
+    Reuses a live deployment already on record rather than creating a second
+    one — two deployments would bill twice for the same predictions.
     """
+    record = load_record() or {}
+    existing = record.get("deployment")
+    if existing:
+        try:
+            if _deployment_state(existing) in ("READY", "CREATING", "UPDATING"):
+                print(f"reusing existing deployment {existing}")
+                return _wait_ready(existing)
+        except Exception as exc:
+            print(f"recorded deployment {existing} unusable ({exc}); creating a new one")
+
     override = os.environ.get("LOTTERY_GURU_FT_ACCELERATOR")
     candidates = (override,) if override else ACCELERATOR_CANDIDATES
     resp = None
@@ -250,42 +283,83 @@ def deploy(model_name: str) -> str:
         print(f"accelerator {accelerator} rejected ({resp.status_code}: {resp.text[:200]})")
     name = _check(resp).json()["name"]
     print(f"created deployment {name}, waiting for READY ...")
-    deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS
-    while time.monotonic() < deadline:
-        resp = requests.get(f"{API_BASE}/{name}", headers=_headers(), timeout=60)
-        state = _state(_check(resp).json())
-        if state == "READY":
-            return name
-        if state in ("FAILED", "DELETING"):
-            raise RuntimeError(f"deployment {name} entered state {state}")
-        print(f"deployment {name}: {state or 'PENDING'} ...")
-        time.sleep(POLL_SECONDS)
-    raise TimeoutError(f"deployment {name} not READY after {DEPLOY_TIMEOUT_SECONDS}s")
+    return _wait_ready(name)
 
 
-def teardown() -> bool:
-    """Delete the deployment recorded in fireworks.json to stop GPU billing.
+def _delete_deployment(name: str, attempts: int = 3) -> bool:
+    """Delete one deployment, retrying — a leak here bills GPU time indefinitely."""
+    for attempt in range(1, attempts + 1):
+        try:
+            resp = requests.delete(
+                f"{API_BASE}/{name}", headers=_headers(),
+                # a deployment that served requests in the last hour refuses
+                # deletion without this
+                params={"ignoreChecks": "true", "ignore_checks": "true"},
+                timeout=60,
+            )
+            if resp.status_code == 404:
+                return True  # already gone
+            _check(resp)
+            print(f"deleted deployment {name}")
+            return True
+        except Exception as exc:
+            print(f"WARNING: delete of {name} failed (attempt {attempt}/{attempts}): {exc}")
+            if attempt < attempts:
+                time.sleep(5)
+    return False
+
+
+def _sweep_orphans(skip: str | None = None) -> list[str]:
+    """Delete any lottery-guru deployment the record doesn't know about.
+
+    The record can be lost (failed run, un-pushed commit) while the deployment
+    keeps billing, so teardown never trusts it as the only source of truth.
+    """
+    try:
+        resp = requests.get(
+            f"{API_BASE}/accounts/{account_id()}/deployments",
+            headers=_headers(), timeout=60,
+        )
+        deployments = _check(resp).json().get("deployments", [])
+    except Exception as exc:
+        print(f"WARNING: could not list deployments to sweep orphans: {exc}")
+        return []
+    swept = []
+    for dep in deployments:
+        name = dep.get("name", "")
+        if name == skip or not name:
+            continue
+        served = f"{dep.get('baseModel', '')} {dep.get('displayName', '')}"
+        if "lottery-guru" not in served:
+            continue  # never touch deployments this project didn't create
+        print(f"found orphaned deployment {name} ({served.strip()}) — deleting")
+        if _delete_deployment(name):
+            swept.append(name)
+    return swept
+
+
+def teardown(sweep: bool = True) -> bool:
+    """Delete the recorded deployment (and any orphans) to stop GPU billing.
 
     Idempotent: no record, no deployment, or already-deleted all no-op.
     """
     record = load_record()
-    if not record or not record.get("deployment"):
+    name = record.get("deployment") if record else None
+    deleted = False
+    if name:
+        deleted = _delete_deployment(name)
+        if deleted:
+            record["deployed"] = False
+            record["last_deployment"] = record.pop("deployment")
+            save_record(record)
+        else:
+            print(f"WARNING: {name} may still be running and billing — "
+                  f"check https://app.fireworks.ai/dashboard/deployments")
+    else:
         print("no active deployment on record")
-        return False
-    name = record["deployment"]
-    resp = requests.delete(
-        f"{API_BASE}/{name}", headers=_headers(),
-        # a recently-used deployment refuses deletion without this
-        params={"ignoreChecks": "true", "ignore_checks": "true"},
-        timeout=60,
-    )
-    if resp.status_code != 404:
-        _check(resp)
-    record["deployed"] = False
-    record["last_deployment"] = record.pop("deployment")
-    save_record(record)
-    print(f"deleted deployment {name}")
-    return True
+    if sweep:
+        _sweep_orphans(skip=None if deleted else name)
+    return deleted
 
 
 def train(data_dir: str = "finetune_data", epochs: int | None = None,

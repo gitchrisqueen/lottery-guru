@@ -96,13 +96,15 @@ def main(argv: list[str] | None = None) -> int:
         elif args.ft_command == "deploy":
             from .finetune import fireworks
             record = fireworks.load_record()
-            if not record:
-                raise SystemExit("no tuned model on record")
-            deployment = fireworks.deploy(record["model"])
-            record.update({"deployed": True, "deployment": deployment,
-                           "inference_model": f"{record['model']}#{deployment}"})
-            fireworks.save_record(record)
-            print(f"deployment ready: {deployment}")
+            if not fireworks.available() or not record:
+                # expected before the first fine-tune — clean skip, so the
+                # daily loop is never blocked by the tuned arm
+                print("no tuned model to deploy — skipping")
+                return 0
+            fireworks._deploy_and_record(record)
+            if not fireworks.load_record().get("deployed"):
+                return 1  # visible failure; callers treat the tuned arm as best-effort
+            print(f"deployment ready: {fireworks.load_record()['deployment']}")
         elif args.ft_command == "teardown":
             from .finetune import fireworks
             fireworks.teardown()
