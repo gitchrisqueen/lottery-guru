@@ -26,6 +26,7 @@ lottery-guru predict [--date YYYY-MM-DD] [--no-llm]
 lottery-guru score                # score predictions whose results arrived (idempotent)
 lottery-guru report               # regenerate REPORT.md
 lottery-guru board                # render PREDICTIONS.md + README marker sections
+lottery-guru usage [--summary-only]       # log/report Fireworks usage → data/usage/fireworks.jsonl
 lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
 lottery-guru finetune train --provider fireworks --min-scored-days 60  # hosted (CI; monthly workflow)
 lottery-guru finetune deploy|teardown     # tuned-model GPU deployment (daily loop; teardown stops billing)
@@ -41,6 +42,11 @@ lottery-guru finetune deploy|teardown     # tuned-model GPU deployment (daily lo
 - `src/lottery_guru/strategies/` — each strategy is `(predict_fn, applicable_fn)`
   in `REGISTRY`. The LLM arm (`llm.py`) is provider-pluggable: Ollama
   (default, native `/api/chat` with JSON-schema `format`) or Anthropic.
+  Two arms sit outside `REGISTRY` because they need more than
+  `(game, history, rng)`, and are driven from `predictor.py`: the LLM arms,
+  and `consensus.py` (`highest-frequency`), which ranks numbers by how many
+  *other arms* picked them **for that one drawing** — never pooled across
+  games or draw times. It is not `hot`: `hot` ranks by numbers actually drawn.
 - `src/lottery_guru/evaluation/` — scoring vs exact hypergeometric/binomial
   null moments, cumulative z-tests, REPORT.md rendering, and `board.py`
   (PREDICTIONS.md + the README `PREDICTIONS`/`SCOREBOARD` marker sections).

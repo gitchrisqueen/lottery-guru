@@ -29,6 +29,11 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("daily", help="pull + score + predict + report (the cron entry point)")
 
+    p_usage = sub.add_parser("usage", help="log Fireworks usage/cost to data/usage/")
+    p_usage.add_argument("--days", type=int, default=1, help="window to request from billingUsage")
+    p_usage.add_argument("--summary-only", action="store_true",
+                         help="print totals from the committed log without calling the API")
+
     p_ft = sub.add_parser("finetune", help="fine-tuning pipeline")
     ft_sub = p_ft.add_subparsers(dest="ft_command", required=True)
     p_export = ft_sub.add_parser("export", help="export train/valid/test JSONL")
@@ -81,6 +86,11 @@ def main(argv: list[str] | None = None) -> int:
         report.write_report()
         board.publish()
         print(json.dumps({"added": added, "scored": n, "predictions": len(preds)}))
+    elif args.command == "usage":
+        from .finetune import usage
+        if not args.summary_only:
+            usage.log_billing_usage(days=args.days)
+        print(json.dumps(usage.summary(), indent=1))
     elif args.command == "finetune":
         if args.ft_command == "export":
             from .finetune import dataset

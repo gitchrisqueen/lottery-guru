@@ -343,14 +343,18 @@ def teardown(sweep: bool = True) -> bool:
 
     Idempotent: no record, no deployment, or already-deleted all no-op.
     """
+    from . import usage  # lazy: usage imports this module
+
     record = load_record()
     name = record.get("deployment") if record else None
     deleted = False
     if name:
         deleted = _delete_deployment(name)
+        usage.log_deployment_lifetime(record, deleted)  # what the GPU time cost
         if deleted:
             record["deployed"] = False
             record["last_deployment"] = record.pop("deployment")
+            record.pop("deployed_at", None)
             save_record(record)
         else:
             print(f"WARNING: {name} may still be running and billing — "
@@ -430,9 +434,17 @@ def _deploy_and_record(record: dict) -> None:
         print(f"WARNING: deployment failed ({exc}); the tuned model exists but is not servable "
               f"until deployed (lottery-guru finetune deploy)")
     else:
+        accelerator = None
+        try:  # for the cost log — what GPU class we are being billed for
+            resp = requests.get(f"{API_BASE}/{deployment}", headers=_headers(), timeout=60)
+            accelerator = _check(resp).json().get("acceleratorType")
+        except Exception:
+            pass
         record.update({
             "deployed": True,
             "deployment": deployment,
             "inference_model": f"{model_name}#{deployment}",
+            "deployed_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+            "accelerator": accelerator,
         })
         save_record(record)

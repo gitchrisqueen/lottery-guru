@@ -56,6 +56,15 @@ jobs:
           FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
         run: lottery-guru finetune teardown
 
+      # After teardown, so the session's full GPU lifetime is on record.
+      - name: Log Fireworks usage
+        if: always()
+        continue-on-error: true
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
+        run: lottery-guru usage --days 2
+
       - name: Commit results
         if: always()
         run: |
