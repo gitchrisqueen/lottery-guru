@@ -7,6 +7,7 @@ from .data import sources, store
 from .evaluation import scoring
 from .games import GAMES, draws_on
 from .strategies import REGISTRY, run_strategy, seeded_rng
+from .strategies import consensus
 from .strategies import llm as llm_strategy
 
 
@@ -69,6 +70,25 @@ def predict(date: dt.date | None = None, include_llm: bool | None = None) -> lis
                 })
             except Exception as exc:  # LLM arms are best-effort; never block the loop
                 print(f"WARNING: {name} failed for {game.key}/{draw_time}: {exc}")
+
+        # Consensus runs last: it ranks what every other arm picked for THIS
+        # drawing only — never pooled across games or draw times.
+        if (game.key, draw_time, consensus.NAME) not in seen:
+            peers = [
+                (p["numbers"], p.get("special")) for p in predictions
+                if p["game"] == game.key and p["draw_time"] == draw_time
+                and p["strategy"] != consensus.NAME
+            ]
+            if peers:  # nothing to tally means no honest consensus to report
+                rng = seeded_rng(consensus.NAME, game.key, date_str, draw_time)
+                numbers, special = consensus.predict(game, peers, rng)
+                predictions.append({
+                    "game": game.key,
+                    "draw_time": draw_time,
+                    "strategy": consensus.NAME,
+                    "numbers": list(numbers),
+                    "special": special,
+                })
 
     if len(predictions) > len(existing):
         store.save_json_list("predictions", date_str, predictions)

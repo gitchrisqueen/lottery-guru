@@ -126,7 +126,8 @@ See [docs/PLAN.md](docs/PLAN.md) for the architecture and
 | `positional` | per-position digit frequency (Pick 3/Win 4) | chance |
 | `unpopular` | avoid birthday/sequence combos to reduce jackpot splitting | same matches, better EV-if-win |
 | `llm-fewshot` | LLM (Ollama Cloud by default) with recent-draw context, no training | chance |
-| `llm-tuned` | LoRA-tuned on accumulated history (Fireworks serverless, retrained monthly; or local MLX) | chance (measured rigorously) |
+| `llm-tuned` | LoRA-tuned on accumulated history (Fireworks, retrained monthly; or local MLX) | chance (measured rigorously) |
+| `highest-frequency` | consensus: ranks numbers by how many *other arms* picked them for that same drawing | chance |
 
 ## Quickstart
 
@@ -173,6 +174,24 @@ lottery-guru finetune eval --adapter adapters/<date>   # base vs tuned, held-out
 
 Splits are strictly time-ordered (train past → test future). Recommended
 cadence: monthly, once ≥60 scored days exist.
+
+## Usage & cost log
+
+`lottery-guru usage` appends to `data/usage/fireworks.jsonl` (committed daily
+by the loop), from two sources:
+
+- **`billingUsage`** — Fireworks' metered quantities (accelerator-seconds,
+  tokens). Note it reports *quantities, not dollars*: rated dollar totals are
+  behind `GetBillingSummary`, which is CLI-only today, so the log deliberately
+  records no dollar figure rather than guessing one from assumed rates.
+- **Deployment lifetimes** — measured locally at teardown. A dedicated GPU
+  bills for as long as it exists, so this is the dominant cost driver and it
+  lands the same day instead of waiting for billing to catch up. A failed
+  teardown is logged as `deployment_teardown_failed` — a cost risk you can
+  grep for.
+
+`lottery-guru usage --summary-only` totals the committed log without calling
+the API.
 
 ## Fine-tuning (hosted, automated)
 
