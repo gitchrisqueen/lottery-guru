@@ -121,7 +121,7 @@ See [docs/PLAN.md](docs/PLAN.md) for the architecture and
 | `positional` | per-position digit frequency (Pick 3/Win 4) | chance |
 | `unpopular` | avoid birthday/sequence combos to reduce jackpot splitting | same matches, better EV-if-win |
 | `llm-fewshot` | LLM (Ollama Cloud by default) with recent-draw context, no training | chance |
-| `llm-tuned` | local MLX model, LoRA-tuned on accumulated history | chance (measured rigorously) |
+| `llm-tuned` | LoRA-tuned on accumulated history (Fireworks serverless, retrained monthly; or local MLX) | chance (measured rigorously) |
 
 ## Quickstart
 
@@ -150,6 +150,8 @@ Provider-pluggable, auto-detected from credentials:
   A fused MLX fine-tune can be imported into Ollama and served the same way.
 - **Anthropic**: set `ANTHROPIC_API_KEY` and
   `LOTTERY_GURU_LLM_PROVIDER=anthropic` (needs `pip install -e ".[llm]"`).
+- **Fireworks.ai**: set `FIREWORKS_API_KEY` — also unlocks the `llm-tuned` arm
+  once a monthly fine-tune has run (see below).
 
 Without any of these, the LLM arm is skipped cleanly — everything else runs
 with zero keys.
@@ -165,9 +167,27 @@ lottery-guru finetune eval --adapter adapters/<date>   # base vs tuned, held-out
 ```
 
 Splits are strictly time-ordered (train past → test future). Recommended
-cadence: monthly, once ≥60 scored days exist. A hosted alternative
-(Fireworks.ai serverless LoRA, <$1/run) is documented in
-[docs/RESEARCH.md](docs/RESEARCH.md).
+cadence: monthly, once ≥60 scored days exist.
+
+## Fine-tuning (hosted, automated monthly)
+
+The hosted path — Fireworks.ai serverless LoRA, <$1/run — runs automatically
+on the 1st of each month via
+[`monthly-finetune.yml`](.github/workflows/monthly-finetune.yml) once ≥60
+scored days exist (before that it skips cleanly). Setup: add repo secrets
+`FIREWORKS_API_KEY` ([fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys))
+and `FIREWORKS_ACCOUNT_ID` (your account slug, shown in Fireworks account
+settings). The workflow exports the dataset, trains, deploys the LoRA
+serverlessly, and commits the model name to `data/finetune/fireworks.json` —
+from the next daily run onward the `llm-tuned` arm predicts with it and gets
+scored against the same null as everything else. Trigger it manually from the
+Actions tab (`force` input bypasses the 60-day gate). Run locally with:
+
+```bash
+lottery-guru finetune export
+FIREWORKS_API_KEY=... FIREWORKS_ACCOUNT_ID=... \
+  lottery-guru finetune train --provider fireworks
+```
 
 ## Data sources
 
