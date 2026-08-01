@@ -36,8 +36,8 @@ from ..data import store
 API_BASE = "https://api.fireworks.ai/v1"
 DEFAULT_BASE_MODEL = "accounts/fireworks/models/qwen3-8b"
 DEFAULT_LORA_RANK = 8
-DEFAULT_ACCELERATOR = "NVIDIA_A100_80GB"  # smallest/cheapest that serves an 8B + LoRA
-DEFAULT_PRECISION = "BF16"  # A100 doesn't serve the FP8 default
+DEFAULT_ACCELERATOR = "NVIDIA_B200"  # what Tier 2 grants quota for (A100 quota is 0)
+DEFAULT_PRECISION = "BF16"
 POLL_SECONDS = 30
 JOB_TIMEOUT_SECONDS = 3 * 3600
 DEPLOY_TIMEOUT_SECONDS = 1800
