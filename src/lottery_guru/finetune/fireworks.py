@@ -36,7 +36,14 @@ from ..data import store
 API_BASE = "https://api.fireworks.ai/v1"
 DEFAULT_BASE_MODEL = "accounts/fireworks/models/qwen3-8b"
 DEFAULT_LORA_RANK = 8
-DEFAULT_ACCELERATOR = "NVIDIA_B200"  # what Tier 2 grants quota for (A100 quota is 0)
+# Tried in order until one is accepted AND has quota (Tier 2 grants B200-class
+# quota; A100 quota is 0 on this account). LOTTERY_GURU_FT_ACCELERATOR overrides.
+ACCELERATOR_CANDIDATES = (
+    "NVIDIA_B200_180GB",
+    "NVIDIA_H200_141GB",
+    "NVIDIA_H100_80GB",
+    "NVIDIA_A100_80GB",
+)
 DEFAULT_PRECISION = "BF16"
 POLL_SECONDS = 30
 JOB_TIMEOUT_SECONDS = 3 * 3600
@@ -224,17 +231,23 @@ def deploy(model_name: str) -> str:
     dedicated (on-demand) deployment, billed by GPU time while it exists.
     Callers should tear it down when done (see teardown()).
     """
-    resp = requests.post(
-        f"{API_BASE}/accounts/{account_id()}/deployments",
-        headers=_headers(),
-        json={
-            "baseModel": model_name,
-            # required for non-embeddings engines
-            "acceleratorType": os.environ.get("LOTTERY_GURU_FT_ACCELERATOR", DEFAULT_ACCELERATOR),
-            "precision": os.environ.get("LOTTERY_GURU_FT_PRECISION", DEFAULT_PRECISION),
-        },
-        timeout=60,
-    )
+    override = os.environ.get("LOTTERY_GURU_FT_ACCELERATOR")
+    candidates = (override,) if override else ACCELERATOR_CANDIDATES
+    resp = None
+    for accelerator in candidates:
+        resp = requests.post(
+            f"{API_BASE}/accounts/{account_id()}/deployments",
+            headers=_headers(),
+            json={
+                "baseModel": model_name,
+                "acceleratorType": accelerator,  # required for non-embeddings engines
+                "precision": os.environ.get("LOTTERY_GURU_FT_PRECISION", DEFAULT_PRECISION),
+            },
+            timeout=60,
+        )
+        if resp.status_code < 400:
+            break
+        print(f"accelerator {accelerator} rejected ({resp.status_code}: {resp.text[:200]})")
     name = _check(resp).json()["name"]
     print(f"created deployment {name}, waiting for READY ...")
     deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS

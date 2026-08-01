@@ -144,7 +144,7 @@ def test_train_happy_path(env, monkeypatch):
     deploys = [body for method, url, body in calls
                if method == "POST" and url.endswith("/deployments")]
     assert deploys == [{"baseModel": "accounts/acct/models/lottery-guru-2026-08-01",
-                        "acceleratorType": fireworks.DEFAULT_ACCELERATOR,
+                        "acceleratorType": fireworks.ACCELERATOR_CANDIDATES[0],
                         "precision": fireworks.DEFAULT_PRECISION}]
 
     record = fireworks.load_record()
@@ -178,6 +178,23 @@ def test_train_reuses_same_day_model_without_retraining(env, monkeypatch):
     record = fireworks.load_record()
     assert record["deployed"] is True
     assert record["deployment"] == "accounts/acct/deployments/dep2"
+
+
+def test_deploy_falls_through_accelerator_candidates(env, monkeypatch):
+    attempts = []
+
+    def fake_post(url, **kwargs):
+        accel = kwargs["json"]["acceleratorType"]
+        attempts.append(accel)
+        if accel == fireworks.ACCELERATOR_CANDIDATES[2]:  # third candidate has quota
+            return _Resp({"name": "accounts/acct/deployments/dep3"})
+        return _Resp({"message": "no quota"}, status_code=429)
+
+    monkeypatch.setattr(fireworks.requests, "post", fake_post)
+    monkeypatch.setattr(fireworks.requests, "get",
+                        lambda url, **k: _Resp({"state": "READY"}))
+    assert fireworks.deploy("accounts/acct/models/m1") == "accounts/acct/deployments/dep3"
+    assert attempts == list(fireworks.ACCELERATOR_CANDIDATES[:3])
 
 
 def test_teardown_deletes_deployment_and_flips_record(env, monkeypatch):
