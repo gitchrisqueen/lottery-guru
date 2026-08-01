@@ -36,6 +36,7 @@ from ..data import store
 API_BASE = "https://api.fireworks.ai/v1"
 DEFAULT_BASE_MODEL = "accounts/fireworks/models/qwen3-8b"
 DEFAULT_LORA_RANK = 8
+DEFAULT_ACCELERATOR = "NVIDIA_A100_80GB"  # smallest/cheapest that serves an 8B + LoRA
 POLL_SECONDS = 30
 JOB_TIMEOUT_SECONDS = 3 * 3600
 DEPLOY_TIMEOUT_SECONDS = 1800
@@ -224,7 +225,13 @@ def deploy(model_name: str) -> str:
     """
     resp = requests.post(
         f"{API_BASE}/accounts/{account_id()}/deployments",
-        headers=_headers(), json={"baseModel": model_name}, timeout=60,
+        headers=_headers(),
+        json={
+            "baseModel": model_name,
+            # required for non-embeddings engines
+            "acceleratorType": os.environ.get("LOTTERY_GURU_FT_ACCELERATOR", DEFAULT_ACCELERATOR),
+        },
+        timeout=60,
     )
     name = _check(resp).json()["name"]
     print(f"created deployment {name}, waiting for READY ...")
@@ -274,6 +281,15 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
 
     run_date = run_date or dt.date.today()
     tag = run_date.isoformat()
+
+    # Rerun-safe: if today's model already trained (e.g. a prior run failed
+    # after training), skip straight to deployment instead of paying to retrain.
+    existing = load_record()
+    if existing and existing.get("model", "").endswith(tag):
+        print(f"model {existing['model']} already trained today — deploying it")
+        _deploy_and_record(existing)
+        return existing["model"]
+
     train_path = Path(data_dir) / "train.jsonl"
     valid_path = Path(data_dir) / "valid.jsonl"
     if not train_path.exists():
@@ -303,6 +319,14 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
         "trained_at": dt.datetime.now(dt.timezone.utc).isoformat(),
     }
     save_record(record)  # persist the training result before risking deployment
+    _deploy_and_record(record)
+    print(f"tuned model: {model_name} (record: {record_path()})")
+    return model_name
+
+
+def _deploy_and_record(record: dict) -> None:
+    """Deploy the record's model and mark it servable; a failure only warns."""
+    model_name = record["model"]
     try:
         deployment = deploy(model_name)
     except Exception as exc:
@@ -315,5 +339,3 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
             "inference_model": f"{model_name}#{deployment}",
         })
         save_record(record)
-    print(f"tuned model: {model_name} (record: {record_path()})")
-    return model_name

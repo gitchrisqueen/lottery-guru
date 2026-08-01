@@ -15,6 +15,7 @@ def env(monkeypatch, tmp_path):
     monkeypatch.setenv("FIREWORKS_ACCOUNT_ID", "acct")
     monkeypatch.delenv("LOTTERY_GURU_FT_BASE_MODEL", raising=False)
     monkeypatch.delenv("LOTTERY_GURU_FT_LORA_RANK", raising=False)
+    monkeypatch.delenv("LOTTERY_GURU_FT_ACCELERATOR", raising=False)
     monkeypatch.setattr(fireworks.time, "sleep", lambda s: None)
     return tmp_path
 
@@ -141,7 +142,8 @@ def test_train_happy_path(env, monkeypatch):
     }]
     deploys = [body for method, url, body in calls
                if method == "POST" and url.endswith("/deployments")]
-    assert deploys == [{"baseModel": "accounts/acct/models/lottery-guru-2026-08-01"}]
+    assert deploys == [{"baseModel": "accounts/acct/models/lottery-guru-2026-08-01",
+                        "acceleratorType": fireworks.DEFAULT_ACCELERATOR}]
 
     record = fireworks.load_record()
     assert record["model"] == "accounts/acct/models/lottery-guru-2026-08-01"
@@ -150,6 +152,30 @@ def test_train_happy_path(env, monkeypatch):
     assert record["inference_model"] == (
         "accounts/acct/models/lottery-guru-2026-08-01#accounts/acct/deployments/dep1")
     assert record["scored_days"] == 70
+
+
+def test_train_reuses_same_day_model_without_retraining(env, monkeypatch):
+    fireworks.save_record({
+        "model": "accounts/acct/models/lottery-guru-2026-08-01",
+        "deployed": False,
+    })
+    posts = []
+
+    def fake_post(url, **kwargs):
+        posts.append(url)
+        assert "supervisedFineTuningJobs" not in url, "must not retrain same-day model"
+        if url.endswith("/deployments"):
+            return _Resp({"name": "accounts/acct/deployments/dep2"})
+        return _Resp()
+
+    monkeypatch.setattr(fireworks.requests, "post", fake_post)
+    monkeypatch.setattr(fireworks.requests, "get",
+                        lambda url, **k: _Resp({"state": "READY"}))
+    model = fireworks.train(run_date=dt.date(2026, 8, 1))
+    assert model == "accounts/acct/models/lottery-guru-2026-08-01"
+    record = fireworks.load_record()
+    assert record["deployed"] is True
+    assert record["deployment"] == "accounts/acct/deployments/dep2"
 
 
 def test_teardown_deletes_deployment_and_flips_record(env, monkeypatch):
