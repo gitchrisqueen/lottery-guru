@@ -36,7 +36,7 @@ jobs:
         env:
           FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
           FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
-        run: lottery-guru finetune deploy
+        run: lottery-guru finetune deploy --only-if-drawings
 
       - name: Pull results, score, predict, report
         env:

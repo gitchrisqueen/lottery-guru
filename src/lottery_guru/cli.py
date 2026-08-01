@@ -45,7 +45,12 @@ def main(argv: list[str] | None = None) -> int:
     p_eval = ft_sub.add_parser("eval", help="held-out test loss, base vs tuned")
     p_eval.add_argument("--data", default="finetune_data")
     p_eval.add_argument("--adapter", default=None)
-    ft_sub.add_parser("deploy", help="fireworks: on-demand deployment for the recorded tuned model")
+    p_deploy = ft_sub.add_parser(
+        "deploy", help="fireworks: on-demand deployment for the recorded tuned model")
+    p_deploy.add_argument("--only-if-drawings", action="store_true",
+                          help="skip cleanly when no game draws today — never pay for GPU time "
+                               "there is nothing to predict with")
+    p_deploy.add_argument("--date", type=dt.date.fromisoformat, default=None)
     ft_sub.add_parser("teardown", help="fireworks: delete the recorded deployment (stops GPU billing)")
 
     args = parser.parse_args(argv)
@@ -95,6 +100,11 @@ def main(argv: list[str] | None = None) -> int:
             train_mlx.evaluate(data_dir=args.data, adapter_path=args.adapter)
         elif args.ft_command == "deploy":
             from .finetune import fireworks
+            from .games import draws_on
+            date = args.date or dt.date.today()
+            if args.only_if_drawings and not draws_on(date):
+                print(f"no drawings on {date} — skipping deployment")
+                return 0
             record = fireworks.load_record()
             if not fireworks.available() or not record:
                 # expected before the first fine-tune — clean skip, so the
