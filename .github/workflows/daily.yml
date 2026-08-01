@@ -26,15 +26,38 @@ jobs:
       - name: Install
         run: pip install -e ".[llm]"
 
+      # The tuned arm needs an on-demand GPU deployment (Fireworks does not
+      # serve LoRA fine-tunes serverlessly). It is brought up for the daily
+      # predictions and torn down below — never left running.
+      # Best-effort: a failure here is visible but must not block the loop.
+      - name: Bring up the tuned model
+        id: deploy
+        continue-on-error: true
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
+        run: lottery-guru finetune deploy
+
       - name: Pull results, score, predict, report
         env:
           OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
           SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
         run: lottery-guru daily
 
+      # always() — a leaked deployment bills GPU time indefinitely, so this
+      # runs even if the loop above fails or the job is cancelled.
+      - name: Tear down the tuned model
+        if: always()
+        env:
+          FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
+          FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
+        run: lottery-guru finetune teardown
+
       - name: Commit results
+        if: always()
         run: |
           git config user.name "lottery-guru-bot"
           git config user.email "actions@users.noreply.github.com"

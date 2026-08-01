@@ -28,6 +28,7 @@ lottery-guru report               # regenerate REPORT.md
 lottery-guru board                # render PREDICTIONS.md + README marker sections
 lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
 lottery-guru finetune train --provider fireworks --min-scored-days 60  # hosted (CI; monthly workflow)
+lottery-guru finetune deploy|teardown     # tuned-model GPU deployment (daily loop; teardown stops billing)
 ```
 
 ## Architecture
@@ -48,9 +49,13 @@ lottery-guru finetune train --provider fireworks --min-scored-days 60  # hosted 
 - `src/lottery_guru/predictor.py` — daily orchestration; `score_pending()` is
   idempotent and self-heals late-arriving results.
 - `src/lottery_guru/finetune/` — time-ordered JSONL export + MLX-LM LoRA wrapper
-  (local) + Fireworks.ai serverless LoRA client (`fireworks.py`, run monthly by
+  (local) + Fireworks.ai LoRA client (`fireworks.py`, trained monthly by
   `.github/workflows/monthly-finetune.yml`; the tuned model name is recorded in
-  `data/finetune/fireworks.json` and served by the `llm-tuned` arm).
+  `data/finetune/fireworks.json` and served by the `llm-tuned` arm). Serving
+  needs an on-demand GPU deployment that **bills while it exists** — the daily
+  loop deploys, predicts, and tears down; teardown runs on `always()` and
+  sweeps orphans. Never add a code path that creates a deployment without a
+  guaranteed teardown.
 
 ## Hard rules
 
