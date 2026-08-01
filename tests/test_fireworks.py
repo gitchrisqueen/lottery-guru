@@ -14,6 +14,7 @@ def env(monkeypatch, tmp_path):
     monkeypatch.setenv("FIREWORKS_API_KEY", "fw-key")
     monkeypatch.setenv("FIREWORKS_ACCOUNT_ID", "acct")
     monkeypatch.delenv("LOTTERY_GURU_FT_BASE_MODEL", raising=False)
+    monkeypatch.delenv("LOTTERY_GURU_FT_LORA_RANK", raising=False)
     monkeypatch.setattr(fireworks.time, "sleep", lambda s: None)
     return tmp_path
 
@@ -111,6 +112,8 @@ def test_train_happy_path(env, monkeypatch):
         calls.append(("POST", url, kwargs.get("json")))
         if url.endswith("/supervisedFineTuningJobs"):
             return _Resp({"name": "accounts/acct/supervisedFineTuningJobs/j1"})
+        if url.endswith("/deployments"):
+            return _Resp({"name": "accounts/acct/deployments/dep1"})
         return _Resp()
 
     def fake_get(url, **kwargs):
@@ -134,14 +137,39 @@ def test_train_happy_path(env, monkeypatch):
         "dataset": "accounts/acct/datasets/lottery-guru-train-2026-08-01",
         "evaluationDataset": "accounts/acct/datasets/lottery-guru-valid-2026-08-01",
         "outputModel": "accounts/acct/models/lottery-guru-2026-08-01",
+        "loraRank": 8,
     }]
-    deploys = [body for method, url, body in calls if url.endswith("/deployedModels")]
-    assert deploys == [{"model": "accounts/acct/models/lottery-guru-2026-08-01"}]
+    deploys = [body for method, url, body in calls
+               if method == "POST" and url.endswith("/deployments")]
+    assert deploys == [{"baseModel": "accounts/acct/models/lottery-guru-2026-08-01"}]
 
     record = fireworks.load_record()
     assert record["model"] == "accounts/acct/models/lottery-guru-2026-08-01"
     assert record["deployed"] is True
+    assert record["deployment"] == "accounts/acct/deployments/dep1"
+    assert record["inference_model"] == (
+        "accounts/acct/models/lottery-guru-2026-08-01#accounts/acct/deployments/dep1")
     assert record["scored_days"] == 70
+
+
+def test_teardown_deletes_deployment_and_flips_record(env, monkeypatch):
+    fireworks.save_record({
+        "model": "accounts/acct/models/m1",
+        "deployed": True,
+        "deployment": "accounts/acct/deployments/dep1",
+        "inference_model": "accounts/acct/models/m1#accounts/acct/deployments/dep1",
+    })
+    deleted = []
+    monkeypatch.setattr(fireworks.requests, "delete",
+                        lambda url, **k: (deleted.append(url), _Resp())[1])
+    assert fireworks.teardown() is True
+    assert deleted == [f"{fireworks.API_BASE}/accounts/acct/deployments/dep1"]
+    record = fireworks.load_record()
+    assert record["deployed"] is False
+    assert "deployment" not in record
+    assert record["last_deployment"] == "accounts/acct/deployments/dep1"
+    # idempotent second call
+    assert fireworks.teardown() is False
 
 
 def test_job_create_retries_without_eval_dataset(env, monkeypatch):

@@ -1,11 +1,16 @@
-"""Hosted fine-tuning via Fireworks.ai serverless LoRA. Runs anywhere (CI).
+"""Hosted fine-tuning via Fireworks.ai LoRA. Runs anywhere (CI).
 
 This is the hosted alternative to the local MLX path (train_mlx.py): upload
 the exported chat JSONL as a dataset, run a supervised fine-tuning (LoRA)
 job, and record the resulting model name in data/finetune/fireworks.json so
-the daily loop's `llm-tuned` arm can call it through the OpenAI-compatible
-inference endpoint. Cost: ~$0.50/M training tokens (<$1/run at this dataset
-size).
+the `llm-tuned` arm can call it through the OpenAI-compatible inference
+endpoint. Training cost: ~$0.50/M training tokens.
+
+Serving: Fireworks does not serve LoRA fine-tunes serverlessly — inference
+needs an on-demand (dedicated GPU) deployment billed while it exists. The
+monthly workflow deploys ephemerally (train → deploy → predict → teardown),
+and the record's "deployed" flag tells the daily loop whether the tuned arm
+is currently callable.
 
 Env:
     FIREWORKS_API_KEY      required (Bearer auth)
@@ -29,9 +34,11 @@ import requests
 from ..data import store
 
 API_BASE = "https://api.fireworks.ai/v1"
-DEFAULT_BASE_MODEL = "accounts/fireworks/models/llama-v3p1-8b-instruct"
+DEFAULT_BASE_MODEL = "accounts/fireworks/models/qwen3-8b"
+DEFAULT_LORA_RANK = 8
 POLL_SECONDS = 30
 JOB_TIMEOUT_SECONDS = 3 * 3600
+DEPLOY_TIMEOUT_SECONDS = 1800
 
 
 def api_key() -> str | None:
@@ -173,6 +180,9 @@ def _start_job(dataset_name: str, eval_dataset_name: str | None,
         "baseModel": base_model(),
         "dataset": dataset_name,
         "outputModel": f"accounts/{acct}/models/{output_model_id}",
+        # explicit LoRA — omitting loraRank means full-parameter tuning,
+        # which most base models reject ("model is not tunable")
+        "loraRank": int(os.environ.get("LOTTERY_GURU_FT_LORA_RANK", DEFAULT_LORA_RANK)),
     }
     if eval_dataset_name:
         body["evaluationDataset"] = eval_dataset_name
@@ -205,25 +215,50 @@ def _wait_for_job(job_name: str) -> dict:
     raise TimeoutError(f"fine-tuning job {job_name} still running after {JOB_TIMEOUT_SECONDS}s")
 
 
-def _deploy_serverless(model_name: str) -> bool:
-    """Best-effort serverless LoRA deployment so inference can reach the model.
+def deploy(model_name: str) -> str:
+    """Create an on-demand deployment for the tuned model and wait until READY.
 
-    Some base models are auto-servable; on others this call is required. A
-    failure here should not lose the training run, so it only warns.
+    Fireworks no longer serves LoRA fine-tunes serverlessly — they need a
+    dedicated (on-demand) deployment, billed by GPU time while it exists.
+    Callers should tear it down when done (see teardown()).
     """
-    try:
-        resp = requests.post(
-            f"{API_BASE}/accounts/{account_id()}/deployedModels",
-            headers=_headers(), json={"model": model_name}, timeout=60,
-        )
-        if resp.status_code == 409:  # already deployed
-            return True
-        _check(resp)
-        return True
-    except Exception as exc:
-        print(f"WARNING: serverless deploy of {model_name} failed ({exc}); "
-              f"deploy manually with: firectl deploy {model_name}")
+    resp = requests.post(
+        f"{API_BASE}/accounts/{account_id()}/deployments",
+        headers=_headers(), json={"baseModel": model_name}, timeout=60,
+    )
+    name = _check(resp).json()["name"]
+    print(f"created deployment {name}, waiting for READY ...")
+    deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS
+    while time.monotonic() < deadline:
+        resp = requests.get(f"{API_BASE}/{name}", headers=_headers(), timeout=60)
+        state = _state(_check(resp).json())
+        if state == "READY":
+            return name
+        if state in ("FAILED", "DELETING"):
+            raise RuntimeError(f"deployment {name} entered state {state}")
+        print(f"deployment {name}: {state or 'PENDING'} ...")
+        time.sleep(POLL_SECONDS)
+    raise TimeoutError(f"deployment {name} not READY after {DEPLOY_TIMEOUT_SECONDS}s")
+
+
+def teardown() -> bool:
+    """Delete the deployment recorded in fireworks.json to stop GPU billing.
+
+    Idempotent: no record, no deployment, or already-deleted all no-op.
+    """
+    record = load_record()
+    if not record or not record.get("deployment"):
+        print("no active deployment on record")
         return False
+    name = record["deployment"]
+    resp = requests.delete(f"{API_BASE}/{name}", headers=_headers(), timeout=60)
+    if resp.status_code != 404:
+        _check(resp)
+    record["deployed"] = False
+    record["last_deployment"] = record.pop("deployment")
+    save_record(record)
+    print(f"deleted deployment {name}")
+    return True
 
 
 def train(data_dir: str = "finetune_data", epochs: int | None = None,
@@ -257,16 +292,28 @@ def train(data_dir: str = "finetune_data", epochs: int | None = None,
     job = _wait_for_job(job_name)
 
     model_name = job.get("outputModel") or f"accounts/{account_id()}/models/{output_model_id}"
-    deployed = _deploy_serverless(model_name)
-    save_record({
+    record = {
         "model": model_name,
         "base_model": base_model(),
         "job": job_name,
         "dataset": dataset_name,
         "evaluation_dataset": eval_dataset_name,
-        "deployed": deployed,
+        "deployed": False,
         "scored_days": days,
         "trained_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-    })
+    }
+    save_record(record)  # persist the training result before risking deployment
+    try:
+        deployment = deploy(model_name)
+    except Exception as exc:
+        print(f"WARNING: deployment failed ({exc}); the tuned model exists but is not servable "
+              f"until deployed (lottery-guru finetune deploy)")
+    else:
+        record.update({
+            "deployed": True,
+            "deployment": deployment,
+            "inference_model": f"{model_name}#{deployment}",
+        })
+        save_record(record)
     print(f"tuned model: {model_name} (record: {record_path()})")
     return model_name

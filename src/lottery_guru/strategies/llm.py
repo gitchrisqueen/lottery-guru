@@ -215,13 +215,19 @@ def predict_fewshot(game: Game, history: list[Draw], rng: random.Random) -> Pred
 
 
 def tuned_model() -> str | None:
-    """The Fireworks fine-tuned model name, if one has been trained and is callable."""
+    """The Fireworks fine-tuned model, if one is trained AND currently deployed.
+
+    Fine-tunes are served by an on-demand deployment that the monthly workflow
+    creates and tears down; while none is up, the tuned arm skips cleanly.
+    """
     if not os.environ.get("FIREWORKS_API_KEY"):
         return None
     from ..finetune import fireworks  # lazy: finetune.dataset imports this module
 
     record = fireworks.load_record()
-    return record.get("model") if record else None
+    if not record or not record.get("deployed"):
+        return None
+    return record.get("inference_model") or record.get("model")
 
 
 def tuned_available() -> bool:
