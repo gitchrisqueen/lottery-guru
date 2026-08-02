@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-08-01 19:55 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
+_Generated 2026-08-02 10:49 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
 
 ## Powerball
 
@@ -8,12 +8,14 @@ Null expectation: 0.3623 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| random | 3 | 1 | 1.087 | -0.089 | 0.9289 | 0 |
-| delta | 3 | 1 | 1.087 | -0.089 | 0.9289 | 0 |
-| llm-fewshot | 2 | 0 | 0.725 | -0.911 | 0.3622 | 0 |
-| unpopular | 3 | 0 | 1.087 | -1.116 | 0.2645 | 0 |
-| hot | 3 | 0 | 1.087 | -1.116 | 0.2645 | 0 |
-| cold | 3 | 0 | 1.087 | -1.116 | 0.2645 | 0 |
+| random | 4 | 2 | 1.449 | 0.49 | 0.6244 | 0 |
+| delta | 4 | 1 | 1.449 | -0.399 | 0.6896 | 0 |
+| llm-tuned | 1 | 0 | 0.362 | -0.644 | 0.5194 | 0 |
+| highest-frequency | 1 | 0 | 0.362 | -0.644 | 0.5194 | 0 |
+| llm-fewshot | 3 | 0 | 1.087 | -1.116 | 0.2645 | 0 |
+| unpopular | 4 | 0 | 1.449 | -1.288 | 0.1976 | 0 |
+| hot | 4 | 0 | 1.449 | -1.288 | 0.1976 | 0 |
+| cold | 4 | 0 | 1.449 | -1.288 | 0.1976 | 0 |
 
 ## Mega Millions
 

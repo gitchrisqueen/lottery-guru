@@ -1,68 +1,51 @@
 # Lottery Guru — Latest Predictions
 
-### 🎟️ Predictions for 2026-08-01
+### 🎟️ Predictions for 2026-08-02
 
 _These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
-
-**Powerball**
-
-| Strategy | Predicted |
-|---|---|
-| `cold` | `11` `15` `23` `33` `54` + `09` |
-| `delta` | `16` `18` `23` `24` `28` + `14` |
-| `highest-frequency` | `18` `23` `28` `33` `41` + `14` |
-| `hot` | `18` `21` `36` `52` `64` + `01` |
-| `llm-fewshot` | `01` `28` `30` `33` `41` + `14` |
-| `llm-tuned` | `01` `10` `12` `28` `39` + `12` |
-| `random` | `08` `25` `50` `51` `62` + `05` |
-| `unpopular` | `38` `41` `58` `61` `63` + `08` |
 
 **NY Numbers (Pick 3) — evening**
 
 | Strategy | Predicted |
 |---|---|
 | `cold` | `7` `6` `1` |
-| `highest-frequency` | `0` `2` `5` |
+| `highest-frequency` | `2` `3` `1` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `0` `2` `8` |
-| `llm-tuned` | `6` `3` `7` |
-| `positional` | `6` `2` `3` |
-| `random` | `0` `4` `5` |
+| `llm-fewshot` | `0` `5` `2` |
+| `positional` | `6` `8` `0` |
+| `random` | `2` `3` `4` |
 
 **NY Numbers (Pick 3) — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `6` `1` |
-| `highest-frequency` | `7` `3` `5` |
+| `cold` | `7` `1` `6` |
+| `highest-frequency` | `7` `9` `6` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `9` `1` `0` |
-| `llm-tuned` | `1` `8` `5` |
-| `positional` | `7` `3` `0` |
-| `random` | `5` `2` `5` |
+| `llm-fewshot` | `7` `9` `6` |
+| `positional` | `3` `9` `4` |
+| `random` | `6` `4` `6` |
 
 **NY Win 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `6` `4` `1` `3` |
-| `highest-frequency` | `6` `9` `1` `3` |
-| `hot` | `6` `5` `2` `3` |
-| `llm-fewshot` | `9` `9` `9` `2` |
-| `llm-tuned` | `7` `2` `5` `4` |
-| `positional` | `9` `9` `7` `0` |
-| `random` | `2` `8` `3` `6` |
+| `cold` | `6` `4` `1` `8` |
+| `highest-frequency` | `6` `3` `1` `7` |
+| `hot` | `6` `2` `5` `3` |
+| `llm-fewshot` | `3` `3` `6` `0` |
+| `positional` | `9` `3` `4` `2` |
+| `random` | `5` `4` `1` `7` |
 
 **NY Win 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `6` `4` `1` `7` |
-| `highest-frequency` | `6` `4` `1` `2` |
+| `cold` | `6` `4` `1` `3` |
+| `highest-frequency` | `6` `2` `3` `9` |
 | `hot` | `6` `5` `2` `1` |
-| `llm-fewshot` | `0` `9` `7` `2` |
-| `llm-tuned` | `8` `4` `7` `2` |
-| `positional` | `1` `7` `3` `6` |
-| `random` | `0` `4` `1` `2` |
+| `llm-fewshot` | `6` `7` `3` `9` |
+| `positional` | `4` `2` `6` `9` |
+| `random` | `6` `8` `5` `0` |
 
-<sub>Updated 2026-08-01 19:55 UTC</sub>
+<sub>Updated 2026-08-02 10:49 UTC</sub>

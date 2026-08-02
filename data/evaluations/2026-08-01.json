@@ -1,0 +1,210 @@
+[
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "random",
+  "numbers": [
+   8,
+   25,
+   50,
+   51,
+   62
+  ],
+  "special": 5,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 1,
+   "special_hit": 1,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "hot",
+  "numbers": [
+   18,
+   21,
+   36,
+   52,
+   64
+  ],
+  "special": 1,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "cold",
+  "numbers": [
+   11,
+   15,
+   23,
+   33,
+   54
+  ],
+  "special": 9,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "delta",
+  "numbers": [
+   16,
+   18,
+   23,
+   24,
+   28
+  ],
+  "special": 14,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "unpopular",
+  "numbers": [
+   38,
+   41,
+   58,
+   61,
+   63
+  ],
+  "special": 8,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   1,
+   28,
+   30,
+   33,
+   41
+  ],
+  "special": 14,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "llm-tuned",
+  "numbers": [
+   1,
+   10,
+   12,
+   28,
+   39
+  ],
+  "special": 12,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "highest-frequency",
+  "numbers": [
+   18,
+   23,
+   28,
+   33,
+   41
+  ],
+  "special": 14,
+  "actual_numbers": [
+   6,
+   17,
+   27,
+   48,
+   50
+  ],
+  "actual_special": 5,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ }
+]
