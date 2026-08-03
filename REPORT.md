@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-08-02 10:49 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
+_Generated 2026-08-03 11:29 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
 
 ## Powerball
 
@@ -36,11 +36,12 @@ Null expectation: 0.3000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| hot | 14 | 8 | 4.2 | 1.955 | 0.0506 | 0 |
-| cold | 14 | 7 | 4.2 | 1.44 | 0.1498 | 0 |
-| random | 14 | 6 | 4.2 | 0.926 | 0.3545 | 0 |
-| llm-fewshot | 10 | 3 | 3.0 | -0.0 | 1.0 | 0 |
-| positional | 14 | 4 | 4.2 | -0.103 | 0.9181 | 0 |
+| hot | 15 | 8 | 4.5 | 1.739 | 0.082 | 0 |
+| highest-frequency | 1 | 1 | 0.3 | 1.347 | 0.1779 | 0 |
+| random | 15 | 7 | 4.5 | 1.242 | 0.2141 | 0 |
+| cold | 15 | 7 | 4.5 | 1.242 | 0.2141 | 0 |
+| llm-fewshot | 11 | 3 | 3.3 | -0.174 | 0.8618 | 0 |
+| positional | 15 | 4 | 4.5 | -0.248 | 0.8038 | 0 |
 
 ## NY Win 4
 
@@ -48,9 +49,10 @@ Null expectation: 0.4000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| positional | 16 | 7 | 6.4 | 0.25 | 0.8026 | 0 |
-| random | 16 | 5 | 6.4 | -0.583 | 0.5597 | 0 |
-| llm-fewshot | 12 | 3 | 4.8 | -0.866 | 0.3865 | 0 |
-| hot | 16 | 4 | 6.4 | -1.0 | 0.3173 | 0 |
-| cold | 16 | 4 | 6.4 | -1.0 | 0.3173 | 0 |
+| positional | 18 | 9 | 7.2 | 0.707 | 0.4795 | 0 |
+| highest-frequency | 2 | 1 | 0.8 | 0.236 | 0.8137 | 0 |
+| llm-fewshot | 14 | 4 | 5.6 | -0.713 | 0.476 | 0 |
+| random | 18 | 5 | 7.2 | -0.864 | 0.3875 | 0 |
+| hot | 18 | 5 | 7.2 | -0.864 | 0.3875 | 0 |
+| cold | 18 | 5 | 7.2 | -0.864 | 0.3875 | 0 |
 
