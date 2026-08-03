@@ -77,7 +77,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `positional` | `7` `6` `8` `0` |
 | `random` | `7` `0` `5` `0` |
 
-<sub>Updated 2026-08-03 11:29 UTC</sub>
+<sub>Updated 2026-08-03 11:30 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -103,7 +103,7 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-08-03 11:29 UTC</sub>
+<sub>Updated 2026-08-03 11:30 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
