@@ -42383,6 +42383,17 @@
   "special": null
  },
  {
+  "date": "2026-08-01",
+  "draw_time": "evening",
+  "numbers": [
+   5,
+   9,
+   2,
+   2
+  ],
+  "special": null
+ },
+ {
   "date": "2026-08-02",
   "draw_time": "evening",
   "numbers": [
@@ -42401,6 +42412,28 @@
    9,
    2,
    2
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-03",
+  "draw_time": "evening",
+  "numbers": [
+   5,
+   8,
+   0,
+   6
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-03",
+  "draw_time": "midday",
+  "numbers": [
+   3,
+   1,
+   2,
+   1
   ],
   "special": null
  }

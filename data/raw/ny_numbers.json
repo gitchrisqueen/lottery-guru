@@ -38690,12 +38690,52 @@
   "special": null
  },
  {
+  "date": "2026-08-01",
+  "draw_time": "evening",
+  "numbers": [
+   5,
+   5,
+   5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-01",
+  "draw_time": "midday",
+  "numbers": [
+   2,
+   7,
+   6
+  ],
+  "special": null
+ },
+ {
   "date": "2026-08-02",
   "draw_time": "evening",
   "numbers": [
    2,
    4,
    6
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-03",
+  "draw_time": "evening",
+  "numbers": [
+   8,
+   7,
+   3
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-03",
+  "draw_time": "midday",
+  "numbers": [
+   5,
+   5,
+   8
   ],
   "special": null
  }
