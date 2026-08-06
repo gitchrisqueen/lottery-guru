@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-08-05 11:06 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
+_Generated 2026-08-06 12:18 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
 
 ## Powerball
 
@@ -8,14 +8,14 @@ Null expectation: 0.3623 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| highest-frequency | 2 | 1 | 0.725 | 0.346 | 0.7292 | 0 |
-| random | 5 | 2 | 1.812 | 0.15 | 0.8809 | 0 |
-| delta | 5 | 1 | 1.812 | -0.645 | 0.5187 | 0 |
-| cold | 5 | 1 | 1.812 | -0.645 | 0.5187 | 0 |
-| llm-tuned | 2 | 0 | 0.725 | -0.911 | 0.3622 | 0 |
-| llm-fewshot | 4 | 0 | 1.449 | -1.288 | 0.1976 | 0 |
-| unpopular | 5 | 0 | 1.812 | -1.441 | 0.1497 | 0 |
-| hot | 5 | 0 | 1.812 | -1.441 | 0.1497 | 0 |
+| highest-frequency | 3 | 1 | 1.087 | -0.089 | 0.9289 | 0 |
+| random | 6 | 2 | 2.174 | -0.126 | 0.8995 | 0 |
+| delta | 6 | 1 | 2.174 | -0.852 | 0.3941 | 0 |
+| cold | 6 | 1 | 2.174 | -0.852 | 0.3941 | 0 |
+| llm-tuned | 3 | 0 | 1.087 | -1.116 | 0.2645 | 0 |
+| llm-fewshot | 5 | 0 | 1.812 | -1.441 | 0.1497 | 0 |
+| unpopular | 6 | 0 | 2.174 | -1.578 | 0.1146 | 0 |
+| hot | 6 | 0 | 2.174 | -1.578 | 0.1146 | 0 |
 
 ## Mega Millions
 
@@ -38,13 +38,13 @@ Null expectation: 0.3000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| hot | 19 | 10 | 5.7 | 1.898 | 0.0576 | 0 |
-| random | 19 | 8 | 5.7 | 1.015 | 0.3099 | 0 |
-| cold | 19 | 7 | 5.7 | 0.574 | 0.566 | 0 |
-| highest-frequency | 5 | 2 | 1.5 | 0.43 | 0.667 | 0 |
-| llm-tuned | 4 | 1 | 1.2 | -0.192 | 0.8474 | 0 |
-| llm-fewshot | 15 | 4 | 4.5 | -0.248 | 0.8038 | 0 |
-| positional | 19 | 4 | 5.7 | -0.751 | 0.4529 | 0 |
+| highest-frequency | 7 | 5 | 2.1 | 2.109 | 0.0349 | 0 |
+| hot | 21 | 11 | 6.3 | 1.974 | 0.0484 | 0 |
+| random | 21 | 9 | 6.3 | 1.134 | 0.2568 | 0 |
+| llm-tuned | 6 | 3 | 1.8 | 0.943 | 0.3458 | 0 |
+| cold | 21 | 8 | 6.3 | 0.714 | 0.4753 | 0 |
+| llm-fewshot | 17 | 5 | 5.1 | -0.047 | 0.9628 | 0 |
+| positional | 21 | 5 | 6.3 | -0.546 | 0.5851 | 0 |
 
 ## NY Win 4
 
@@ -52,11 +52,11 @@ Null expectation: 0.4000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| positional | 23 | 11 | 9.2 | 0.626 | 0.5316 | 0 |
-| llm-fewshot | 19 | 7 | 7.6 | -0.229 | 0.8185 | 0 |
-| cold | 23 | 8 | 9.2 | -0.417 | 0.6767 | 0 |
-| highest-frequency | 7 | 2 | 2.8 | -0.504 | 0.6143 | 0 |
-| llm-tuned | 5 | 1 | 2.0 | -0.745 | 0.4561 | 0 |
-| random | 23 | 7 | 9.2 | -0.765 | 0.4445 | 0 |
-| hot | 23 | 7 | 9.2 | -0.765 | 0.4445 | 0 |
+| llm-tuned | 7 | 5 | 2.8 | 1.386 | 0.1658 | 0 |
+| highest-frequency | 9 | 5 | 3.6 | 0.778 | 0.4367 | 0 |
+| positional | 25 | 11 | 10.0 | 0.333 | 0.7389 | 0 |
+| cold | 25 | 10 | 10.0 | 0.0 | 1.0 | 0 |
+| random | 25 | 9 | 10.0 | -0.333 | 0.7389 | 0 |
+| llm-fewshot | 21 | 7 | 8.4 | -0.509 | 0.6106 | 0 |
+| hot | 25 | 7 | 10.0 | -1.0 | 0.3173 | 0 |
 
