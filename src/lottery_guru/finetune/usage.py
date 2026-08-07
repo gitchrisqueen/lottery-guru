@@ -111,6 +111,24 @@ def log_deployment_lifetime(record: dict, deleted: bool) -> dict | None:
     })
 
 
+def log_deployment_failure(model: str, deployment: str,
+                           accelerator: str, reason: str) -> dict:
+    """Record a deployment that never reached READY.
+
+    A failed bring-up costs whatever GPU time it burned before dying, and it
+    is the only local trace of *why* the tuned arm went missing that day —
+    Fireworks' own notification is an email that says nothing but "failed".
+    """
+    return append({
+        "logged_at": _now(),
+        "event": "deployment_failed",
+        "deployment": deployment,
+        "model": model,
+        "accelerator": accelerator,
+        "error": reason[:500],
+    })
+
+
 def summary() -> dict:
     """Totals across the committed log — GPU-seconds we know we paid for."""
     seconds, sessions, failures = 0.0, 0, 0
@@ -118,7 +136,8 @@ def summary() -> dict:
         if row.get("event") == "deployment_torn_down":
             sessions += 1
             seconds += row.get("billable_seconds") or 0
-        elif row.get("event") == "deployment_teardown_failed" or row.get("error"):
+        elif (row.get("event") in ("deployment_teardown_failed", "deployment_failed")
+                or row.get("error")):
             failures += 1
     return {"deployment_sessions": sessions,
             "billable_seconds": round(seconds, 1),

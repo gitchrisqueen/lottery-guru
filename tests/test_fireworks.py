@@ -197,6 +197,68 @@ def test_deploy_falls_through_accelerator_candidates(env, monkeypatch):
     assert attempts == list(fireworks.ACCELERATOR_CANDIDATES[:3])
 
 
+def test_deploy_falls_through_when_accepted_deployment_then_fails(env, monkeypatch):
+    """A GPU class that runs out of capacity accepts, then FAILs minutes later."""
+    created, deleted = [], []
+
+    def fake_post(url, **kwargs):
+        accel = kwargs["json"]["acceleratorType"]
+        created.append(accel)
+        return _Resp({"name": f"accounts/acct/deployments/dep-{len(created)}"})
+
+    def fake_get(url, **kwargs):
+        if url.endswith("dep-1"):  # first candidate dies after being accepted
+            return _Resp({"state": "FAILED", "status": {"message": "out of capacity"}})
+        return _Resp({"state": "READY"})
+
+    monkeypatch.setattr(fireworks.requests, "post", fake_post)
+    monkeypatch.setattr(fireworks.requests, "get", fake_get)
+    monkeypatch.setattr(fireworks.requests, "delete",
+                        lambda url, **k: (deleted.append(url), _Resp())[1])
+
+    assert fireworks.deploy("accounts/acct/models/m1") == "accounts/acct/deployments/dep-2"
+    assert created == list(fireworks.ACCELERATOR_CANDIDATES[:2])
+    # the dead deployment is deleted immediately, not left for the nightly sweep
+    assert deleted == [f"{fireworks.API_BASE}/accounts/acct/deployments/dep-1"]
+
+
+def test_deploy_failure_is_logged_with_its_reason(env, monkeypatch):
+    from lottery_guru.finetune import usage
+
+    monkeypatch.setattr(fireworks.requests, "post", lambda url, **k: _Resp(
+        {"name": "accounts/acct/deployments/dead"}))
+    monkeypatch.setattr(fireworks.requests, "get", lambda url, **k: _Resp(
+        {"state": "FAILED", "status": {"message": "no B200 capacity in GLOBAL"}}))
+    monkeypatch.setattr(fireworks.requests, "delete", lambda url, **k: _Resp())
+    monkeypatch.setenv("LOTTERY_GURU_FT_ACCELERATOR", "NVIDIA_B200_180GB")
+
+    with pytest.raises(RuntimeError, match="could not bring up a deployment"):
+        fireworks.deploy("accounts/acct/models/m1")
+
+    rows = usage.read_log()
+    assert [row["event"] for row in rows] == ["deployment_failed"]
+    assert rows[0]["accelerator"] == "NVIDIA_B200_180GB"
+    assert "no B200 capacity in GLOBAL" in rows[0]["error"]
+    assert usage.summary()["logged_failures"] == 1
+
+
+def test_deploy_reports_every_candidate_it_tried(env, monkeypatch):
+    monkeypatch.setattr(fireworks.requests, "post",
+                        lambda url, **k: _Resp({"message": "no quota"}, status_code=429))
+    with pytest.raises(RuntimeError) as excinfo:
+        fireworks.deploy("accounts/acct/models/m1")
+    for accelerator in fireworks.ACCELERATOR_CANDIDATES:
+        assert accelerator in str(excinfo.value)
+
+
+def test_status_message_survives_the_shapes_fireworks_uses():
+    assert fireworks._status_message({"statusMessage": "boom"}) == "boom"
+    assert fireworks._status_message({"status": {"message": "boom"}}) == "boom"
+    assert fireworks._status_message({"status": "boom"}) == "boom"
+    assert fireworks._status_message({"state": "FAILED"}) == ""
+    assert fireworks._status_message(None) == ""
+
+
 def test_deploy_reuses_live_deployment_instead_of_double_billing(env, monkeypatch):
     fireworks.save_record({
         "model": "accounts/acct/models/m1",

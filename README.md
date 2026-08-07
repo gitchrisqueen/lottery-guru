@@ -190,7 +190,9 @@ by the loop), from two sources:
   bills for as long as it exists, so this is the dominant cost driver and it
   lands the same day instead of waiting for billing to catch up. A failed
   teardown is logged as `deployment_teardown_failed` — a cost risk you can
-  grep for.
+  grep for — and a deployment that never came up as `deployment_failed`,
+  carrying whatever reason Fireworks gave. Both count toward
+  `logged_failures`.
 
 `lottery-guru usage --summary-only` totals the committed log without calling
 the API.
@@ -226,6 +228,13 @@ bills indefinitely. Check [the dashboard](https://app.fireworks.ai/dashboard/dep
 if a run ever ends without a clean teardown; `lottery-guru finetune teardown`
 removes anything left over. `LOTTERY_GURU_FT_ACCELERATOR` pins a cheaper GPU
 class when your account has quota for one.
+
+Bring-up is not guaranteed: a GPU class that is out of capacity often accepts
+the request and only fails minutes later. Deployment tries each accelerator
+candidate through to `READY`, deletes one that dies, and moves to the next,
+all inside a single 30-minute budget so the daily loop stays bounded. If every
+candidate fails, the day simply has no `llm-tuned` prediction — the arm is
+best-effort and never blocks the rest of the loop.
 
 Run locally with:
 
