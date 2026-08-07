@@ -12,55 +12,67 @@ Periodically, a local **LLM fine-tuning loop** (MLX on Apple Silicon) trains on 
 ## Today's board
 
 <!-- PREDICTIONS:START -->
-### 🎟️ Predictions for 2026-08-06
+### 🎟️ Predictions for 2026-08-07
 
 _These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
+
+**Mega Millions**
+
+| Strategy | Predicted |
+|---|---|
+| `cold` | `06` `08` `11` `28` `69` + `11` |
+| `delta` | `09` `20` `28` `31` `43` + `19` |
+| `highest-frequency` | `11` `13` `28` `36` `69` + `12` |
+| `hot` | `13` `18` `21` `49` `56` + `12` |
+| `llm-fewshot` | `11` `24` `36` `52` `58` + `07` |
+| `random` | `13` `36` `45` `61` `63` + `12` |
+| `unpopular` | `17` `32` `50` `66` `69` + `14` |
 
 **NY Numbers (Pick 3) — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `0` `2` `6` |
-| `highest-frequency` | `0` `2` `6` |
+| `cold` | `6` `7` `9` |
+| `highest-frequency` | `7` `5` `5` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `7` `5` `3` |
-| `positional` | `8` `6` `0` |
-| `random` | `0` `8` `8` |
+| `llm-fewshot` | `7` `4` `2` |
+| `positional` | `1` `5` `2` |
+| `random` | `3` `5` `5` |
 
 **NY Numbers (Pick 3) — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `0` `2` `6` |
-| `highest-frequency` | `8` `2` `5` |
+| `cold` | `6` `7` `9` |
+| `highest-frequency` | `8` `5` `2` |
 | `hot` | `8` `3` `5` |
-| `llm-fewshot` | `8` `2` `2` |
-| `positional` | `3` `9` `9` |
-| `random` | `0` `4` `3` |
+| `llm-fewshot` | `8` `5` `1` |
+| `positional` | `9` `5` `2` |
+| `random` | `1` `4` `0` |
 
 **NY Win 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `1` `3` `6` `5` |
-| `highest-frequency` | `9` `2` `2` `5` |
+| `cold` | `5` `7` `0` `2` |
+| `highest-frequency` | `6` `4` `0` `3` |
 | `hot` | `6` `2` `5` `3` |
-| `llm-fewshot` | `4` `4` `3` `6` |
-| `positional` | `9` `1` `2` `5` |
-| `random` | `0` `6` `2` `2` |
+| `llm-fewshot` | `6` `8` `6` `6` |
+| `positional` | `5` `5` `9` `3` |
+| `random` | `3` `4` `8` `9` |
 
 **NY Win 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `1` `3` `6` `5` |
-| `highest-frequency` | `6` `3` `5` `3` |
+| `cold` | `5` `2` `0` `7` |
+| `highest-frequency` | `6` `2` `0` `3` |
 | `hot` | `6` `2` `5` `3` |
-| `llm-fewshot` | `3` `5` `1` `8` |
-| `positional` | `5` `4` `4` `1` |
-| `random` | `4` `3` `5` `7` |
+| `llm-fewshot` | `2` `5` `0` `9` |
+| `positional` | `8` `6` `4` `3` |
+| `random` | `3` `4` `6` `1` |
 
-<sub>Updated 2026-08-06 12:18 UTC</sub>
+<sub>Updated 2026-08-07 11:14 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -70,23 +82,23 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 <!-- SCOREBOARD:START -->
 ### 📊 How it's performing
 
-**317** predictions scored across **13** days. Combined, they've hit **115** numbers where pure chance predicts **112.8** (z = **+0.22**).
+**341** predictions scored across **14** days. Combined, they've hit **128** numbers where pure chance predicts **121.2** (z = **+0.65**).
 
 | Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
 |---|---|---|---|---|---|---|
-| `highest-frequency` | 20 | 13 | 7.1 | 0.65/draw | +2.32 | 2 (Mega Millions) |
+| `highest-frequency` | 24 | 16 | 8.5 | 0.67/draw | +2.70 | 2 (Mega Millions) |
 | `llm-tuned` | 17 | 8 | 6.0 | 0.47/draw | +0.84 | 3 (NY Win 4) |
-| `random` | 56 | 22 | 19.9 | 0.39/draw | +0.50 | 2 (Mega Millions) |
-| `cold` | 56 | 21 | 19.9 | 0.38/draw | +0.26 | 3 (NY Win 4) |
-| `hot` | 56 | 20 | 19.9 | 0.36/draw | +0.02 | 2 (NY Numbers (Pick 3)) |
-| `positional` | 46 | 16 | 16.3 | 0.35/draw | -0.08 | 2 (NY Win 4) |
-| `llm-fewshot` | 46 | 13 | 16.4 | 0.28/draw | -0.88 | 2 (NY Win 4) |
+| `random` | 60 | 24 | 21.3 | 0.40/draw | +0.62 | 2 (Mega Millions) |
+| `cold` | 60 | 23 | 21.3 | 0.38/draw | +0.39 | 3 (NY Win 4) |
+| `positional` | 50 | 19 | 17.7 | 0.38/draw | +0.33 | 2 (NY Win 4) |
+| `hot` | 60 | 22 | 21.3 | 0.37/draw | +0.16 | 2 (NY Numbers (Pick 3)) |
 | `delta` | 10 | 2 | 3.6 | 0.20/draw | -0.90 | 1 (Powerball) |
+| `llm-fewshot` | 50 | 14 | 17.8 | 0.28/draw | -0.95 | 2 (NY Win 4) |
 | `unpopular` | 10 | 0 | 3.6 | 0.00/draw | -2.03 | 0 |
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-08-06 12:18 UTC</sub>
+<sub>Updated 2026-08-07 11:14 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part

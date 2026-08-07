@@ -42480,5 +42480,27 @@
    2
   ],
   "special": null
+ },
+ {
+  "date": "2026-08-06",
+  "draw_time": "evening",
+  "numbers": [
+   6,
+   1,
+   4,
+   8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-06",
+  "draw_time": "midday",
+  "numbers": [
+   8,
+   3,
+   9,
+   1
+  ],
+  "special": null
  }
 ]

@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-08-06 12:18 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
+_Generated 2026-08-07 11:14 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0._
 
 ## Powerball
 
@@ -38,13 +38,13 @@ Null expectation: 0.3000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| highest-frequency | 7 | 5 | 2.1 | 2.109 | 0.0349 | 0 |
-| hot | 21 | 11 | 6.3 | 1.974 | 0.0484 | 0 |
-| random | 21 | 9 | 6.3 | 1.134 | 0.2568 | 0 |
+| highest-frequency | 9 | 7 | 2.7 | 2.758 | 0.0058 | 0 |
+| hot | 23 | 12 | 6.9 | 2.047 | 0.0407 | 0 |
+| random | 23 | 10 | 6.9 | 1.244 | 0.2135 | 0 |
 | llm-tuned | 6 | 3 | 1.8 | 0.943 | 0.3458 | 0 |
-| cold | 21 | 8 | 6.3 | 0.714 | 0.4753 | 0 |
-| llm-fewshot | 17 | 5 | 5.1 | -0.047 | 0.9628 | 0 |
-| positional | 21 | 5 | 6.3 | -0.546 | 0.5851 | 0 |
+| cold | 23 | 9 | 6.9 | 0.843 | 0.3994 | 0 |
+| llm-fewshot | 19 | 6 | 5.7 | 0.132 | 0.8946 | 0 |
+| positional | 23 | 6 | 6.9 | -0.361 | 0.718 | 0 |
 
 ## NY Win 4
 
@@ -53,10 +53,10 @@ Null expectation: 0.4000 matches per prediction.
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
 | llm-tuned | 7 | 5 | 2.8 | 1.386 | 0.1658 | 0 |
-| highest-frequency | 9 | 5 | 3.6 | 0.778 | 0.4367 | 0 |
-| positional | 25 | 11 | 10.0 | 0.333 | 0.7389 | 0 |
-| cold | 25 | 10 | 10.0 | 0.0 | 1.0 | 0 |
-| random | 25 | 9 | 10.0 | -0.333 | 0.7389 | 0 |
-| llm-fewshot | 21 | 7 | 8.4 | -0.509 | 0.6106 | 0 |
-| hot | 25 | 7 | 10.0 | -1.0 | 0.3173 | 0 |
+| highest-frequency | 11 | 6 | 4.4 | 0.804 | 0.4214 | 0 |
+| positional | 27 | 13 | 10.8 | 0.706 | 0.4804 | 0 |
+| cold | 27 | 11 | 10.8 | 0.064 | 0.9489 | 0 |
+| random | 27 | 10 | 10.8 | -0.257 | 0.7975 | 0 |
+| llm-fewshot | 23 | 7 | 9.2 | -0.765 | 0.4445 | 0 |
+| hot | 27 | 8 | 10.8 | -0.898 | 0.3691 | 0 |
 
