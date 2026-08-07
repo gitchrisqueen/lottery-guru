@@ -47,7 +47,22 @@ ACCELERATOR_CANDIDATES = (
 DEFAULT_PRECISION = "BF16"
 POLL_SECONDS = 30
 JOB_TIMEOUT_SECONDS = 3 * 3600
+# Total budget for deploy(), shared across accelerator attempts — a bounded
+# daily step matters more than exhausting every GPU class.
 DEPLOY_TIMEOUT_SECONDS = 1800
+
+
+class DeploymentFailed(RuntimeError):
+    """A deployment was accepted but never reached READY.
+
+    Distinct from a create-time rejection: the GPU class had quota to accept
+    the request and ran out (or the region failed) while bringing it up.
+    """
+
+    def __init__(self, name: str, state: str | None, reason: str = ""):
+        self.name, self.state, self.reason = name, state, reason
+        super().__init__(f"deployment {name} entered state {state}"
+                         + (f": {reason}" if reason else ""))
 
 
 def api_key() -> str | None:
@@ -224,24 +239,49 @@ def _wait_for_job(job_name: str) -> dict:
     raise TimeoutError(f"fine-tuning job {job_name} still running after {JOB_TIMEOUT_SECONDS}s")
 
 
-def _deployment_state(name: str) -> str | None:
+def _get_deployment(name: str) -> dict | None:
     resp = requests.get(f"{API_BASE}/{name}", headers=_headers(), timeout=60)
     if resp.status_code == 404:
         return None
-    return _state(_check(resp).json())
+    return _check(resp).json()
 
 
-def _wait_ready(name: str) -> str:
-    deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS
+def _deployment_state(name: str) -> str | None:
+    deployment = _get_deployment(name)
+    return _state(deployment) if deployment is not None else None
+
+
+def _status_message(deployment: dict | None) -> str:
+    """Whatever reason Fireworks attached to the deployment, if any.
+
+    Without this a failure is only ever visible as an opaque "failed to
+    deploy" email — the state alone can't tell capacity apart from a bad
+    model reference.
+    """
+    if not deployment:
+        return ""
+    for key in ("statusMessage", "stateMessage", "status", "message", "error"):
+        value = deployment.get(key)
+        if isinstance(value, dict):
+            value = value.get("message") or value.get("statusMessage")
+        if isinstance(value, str) and value.strip():
+            return value.strip()[:300]
+    return ""
+
+
+def _wait_ready(name: str, deadline: float | None = None) -> str:
+    if deadline is None:
+        deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS
     while time.monotonic() < deadline:
-        state = _deployment_state(name)
+        deployment = _get_deployment(name)
+        state = _state(deployment) if deployment is not None else None
         if state == "READY":
             return name
         if state in ("FAILED", "DELETING", None):
-            raise RuntimeError(f"deployment {name} entered state {state}")
+            raise DeploymentFailed(name, state, _status_message(deployment))
         print(f"deployment {name}: {state or 'PENDING'} ...")
         time.sleep(POLL_SECONDS)
-    raise TimeoutError(f"deployment {name} not READY after {DEPLOY_TIMEOUT_SECONDS}s")
+    raise TimeoutError(f"deployment {name} not READY within the deploy budget")
 
 
 def deploy(model_name: str) -> str:
@@ -253,6 +293,13 @@ def deploy(model_name: str) -> str:
 
     Reuses a live deployment already on record rather than creating a second
     one — two deployments would bill twice for the same predictions.
+
+    Each accelerator candidate is tried through to READY, not just through
+    create: a GPU class that is out of capacity often accepts the request and
+    only fails minutes later (CREATING -> FAILED), so falling back solely on a
+    create-time 4xx leaves the common failure with nowhere to go. A candidate
+    that dies is deleted before the next is tried, and the whole search shares
+    one time budget so the daily loop stays bounded.
     """
     record = load_record() or {}
     existing = record.get("deployment")
@@ -266,7 +313,8 @@ def deploy(model_name: str) -> str:
 
     override = os.environ.get("LOTTERY_GURU_FT_ACCELERATOR")
     candidates = (override,) if override else ACCELERATOR_CANDIDATES
-    resp = None
+    deadline = time.monotonic() + DEPLOY_TIMEOUT_SECONDS
+    failures: list[str] = []
     for accelerator in candidates:
         resp = requests.post(
             f"{API_BASE}/accounts/{account_id()}/deployments",
@@ -278,12 +326,39 @@ def deploy(model_name: str) -> str:
             },
             timeout=60,
         )
-        if resp.status_code < 400:
-            break
-        print(f"accelerator {accelerator} rejected ({resp.status_code}: {resp.text[:200]})")
-    name = _check(resp).json()["name"]
-    print(f"created deployment {name}, waiting for READY ...")
-    return _wait_ready(name)
+        if resp.status_code >= 400:
+            reason = f"rejected at create (HTTP {resp.status_code}: {resp.text[:200]})"
+            print(f"accelerator {accelerator} {reason}")
+            failures.append(f"{accelerator}: {reason}")
+            continue
+        name = resp.json()["name"]
+        print(f"created deployment {name} on {accelerator}, waiting for READY ...")
+        try:
+            return _wait_ready(name, deadline)
+        except (DeploymentFailed, TimeoutError) as exc:
+            print(f"WARNING: {exc}")
+            failures.append(f"{accelerator}: {exc}")
+            # Delete before moving on. A deployment that got far enough to fail
+            # got far enough to bill, and teardown's sweep is an hour of
+            # daily-loop away.
+            _delete_deployment(name)
+            _log_deploy_failure(model_name, name, accelerator, str(exc))
+            if time.monotonic() >= deadline:
+                print("deploy budget exhausted; not trying further accelerators")
+                break
+    raise RuntimeError(f"could not bring up a deployment for {model_name} — "
+                       + "; ".join(failures or ["no accelerator candidates"]))
+
+
+def _log_deploy_failure(model_name: str, deployment: str,
+                        accelerator: str, reason: str) -> None:
+    """Record a failed bring-up in the cost log; never let logging break deploy."""
+    from . import usage  # lazy: usage imports this module
+
+    try:
+        usage.log_deployment_failure(model_name, deployment, accelerator, reason)
+    except Exception as exc:  # pragma: no cover - logging must not mask the failure
+        print(f"WARNING: could not log the deployment failure: {exc}")
 
 
 def _delete_deployment(name: str, attempts: int = 3) -> bool:
