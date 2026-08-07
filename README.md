@@ -25,6 +25,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `highest-frequency` | `11` `13` `28` `36` `69` + `12` |
 | `hot` | `13` `18` `21` `49` `56` + `12` |
 | `llm-fewshot` | `11` `24` `36` `52` `58` + `07` |
+| `llm-tuned` | `01` `14` `21` `28` `58` + `09` |
 | `random` | `13` `36` `45` `61` `63` + `12` |
 | `unpopular` | `17` `32` `50` `66` `69` + `14` |
 
@@ -36,6 +37,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `highest-frequency` | `7` `5` `5` |
 | `hot` | `8` `3` `5` |
 | `llm-fewshot` | `7` `4` `2` |
+| `llm-tuned` | `6` `8` `7` |
 | `positional` | `1` `5` `2` |
 | `random` | `3` `5` `5` |
 
@@ -47,6 +49,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `highest-frequency` | `8` `5` `2` |
 | `hot` | `8` `3` `5` |
 | `llm-fewshot` | `8` `5` `1` |
+| `llm-tuned` | `7` `8` `8` |
 | `positional` | `9` `5` `2` |
 | `random` | `1` `4` `0` |
 
@@ -58,6 +61,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `highest-frequency` | `6` `4` `0` `3` |
 | `hot` | `6` `2` `5` `3` |
 | `llm-fewshot` | `6` `8` `6` `6` |
+| `llm-tuned` | `4` `7` `5` `2` |
 | `positional` | `5` `5` `9` `3` |
 | `random` | `3` `4` `8` `9` |
 
@@ -69,10 +73,11 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `highest-frequency` | `6` `2` `0` `3` |
 | `hot` | `6` `2` `5` `3` |
 | `llm-fewshot` | `2` `5` `0` `9` |
+| `llm-tuned` | `3` `7` `1` `7` |
 | `positional` | `8` `6` `4` `3` |
 | `random` | `3` `4` `6` `1` |
 
-<sub>Updated 2026-08-07 11:14 UTC</sub>
+<sub>Updated 2026-08-07 12:22 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -98,7 +103,7 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-08-07 11:14 UTC</sub>
+<sub>Updated 2026-08-07 12:22 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
