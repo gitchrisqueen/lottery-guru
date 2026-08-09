@@ -5,8 +5,15 @@ name: FL source spike
 # probes on a real runner and commits trimmed pdftotext extracts back to the
 # branch as network-free test fixtures. Safe to re-run; it overwrites fixtures.
 
+# workflow_dispatch only registers from the default branch, so the push
+# trigger (scoped to this file) lets the spike run from a feature branch:
+# edit this file (e.g. bump the run marker below) and push to re-run.
+# run-marker: 1
 on:
   workflow_dispatch: {}
+  push:
+    paths:
+      - ".github/workflows/fl-source-spike.yml"
 
 permissions:
   contents: write
