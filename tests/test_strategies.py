@@ -67,6 +67,103 @@ def test_unpopular_avoids_birthday_heavy_tickets():
     assert sum(1 for n in pred.numbers if n > 31) >= 3
 
 
+def test_contrarian_replays_recently_drawn_numbers():
+    game = GAMES["powerball"]
+    history = make_history("powerball")
+    recent = {n for d in history[-3:] for n in d.numbers}
+    pred = run_strategy("contrarian", game, history,
+                        seeded_rng("contrarian", "powerball", "2026-07-25", "main"))
+    assert set(pred.numbers) <= recent  # 3 draws x 5 numbers is a big enough pool
+
+
+def test_birthday_stays_in_the_date_range():
+    game = GAMES["powerball"]
+    history = make_history("powerball")
+    pred = run_strategy("birthday", game, history,
+                        seeded_rng("birthday", "powerball", "2026-07-25", "main"))
+    assert all(1 <= n <= 31 for n in pred.numbers)
+
+
+def test_balanced_and_antibalanced_bracket_the_sum_band():
+    from lottery_guru.strategies.balance import _sum_bounds
+
+    game = GAMES["powerball"]
+    history = make_history("powerball")
+    lo, hi = _sum_bounds(game)
+    mid = (lo + hi) / 2
+    for date in (f"2026-07-{d:02d}" for d in range(1, 11)):
+        bal = run_strategy("balanced", game, history, seeded_rng("balanced", "powerball", date, "main"))
+        odd = sum(1 for n in bal.numbers if n % 2)
+        assert abs(sum(bal.numbers) - mid) <= (hi - lo) * 0.15
+        assert odd in (2, 3)
+        anti = run_strategy("antibalanced", game, history,
+                            seeded_rng("antibalanced", "powerball", date, "main"))
+        anti_odd = sum(1 for n in anti.numbers if n % 2)
+        assert abs(sum(anti.numbers) - mid) > (hi - lo) * 0.20 or anti_odd in (0, 5)
+
+
+def test_skiphit_carries_repeats_from_the_last_draw():
+    game = GAMES["powerball"]
+    history = make_history("powerball")
+    pred = run_strategy("skiphit", game, history,
+                        seeded_rng("skiphit", "powerball", "2026-07-25", "main"))
+    assert len(set(pred.numbers) & set(history[-1].numbers)) >= 1
+
+
+def test_benford_prefers_benford_shaped_tickets():
+    from lottery_guru.strategies.benford import _benford_distance
+
+    game = GAMES["powerball"]
+    history = make_history("powerball")
+    pred = run_strategy("benford", game, history,
+                        seeded_rng("benford", "powerball", "2026-07-25", "main"))
+    baseline = random.Random(7)
+    uniform_dists = [
+        _benford_distance(sorted(baseline.sample(range(1, 70), 5))) for _ in range(50)
+    ]
+    assert _benford_distance(list(pred.numbers)) <= sum(uniform_dists) / len(uniform_dists)
+
+
+def test_persistent_plays_the_same_ticket_forever():
+    game = GAMES["powerball"]
+    history = make_history("powerball")
+    tickets = {
+        run_strategy("persistent", game, history,
+                     seeded_rng("persistent", "powerball", f"2026-07-{d:02d}", "main"))
+        for d in range(1, 15)
+    }
+    assert len(tickets) == 1
+    # ...but differs per game
+    other = run_strategy("persistent", GAMES["megamillions"], make_history("megamillions"),
+                         seeded_rng("persistent", "megamillions", "2026-07-01", "main"))
+    assert next(iter(tickets)).numbers != other.numbers
+
+
+def test_moonphase_epoch_is_a_new_moon():
+    from lottery_guru.strategies.moonphase import KNOWN_NEW_MOON, phase_angle
+
+    assert phase_angle(KNOWN_NEW_MOON) == 0.0
+    assert 0.0 <= phase_angle(dt.date(2026, 7, 25)) < 360.0
+
+
+def test_numerology_reduction_rules():
+    from lottery_guru.strategies.numerology import name_number, reduce_number
+
+    assert reduce_number(29) == 11  # 2+9 -> master number, preserved
+    assert reduce_number(1997) == 8  # 1+9+9+7=26 -> 2+6
+    assert 1 <= name_number("LOTTERY GURU") <= 33
+
+
+def test_dreambook_plays_a_lexicon_gig():
+    from lottery_guru.strategies.dreambook import _LEXICON
+
+    game = GAMES["ny_numbers"]
+    history = make_history("ny_numbers")
+    pred = run_strategy("dreambook", game, history,
+                        seeded_rng("dreambook", "ny_numbers", "2026-07-25", "midday"))
+    assert any(list(pred.numbers) == gig[:3] for gig in _LEXICON.values())
+
+
 def test_llm_sanitize_recovers_from_garbage():
     game = GAMES["powerball"]
     rng = random.Random(1)
