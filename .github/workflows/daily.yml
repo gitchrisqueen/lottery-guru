@@ -30,10 +30,11 @@ jobs:
       # serve LoRA fine-tunes serverlessly). It is brought up for the daily
       # predictions and torn down below — never left running.
       #
-      # Only on days a jackpot game draws (Powerball Mon/Wed/Sat, Mega Millions
-      # Tue/Fri). Sundays and Thursdays are NY-only, so the GPU stays off and
-      # the week costs 5 sessions instead of 7. Every other arm still predicts
-      # all seven days — the rest of the loop below is unconditional.
+      # Only on days a tuned-arm game draws (Powerball Mon/Wed/Sat, Mega
+      # Millions Tue/Fri — see TUNED_ARM_GAMES). Sundays and Thursdays keep
+      # the GPU off, so the week costs 5 sessions instead of 7. Every other
+      # arm still predicts all seven days — the rest of the loop below is
+      # unconditional. FL games are served by the cheap fewshot arm only.
       # Best-effort: a failure here is visible but must not block the loop.
       - name: Bring up the tuned model
         id: deploy
@@ -41,7 +42,7 @@ jobs:
         env:
           FIREWORKS_API_KEY: ${{ secrets.FIREWORKS_API_KEY }}
           FIREWORKS_ACCOUNT_ID: ${{ secrets.FIREWORKS_ACCOUNT_ID }}
-        run: lottery-guru finetune deploy --only-if-drawings jackpot
+        run: lottery-guru finetune deploy --only-if-drawings tuned
 
       - name: Pull results, score, predict, report
         env:

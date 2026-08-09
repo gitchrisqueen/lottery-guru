@@ -16,7 +16,7 @@ def make_history(game_key: str, n: int = 120) -> list[Draw]:
     for i in range(n):
         if game.kind == "jackpot":
             nums = tuple(sorted(rng.sample(range(1, game.pick_max + 1), game.pick_count)))
-            special = rng.randint(1, game.special_max)
+            special = rng.randint(1, game.special_max) if game.special_max else None
         else:
             nums = tuple(rng.randint(0, 9) for _ in range(game.pick_count))
             special = None
@@ -40,7 +40,10 @@ def test_all_applicable_strategies_produce_valid_tickets(game_key):
         if game.kind == "jackpot":
             assert len(set(pred.numbers)) == game.pick_count  # no duplicates
             assert pred.numbers == tuple(sorted(pred.numbers))
-            assert 1 <= pred.special <= game.special_max
+            if game.special_max is None:  # FL-style: no special ball
+                assert pred.special is None
+            else:
+                assert 1 <= pred.special <= game.special_max
         else:
             assert pred.special is None
 
@@ -95,17 +98,20 @@ def test_predictions_only_cover_games_drawing_that_day():
         assert scheduled, f"no drawings computed for {date}"
 
 
-def test_jackpot_draw_days_are_exactly_the_gpu_days():
-    """The daily loop only deploys the tuned model when a jackpot game draws.
-    Sun/Thu are NY-only, so the GPU stays off those days."""
-    from lottery_guru.games import GAMES, draws_on
+def test_tuned_arm_draw_days_are_exactly_the_gpu_days():
+    """The daily loop only deploys the tuned model when a TUNED_ARM_GAMES game
+    draws (Powerball Mon/Wed/Sat, Mega Millions Tue/Fri). Sun/Thu keep the GPU
+    off — FL Fantasy 5 is jackpot-kind and draws daily, so gating on kind
+    would silently grow GPU spend to 7 days a week."""
+    from lottery_guru.games import GAMES, TUNED_ARM_GAMES, draws_on
 
-    jackpot_days = {
+    tuned_days = {
         dt.date(2026, 8, 3) + dt.timedelta(days=i)  # Mon .. Sun
         for i in range(7)
-        if any(g.kind == "jackpot" for g, _ in draws_on(dt.date(2026, 8, 3) + dt.timedelta(days=i)))
+        if any(g.key in TUNED_ARM_GAMES
+               for g, _ in draws_on(dt.date(2026, 8, 3) + dt.timedelta(days=i)))
     }
-    assert {d.weekday() for d in jackpot_days} == {0, 1, 2, 4, 5}  # Mon,Tue,Wed,Fri,Sat
+    assert {d.weekday() for d in tuned_days} == {0, 1, 2, 4, 5}  # Mon,Tue,Wed,Fri,Sat
     # every day still has digit-game drawings, so the rest of the loop must run daily
     for i in range(7):
         date = dt.date(2026, 8, 3) + dt.timedelta(days=i)
