@@ -7,7 +7,7 @@ from pathlib import Path
 
 from ..data import store
 from ..games import GAMES
-from . import scoring
+from . import monitors, scoring
 
 
 def build_report() -> str:
@@ -48,6 +48,8 @@ def build_report() -> str:
         lines.append("")
     if len(lines) <= 4:
         lines.append("_No scored predictions yet — the daily loop hasn't produced results._")
+        lines.append("")
+    lines.extend(monitors.render_lines())
     return "\n".join(lines) + "\n"
 
 
