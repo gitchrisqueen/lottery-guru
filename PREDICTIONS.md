@@ -65,4 +65,4 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `positional` | `9` `6` `2` `4` |
 | `random` | `4` `7` `7` `7` |
 
-<sub>Updated 2026-08-08 10:53 UTC</sub>
+<sub>Updated 2026-08-09 10:52 UTC</sub>
