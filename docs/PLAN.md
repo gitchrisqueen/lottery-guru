@@ -22,9 +22,17 @@ expected payout conditional on winning by avoiding numbers humans over-pick.
 | `megamillions` | 5 of 70 + 1 of 24 | Tue/Fri | second jackpot game (era-split Apr 2025) |
 | `ny_numbers` | 3 ordered digits 0–9 | daily ×2 (midday/evening) | **daily** predictions need a daily game |
 | `ny_win4` | 4 ordered digits 0–9 | daily ×2 | second daily stream |
+| `fl_fantasy5` | 5 of 36 (no special ball) | daily ×2 | FL flagship daily; first no-special jackpot game |
+| `fl_lotto` | 6 of 53 (no special ball) | Wed/Sat | deep history to 1988; 6/53 era since Oct 1999 |
+| `fl_jtp` | 6 of 46 (no special ball) | Tue/Fri | third jackpot-shape stream |
+| `fl_pick2`–`fl_pick5` | 2–5 ordered digits 0–9 | daily ×2 | four more daily digit streams; cross-state comparison vs NY |
 
-There is a drawing every single day of the week across these four, so the daily loop always has
-something to predict and something to score.
+There is a drawing every single day of the week, so the daily loop always has
+something to predict and something to score. FL games come from the official
+Florida Lottery PDF files (no open-data portal exists — see RESEARCH.md §1);
+the GPU-backed `llm-tuned` arm stays gated to `TUNED_ARM_GAMES`
+(Powerball/Mega Millions) so FL's daily jackpot-kind games don't grow GPU
+spend.
 
 ## Architecture
 
