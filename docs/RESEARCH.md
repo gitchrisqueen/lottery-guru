@@ -57,7 +57,17 @@ served its purpose; recoverable from git history at tag-time commit `91a18a0`). 
 is a **generation timestamp, not a last-draw date** (retired games' files still
 regenerate) — detect new data by diffing rows, never by header. No auth, no
 captcha, stable URL scheme for a decade+; fetches send a descriptive UA and the
-per-game pull soft-fails so a WAF hiccup never blocks the loop. FL evening
+per-game pull soft-fails so a WAF hiccup never blocks the loop.
+
+**Rate limiting is real and it is not an HTTP status.** Observed 2026-08-10: a
+deep backfill pulled all seven PDFs and parsed for ~50 minutes; a second pull
+minutes later got `SSLV3_ALERT_HANDSHAKE_FAILURE` from *both* hosts — the CDN
+refuses the TLS handshake outright rather than returning 429, and keeps
+refusing for a while. Every FL game soft-failed and the run still went green,
+because soft-fail is by design. So: `_download` spaces requests, retries over
+both hosts with exponential backoff, and reports each host and attempt in the
+error; and **a green backfill run is not evidence FL data landed** — check the
+per-game `added` counts in the log. FL evening
 draws (11:15 PM ET = 03:15 UTC) are in the nightly regeneration well before the
 10:15 UTC pull; a lagging day self-heals via `score_pending()`.
 

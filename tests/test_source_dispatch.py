@@ -49,14 +49,21 @@ def test_pull_soft_fails_per_game(monkeypatch, tmp_path, capsys):
     assert "WARNING: pull failed for fl_lotto" in capsys.readouterr().out
 
 
+@pytest.fixture(autouse=True)
+def _no_sleeping(monkeypatch):
+    """Backoff is real seconds in production; tests must not pay them."""
+    monkeypatch.setattr(florida.time, "sleep", lambda seconds: None)
+
+
+class FakeResponse:
+    content = b"%PDF-fake"
+
+    def raise_for_status(self):
+        pass
+
+
 def test_fl_download_fails_over_to_the_mirror(monkeypatch):
     calls = []
-
-    class FakeResponse:
-        content = b"%PDF-fake"
-
-        def raise_for_status(self):
-            pass
 
     def fake_get(url, **kwargs):
         calls.append(url)
@@ -69,10 +76,31 @@ def test_fl_download_fails_over_to_the_mirror(monkeypatch):
     assert calls == [f"{florida.PRIMARY_BASE}/ff.pdf", f"{florida.MIRROR_BASE}/ff.pdf"]
 
 
-def test_fl_download_reports_both_hosts_down(monkeypatch):
+def test_fl_download_retries_a_transient_tls_refusal(monkeypatch):
+    """The CDN refuses the TLS handshake under load, then recovers — the whole
+    reason the first live backfill came back with zero FL draws."""
+    calls = []
+
     def fake_get(url, **kwargs):
-        raise requests.ConnectionError("down")
+        calls.append(url)
+        if len(calls) <= 2:  # first round: both hosts refuse
+            raise requests.exceptions.SSLError("sslv3 alert handshake failure")
+        return FakeResponse()
 
     monkeypatch.setattr(florida.requests, "get", fake_get)
-    with pytest.raises(RuntimeError, match="unavailable on both hosts"):
+    assert florida._download("ff") == b"%PDF-fake"
+    assert len(calls) == 3  # recovered on the second round
+
+
+def test_fl_download_reports_every_host_and_attempt(monkeypatch):
+    def fake_get(url, **kwargs):
+        raise requests.exceptions.SSLError("handshake failure")
+
+    monkeypatch.setattr(florida.requests, "get", fake_get)
+    with pytest.raises(RuntimeError) as excinfo:
         florida._download("ff")
+    message = str(excinfo.value)
+    assert "files.floridalottery.com" in message  # not just the last host tried
+    assert "apps.flalottery.com" in message
+    assert f"attempt {florida.RETRIES}" in message
+    assert "SSLError" in message
