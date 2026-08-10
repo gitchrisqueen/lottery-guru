@@ -83,3 +83,38 @@ def test_pick2_parses_pre_fireball_rows():
 def test_limit_caps_parsed_draws():
     draws = florida.parse_text(GAMES["fl_fantasy5"], load("ff"), limit=10)
     assert len(draws) == 10
+
+
+def test_fetch_stops_reading_pages_once_the_limit_is_met(monkeypatch):
+    """The daily pull needs ~200 draws from files up to 130 pages long.
+    Layout extraction costs seconds per page, so it must stop early."""
+    pages = [p for p in load("ff").split("Draw Date   Draw Type") if p.strip()]
+    assert len(pages) > 1, "fixture should span more than one page"
+    read = []
+
+    def fake_pages(pdf_bytes):
+        for i, page in enumerate(pages):
+            read.append(i)
+            yield page
+
+    monkeypatch.setattr(florida, "_download", lambda stem: b"%PDF-fake")
+    monkeypatch.setattr(florida, "iter_page_texts", fake_pages)
+    draws = florida.fetch_draws(GAMES["fl_fantasy5"], limit=5)
+    assert len(draws) == 5
+    assert read == [0]  # stopped after the first page satisfied the limit
+
+
+def test_fetch_reads_every_page_when_the_limit_is_high(monkeypatch):
+    pages = [p for p in load("ff").split("Draw Date   Draw Type") if p.strip()]
+    read = []
+
+    def fake_pages(pdf_bytes):
+        for i, page in enumerate(pages):
+            read.append(i)
+            yield page
+
+    monkeypatch.setattr(florida, "_download", lambda stem: b"%PDF-fake")
+    monkeypatch.setattr(florida, "iter_page_texts", fake_pages)
+    draws = florida.fetch_draws(GAMES["fl_fantasy5"], limit=100_000)
+    assert read == list(range(len(pages)))  # nothing skipped
+    assert len(draws) >= 40
