@@ -1,5 +1,6269 @@
 [
  {
+  "date": "2002-05-17",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   18,
+   25,
+   33,
+   47
+  ],
+  "special": 30
+ },
+ {
+  "date": "2002-05-21",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   28,
+   39,
+   41,
+   44
+  ],
+  "special": 9
+ },
+ {
+  "date": "2002-05-24",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   4,
+   32,
+   44,
+   52
+  ],
+  "special": 36
+ },
+ {
+  "date": "2002-05-28",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   21,
+   22,
+   29,
+   32
+  ],
+  "special": 24
+ },
+ {
+  "date": "2002-05-31",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   28,
+   45,
+   46,
+   52
+  ],
+  "special": 47
+ },
+ {
+  "date": "2002-06-04",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   25,
+   29,
+   30,
+   48
+  ],
+  "special": 48
+ },
+ {
+  "date": "2002-06-07",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   22,
+   27,
+   28,
+   42
+  ],
+  "special": 13
+ },
+ {
+  "date": "2002-06-11",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   6,
+   9,
+   33,
+   44
+  ],
+  "special": 52
+ },
+ {
+  "date": "2002-06-14",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   8,
+   32,
+   37,
+   43
+  ],
+  "special": 2
+ },
+ {
+  "date": "2002-06-18",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   13,
+   18,
+   27,
+   45
+  ],
+  "special": 18
+ },
+ {
+  "date": "2002-06-21",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   18,
+   32,
+   39,
+   49
+  ],
+  "special": 6
+ },
+ {
+  "date": "2002-06-25",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   18,
+   21,
+   27,
+   41
+  ],
+  "special": 50
+ },
+ {
+  "date": "2002-06-28",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   31,
+   49,
+   50,
+   51
+  ],
+  "special": 4
+ },
+ {
+  "date": "2002-07-02",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   22,
+   32,
+   35,
+   44
+  ],
+  "special": 6
+ },
+ {
+  "date": "2002-07-05",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   20,
+   26,
+   29,
+   41
+  ],
+  "special": 41
+ },
+ {
+  "date": "2002-07-09",
+  "draw_time": "main",
+  "numbers": [
+   26,
+   29,
+   31,
+   44,
+   48
+  ],
+  "special": 40
+ },
+ {
+  "date": "2002-07-12",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   19,
+   23,
+   38,
+   47
+  ],
+  "special": 15
+ },
+ {
+  "date": "2002-07-16",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   24,
+   35,
+   49,
+   52
+  ],
+  "special": 47
+ },
+ {
+  "date": "2002-07-19",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   15,
+   24,
+   37,
+   46
+  ],
+  "special": 9
+ },
+ {
+  "date": "2002-07-23",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   12,
+   29,
+   32,
+   38
+  ],
+  "special": 7
+ },
+ {
+  "date": "2002-07-26",
+  "draw_time": "main",
+  "numbers": [
+   20,
+   27,
+   28,
+   37,
+   49
+  ],
+  "special": 32
+ },
+ {
+  "date": "2002-07-30",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   6,
+   22,
+   27,
+   44
+  ],
+  "special": 1
+ },
+ {
+  "date": "2002-08-02",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   16,
+   23,
+   28,
+   31
+  ],
+  "special": 7
+ },
+ {
+  "date": "2002-08-06",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   6,
+   38,
+   40,
+   50
+  ],
+  "special": 14
+ },
+ {
+  "date": "2002-08-09",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   17,
+   23,
+   43,
+   44
+  ],
+  "special": 26
+ },
+ {
+  "date": "2002-08-13",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   10,
+   15,
+   18,
+   25
+  ],
+  "special": 52
+ },
+ {
+  "date": "2002-08-16",
+  "draw_time": "main",
+  "numbers": [
+   22,
+   31,
+   33,
+   44,
+   52
+  ],
+  "special": 43
+ },
+ {
+  "date": "2002-08-20",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   13,
+   20,
+   23,
+   43
+  ],
+  "special": 6
+ },
+ {
+  "date": "2002-08-23",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   19,
+   20,
+   45,
+   48
+  ],
+  "special": 44
+ },
+ {
+  "date": "2002-08-27",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   5,
+   11,
+   18,
+   45
+  ],
+  "special": 22
+ },
+ {
+  "date": "2002-08-30",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   31,
+   32,
+   42,
+   51
+  ],
+  "special": 42
+ },
+ {
+  "date": "2002-09-03",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   23,
+   36,
+   49,
+   51
+  ],
+  "special": 10
+ },
+ {
+  "date": "2002-09-06",
+  "draw_time": "main",
+  "numbers": [
+   31,
+   39,
+   42,
+   49,
+   51
+  ],
+  "special": 35
+ },
+ {
+  "date": "2002-09-10",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   6,
+   10,
+   21,
+   25
+  ],
+  "special": 21
+ },
+ {
+  "date": "2002-09-13",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   32,
+   37,
+   40,
+   51
+  ],
+  "special": 12
+ },
+ {
+  "date": "2002-09-17",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   10,
+   19,
+   26,
+   44
+  ],
+  "special": 5
+ },
+ {
+  "date": "2002-09-20",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   2,
+   4,
+   5,
+   46
+  ],
+  "special": 8
+ },
+ {
+  "date": "2002-09-24",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   32,
+   34,
+   42,
+   50
+  ],
+  "special": 21
+ },
+ {
+  "date": "2002-09-27",
+  "draw_time": "main",
+  "numbers": [
+   23,
+   27,
+   30,
+   33,
+   36
+  ],
+  "special": 5
+ },
+ {
+  "date": "2002-10-01",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   21,
+   30,
+   32,
+   37
+  ],
+  "special": 15
+ },
+ {
+  "date": "2002-10-04",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   42,
+   43,
+   45,
+   51
+  ],
+  "special": 1
+ },
+ {
+  "date": "2002-10-08",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   34,
+   43,
+   47,
+   50
+  ],
+  "special": 25
+ },
+ {
+  "date": "2002-10-11",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   11,
+   17,
+   26,
+   41
+  ],
+  "special": 29
+ },
+ {
+  "date": "2002-10-15",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   20,
+   27,
+   34,
+   51
+  ],
+  "special": 22
+ },
+ {
+  "date": "2002-10-18",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   31,
+   40,
+   48,
+   51
+  ],
+  "special": 38
+ },
+ {
+  "date": "2002-10-22",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   20,
+   26,
+   36,
+   48
+  ],
+  "special": 32
+ },
+ {
+  "date": "2002-10-25",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   15,
+   34,
+   39,
+   47
+  ],
+  "special": 4
+ },
+ {
+  "date": "2002-10-29",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   10,
+   14,
+   41,
+   49
+  ],
+  "special": 35
+ },
+ {
+  "date": "2002-11-01",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   10,
+   22,
+   23,
+   43
+  ],
+  "special": 37
+ },
+ {
+  "date": "2002-11-05",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   7,
+   16,
+   28,
+   36
+  ],
+  "special": 47
+ },
+ {
+  "date": "2002-11-08",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   19,
+   37,
+   47,
+   48
+  ],
+  "special": 14
+ },
+ {
+  "date": "2002-11-12",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   28,
+   45,
+   48,
+   50
+  ],
+  "special": 24
+ },
+ {
+  "date": "2002-11-15",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   17,
+   44,
+   49,
+   51
+  ],
+  "special": 39
+ },
+ {
+  "date": "2002-11-19",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   16,
+   20,
+   40,
+   52
+  ],
+  "special": 8
+ },
+ {
+  "date": "2002-11-22",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   16,
+   19,
+   22,
+   46
+  ],
+  "special": 5
+ },
+ {
+  "date": "2002-11-26",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   21,
+   27,
+   31,
+   43
+  ],
+  "special": 34
+ },
+ {
+  "date": "2002-11-29",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   25,
+   33,
+   42,
+   49
+  ],
+  "special": 40
+ },
+ {
+  "date": "2002-12-03",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   15,
+   19,
+   40,
+   51
+  ],
+  "special": 26
+ },
+ {
+  "date": "2002-12-06",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   8,
+   30,
+   36,
+   52
+  ],
+  "special": 48
+ },
+ {
+  "date": "2002-12-10",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   5,
+   9,
+   16,
+   31
+  ],
+  "special": 28
+ },
+ {
+  "date": "2002-12-13",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   13,
+   14,
+   24,
+   46
+  ],
+  "special": 34
+ },
+ {
+  "date": "2002-12-17",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   7,
+   21,
+   29,
+   49
+  ],
+  "special": 46
+ },
+ {
+  "date": "2002-12-20",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   14,
+   41,
+   46,
+   49
+  ],
+  "special": 52
+ },
+ {
+  "date": "2002-12-24",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   24,
+   39,
+   43,
+   52
+  ],
+  "special": 43
+ },
+ {
+  "date": "2002-12-27",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   14,
+   26,
+   30,
+   39
+  ],
+  "special": 3
+ },
+ {
+  "date": "2002-12-31",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   21,
+   29,
+   42,
+   51
+  ],
+  "special": 34
+ },
+ {
+  "date": "2003-01-03",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   14,
+   28,
+   37,
+   46
+  ],
+  "special": 3
+ },
+ {
+  "date": "2003-01-07",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   16,
+   28,
+   34,
+   51
+  ],
+  "special": 33
+ },
+ {
+  "date": "2003-01-10",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   17,
+   18,
+   34,
+   50
+  ],
+  "special": 18
+ },
+ {
+  "date": "2003-01-14",
+  "draw_time": "main",
+  "numbers": [
+   30,
+   39,
+   41,
+   47,
+   52
+  ],
+  "special": 27
+ },
+ {
+  "date": "2003-01-17",
+  "draw_time": "main",
+  "numbers": [
+   25,
+   26,
+   38,
+   42,
+   46
+  ],
+  "special": 27
+ },
+ {
+  "date": "2003-01-21",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   41,
+   48,
+   50,
+   51
+  ],
+  "special": 23
+ },
+ {
+  "date": "2003-01-24",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   31,
+   37,
+   40,
+   41
+  ],
+  "special": 5
+ },
+ {
+  "date": "2003-01-28",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   24,
+   26,
+   32,
+   47
+  ],
+  "special": 34
+ },
+ {
+  "date": "2003-01-31",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   8,
+   9,
+   19,
+   22
+  ],
+  "special": 21
+ },
+ {
+  "date": "2003-02-04",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   12,
+   16,
+   22,
+   24
+  ],
+  "special": 48
+ },
+ {
+  "date": "2003-02-07",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   9,
+   20,
+   26,
+   27
+  ],
+  "special": 50
+ },
+ {
+  "date": "2003-02-11",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   20,
+   23,
+   48,
+   49
+  ],
+  "special": 10
+ },
+ {
+  "date": "2003-02-14",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   13,
+   19,
+   32,
+   47
+  ],
+  "special": 21
+ },
+ {
+  "date": "2003-02-18",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   22,
+   29,
+   42,
+   50
+  ],
+  "special": 11
+ },
+ {
+  "date": "2003-02-21",
+  "draw_time": "main",
+  "numbers": [
+   21,
+   28,
+   29,
+   40,
+   51
+  ],
+  "special": 20
+ },
+ {
+  "date": "2003-02-25",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   4,
+   6,
+   37,
+   47
+  ],
+  "special": 38
+ },
+ {
+  "date": "2003-02-28",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   16,
+   26,
+   48,
+   49
+  ],
+  "special": 13
+ },
+ {
+  "date": "2003-03-04",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   26,
+   36,
+   37,
+   41
+  ],
+  "special": 22
+ },
+ {
+  "date": "2003-03-07",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   10,
+   32,
+   36,
+   41
+  ],
+  "special": 33
+ },
+ {
+  "date": "2003-03-11",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   15,
+   26,
+   28,
+   39
+  ],
+  "special": 10
+ },
+ {
+  "date": "2003-03-14",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   6,
+   14,
+   31,
+   33
+  ],
+  "special": 8
+ },
+ {
+  "date": "2003-03-18",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   14,
+   16,
+   29,
+   49
+  ],
+  "special": 29
+ },
+ {
+  "date": "2003-03-21",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   17,
+   18,
+   40,
+   50
+  ],
+  "special": 8
+ },
+ {
+  "date": "2003-03-25",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   21,
+   37,
+   40,
+   42
+  ],
+  "special": 7
+ },
+ {
+  "date": "2003-03-28",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   12,
+   21,
+   27,
+   29
+  ],
+  "special": 15
+ },
+ {
+  "date": "2003-04-01",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   12,
+   26,
+   45,
+   47
+  ],
+  "special": 36
+ },
+ {
+  "date": "2003-04-04",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   22,
+   28,
+   31,
+   40
+  ],
+  "special": 18
+ },
+ {
+  "date": "2003-04-08",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   10,
+   24,
+   38,
+   45
+  ],
+  "special": 6
+ },
+ {
+  "date": "2003-04-11",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   26,
+   27,
+   38,
+   39
+  ],
+  "special": 46
+ },
+ {
+  "date": "2003-04-15",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   29,
+   31,
+   39,
+   52
+  ],
+  "special": 21
+ },
+ {
+  "date": "2003-04-18",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   15,
+   24,
+   50,
+   52
+  ],
+  "special": 3
+ },
+ {
+  "date": "2003-04-22",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   9,
+   15,
+   28,
+   52
+  ],
+  "special": 7
+ },
+ {
+  "date": "2003-04-25",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   12,
+   32,
+   48,
+   51
+  ],
+  "special": 29
+ },
+ {
+  "date": "2003-04-29",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   8,
+   9,
+   33,
+   35
+  ],
+  "special": 32
+ },
+ {
+  "date": "2003-05-02",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   5,
+   19,
+   32,
+   34
+  ],
+  "special": 52
+ },
+ {
+  "date": "2003-05-06",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   14,
+   32,
+   44,
+   52
+  ],
+  "special": 24
+ },
+ {
+  "date": "2003-05-09",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   10,
+   20,
+   22,
+   28
+  ],
+  "special": 39
+ },
+ {
+  "date": "2003-05-13",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   20,
+   47,
+   49,
+   50
+  ],
+  "special": 34
+ },
+ {
+  "date": "2003-05-16",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   10,
+   16,
+   26,
+   39
+  ],
+  "special": 52
+ },
+ {
+  "date": "2003-05-20",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   16,
+   36,
+   44,
+   49
+  ],
+  "special": 3
+ },
+ {
+  "date": "2003-05-23",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   20,
+   31,
+   33,
+   50
+  ],
+  "special": 17
+ },
+ {
+  "date": "2003-05-27",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   11,
+   17,
+   20,
+   26
+  ],
+  "special": 3
+ },
+ {
+  "date": "2003-05-30",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   21,
+   28,
+   33,
+   51
+  ],
+  "special": 3
+ },
+ {
+  "date": "2003-06-03",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   20,
+   25,
+   29,
+   32
+  ],
+  "special": 20
+ },
+ {
+  "date": "2003-06-06",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   14,
+   28,
+   39,
+   40
+  ],
+  "special": 35
+ },
+ {
+  "date": "2003-06-10",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   15,
+   23,
+   32,
+   52
+  ],
+  "special": 37
+ },
+ {
+  "date": "2003-06-13",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   15,
+   16,
+   20,
+   51
+  ],
+  "special": 33
+ },
+ {
+  "date": "2003-06-17",
+  "draw_time": "main",
+  "numbers": [
+   27,
+   31,
+   34,
+   40,
+   52
+  ],
+  "special": 1
+ },
+ {
+  "date": "2003-06-20",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   2,
+   3,
+   12,
+   37
+  ],
+  "special": 35
+ },
+ {
+  "date": "2003-06-24",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   26,
+   43,
+   44,
+   47
+  ],
+  "special": 31
+ },
+ {
+  "date": "2003-06-27",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   14,
+   20,
+   31,
+   40
+  ],
+  "special": 43
+ },
+ {
+  "date": "2003-07-01",
+  "draw_time": "main",
+  "numbers": [
+   28,
+   32,
+   39,
+   45,
+   48
+  ],
+  "special": 31
+ },
+ {
+  "date": "2003-07-04",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   7,
+   22,
+   37,
+   46
+  ],
+  "special": 8
+ },
+ {
+  "date": "2003-07-08",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   9,
+   27,
+   29,
+   35
+  ],
+  "special": 18
+ },
+ {
+  "date": "2003-07-11",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   4,
+   10,
+   16,
+   18
+  ],
+  "special": 10
+ },
+ {
+  "date": "2003-07-15",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   26,
+   33,
+   43,
+   48
+  ],
+  "special": 22
+ },
+ {
+  "date": "2003-07-18",
+  "draw_time": "main",
+  "numbers": [
+   29,
+   30,
+   34,
+   38,
+   44
+  ],
+  "special": 39
+ },
+ {
+  "date": "2003-07-22",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   5,
+   31,
+   38,
+   47
+  ],
+  "special": 3
+ },
+ {
+  "date": "2003-07-25",
+  "draw_time": "main",
+  "numbers": [
+   33,
+   46,
+   47,
+   50,
+   51
+  ],
+  "special": 30
+ },
+ {
+  "date": "2003-07-29",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   17,
+   19,
+   32,
+   42
+  ],
+  "special": 33
+ },
+ {
+  "date": "2003-08-01",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   11,
+   27,
+   30,
+   33
+  ],
+  "special": 46
+ },
+ {
+  "date": "2003-08-05",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   32,
+   34,
+   38,
+   44
+  ],
+  "special": 49
+ },
+ {
+  "date": "2003-08-08",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   9,
+   35,
+   40,
+   43
+  ],
+  "special": 42
+ },
+ {
+  "date": "2003-08-12",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   11,
+   18,
+   35,
+   51
+  ],
+  "special": 26
+ },
+ {
+  "date": "2003-08-15",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   16,
+   20,
+   41,
+   52
+  ],
+  "special": 13
+ },
+ {
+  "date": "2003-08-19",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   11,
+   24,
+   28,
+   52
+  ],
+  "special": 16
+ },
+ {
+  "date": "2003-08-22",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   19,
+   31,
+   32,
+   51
+  ],
+  "special": 31
+ },
+ {
+  "date": "2003-08-26",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   28,
+   42,
+   44,
+   49
+  ],
+  "special": 47
+ },
+ {
+  "date": "2003-08-29",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   11,
+   17,
+   42,
+   52
+  ],
+  "special": 10
+ },
+ {
+  "date": "2003-09-02",
+  "draw_time": "main",
+  "numbers": [
+   22,
+   26,
+   27,
+   32,
+   39
+  ],
+  "special": 14
+ },
+ {
+  "date": "2003-09-05",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   9,
+   28,
+   41,
+   42
+  ],
+  "special": 19
+ },
+ {
+  "date": "2003-09-09",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   15,
+   30,
+   39,
+   46
+  ],
+  "special": 30
+ },
+ {
+  "date": "2003-09-12",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   22,
+   23,
+   38,
+   46
+  ],
+  "special": 45
+ },
+ {
+  "date": "2003-09-16",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   20,
+   24,
+   30,
+   46
+  ],
+  "special": 42
+ },
+ {
+  "date": "2003-09-19",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   14,
+   24,
+   34,
+   47
+  ],
+  "special": 13
+ },
+ {
+  "date": "2003-09-23",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   16,
+   24,
+   49,
+   51
+  ],
+  "special": 28
+ },
+ {
+  "date": "2003-09-26",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   29,
+   32,
+   45,
+   52
+  ],
+  "special": 29
+ },
+ {
+  "date": "2003-09-30",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   26,
+   37,
+   40,
+   46
+  ],
+  "special": 49
+ },
+ {
+  "date": "2003-10-03",
+  "draw_time": "main",
+  "numbers": [
+   19,
+   21,
+   30,
+   31,
+   52
+  ],
+  "special": 51
+ },
+ {
+  "date": "2003-10-07",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   2,
+   22,
+   40,
+   41
+  ],
+  "special": 43
+ },
+ {
+  "date": "2003-10-10",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   19,
+   36,
+   42,
+   48
+  ],
+  "special": 13
+ },
+ {
+  "date": "2003-10-14",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   19,
+   21,
+   33,
+   40
+  ],
+  "special": 29
+ },
+ {
+  "date": "2003-10-17",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   20,
+   31,
+   46,
+   48
+  ],
+  "special": 18
+ },
+ {
+  "date": "2003-10-21",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   34,
+   46,
+   51,
+   52
+  ],
+  "special": 38
+ },
+ {
+  "date": "2003-10-24",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   9,
+   16,
+   30,
+   31
+  ],
+  "special": 15
+ },
+ {
+  "date": "2003-10-28",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   9,
+   20,
+   40,
+   47
+  ],
+  "special": 26
+ },
+ {
+  "date": "2003-10-31",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   12,
+   13,
+   36,
+   46
+  ],
+  "special": 3
+ },
+ {
+  "date": "2003-11-04",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   24,
+   43,
+   44,
+   45
+  ],
+  "special": 22
+ },
+ {
+  "date": "2003-11-07",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   18,
+   23,
+   26,
+   30
+  ],
+  "special": 31
+ },
+ {
+  "date": "2003-11-11",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   5,
+   17,
+   21,
+   22
+  ],
+  "special": 43
+ },
+ {
+  "date": "2003-11-14",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   13,
+   31,
+   41,
+   42
+  ],
+  "special": 52
+ },
+ {
+  "date": "2003-11-18",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   11,
+   25,
+   30,
+   52
+  ],
+  "special": 36
+ },
+ {
+  "date": "2003-11-21",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   26,
+   28,
+   36,
+   42
+  ],
+  "special": 14
+ },
+ {
+  "date": "2003-11-25",
+  "draw_time": "main",
+  "numbers": [
+   22,
+   32,
+   37,
+   40,
+   41
+  ],
+  "special": 52
+ },
+ {
+  "date": "2003-11-28",
+  "draw_time": "main",
+  "numbers": [
+   19,
+   26,
+   31,
+   44,
+   50
+  ],
+  "special": 19
+ },
+ {
+  "date": "2003-12-02",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   13,
+   24,
+   34,
+   49
+  ],
+  "special": 4
+ },
+ {
+  "date": "2003-12-05",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   12,
+   15,
+   18,
+   44
+  ],
+  "special": 42
+ },
+ {
+  "date": "2003-12-09",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   14,
+   15,
+   24,
+   48
+  ],
+  "special": 41
+ },
+ {
+  "date": "2003-12-12",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   16,
+   32,
+   45,
+   46
+  ],
+  "special": 26
+ },
+ {
+  "date": "2003-12-16",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   24,
+   31,
+   46,
+   47
+  ],
+  "special": 47
+ },
+ {
+  "date": "2003-12-19",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   10,
+   17,
+   35,
+   39
+  ],
+  "special": 38
+ },
+ {
+  "date": "2003-12-23",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   13,
+   21,
+   22,
+   49
+  ],
+  "special": 52
+ },
+ {
+  "date": "2003-12-26",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   10,
+   17,
+   20,
+   29
+  ],
+  "special": 36
+ },
+ {
+  "date": "2003-12-30",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   18,
+   21,
+   32,
+   46
+  ],
+  "special": 49
+ },
+ {
+  "date": "2004-01-02",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   8,
+   36,
+   44,
+   48
+  ],
+  "special": 9
+ },
+ {
+  "date": "2004-01-06",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   13,
+   15,
+   25,
+   32
+  ],
+  "special": 9
+ },
+ {
+  "date": "2004-01-09",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   32,
+   38,
+   47,
+   49
+  ],
+  "special": 12
+ },
+ {
+  "date": "2004-01-13",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   17,
+   18,
+   21,
+   45
+  ],
+  "special": 21
+ },
+ {
+  "date": "2004-01-16",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   26,
+   41,
+   44,
+   49
+  ],
+  "special": 44
+ },
+ {
+  "date": "2004-01-20",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   7,
+   14,
+   21,
+   45
+  ],
+  "special": 36
+ },
+ {
+  "date": "2004-01-23",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   18,
+   33,
+   46,
+   51
+  ],
+  "special": 13
+ },
+ {
+  "date": "2004-01-27",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   10,
+   20,
+   38,
+   50
+  ],
+  "special": 27
+ },
+ {
+  "date": "2004-01-30",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   28,
+   30,
+   40,
+   51
+  ],
+  "special": 44
+ },
+ {
+  "date": "2004-02-03",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   21,
+   26,
+   35,
+   41
+  ],
+  "special": 17
+ },
+ {
+  "date": "2004-02-06",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   6,
+   16,
+   30,
+   49
+  ],
+  "special": 13
+ },
+ {
+  "date": "2004-02-10",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   7,
+   10,
+   22,
+   32
+  ],
+  "special": 23
+ },
+ {
+  "date": "2004-02-13",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   30,
+   42,
+   43,
+   45
+  ],
+  "special": 30
+ },
+ {
+  "date": "2004-02-17",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   8,
+   34,
+   36,
+   52
+  ],
+  "special": 21
+ },
+ {
+  "date": "2004-02-20",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   13,
+   20,
+   21,
+   30
+  ],
+  "special": 24
+ },
+ {
+  "date": "2004-02-24",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   11,
+   43,
+   49,
+   52
+  ],
+  "special": 21
+ },
+ {
+  "date": "2004-02-27",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   9,
+   24,
+   36,
+   52
+  ],
+  "special": 44
+ },
+ {
+  "date": "2004-03-02",
+  "draw_time": "main",
+  "numbers": [
+   25,
+   30,
+   35,
+   40,
+   50
+  ],
+  "special": 4
+ },
+ {
+  "date": "2004-03-05",
+  "draw_time": "main",
+  "numbers": [
+   30,
+   40,
+   47,
+   49,
+   52
+  ],
+  "special": 3
+ },
+ {
+  "date": "2004-03-09",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   23,
+   29,
+   36,
+   51
+  ],
+  "special": 49
+ },
+ {
+  "date": "2004-03-12",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   29,
+   32,
+   35,
+   36
+  ],
+  "special": 11
+ },
+ {
+  "date": "2004-03-16",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   28,
+   45,
+   49,
+   51
+  ],
+  "special": 52
+ },
+ {
+  "date": "2004-03-19",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   9,
+   14,
+   32,
+   50
+  ],
+  "special": 4
+ },
+ {
+  "date": "2004-03-23",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   22,
+   35,
+   39,
+   46
+  ],
+  "special": 32
+ },
+ {
+  "date": "2004-03-26",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   10,
+   17,
+   37,
+   49
+  ],
+  "special": 20
+ },
+ {
+  "date": "2004-03-30",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   27,
+   31,
+   41,
+   45
+  ],
+  "special": 33
+ },
+ {
+  "date": "2004-04-02",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   17,
+   25,
+   46,
+   47
+  ],
+  "special": 13
+ },
+ {
+  "date": "2004-04-06",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   17,
+   29,
+   32,
+   39
+  ],
+  "special": 49
+ },
+ {
+  "date": "2004-04-09",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   8,
+   10,
+   11,
+   23
+  ],
+  "special": 40
+ },
+ {
+  "date": "2004-04-13",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   36,
+   39,
+   50,
+   51
+  ],
+  "special": 34
+ },
+ {
+  "date": "2004-04-16",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   24,
+   29,
+   42,
+   51
+  ],
+  "special": 41
+ },
+ {
+  "date": "2004-04-20",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   22,
+   37,
+   46,
+   48
+  ],
+  "special": 49
+ },
+ {
+  "date": "2004-04-23",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   22,
+   25,
+   47,
+   48
+  ],
+  "special": 27
+ },
+ {
+  "date": "2004-04-27",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   10,
+   17,
+   23,
+   35
+  ],
+  "special": 45
+ },
+ {
+  "date": "2004-04-30",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   21,
+   32,
+   39,
+   50
+  ],
+  "special": 34
+ },
+ {
+  "date": "2004-05-04",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   15,
+   29,
+   37,
+   39
+  ],
+  "special": 40
+ },
+ {
+  "date": "2004-05-07",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   17,
+   19,
+   44,
+   50
+  ],
+  "special": 17
+ },
+ {
+  "date": "2004-05-11",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   25,
+   30,
+   34,
+   37
+  ],
+  "special": 30
+ },
+ {
+  "date": "2004-05-14",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   19,
+   32,
+   36,
+   46
+  ],
+  "special": 6
+ },
+ {
+  "date": "2004-05-18",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   36,
+   44,
+   46,
+   51
+  ],
+  "special": 45
+ },
+ {
+  "date": "2004-05-21",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   20,
+   27,
+   38,
+   49
+  ],
+  "special": 31
+ },
+ {
+  "date": "2004-05-25",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   18,
+   34,
+   36,
+   39
+  ],
+  "special": 43
+ },
+ {
+  "date": "2004-05-28",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   27,
+   36,
+   39,
+   51
+  ],
+  "special": 33
+ },
+ {
+  "date": "2004-06-01",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   16,
+   17,
+   26,
+   48
+  ],
+  "special": 15
+ },
+ {
+  "date": "2004-06-04",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   16,
+   18,
+   41,
+   47
+  ],
+  "special": 46
+ },
+ {
+  "date": "2004-06-08",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   24,
+   29,
+   37,
+   45
+  ],
+  "special": 43
+ },
+ {
+  "date": "2004-06-11",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   28,
+   36,
+   39,
+   52
+  ],
+  "special": 36
+ },
+ {
+  "date": "2004-06-15",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   23,
+   27,
+   29,
+   44
+  ],
+  "special": 24
+ },
+ {
+  "date": "2004-06-18",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   10,
+   11,
+   15,
+   51
+  ],
+  "special": 23
+ },
+ {
+  "date": "2004-06-22",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   10,
+   17,
+   41,
+   52
+  ],
+  "special": 19
+ },
+ {
+  "date": "2004-06-25",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   19,
+   29,
+   32,
+   42
+  ],
+  "special": 32
+ },
+ {
+  "date": "2004-06-29",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   13,
+   19,
+   28,
+   38
+  ],
+  "special": 1
+ },
+ {
+  "date": "2004-07-02",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   25,
+   38,
+   39,
+   50
+  ],
+  "special": 12
+ },
+ {
+  "date": "2004-07-06",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   7,
+   8,
+   31,
+   48
+  ],
+  "special": 19
+ },
+ {
+  "date": "2004-07-09",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   23,
+   25,
+   29,
+   45
+  ],
+  "special": 16
+ },
+ {
+  "date": "2004-07-13",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   31,
+   37,
+   39,
+   52
+  ],
+  "special": 38
+ },
+ {
+  "date": "2004-07-16",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   21,
+   22,
+   35,
+   44
+  ],
+  "special": 7
+ },
+ {
+  "date": "2004-07-20",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   15,
+   21,
+   32,
+   44
+  ],
+  "special": 13
+ },
+ {
+  "date": "2004-07-23",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   12,
+   25,
+   35,
+   37
+  ],
+  "special": 12
+ },
+ {
+  "date": "2004-07-27",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   10,
+   11,
+   13,
+   24
+  ],
+  "special": 46
+ },
+ {
+  "date": "2004-07-30",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   19,
+   21,
+   34,
+   35
+  ],
+  "special": 22
+ },
+ {
+  "date": "2004-08-03",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   2,
+   13,
+   16,
+   22
+  ],
+  "special": 31
+ },
+ {
+  "date": "2004-08-06",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   23,
+   33,
+   38,
+   49
+  ],
+  "special": 7
+ },
+ {
+  "date": "2004-08-10",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   25,
+   29,
+   31,
+   44
+  ],
+  "special": 33
+ },
+ {
+  "date": "2004-08-13",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   31,
+   41,
+   45,
+   48
+  ],
+  "special": 20
+ },
+ {
+  "date": "2004-08-17",
+  "draw_time": "main",
+  "numbers": [
+   22,
+   23,
+   26,
+   28,
+   36
+  ],
+  "special": 10
+ },
+ {
+  "date": "2004-08-20",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   17,
+   34,
+   37,
+   39
+  ],
+  "special": 34
+ },
+ {
+  "date": "2004-08-24",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   5,
+   21,
+   47,
+   50
+  ],
+  "special": 46
+ },
+ {
+  "date": "2004-08-27",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   25,
+   38,
+   46,
+   47
+  ],
+  "special": 14
+ },
+ {
+  "date": "2004-08-31",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   15,
+   25,
+   42,
+   44
+  ],
+  "special": 3
+ },
+ {
+  "date": "2004-09-03",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   14,
+   34,
+   38,
+   44
+  ],
+  "special": 10
+ },
+ {
+  "date": "2004-09-07",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   30,
+   36,
+   38,
+   51
+  ],
+  "special": 35
+ },
+ {
+  "date": "2004-09-10",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   17,
+   27,
+   45,
+   52
+  ],
+  "special": 5
+ },
+ {
+  "date": "2004-09-14",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   35,
+   37,
+   38,
+   50
+  ],
+  "special": 49
+ },
+ {
+  "date": "2004-09-17",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   16,
+   25,
+   38,
+   49
+  ],
+  "special": 4
+ },
+ {
+  "date": "2004-09-21",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   3,
+   15,
+   19,
+   29
+  ],
+  "special": 39
+ },
+ {
+  "date": "2004-09-24",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   26,
+   30,
+   49,
+   50
+  ],
+  "special": 52
+ },
+ {
+  "date": "2004-09-28",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   18,
+   39,
+   42,
+   50
+  ],
+  "special": 35
+ },
+ {
+  "date": "2004-10-01",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   10,
+   17,
+   24,
+   39
+  ],
+  "special": 52
+ },
+ {
+  "date": "2004-10-05",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   34,
+   39,
+   48,
+   49
+  ],
+  "special": 47
+ },
+ {
+  "date": "2004-10-08",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   17,
+   21,
+   33,
+   41
+  ],
+  "special": 6
+ },
+ {
+  "date": "2004-10-12",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   18,
+   19,
+   39,
+   51
+  ],
+  "special": 13
+ },
+ {
+  "date": "2004-10-15",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   8,
+   24,
+   30,
+   36
+  ],
+  "special": 25
+ },
+ {
+  "date": "2004-10-19",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   13,
+   19,
+   34,
+   50
+  ],
+  "special": 33
+ },
+ {
+  "date": "2004-10-22",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   7,
+   20,
+   24,
+   43
+  ],
+  "special": 36
+ },
+ {
+  "date": "2004-10-26",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   25,
+   39,
+   43,
+   49
+  ],
+  "special": 27
+ },
+ {
+  "date": "2004-10-29",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   18,
+   26,
+   31,
+   41
+  ],
+  "special": 48
+ },
+ {
+  "date": "2004-11-02",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   32,
+   42,
+   49,
+   50
+  ],
+  "special": 3
+ },
+ {
+  "date": "2004-11-05",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   29,
+   30,
+   41,
+   43
+  ],
+  "special": 1
+ },
+ {
+  "date": "2004-11-09",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   20,
+   26,
+   28,
+   52
+  ],
+  "special": 7
+ },
+ {
+  "date": "2004-11-12",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   31,
+   33,
+   35,
+   51
+  ],
+  "special": 1
+ },
+ {
+  "date": "2004-11-16",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   10,
+   27,
+   28,
+   30
+  ],
+  "special": 18
+ },
+ {
+  "date": "2004-11-19",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   12,
+   24,
+   36,
+   51
+  ],
+  "special": 38
+ },
+ {
+  "date": "2004-11-23",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   30,
+   32,
+   35,
+   51
+  ],
+  "special": 17
+ },
+ {
+  "date": "2004-11-26",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   9,
+   18,
+   37,
+   43
+  ],
+  "special": 34
+ },
+ {
+  "date": "2004-11-30",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   20,
+   22,
+   28,
+   52
+  ],
+  "special": 4
+ },
+ {
+  "date": "2004-12-03",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   32,
+   37,
+   41,
+   52
+  ],
+  "special": 13
+ },
+ {
+  "date": "2004-12-07",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   19,
+   22,
+   32,
+   49
+  ],
+  "special": 29
+ },
+ {
+  "date": "2004-12-10",
+  "draw_time": "main",
+  "numbers": [
+   22,
+   23,
+   37,
+   42,
+   47
+  ],
+  "special": 15
+ },
+ {
+  "date": "2004-12-14",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   27,
+   32,
+   34,
+   40
+  ],
+  "special": 2
+ },
+ {
+  "date": "2004-12-17",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   34,
+   38,
+   42,
+   47
+  ],
+  "special": 1
+ },
+ {
+  "date": "2004-12-21",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   22,
+   27,
+   31,
+   38
+  ],
+  "special": 12
+ },
+ {
+  "date": "2004-12-24",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   20,
+   22,
+   41,
+   42
+  ],
+  "special": 10
+ },
+ {
+  "date": "2004-12-28",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   29,
+   32,
+   38,
+   43
+  ],
+  "special": 50
+ },
+ {
+  "date": "2004-12-31",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   14,
+   45,
+   47,
+   51
+  ],
+  "special": 20
+ },
+ {
+  "date": "2005-01-04",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   6,
+   7,
+   12,
+   32
+  ],
+  "special": 30
+ },
+ {
+  "date": "2005-01-07",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   8,
+   14,
+   15,
+   51
+  ],
+  "special": 38
+ },
+ {
+  "date": "2005-01-11",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   23,
+   24,
+   35,
+   45
+  ],
+  "special": 18
+ },
+ {
+  "date": "2005-01-14",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   19,
+   24,
+   40,
+   47
+  ],
+  "special": 50
+ },
+ {
+  "date": "2005-01-18",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   23,
+   28,
+   39,
+   51
+  ],
+  "special": 5
+ },
+ {
+  "date": "2005-01-21",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   27,
+   39,
+   40,
+   41
+  ],
+  "special": 21
+ },
+ {
+  "date": "2005-01-25",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   10,
+   21,
+   25,
+   45
+  ],
+  "special": 22
+ },
+ {
+  "date": "2005-01-28",
+  "draw_time": "main",
+  "numbers": [
+   25,
+   31,
+   39,
+   47,
+   52
+  ],
+  "special": 43
+ },
+ {
+  "date": "2005-02-01",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   17,
+   21,
+   42,
+   44
+  ],
+  "special": 35
+ },
+ {
+  "date": "2005-02-04",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   12,
+   14,
+   30,
+   52
+  ],
+  "special": 34
+ },
+ {
+  "date": "2005-02-08",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   11,
+   14,
+   23,
+   25
+  ],
+  "special": 21
+ },
+ {
+  "date": "2005-02-11",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   14,
+   21,
+   24,
+   50
+  ],
+  "special": 28
+ },
+ {
+  "date": "2005-02-15",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   16,
+   20,
+   21,
+   38
+  ],
+  "special": 10
+ },
+ {
+  "date": "2005-02-18",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   19,
+   31,
+   35,
+   42
+  ],
+  "special": 34
+ },
+ {
+  "date": "2005-02-22",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   18,
+   28,
+   41,
+   45
+  ],
+  "special": 27
+ },
+ {
+  "date": "2005-02-25",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   13,
+   37,
+   38,
+   50
+  ],
+  "special": 24
+ },
+ {
+  "date": "2005-03-01",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   8,
+   18,
+   39,
+   48
+  ],
+  "special": 1
+ },
+ {
+  "date": "2005-03-04",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   10,
+   13,
+   35,
+   39
+  ],
+  "special": 21
+ },
+ {
+  "date": "2005-03-08",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   14,
+   15,
+   22,
+   31
+  ],
+  "special": 13
+ },
+ {
+  "date": "2005-03-11",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   19,
+   31,
+   35,
+   36
+  ],
+  "special": 17
+ },
+ {
+  "date": "2005-03-15",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   26,
+   27,
+   34,
+   44
+  ],
+  "special": 27
+ },
+ {
+  "date": "2005-03-18",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   9,
+   28,
+   29,
+   48
+  ],
+  "special": 33
+ },
+ {
+  "date": "2005-03-22",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   11,
+   27,
+   37,
+   43
+  ],
+  "special": 34
+ },
+ {
+  "date": "2005-03-25",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   18,
+   19,
+   45,
+   49
+  ],
+  "special": 2
+ },
+ {
+  "date": "2005-03-29",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   17,
+   18,
+   30,
+   42
+  ],
+  "special": 38
+ },
+ {
+  "date": "2005-04-01",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   19,
+   28,
+   32,
+   45
+  ],
+  "special": 10
+ },
+ {
+  "date": "2005-04-05",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   19,
+   45,
+   51,
+   52
+  ],
+  "special": 22
+ },
+ {
+  "date": "2005-04-08",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   13,
+   17,
+   33,
+   35
+  ],
+  "special": 35
+ },
+ {
+  "date": "2005-04-12",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   20,
+   43,
+   47,
+   50
+  ],
+  "special": 24
+ },
+ {
+  "date": "2005-04-15",
+  "draw_time": "main",
+  "numbers": [
+   25,
+   26,
+   37,
+   39,
+   49
+  ],
+  "special": 29
+ },
+ {
+  "date": "2005-04-19",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   6,
+   14,
+   42,
+   47
+  ],
+  "special": 3
+ },
+ {
+  "date": "2005-04-22",
+  "draw_time": "main",
+  "numbers": [
+   23,
+   25,
+   43,
+   46,
+   49
+  ],
+  "special": 26
+ },
+ {
+  "date": "2005-04-26",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   22,
+   33,
+   34,
+   42
+  ],
+  "special": 16
+ },
+ {
+  "date": "2005-04-29",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   5,
+   7,
+   28,
+   46
+  ],
+  "special": 21
+ },
+ {
+  "date": "2005-05-03",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   17,
+   42,
+   46,
+   52
+  ],
+  "special": 47
+ },
+ {
+  "date": "2005-05-06",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   12,
+   25,
+   50,
+   51
+  ],
+  "special": 19
+ },
+ {
+  "date": "2005-05-10",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   25,
+   38,
+   40,
+   42
+  ],
+  "special": 40
+ },
+ {
+  "date": "2005-05-13",
+  "draw_time": "main",
+  "numbers": [
+   21,
+   23,
+   27,
+   33,
+   39
+  ],
+  "special": 8
+ },
+ {
+  "date": "2005-05-17",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   9,
+   10,
+   29,
+   44
+  ],
+  "special": 17
+ },
+ {
+  "date": "2005-05-20",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   6,
+   27,
+   40,
+   44
+  ],
+  "special": 9
+ },
+ {
+  "date": "2005-05-24",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   28,
+   39,
+   40,
+   45
+  ],
+  "special": 24
+ },
+ {
+  "date": "2005-05-27",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   17,
+   22,
+   34,
+   50
+  ],
+  "special": 24
+ },
+ {
+  "date": "2005-05-31",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   13,
+   22,
+   37,
+   38
+  ],
+  "special": 11
+ },
+ {
+  "date": "2005-06-03",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   6,
+   14,
+   28,
+   47
+  ],
+  "special": 42
+ },
+ {
+  "date": "2005-06-07",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   14,
+   28,
+   46,
+   47
+  ],
+  "special": 25
+ },
+ {
+  "date": "2005-06-10",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   29,
+   31,
+   37,
+   50
+  ],
+  "special": 34
+ },
+ {
+  "date": "2005-06-14",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   10,
+   29,
+   48,
+   49
+  ],
+  "special": 36
+ },
+ {
+  "date": "2005-06-17",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   35,
+   40,
+   49,
+   50
+  ],
+  "special": 34
+ },
+ {
+  "date": "2005-06-21",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   13,
+   40,
+   46,
+   50
+  ],
+  "special": 30
+ },
+ {
+  "date": "2005-06-24",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   43,
+   44,
+   50,
+   56
+  ],
+  "special": 7
+ },
+ {
+  "date": "2005-06-28",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   20,
+   37,
+   43,
+   46
+  ],
+  "special": 4
+ },
+ {
+  "date": "2005-07-01",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   25,
+   41,
+   42,
+   50
+  ],
+  "special": 40
+ },
+ {
+  "date": "2005-07-05",
+  "draw_time": "main",
+  "numbers": [
+   22,
+   38,
+   48,
+   50,
+   55
+  ],
+  "special": 29
+ },
+ {
+  "date": "2005-07-08",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   23,
+   45,
+   48,
+   50
+  ],
+  "special": 3
+ },
+ {
+  "date": "2005-07-12",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   17,
+   32,
+   39,
+   53
+  ],
+  "special": 36
+ },
+ {
+  "date": "2005-07-15",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   13,
+   25,
+   36,
+   48
+  ],
+  "special": 2
+ },
+ {
+  "date": "2005-07-19",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   13,
+   48,
+   51,
+   54
+  ],
+  "special": 11
+ },
+ {
+  "date": "2005-07-22",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   18,
+   27,
+   35,
+   54
+  ],
+  "special": 34
+ },
+ {
+  "date": "2005-07-26",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   10,
+   18,
+   29,
+   55
+  ],
+  "special": 8
+ },
+ {
+  "date": "2005-07-29",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   16,
+   23,
+   25,
+   40
+  ],
+  "special": 22
+ },
+ {
+  "date": "2005-08-02",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   22,
+   39,
+   50,
+   52
+  ],
+  "special": 46
+ },
+ {
+  "date": "2005-08-05",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   5,
+   48,
+   50,
+   53
+  ],
+  "special": 4
+ },
+ {
+  "date": "2005-08-09",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   35,
+   36,
+   43,
+   52
+  ],
+  "special": 5
+ },
+ {
+  "date": "2005-08-12",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   37,
+   38,
+   45,
+   54
+  ],
+  "special": 21
+ },
+ {
+  "date": "2005-08-16",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   15,
+   20,
+   24,
+   55
+  ],
+  "special": 3
+ },
+ {
+  "date": "2005-08-19",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   13,
+   18,
+   36,
+   46
+  ],
+  "special": 36
+ },
+ {
+  "date": "2005-08-23",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   7,
+   8,
+   13,
+   40
+  ],
+  "special": 12
+ },
+ {
+  "date": "2005-08-26",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   20,
+   38,
+   47,
+   54
+  ],
+  "special": 35
+ },
+ {
+  "date": "2005-08-30",
+  "draw_time": "main",
+  "numbers": [
+   19,
+   32,
+   42,
+   49,
+   56
+  ],
+  "special": 29
+ },
+ {
+  "date": "2005-09-02",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   4,
+   14,
+   45,
+   53
+  ],
+  "special": 33
+ },
+ {
+  "date": "2005-09-06",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   8,
+   27,
+   31,
+   50
+  ],
+  "special": 40
+ },
+ {
+  "date": "2005-09-09",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   28,
+   43,
+   51,
+   52
+  ],
+  "special": 11
+ },
+ {
+  "date": "2005-09-13",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   24,
+   44,
+   48,
+   52
+  ],
+  "special": 30
+ },
+ {
+  "date": "2005-09-16",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   16,
+   41,
+   46,
+   50
+  ],
+  "special": 1
+ },
+ {
+  "date": "2005-09-20",
+  "draw_time": "main",
+  "numbers": [
+   35,
+   36,
+   40,
+   42,
+   52
+  ],
+  "special": 45
+ },
+ {
+  "date": "2005-09-23",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   7,
+   20,
+   41,
+   51
+  ],
+  "special": 38
+ },
+ {
+  "date": "2005-09-27",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   17,
+   26,
+   27,
+   28
+  ],
+  "special": 5
+ },
+ {
+  "date": "2005-09-30",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   3,
+   14,
+   30,
+   52
+  ],
+  "special": 10
+ },
+ {
+  "date": "2005-10-04",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   24,
+   28,
+   29,
+   36
+  ],
+  "special": 41
+ },
+ {
+  "date": "2005-10-07",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   4,
+   23,
+   27,
+   36
+  ],
+  "special": 37
+ },
+ {
+  "date": "2005-10-11",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   30,
+   42,
+   53,
+   54
+  ],
+  "special": 20
+ },
+ {
+  "date": "2005-10-14",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   20,
+   24,
+   25,
+   34
+  ],
+  "special": 44
+ },
+ {
+  "date": "2005-10-18",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   12,
+   16,
+   32,
+   33
+  ],
+  "special": 15
+ },
+ {
+  "date": "2005-10-21",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   17,
+   28,
+   29,
+   36
+  ],
+  "special": 42
+ },
+ {
+  "date": "2005-10-25",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   12,
+   18,
+   31,
+   55
+  ],
+  "special": 30
+ },
+ {
+  "date": "2005-10-28",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   17,
+   25,
+   28,
+   53
+  ],
+  "special": 1
+ },
+ {
+  "date": "2005-11-01",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   18,
+   21,
+   28,
+   36
+  ],
+  "special": 20
+ },
+ {
+  "date": "2005-11-04",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   9,
+   41,
+   53,
+   54
+  ],
+  "special": 38
+ },
+ {
+  "date": "2005-11-08",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   16,
+   21,
+   25,
+   27
+  ],
+  "special": 16
+ },
+ {
+  "date": "2005-11-11",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   14,
+   34,
+   50,
+   51
+  ],
+  "special": 40
+ },
+ {
+  "date": "2005-11-15",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   4,
+   5,
+   40,
+   48
+  ],
+  "special": 7
+ },
+ {
+  "date": "2005-11-18",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   18,
+   21,
+   42,
+   46
+  ],
+  "special": 11
+ },
+ {
+  "date": "2005-11-22",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   22,
+   37,
+   41,
+   43
+  ],
+  "special": 30
+ },
+ {
+  "date": "2005-11-25",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   25,
+   31,
+   33,
+   34
+  ],
+  "special": 41
+ },
+ {
+  "date": "2005-11-29",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   8,
+   47,
+   51,
+   52
+  ],
+  "special": 5
+ },
+ {
+  "date": "2005-12-02",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   12,
+   21,
+   38,
+   44
+  ],
+  "special": 45
+ },
+ {
+  "date": "2005-12-06",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   10,
+   26,
+   30,
+   33
+  ],
+  "special": 16
+ },
+ {
+  "date": "2005-12-09",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   15,
+   31,
+   32,
+   43
+  ],
+  "special": 20
+ },
+ {
+  "date": "2005-12-13",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   10,
+   12,
+   22,
+   41
+  ],
+  "special": 4
+ },
+ {
+  "date": "2005-12-16",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   25,
+   26,
+   31,
+   56
+  ],
+  "special": 17
+ },
+ {
+  "date": "2005-12-20",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   20,
+   23,
+   40,
+   56
+  ],
+  "special": 36
+ },
+ {
+  "date": "2005-12-23",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   37,
+   39,
+   49,
+   54
+  ],
+  "special": 8
+ },
+ {
+  "date": "2005-12-27",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   24,
+   27,
+   49,
+   55
+  ],
+  "special": 23
+ },
+ {
+  "date": "2005-12-30",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   20,
+   25,
+   40,
+   44
+  ],
+  "special": 37
+ },
+ {
+  "date": "2006-01-03",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   19,
+   20,
+   32,
+   38
+  ],
+  "special": 21
+ },
+ {
+  "date": "2006-01-06",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   11,
+   28,
+   37,
+   53
+  ],
+  "special": 12
+ },
+ {
+  "date": "2006-01-10",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   27,
+   32,
+   37,
+   38
+  ],
+  "special": 30
+ },
+ {
+  "date": "2006-01-13",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   21,
+   27,
+   44,
+   53
+  ],
+  "special": 36
+ },
+ {
+  "date": "2006-01-17",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   32,
+   37,
+   39,
+   40
+  ],
+  "special": 44
+ },
+ {
+  "date": "2006-01-20",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   22,
+   28,
+   44,
+   53
+  ],
+  "special": 46
+ },
+ {
+  "date": "2006-01-24",
+  "draw_time": "main",
+  "numbers": [
+   31,
+   34,
+   36,
+   51,
+   55
+  ],
+  "special": 4
+ },
+ {
+  "date": "2006-01-27",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   7,
+   8,
+   18,
+   29
+  ],
+  "special": 46
+ },
+ {
+  "date": "2006-01-31",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   35,
+   53,
+   54,
+   56
+  ],
+  "special": 44
+ },
+ {
+  "date": "2006-02-03",
+  "draw_time": "main",
+  "numbers": [
+   29,
+   31,
+   32,
+   41,
+   52
+  ],
+  "special": 42
+ },
+ {
+  "date": "2006-02-07",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   16,
+   25,
+   30,
+   48
+  ],
+  "special": 26
+ },
+ {
+  "date": "2006-02-10",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   39,
+   40,
+   43,
+   46
+  ],
+  "special": 2
+ },
+ {
+  "date": "2006-02-14",
+  "draw_time": "main",
+  "numbers": [
+   27,
+   36,
+   43,
+   49,
+   54
+  ],
+  "special": 33
+ },
+ {
+  "date": "2006-02-17",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   25,
+   31,
+   43,
+   46
+  ],
+  "special": 28
+ },
+ {
+  "date": "2006-02-21",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   23,
+   27,
+   36,
+   45
+  ],
+  "special": 36
+ },
+ {
+  "date": "2006-02-24",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   5,
+   12,
+   16,
+   34
+  ],
+  "special": 27
+ },
+ {
+  "date": "2006-02-28",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   4,
+   35,
+   36,
+   48
+  ],
+  "special": 22
+ },
+ {
+  "date": "2006-03-03",
+  "draw_time": "main",
+  "numbers": [
+   25,
+   29,
+   38,
+   39,
+   46
+  ],
+  "special": 4
+ },
+ {
+  "date": "2006-03-07",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   27,
+   36,
+   38,
+   42
+  ],
+  "special": 32
+ },
+ {
+  "date": "2006-03-10",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   17,
+   18,
+   51,
+   54
+  ],
+  "special": 31
+ },
+ {
+  "date": "2006-03-14",
+  "draw_time": "main",
+  "numbers": [
+   27,
+   28,
+   30,
+   42,
+   50
+  ],
+  "special": 22
+ },
+ {
+  "date": "2006-03-17",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   11,
+   23,
+   48,
+   52
+  ],
+  "special": 5
+ },
+ {
+  "date": "2006-03-21",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   16,
+   17,
+   28,
+   31
+  ],
+  "special": 8
+ },
+ {
+  "date": "2006-03-24",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   2,
+   17,
+   47,
+   49
+  ],
+  "special": 19
+ },
+ {
+  "date": "2006-03-28",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   18,
+   35,
+   39,
+   49
+  ],
+  "special": 14
+ },
+ {
+  "date": "2006-03-31",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   7,
+   19,
+   50,
+   52
+  ],
+  "special": 15
+ },
+ {
+  "date": "2006-04-04",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   25,
+   48,
+   51,
+   56
+  ],
+  "special": 7
+ },
+ {
+  "date": "2006-04-07",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   18,
+   31,
+   46,
+   52
+  ],
+  "special": 37
+ },
+ {
+  "date": "2006-04-11",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   12,
+   45,
+   46,
+   56
+  ],
+  "special": 20
+ },
+ {
+  "date": "2006-04-14",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   10,
+   18,
+   29,
+   33
+  ],
+  "special": 10
+ },
+ {
+  "date": "2006-04-18",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   14,
+   25,
+   34,
+   50
+  ],
+  "special": 6
+ },
+ {
+  "date": "2006-04-21",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   4,
+   7,
+   27,
+   41
+  ],
+  "special": 4
+ },
+ {
+  "date": "2006-04-25",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   20,
+   32,
+   37,
+   39
+  ],
+  "special": 9
+ },
+ {
+  "date": "2006-04-28",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   29,
+   32,
+   36,
+   55
+  ],
+  "special": 12
+ },
+ {
+  "date": "2006-05-02",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   11,
+   22,
+   27,
+   31
+  ],
+  "special": 33
+ },
+ {
+  "date": "2006-05-05",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   20,
+   39,
+   53,
+   55
+  ],
+  "special": 10
+ },
+ {
+  "date": "2006-05-09",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   15,
+   24,
+   43,
+   44
+  ],
+  "special": 22
+ },
+ {
+  "date": "2006-05-12",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   36,
+   39,
+   45,
+   52
+  ],
+  "special": 45
+ },
+ {
+  "date": "2006-05-16",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   24,
+   40,
+   48,
+   50
+  ],
+  "special": 15
+ },
+ {
+  "date": "2006-05-19",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   12,
+   31,
+   51,
+   56
+  ],
+  "special": 1
+ },
+ {
+  "date": "2006-05-23",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   21,
+   28,
+   48,
+   54
+  ],
+  "special": 1
+ },
+ {
+  "date": "2006-05-26",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   14,
+   20,
+   47,
+   48
+  ],
+  "special": 24
+ },
+ {
+  "date": "2006-05-30",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   13,
+   28,
+   34,
+   45
+  ],
+  "special": 36
+ },
+ {
+  "date": "2006-06-02",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   10,
+   18,
+   36,
+   38
+  ],
+  "special": 41
+ },
+ {
+  "date": "2006-06-06",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   29,
+   35,
+   52,
+   53
+  ],
+  "special": 9
+ },
+ {
+  "date": "2006-06-09",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   17,
+   18,
+   26,
+   47
+  ],
+  "special": 37
+ },
+ {
+  "date": "2006-06-13",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   20,
+   23,
+   24,
+   33
+  ],
+  "special": 29
+ },
+ {
+  "date": "2006-06-16",
+  "draw_time": "main",
+  "numbers": [
+   27,
+   30,
+   36,
+   38,
+   45
+  ],
+  "special": 13
+ },
+ {
+  "date": "2006-06-20",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   21,
+   37,
+   53,
+   54
+  ],
+  "special": 12
+ },
+ {
+  "date": "2006-06-23",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   17,
+   24,
+   34,
+   56
+  ],
+  "special": 24
+ },
+ {
+  "date": "2006-06-27",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   14,
+   20,
+   29,
+   44
+  ],
+  "special": 32
+ },
+ {
+  "date": "2006-06-30",
+  "draw_time": "main",
+  "numbers": [
+   20,
+   40,
+   46,
+   48,
+   54
+  ],
+  "special": 27
+ },
+ {
+  "date": "2006-07-04",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   15,
+   31,
+   42,
+   45
+  ],
+  "special": 41
+ },
+ {
+  "date": "2006-07-07",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   15,
+   27,
+   46,
+   56
+  ],
+  "special": 39
+ },
+ {
+  "date": "2006-07-11",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   14,
+   34,
+   36,
+   52
+  ],
+  "special": 42
+ },
+ {
+  "date": "2006-07-14",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   25,
+   26,
+   28,
+   56
+  ],
+  "special": 39
+ },
+ {
+  "date": "2006-07-18",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   13,
+   29,
+   49,
+   52
+  ],
+  "special": 20
+ },
+ {
+  "date": "2006-07-21",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   26,
+   35,
+   36,
+   43
+  ],
+  "special": 24
+ },
+ {
+  "date": "2006-07-25",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   21,
+   24,
+   41,
+   51
+  ],
+  "special": 10
+ },
+ {
+  "date": "2006-07-28",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   13,
+   23,
+   32,
+   35
+  ],
+  "special": 4
+ },
+ {
+  "date": "2006-08-01",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   29,
+   32,
+   43,
+   49
+  ],
+  "special": 14
+ },
+ {
+  "date": "2006-08-04",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   24,
+   31,
+   50,
+   55
+  ],
+  "special": 44
+ },
+ {
+  "date": "2006-08-08",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   5,
+   13,
+   18,
+   33
+  ],
+  "special": 30
+ },
+ {
+  "date": "2006-08-11",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   16,
+   38,
+   40,
+   49
+  ],
+  "special": 29
+ },
+ {
+  "date": "2006-08-15",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   12,
+   22,
+   44,
+   48
+  ],
+  "special": 16
+ },
+ {
+  "date": "2006-08-18",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   12,
+   13,
+   46,
+   50
+  ],
+  "special": 10
+ },
+ {
+  "date": "2006-08-22",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   4,
+   5,
+   7,
+   36
+  ],
+  "special": 16
+ },
+ {
+  "date": "2006-08-25",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   24,
+   35,
+   46,
+   54
+  ],
+  "special": 33
+ },
+ {
+  "date": "2006-08-29",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   25,
+   37,
+   38,
+   52
+  ],
+  "special": 4
+ },
+ {
+  "date": "2006-09-01",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   6,
+   51,
+   53,
+   55
+  ],
+  "special": 12
+ },
+ {
+  "date": "2006-09-05",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   32,
+   36,
+   42,
+   53
+  ],
+  "special": 4
+ },
+ {
+  "date": "2006-09-08",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   17,
+   34,
+   52,
+   53
+  ],
+  "special": 2
+ },
+ {
+  "date": "2006-09-12",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   16,
+   25,
+   30,
+   44
+  ],
+  "special": 42
+ },
+ {
+  "date": "2006-09-15",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   26,
+   33,
+   39,
+   55
+  ],
+  "special": 1
+ },
+ {
+  "date": "2006-09-19",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   19,
+   44,
+   45,
+   56
+  ],
+  "special": 43
+ },
+ {
+  "date": "2006-09-22",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   12,
+   17,
+   22,
+   43
+  ],
+  "special": 16
+ },
+ {
+  "date": "2006-09-26",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   6,
+   38,
+   42,
+   45
+  ],
+  "special": 30
+ },
+ {
+  "date": "2006-09-29",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   25,
+   43,
+   45,
+   55
+  ],
+  "special": 40
+ },
+ {
+  "date": "2006-10-03",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   19,
+   32,
+   33,
+   40
+  ],
+  "special": 39
+ },
+ {
+  "date": "2006-10-06",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   11,
+   20,
+   21,
+   46
+  ],
+  "special": 18
+ },
+ {
+  "date": "2006-10-10",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   30,
+   35,
+   40,
+   43
+  ],
+  "special": 2
+ },
+ {
+  "date": "2006-10-13",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   27,
+   42,
+   47,
+   50
+  ],
+  "special": 8
+ },
+ {
+  "date": "2006-10-17",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   18,
+   20,
+   28,
+   38
+  ],
+  "special": 37
+ },
+ {
+  "date": "2006-10-20",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   13,
+   23,
+   29,
+   54
+  ],
+  "special": 34
+ },
+ {
+  "date": "2006-10-24",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   25,
+   41,
+   48,
+   51
+  ],
+  "special": 35
+ },
+ {
+  "date": "2006-10-27",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   22,
+   26,
+   30,
+   32
+  ],
+  "special": 31
+ },
+ {
+  "date": "2006-10-31",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   34,
+   40,
+   45,
+   46
+  ],
+  "special": 21
+ },
+ {
+  "date": "2006-11-03",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   10,
+   22,
+   25,
+   55
+  ],
+  "special": 22
+ },
+ {
+  "date": "2006-11-07",
+  "draw_time": "main",
+  "numbers": [
+   13,
+   22,
+   33,
+   51,
+   52
+  ],
+  "special": 42
+ },
+ {
+  "date": "2006-11-10",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   42,
+   52,
+   53,
+   55
+  ],
+  "special": 28
+ },
+ {
+  "date": "2006-11-14",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   20,
+   24,
+   25,
+   36
+  ],
+  "special": 23
+ },
+ {
+  "date": "2006-11-17",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   19,
+   25,
+   30,
+   50
+  ],
+  "special": 42
+ },
+ {
+  "date": "2006-11-21",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   13,
+   20,
+   42,
+   47
+  ],
+  "special": 9
+ },
+ {
+  "date": "2006-11-24",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   35,
+   40,
+   47,
+   48
+  ],
+  "special": 35
+ },
+ {
+  "date": "2006-11-28",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   14,
+   24,
+   41,
+   56
+  ],
+  "special": 7
+ },
+ {
+  "date": "2006-12-01",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   22,
+   23,
+   37,
+   53
+  ],
+  "special": 35
+ },
+ {
+  "date": "2006-12-05",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   9,
+   13,
+   43,
+   46
+  ],
+  "special": 45
+ },
+ {
+  "date": "2006-12-08",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   15,
+   29,
+   32,
+   45
+  ],
+  "special": 8
+ },
+ {
+  "date": "2006-12-12",
+  "draw_time": "main",
+  "numbers": [
+   20,
+   30,
+   31,
+   35,
+   49
+  ],
+  "special": 23
+ },
+ {
+  "date": "2006-12-15",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   7,
+   17,
+   28,
+   40
+  ],
+  "special": 39
+ },
+ {
+  "date": "2006-12-19",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   32,
+   37,
+   42,
+   48
+  ],
+  "special": 7
+ },
+ {
+  "date": "2006-12-22",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   12,
+   15,
+   25,
+   34
+  ],
+  "special": 43
+ },
+ {
+  "date": "2006-12-26",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   12,
+   25,
+   44,
+   53
+  ],
+  "special": 3
+ },
+ {
+  "date": "2006-12-29",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   4,
+   10,
+   39,
+   50
+  ],
+  "special": 29
+ },
+ {
+  "date": "2007-01-02",
+  "draw_time": "main",
+  "numbers": [
+   9,
+   10,
+   38,
+   51,
+   53
+  ],
+  "special": 1
+ },
+ {
+  "date": "2007-01-05",
+  "draw_time": "main",
+  "numbers": [
+   2,
+   12,
+   44,
+   46,
+   51
+  ],
+  "special": 6
+ },
+ {
+  "date": "2007-01-09",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   11,
+   26,
+   38,
+   54
+  ],
+  "special": 13
+ },
+ {
+  "date": "2007-01-12",
+  "draw_time": "main",
+  "numbers": [
+   12,
+   14,
+   26,
+   40,
+   42
+  ],
+  "special": 22
+ },
+ {
+  "date": "2007-01-16",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   8,
+   15,
+   33,
+   52
+  ],
+  "special": 10
+ },
+ {
+  "date": "2007-01-19",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   28,
+   30,
+   31,
+   35
+  ],
+  "special": 17
+ },
+ {
+  "date": "2007-01-23",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   5,
+   15,
+   26,
+   53
+  ],
+  "special": 35
+ },
+ {
+  "date": "2007-01-26",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   17,
+   36,
+   49,
+   54
+  ],
+  "special": 14
+ },
+ {
+  "date": "2007-01-30",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   18,
+   44,
+   52,
+   56
+  ],
+  "special": 25
+ },
+ {
+  "date": "2007-02-02",
+  "draw_time": "main",
+  "numbers": [
+   22,
+   33,
+   35,
+   40,
+   53
+  ],
+  "special": 15
+ },
+ {
+  "date": "2007-02-06",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   21,
+   35,
+   36,
+   46
+  ],
+  "special": 38
+ },
+ {
+  "date": "2007-02-09",
+  "draw_time": "main",
+  "numbers": [
+   32,
+   39,
+   46,
+   48,
+   49
+  ],
+  "special": 41
+ },
+ {
+  "date": "2007-02-13",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   9,
+   24,
+   29,
+   41
+  ],
+  "special": 41
+ },
+ {
+  "date": "2007-02-16",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   35,
+   40,
+   46,
+   48
+  ],
+  "special": 41
+ },
+ {
+  "date": "2007-02-20",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   9,
+   26,
+   46,
+   51
+  ],
+  "special": 11
+ },
+ {
+  "date": "2007-02-23",
+  "draw_time": "main",
+  "numbers": [
+   3,
+   18,
+   21,
+   38,
+   50
+  ],
+  "special": 43
+ },
+ {
+  "date": "2007-02-27",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   31,
+   44,
+   45,
+   48
+  ],
+  "special": 18
+ },
+ {
+  "date": "2007-03-02",
+  "draw_time": "main",
+  "numbers": [
+   14,
+   21,
+   33,
+   35,
+   51
+  ],
+  "special": 43
+ },
+ {
+  "date": "2007-03-06",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   22,
+   29,
+   39,
+   42
+  ],
+  "special": 20
+ },
+ {
+  "date": "2007-03-09",
+  "draw_time": "main",
+  "numbers": [
+   10,
+   13,
+   25,
+   42,
+   43
+  ],
+  "special": 30
+ },
+ {
+  "date": "2007-03-13",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   11,
+   16,
+   38,
+   49
+  ],
+  "special": 35
+ },
+ {
+  "date": "2007-03-16",
+  "draw_time": "main",
+  "numbers": [
+   17,
+   25,
+   36,
+   40,
+   43
+  ],
+  "special": 9
+ },
+ {
+  "date": "2007-03-20",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   21,
+   46,
+   49,
+   55
+  ],
+  "special": 15
+ },
+ {
+  "date": "2007-03-23",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   21,
+   35,
+   51,
+   53
+  ],
+  "special": 36
+ },
+ {
+  "date": "2007-03-27",
+  "draw_time": "main",
+  "numbers": [
+   18,
+   25,
+   34,
+   35,
+   42
+  ],
+  "special": 6
+ },
+ {
+  "date": "2007-03-30",
+  "draw_time": "main",
+  "numbers": [
+   15,
+   23,
+   37,
+   48,
+   53
+  ],
+  "special": 22
+ },
+ {
+  "date": "2007-04-03",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   26,
+   33,
+   34,
+   46
+  ],
+  "special": 38
+ },
+ {
+  "date": "2007-04-06",
+  "draw_time": "main",
+  "numbers": [
+   24,
+   32,
+   34,
+   36,
+   39
+  ],
+  "special": 6
+ },
+ {
+  "date": "2007-04-10",
+  "draw_time": "main",
+  "numbers": [
+   7,
+   15,
+   16,
+   19,
+   28
+  ],
+  "special": 10
+ },
+ {
+  "date": "2007-04-13",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   14,
+   21,
+   25,
+   26
+  ],
+  "special": 33
+ },
+ {
+  "date": "2007-04-17",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   4,
+   11,
+   31,
+   47
+  ],
+  "special": 37
+ },
+ {
+  "date": "2007-04-20",
+  "draw_time": "main",
+  "numbers": [
+   1,
+   9,
+   10,
+   23,
+   53
+  ],
+  "special": 40
+ },
+ {
+  "date": "2007-04-24",
+  "draw_time": "main",
+  "numbers": [
+   8,
+   10,
+   35,
+   36,
+   43
+  ],
+  "special": 14
+ },
+ {
+  "date": "2007-04-27",
+  "draw_time": "main",
+  "numbers": [
+   5,
+   7,
+   26,
+   38,
+   56
+  ],
+  "special": 15
+ },
+ {
+  "date": "2007-05-01",
+  "draw_time": "main",
+  "numbers": [
+   11,
+   16,
+   31,
+   52,
+   53
+  ],
+  "special": 42
+ },
+ {
+  "date": "2007-05-04",
+  "draw_time": "main",
+  "numbers": [
+   4,
+   9,
+   20,
+   45,
+   55
+  ],
+  "special": 34
+ },
+ {
+  "date": "2007-05-08",
+  "draw_time": "main",
+  "numbers": [
+   16,
+   24,
+   41,
+   43,
+   54
+  ],
+  "special": 36
+ },
+ {
+  "date": "2007-05-11",
+  "draw_time": "main",
+  "numbers": [
+   28,
+   30,
+   33,
+   48,
+   54
+  ],
+  "special": 25
+ },
+ {
+  "date": "2007-05-15",
+  "draw_time": "main",
+  "numbers": [
+   6,
+   13,
+   42,
+   46,
+   56
+  ],
+  "special": 42
+ },
+ {
   "date": "2007-05-18",
   "draw_time": "main",
   "numbers": [
