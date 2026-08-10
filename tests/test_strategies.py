@@ -48,6 +48,24 @@ def test_all_applicable_strategies_produce_valid_tickets(game_key):
             assert pred.special is None
 
 
+@pytest.mark.parametrize("game_key", list(GAMES))
+def test_strategies_survive_an_empty_history(game_key):
+    """A game can be registered before any of its draws have been pulled — a
+    FL feed can soft-fail for days, and store.load_draws() returns [] for a
+    file that does not exist yet. Every arm must still produce a valid ticket
+    rather than break that morning's loop."""
+    game = GAMES[game_key]
+    for name, (_, applicable) in REGISTRY.items():
+        if not applicable(game):
+            continue
+        pred = run_strategy(name, game, [], seeded_rng(name, game_key, "2026-08-10", "main"))
+        assert len(pred.numbers) == game.pick_count, name
+        for n in pred.numbers:
+            assert game.pick_min <= n <= game.pick_max, name
+        if game.kind == "jackpot":
+            assert len(set(pred.numbers)) == game.pick_count, name
+
+
 def test_predictions_are_deterministic_per_seed():
     game = GAMES["powerball"]
     history = make_history("powerball")
