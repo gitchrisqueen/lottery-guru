@@ -106,18 +106,27 @@ def _download(stem: str) -> bytes:
     raise RuntimeError(f"FL {stem}.pdf unavailable on both hosts: {last_exc}")
 
 
-def _pdf_to_text(pdf_bytes: bytes) -> str:
+def iter_page_texts(pdf_bytes: bytes):
+    """Yield each page's text, lazily.
+
+    Layout-aware extraction is expensive (seconds per page on the 130-page
+    Pick files), so pages are yielded one at a time and the caller stops as
+    soon as it has enough draws. The files are newest-first, so the daily
+    pull touches a handful of pages instead of all of them.
+    """
     import io
 
     import pdfplumber
 
-    pages = []
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
-            pages.append(page.extract_text(layout=True) or "")
-    return "\n".join(pages)
+            yield page.extract_text(layout=True) or ""
 
 
 def fetch_draws(game: Game, limit: int = 200) -> list[Draw]:
-    text = _pdf_to_text(_download(game.fl_pdf_stem))
-    return parse_text(game, text, limit=limit)
+    draws: list[Draw] = []
+    for text in iter_page_texts(_download(game.fl_pdf_stem)):
+        draws.extend(parse_text(game, text))
+        if limit is not None and len(draws) >= limit:
+            break
+    return draws[:limit] if limit is not None else draws
