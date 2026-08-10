@@ -48,7 +48,12 @@ history files**, full history per file, newest-first:
 
 Parsing (see `data/florida.py`): date-anchored regex findall per line — handles
 the multi-column layouts and skips page headers/disclaimers without a filter
-list. Dates are `M/D/YY`; century rule `yy >= 88 → 19yy`. The files' header date
+list. These files are **long** (Fantasy 5 is 386 pages, the Pick files ~130) and
+layout-aware extraction costs seconds per page, so pages are read lazily and
+abandoned once the requested draw count is met — the daily 200-draw pull touches
+a handful of pages, not the whole file. Fixtures under `tests/fixtures/fl/` were
+captured from the live files by a one-shot spike workflow (removed after it
+served its purpose; recoverable from git history at tag-time commit `91a18a0`). Dates are `M/D/YY`; century rule `yy >= 88 → 19yy`. The files' header date
 is a **generation timestamp, not a last-draw date** (retired games' files still
 regenerate) — detect new data by diffing rows, never by header. No auth, no
 captcha, stable URL scheme for a decade+; fetches send a descriptive UA and the
