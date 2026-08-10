@@ -11,9 +11,11 @@ scientific framing is central: **the null hypothesis (no strategy beats
 chance) is expected to hold** — the project measures that convergence.
 Never add code or copy that implies predictions can actually beat the lottery.
 
-Read [docs/PLAN.md](docs/PLAN.md) (architecture, milestones) and
+Read [docs/PLAN.md](docs/PLAN.md) (architecture, milestones),
 [docs/RESEARCH.md](docs/RESEARCH.md) (data sources, strategy literature,
-null-hypothesis math) before making non-trivial changes.
+null-hypothesis math), and [docs/UNORTHODOX.md](docs/UNORTHODOX.md) (folk
+strategy catalog; human-required exploits and their monitor halves) before
+making non-trivial changes.
 
 ## Commands
 
@@ -35,10 +37,16 @@ lottery-guru finetune deploy [--only-if-drawings jackpot] | teardown   # tuned-m
 ## Architecture
 
 - `src/lottery_guru/games.py` — game definitions (Powerball 5/69+1/26,
-  Mega Millions 5/70+1/24, NY Numbers, NY Win 4) and draw schedules.
-- `src/lottery_guru/data/` — Socrata fetchers (data.ny.gov), TX CSV
+  Mega Millions 5/70+1/24, NY Numbers, NY Win 4, and the FL games:
+  Fantasy 5 5/36, Lotto 6/53, Jackpot Triple Play 6/46, Pick 2–5) and draw
+  schedules. FL jackpot games have **no special ball** (`special_max=None`) —
+  every arm must handle that. `TUNED_ARM_GAMES` gates GPU deployment days.
+- `src/lottery_guru/data/` — Socrata fetchers (data.ny.gov), FL PDF fetcher
+  (`florida.py`: files.floridalottery.com/exptkt/*.pdf, mirror failover,
+  date-anchored regex parsing — Florida has no open-data portal), TX CSV
   cross-check, JSON storage under `data/` (**git is the database**; raw draws,
-  predictions, and evaluations are committed by the daily workflow).
+  predictions, and evaluations are committed by the daily workflow). Each
+  game's pull soft-fails independently — one bad feed never blocks the loop.
 - `src/lottery_guru/strategies/` — each strategy is `(predict_fn, applicable_fn)`
   in `REGISTRY`. The LLM arm (`llm.py`) is provider-pluggable: Ollama
   (default, native `/api/chat` with JSON-schema `format`) or Anthropic.
@@ -48,7 +56,10 @@ lottery-guru finetune deploy [--only-if-drawings jackpot] | teardown   # tuned-m
   *other arms* picked them **for that one drawing** — never pooled across
   games or draw times. It is not `hot`: `hot` ranks by numbers actually drawn.
 - `src/lottery_guru/evaluation/` — scoring vs exact hypergeometric/binomial
-  null moments, cumulative z-tests, REPORT.md rendering, and `board.py`
+  null moments, cumulative z-tests, REPORT.md rendering, `monitors.py`
+  (the "Exploit watch" section: Mandel-gate buyout math and roll-down
+  structural flags — offline-deterministic, expected verdict "no
+  opportunity"), and `board.py`
   (PREDICTIONS.md + the README `PREDICTIONS`/`SCOREBOARD` marker sections).
   README sections are spliced between HTML comment markers — never hand-edit
   content inside them; it is regenerated every run.
@@ -67,7 +78,11 @@ lottery-guru finetune deploy [--only-if-drawings jackpot] | teardown   # tuned-m
 
 - **Determinism:** statistical strategies must be reproducible per
   (strategy, game, date, draw_time) via `seeded_rng()`. Never use unseeded
-  randomness in a strategy.
+  randomness in a strategy. One documented exception: `persistent` seeds
+  from (strategy, game) only — an unchanging ticket is its hypothesis; it is
+  still fully deterministic. `moonphase`/`numerology` fold values derived
+  from the newest history date into the seed, which stays a pure function of
+  the inputs.
 - **Time-ordered splits only** in fine-tuning: train on the past, test on the
   future. Never shuffle draws across the split boundary.
 - **Never pool stats across rule eras** (Mega Millions changed to 5/70+1/24 in

@@ -57,12 +57,18 @@ def _socrata_get(dataset: str, limit: int) -> list[dict]:
 
 
 def fetch_draws(game: Game, limit: int = 200) -> list[Draw]:
-    rows = _socrata_get(game.socrata_dataset, limit)
-    parser = _PARSERS[game.key]
-    draws: list[Draw] = []
-    for row in rows:
-        draws.extend(parser(row))
-    return draws
+    if game.socrata_dataset:
+        rows = _socrata_get(game.socrata_dataset, limit)
+        parser = _PARSERS[game.key]
+        draws: list[Draw] = []
+        for row in rows:
+            draws.extend(parser(row))
+        return draws
+    if game.fl_pdf_stem:
+        from . import florida
+
+        return florida.fetch_draws(game, limit=limit)
+    raise ValueError(f"game {game.key} has no data source configured")
 
 
 def _date_of(row: dict) -> str:

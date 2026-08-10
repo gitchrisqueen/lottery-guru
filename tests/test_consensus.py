@@ -22,10 +22,14 @@ def test_produces_valid_tickets(game_key):
     numbers, special = consensus.predict(game, peers, _rng(game_key))
     assert len(numbers) == game.pick_count
     assert all(game.pick_min <= n <= game.pick_max for n in numbers)
-    if game.kind == "jackpot":
+    if game.kind == "jackpot" and game.special_max is not None:
         assert len(set(numbers)) == game.pick_count
         assert numbers == tuple(sorted(numbers))
         assert 1 <= special <= game.special_max
+    elif game.kind == "jackpot":  # FL-style jackpot game without a special ball
+        assert len(set(numbers)) == game.pick_count
+        assert numbers == tuple(sorted(numbers))
+        assert special is None
     else:
         assert special is None
 

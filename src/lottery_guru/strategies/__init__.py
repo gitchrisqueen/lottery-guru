@@ -13,7 +13,21 @@ from dataclasses import dataclass
 from ..data.sources import Draw
 from ..games import Game
 
-from . import baselines, delta, positional, unpopular  # noqa: E402
+from . import (  # noqa: E402
+    balance,
+    baselines,
+    benford,
+    birthday,
+    contrarian,
+    delta,
+    dreambook,
+    moonphase,
+    numerology,
+    persistent,
+    positional,
+    skiphit,
+    unpopular,
+)
 
 
 @dataclass(frozen=True)
@@ -34,7 +48,19 @@ REGISTRY = {
     "cold": (baselines.predict_cold, lambda g: True),
     "delta": (delta.predict, lambda g: g.kind == "jackpot"),
     "positional": (positional.predict, lambda g: g.kind == "digit"),
-    "unpopular": (unpopular.predict, lambda g: g.kind == "jackpot"),
+    # needs headroom above the birthday range — on FL Fantasy 5 (5/36) the
+    # ">31" filter would collapse it to a near-constant 32-36 ticket
+    "unpopular": (unpopular.predict, lambda g: g.kind == "jackpot" and g.pick_max - 31 >= 2 * g.pick_count),
+    "contrarian": (contrarian.predict, lambda g: True),
+    "birthday": (birthday.predict, lambda g: g.kind == "jackpot" and g.pick_max >= 31),
+    "balanced": (balance.predict_balanced, lambda g: g.kind == "jackpot"),
+    "antibalanced": (balance.predict_antibalanced, lambda g: g.kind == "jackpot"),
+    "skiphit": (skiphit.predict, lambda g: True),
+    "benford": (benford.predict, lambda g: g.kind == "jackpot"),
+    "persistent": (persistent.predict, lambda g: True),
+    "moonphase": (moonphase.predict, lambda g: True),
+    "numerology": (numerology.predict, lambda g: True),
+    "dreambook": (dreambook.predict, lambda g: g.kind == "digit"),
 }
 
 

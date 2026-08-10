@@ -82,10 +82,8 @@ def build_prompt(game: Game, history: list[Draw]) -> str:
         for d in recent
     ]
     if game.kind == "jackpot":
-        spec = (
-            f"Pick {game.pick_count} distinct numbers from {game.pick_min}-{game.pick_max}"
-            f" and one special ball from 1-{game.special_max}."
-        )
+        spec = f"Pick {game.pick_count} distinct numbers from {game.pick_min}-{game.pick_max}"
+        spec += f" and one special ball from 1-{game.special_max}." if game.special_max else "."
     else:
         spec = f"Pick {game.pick_count} digits, each 0-9 (order matters, repeats allowed)."
     return (
@@ -119,6 +117,8 @@ def sanitize(game: Game, numbers: list[int], special, rng: random.Random) -> Pre
         while len(valid) < game.pick_count:
             valid.append(pool.pop(rng.randrange(len(pool))))
         nums = tuple(sorted(valid[: game.pick_count]))
+        if game.special_max is None:
+            return Prediction(numbers=nums, special=None)
         sp = special if isinstance(special, int) and 1 <= special <= game.special_max else rng.randint(1, game.special_max)
         return Prediction(numbers=nums, special=sp)
     digits = [n for n in numbers if isinstance(n, int) and 0 <= n <= 9]

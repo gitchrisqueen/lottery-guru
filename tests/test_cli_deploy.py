@@ -5,7 +5,7 @@ from lottery_guru.cli import main
 from lottery_guru.data import store
 from lottery_guru.finetune import fireworks
 
-SUNDAY = "2026-08-02"   # NY games only
+SUNDAY = "2026-08-02"   # no TUNED_ARM_GAMES drawing (NY + FL dailies only)
 MONDAY = "2026-08-03"   # Powerball
 
 
@@ -31,16 +31,24 @@ def deployed(monkeypatch):
     return calls
 
 
-def test_no_gpu_on_ny_only_days(env, deployed, capsys):
+def test_no_gpu_on_non_tuned_days(env, deployed, capsys):
+    fireworks.save_record({"model": "accounts/acct/models/m1"})
+    assert main(["finetune", "deploy", "--only-if-drawings", "tuned", "--date", SUNDAY]) == 0
+    assert deployed == []  # the whole point: no GPU billed
+    assert "no tuned drawings" in capsys.readouterr().out
+
+
+def test_gpu_on_tuned_game_days(env, deployed):
+    fireworks.save_record({"model": "accounts/acct/models/m1"})
+    assert main(["finetune", "deploy", "--only-if-drawings", "tuned", "--date", MONDAY]) == 0
+    assert len(deployed) == 1
+
+
+def test_jackpot_kind_gate_now_includes_fl_daily_games(env, deployed):
+    """FL Fantasy 5 is jackpot-kind and draws every day, so the old 'jackpot'
+    gate would deploy on Sunday too — which is why daily.yml uses 'tuned'."""
     fireworks.save_record({"model": "accounts/acct/models/m1"})
     assert main(["finetune", "deploy", "--only-if-drawings", "jackpot", "--date", SUNDAY]) == 0
-    assert deployed == []  # the whole point: no GPU billed
-    assert "no jackpot drawings" in capsys.readouterr().out
-
-
-def test_gpu_on_jackpot_days(env, deployed):
-    fireworks.save_record({"model": "accounts/acct/models/m1"})
-    assert main(["finetune", "deploy", "--only-if-drawings", "jackpot", "--date", MONDAY]) == 0
     assert len(deployed) == 1
 
 

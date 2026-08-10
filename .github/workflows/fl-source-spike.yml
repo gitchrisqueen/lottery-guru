@@ -1,0 +1,88 @@
+name: FL source spike
+
+# One-shot verification of the Florida Lottery PDF feeds (files.floridalottery.com
+# /exptkt/*.pdf). The dev sandbox cannot reach the FL domains, so this runs the
+# probes on a real runner and commits trimmed pdftotext extracts back to the
+# branch as network-free test fixtures. Safe to re-run; it overwrites fixtures.
+
+# workflow_dispatch only registers from the default branch, so the push
+# trigger (scoped to this file) lets the spike run from a feature branch:
+# edit this file (e.g. bump the run marker below) and push to re-run.
+# run-marker: 1
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - ".github/workflows/fl-source-spike.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  spike:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install poppler-utils
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Probe robots.txt, UA behavior, and the legacy XML feed
+        continue-on-error: true
+        run: |
+          set +e
+          echo "=== robots.txt (files.floridalottery.com) ==="
+          curl -sS --max-time 20 https://files.floridalottery.com/robots.txt | head -30
+          echo "=== robots.txt (floridalottery.com) ==="
+          curl -sS --max-time 20 https://floridalottery.com/robots.txt | head -30
+          echo "=== HEAD ff.pdf, default curl UA ==="
+          curl -sSI --max-time 20 https://files.floridalottery.com/exptkt/ff.pdf | head -20
+          echo "=== HEAD ff.pdf, python-requests UA ==="
+          curl -sSI --max-time 20 -A "python-requests/2.32.0" https://files.floridalottery.com/exptkt/ff.pdf | head -5
+          echo "=== HEAD ff.pdf on mirror apps.flalottery.com ==="
+          curl -sSI --max-time 20 https://apps.flalottery.com/exptkt/ff.pdf | head -5
+          echo "=== legacy XML feed ==="
+          curl -sS --max-time 20 -o /tmp/twn.xml -w "HTTP %{http_code}\n" http://www.flalottery.com/video/en/theWinningNumber.xml
+          head -40 /tmp/twn.xml 2>/dev/null
+          true
+
+      - name: Download PDFs and extract text
+        run: |
+          set -e
+          mkdir -p /tmp/flpdf tests/fixtures/fl
+          for stem in ff l6 jtp p2 p3 p4 p5; do
+            url="https://files.floridalottery.com/exptkt/${stem}.pdf"
+            if ! curl -sS --fail --max-time 60 -o "/tmp/flpdf/${stem}.pdf" "$url"; then
+              echo "primary failed for ${stem}, trying mirror"
+              curl -sS --fail --max-time 60 -o "/tmp/flpdf/${stem}.pdf" \
+                "https://apps.flalottery.com/exptkt/${stem}.pdf"
+            fi
+            pdftotext -layout "/tmp/flpdf/${stem}.pdf" "/tmp/flpdf/${stem}.txt"
+            lines=$(wc -l < "/tmp/flpdf/${stem}.txt")
+            echo "=== ${stem}.pdf -> ${lines} text lines ==="
+            head -60 "/tmp/flpdf/${stem}.txt"
+            echo "=== ...tail of ${stem} ==="
+            tail -30 "/tmp/flpdf/${stem}.txt"
+            # Fixture: enough of head and tail to cover current format + oldest era
+            { head -120 "/tmp/flpdf/${stem}.txt"; echo; echo "[...fixture truncated...]"; echo; \
+              tail -60 "/tmp/flpdf/${stem}.txt"; } > "tests/fixtures/fl/${stem}.txt"
+          done
+
+      - name: Upload full PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: fl-pdfs
+          path: /tmp/flpdf/*.pdf
+          retention-days: 7
+
+      - name: Commit fixtures to this branch
+        run: |
+          git config user.name "lottery-guru-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add tests/fixtures/fl/
+          if git diff --cached --quiet; then
+            echo "No fixture changes"
+          else
+            git commit -m "FL source spike: pdftotext fixture extracts"
+            git push
+          fi

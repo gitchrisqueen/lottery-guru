@@ -15,7 +15,11 @@ def pull(limit: int = 200) -> dict[str, int]:
     """Fetch latest draws for all games and merge into the store."""
     added = {}
     for game in GAMES.values():
-        draws = sources.fetch_draws(game, limit=limit)
+        try:
+            draws = sources.fetch_draws(game, limit=limit)
+        except Exception as exc:  # one bad feed must not block the other games
+            print(f"WARNING: pull failed for {game.key}: {exc}")
+            continue
         added[game.key] = store.merge_draws(game.key, draws)
     # integrity cross-check against the Texas Lottery feed
     pb = {d.date: d for d in store.load_draws("powerball") if d.draw_time == "main"}

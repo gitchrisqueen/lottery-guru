@@ -50,6 +50,8 @@ def predict(game: Game, peers: list[Peer], rng: random.Random):
         pool = list(range(game.pick_min, game.pick_max + 1))
         numbers = tuple(sorted(_rank(pool, tally, rng)[: game.pick_count]))
 
+        if game.special_max is None:  # FL-style jackpot games have no special ball
+            return numbers, None
         special_tally = Counter(
             s for _, s in peers
             if isinstance(s, int) and 1 <= s <= game.special_max

@@ -53,9 +53,10 @@ def main(argv: list[str] | None = None) -> int:
     p_deploy = ft_sub.add_parser(
         "deploy", help="fireworks: on-demand deployment for the recorded tuned model")
     p_deploy.add_argument("--only-if-drawings", nargs="?", const="any", default=None,
-                          choices=["any", "jackpot", "digit"],
+                          choices=["any", "jackpot", "digit", "tuned"],
                           help="skip cleanly when no game of this kind draws today — never pay "
-                               "for GPU time there is nothing to predict with (default: any)")
+                               "for GPU time there is nothing to predict with (default: any); "
+                               "'tuned' = only the games the tuned arm serves (TUNED_ARM_GAMES)")
     p_deploy.add_argument("--date", type=dt.date.fromisoformat, default=None)
     ft_sub.add_parser("teardown", help="fireworks: delete the recorded deployment (stops GPU billing)")
 
@@ -111,12 +112,14 @@ def main(argv: list[str] | None = None) -> int:
             train_mlx.evaluate(data_dir=args.data, adapter_path=args.adapter)
         elif args.ft_command == "deploy":
             from .finetune import fireworks
-            from .games import draws_on
+            from .games import TUNED_ARM_GAMES, draws_on
             date = args.date or dt.date.today()
             if args.only_if_drawings:
                 kind = args.only_if_drawings
                 scheduled = [(g, t) for g, t in draws_on(date)
-                             if kind == "any" or g.kind == kind]
+                             if kind == "any"
+                             or (kind == "tuned" and g.key in TUNED_ARM_GAMES)
+                             or g.kind == kind]
                 if not scheduled:
                     label = "" if kind == "any" else f"{kind} "
                     print(f"no {label}drawings on {date} — skipping deployment")
