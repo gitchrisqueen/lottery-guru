@@ -20,6 +20,7 @@ disclaimer boilerplate without an explicit filter list:
 from __future__ import annotations
 
 import re
+import time
 
 import requests
 
@@ -29,6 +30,9 @@ from .sources import Draw
 PRIMARY_BASE = "https://files.floridalottery.com/exptkt"
 MIRROR_BASE = "https://apps.flalottery.com/exptkt"
 TIMEOUT = 60
+RETRIES = 3  # rounds over both hosts
+BACKOFF_BASE = 20.0  # seconds before the next round; doubles each round
+REQUEST_SPACING = 2.0  # courtesy gap so seven games aren't fetched as a burst
 # The site sits behind a CDN/WAF; a descriptive browser-like UA avoids
 # bot-blocking heuristics that a bare python-requests UA can trigger.
 USER_AGENT = (
@@ -93,17 +97,31 @@ def parse_text(game: Game, text: str, limit: int | None = None) -> list[Draw]:
 
 
 def _download(stem: str) -> bytes:
-    last_exc: Exception | None = None
-    for base in (PRIMARY_BASE, MIRROR_BASE):
-        try:
-            resp = requests.get(
-                f"{base}/{stem}.pdf", headers={"User-Agent": USER_AGENT}, timeout=TIMEOUT
-            )
-            resp.raise_for_status()
-            return resp.content
-        except requests.RequestException as exc:
-            last_exc = exc
-    raise RuntimeError(f"FL {stem}.pdf unavailable on both hosts: {last_exc}")
+    """Fetch one history PDF, trying both hosts with backoff between rounds.
+
+    The CDN in front of these files answers a burst of large downloads by
+    refusing the TLS handshake outright (SSLV3_ALERT_HANDSHAKE_FAILURE) rather
+    than returning an HTTP status, and it keeps refusing for a while. Pulling
+    seven games back-to-back is exactly that burst, so requests are spaced and
+    retried, and every host's error is reported — reporting only the last one
+    hides which host actually failed and how.
+    """
+    errors: list[str] = []
+    for attempt in range(RETRIES):
+        for base in (PRIMARY_BASE, MIRROR_BASE):
+            time.sleep(REQUEST_SPACING)
+            try:
+                resp = requests.get(
+                    f"{base}/{stem}.pdf", headers={"User-Agent": USER_AGENT}, timeout=TIMEOUT
+                )
+                resp.raise_for_status()
+                return resp.content
+            except requests.RequestException as exc:
+                host = base.split("/")[2]
+                errors.append(f"attempt {attempt + 1} {host}: {type(exc).__name__}: {exc}")
+        if attempt < RETRIES - 1:
+            time.sleep(BACKOFF_BASE * 2**attempt)
+    raise RuntimeError(f"FL {stem}.pdf unavailable; " + "; ".join(errors))
 
 
 def iter_page_texts(pdf_bytes: bytes):
