@@ -1,0 +1,67 @@
+name: Backfill draw history
+
+# Deep history pull, run on demand. The daily loop pulls a shallow window
+# (limit 200); this loads far more per game — notably the Florida games, whose
+# PDF sources carry full history back to 1988. Idempotent: merge_draws() dedupes
+# on (date, draw_time), so re-running only adds what is missing.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Rows/draws to request per game (newest first)"
+        required: false
+        default: "5000"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e .
+
+      # Each game's fetch soft-fails independently, so a single bad feed shows
+      # up as a WARNING line here rather than losing the whole backfill.
+      - name: Pull history
+        env:
+          SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
+        run: lottery-guru pull --limit ${{ inputs.limit }}
+
+      - name: Summarize what landed
+        if: always()
+        run: |
+          python - <<'EOF'
+          import glob, json
+          for path in sorted(glob.glob("data/raw/*.json")):
+              draws = json.load(open(path))
+              if draws:
+                  print(f"{path}: {len(draws)} draws, {draws[0]['date']} -> {draws[-1]['date']}")
+              else:
+                  print(f"{path}: EMPTY")
+          EOF
+
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "lottery-guru-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Backfill draw history (limit ${{ inputs.limit }})"
+            git push
+          fi
