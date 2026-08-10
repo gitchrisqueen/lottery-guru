@@ -63,5 +63,14 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Backfill draw history (limit ${{ inputs.limit }})"
-            git push
+            # A deep backfill runs for the better part of an hour, so main can
+            # move underneath it. Rebase onto whatever landed instead of
+            # losing the run's work to a rejected non-fast-forward push.
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash && git push && exit 0
+              echo "push attempt $attempt failed; retrying"
+              sleep 5
+            done
+            echo "could not push after 3 attempts" >&2
+            exit 1
           fi
