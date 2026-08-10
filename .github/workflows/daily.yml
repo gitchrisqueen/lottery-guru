@@ -81,5 +81,13 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Daily loop: $(date -u +%F)"
-            git push
+            # The loop can outlast a merge to main; rebase rather than lose
+            # the run's results to a rejected non-fast-forward push.
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash && git push && exit 0
+              echo "push attempt $attempt failed; retrying"
+              sleep 5
+            done
+            echo "could not push after 3 attempts" >&2
+            exit 1
           fi
