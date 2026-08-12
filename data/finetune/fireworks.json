@@ -7,7 +7,7 @@
  "deployed": false,
  "scored_days": 8,
  "trained_at": "2026-08-01T18:39:56.383229+00:00",
- "inference_model": "accounts/christopher-queen-xr/models/lottery-guru-2026-08-01#accounts/christopher-queen-xr/deployments/i6uizhrm",
- "last_deployment": "accounts/christopher-queen-xr/deployments/i6uizhrm",
+ "inference_model": "accounts/christopher-queen-xr/models/lottery-guru-2026-08-01#accounts/christopher-queen-xr/deployments/vtrk9q44",
+ "last_deployment": "accounts/christopher-queen-xr/deployments/vtrk9q44",
  "accelerator": "NVIDIA_B200_180GB"
 }
