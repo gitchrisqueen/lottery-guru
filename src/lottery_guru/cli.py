@@ -29,6 +29,11 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("daily", help="pull + score + predict + report (the cron entry point)")
 
+    p_site = sub.add_parser(
+        "site", help="build the static dashboard (HTML + JSON) for GitHub Pages"
+    )
+    p_site.add_argument("--out", default="dist", help="output directory (default: dist/)")
+
     p_usage = sub.add_parser("usage", help="log Fireworks usage/cost to data/usage/")
     p_usage.add_argument("--days", type=int, default=1, help="window to request from billingUsage")
     p_usage.add_argument("--summary-only", action="store_true",
@@ -88,6 +93,10 @@ def main(argv: list[str] | None = None) -> int:
         report.write_report()
         board.publish()
         print(json.dumps({"added": added, "scored": n, "predictions": len(preds)}))
+    elif args.command == "site":
+        from .evaluation import site
+        out = site.build(out_dir=args.out)
+        print(f"site built at {out}")
     elif args.command == "usage":
         from .finetune import usage
         if not args.summary_only:

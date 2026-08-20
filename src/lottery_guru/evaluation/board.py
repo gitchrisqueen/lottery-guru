@@ -39,25 +39,21 @@ def latest_date() -> str | None:
     return dates[-1] if dates else None
 
 
-def render_board(date: str | None = None) -> str:
+def board_data(date: str | None = None) -> dict:
+    """Structured predictions for one date — the data behind render_board().
+
+    Returns {"date", "groups": [...]} where each group carries raw numbers
+    (list[int] / int / None), never markdown-formatted strings.
+    """
     date = date or latest_date()
     if date is None:
-        return (
-            f"### 🎟️ Latest predictions\n\n_No predictions recorded yet._\n"
-        )
+        return {"date": None, "groups": []}
 
     preds = store.load_json_list("predictions", date)
     evals = {
         (e["game"], e["draw_time"], e["strategy"]): e
         for e in store.load_json_list("evaluations", date)
     }
-
-    lines = [
-        f"### 🎟️ Predictions for {date}",
-        "",
-        DISCLAIMER,
-        "",
-    ]
 
     # group by (game, draw_time) in game-config order
     groups: dict[tuple[str, str], list[dict]] = {}
@@ -69,13 +65,70 @@ def render_board(date: str | None = None) -> str:
         key=lambda kv: (list(GAMES).index(kv[0][0]), kv[0][1]),
     )
 
+    out_groups = []
     for (game_key, draw_time), rows in ordered:
+        game = GAMES[game_key]
+        scored = any((game_key, draw_time, r["strategy"]) in evals for r in rows)
+        out_rows = []
+        for r in sorted(rows, key=lambda r: r["strategy"]):
+            ev = evals.get((game_key, draw_time, r["strategy"]))
+            row = {
+                "strategy": r["strategy"],
+                "predicted_numbers": r["numbers"],
+                "predicted_special": r.get("special"),
+                "actual_numbers": None,
+                "actual_special": None,
+                "matches": None,
+                "special_hit": None,
+                "straight": None,
+            }
+            if ev:
+                s = ev["score"]
+                row.update(
+                    actual_numbers=ev["actual_numbers"],
+                    actual_special=ev.get("actual_special"),
+                    matches=s["matches"],
+                    special_hit=s.get("special_hit", 0),
+                    straight=s.get("straight", 0),
+                )
+            out_rows.append(row)
+        out_groups.append(
+            {
+                "game": game_key,
+                "display": game.display,
+                "kind": game.kind,
+                "draw_time": draw_time,
+                "scored": scored,
+                "rows": out_rows,
+            }
+        )
+    return {"date": date, "groups": out_groups}
+
+
+def render_board(date: str | None = None) -> str:
+    data = board_data(date)
+    date = data["date"]
+    if date is None:
+        return (
+            f"### 🎟️ Latest predictions\n\n_No predictions recorded yet._\n"
+        )
+
+    lines = [
+        f"### 🎟️ Predictions for {date}",
+        "",
+        DISCLAIMER,
+        "",
+    ]
+
+    for group in data["groups"]:
+        game_key = group["game"]
+        draw_time = group["draw_time"]
         game = GAMES[game_key]
         heading = game.display if draw_time == "main" else f"{game.display} — {draw_time}"
         lines.append(f"**{heading}**")
         lines.append("")
 
-        scored = any((game_key, draw_time, r["strategy"]) in evals for r in rows)
+        scored = group["scored"]
         if scored:
             lines.append("| Strategy | Predicted | Actual | Matches |")
             lines.append("|---|---|---|---|")
@@ -83,16 +136,16 @@ def render_board(date: str | None = None) -> str:
             lines.append("| Strategy | Predicted |")
             lines.append("|---|---|")
 
-        for r in sorted(rows, key=lambda r: r["strategy"]):
-            predicted = format_numbers(game_key, r["numbers"], r.get("special"))
-            ev = evals.get((game_key, draw_time, r["strategy"]))
-            if scored and ev:
+        for r in group["rows"]:
+            predicted = format_numbers(
+                game_key, r["predicted_numbers"], r["predicted_special"]
+            )
+            if scored and r["matches"] is not None:
                 actual = format_numbers(
-                    game_key, ev["actual_numbers"], ev.get("actual_special")
+                    game_key, r["actual_numbers"], r["actual_special"]
                 )
-                s = ev["score"]
-                marks = str(s["matches"])
-                if game.special_max and s["special_hit"]:
+                marks = str(r["matches"])
+                if game.special_max and r["special_hit"]:
                     marks += " +special"
                 lines.append(f"| `{r['strategy']}` | {predicted} | {actual} | {marks} |")
             elif scored:
@@ -101,7 +154,7 @@ def render_board(date: str | None = None) -> str:
                 lines.append(f"| `{r['strategy']}` | {predicted} |")
         lines.append("")
 
-    if not ordered:
+    if not data["groups"]:
         lines.append("_No drawings scheduled for this date._")
         lines.append("")
 
@@ -110,7 +163,7 @@ def render_board(date: str | None = None) -> str:
     return "\n".join(lines) + "\n"
 
 
-def _strategy_totals() -> tuple[dict[str, dict], dict]:
+def strategy_totals() -> tuple[dict[str, dict], dict]:
     """Aggregate every scored prediction per strategy, pooling games correctly.
 
     Each (game, strategy) arm has its own null mean/variance, so observed,
@@ -146,20 +199,20 @@ def _strategy_totals() -> tuple[dict[str, dict], dict]:
     return per_strategy, overall
 
 
-def _z(observed: float, expected: float, var: float) -> float:
+def z_score(observed: float, expected: float, var: float) -> float:
     sd = math.sqrt(var) if var > 0 else 0.0
     return (observed - expected) / sd if sd else 0.0
 
 
 def render_scoreboard() -> str:
-    per_strategy, overall = _strategy_totals()
+    per_strategy, overall = strategy_totals()
     if overall["n"] == 0:
         return (
             "### 📊 How it's performing\n\n"
             "_No predictions scored yet — stats appear once drawings come in._\n"
         )
 
-    z_all = _z(overall["observed"], overall["expected"], overall["var"])
+    z_all = z_score(overall["observed"], overall["expected"], overall["var"])
     lines = [
         "### 📊 How it's performing",
         "",
@@ -173,11 +226,11 @@ def render_scoreboard() -> str:
     ]
     ranked = sorted(
         per_strategy.items(),
-        key=lambda kv: _z(kv[1]["observed"], kv[1]["expected"], kv[1]["var"]),
+        key=lambda kv: z_score(kv[1]["observed"], kv[1]["expected"], kv[1]["var"]),
         reverse=True,
     )
     for name, row in ranked:
-        z = _z(row["observed"], row["expected"], row["var"])
+        z = z_score(row["observed"], row["expected"], row["var"])
         rate = row["observed"] / row["n"] if row["n"] else 0.0
         best = f"{row['best']}" + (f" ({row['best_game']})" if row["best_game"] else "")
         lines.append(

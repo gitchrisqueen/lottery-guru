@@ -46,6 +46,25 @@ def break_even_jackpot(game: Game) -> float:
     return buyout_cost(game) / (CASH_VALUE_FRACTION * (1 - TOP_FEDERAL_TAX))
 
 
+def rows() -> list[dict]:
+    """Per-game exploit-watch numbers — the data behind render_lines()."""
+    out = []
+    for game in GAMES.values():
+        if game.kind != "jackpot":
+            continue
+        out.append(
+            {
+                "game": game.key,
+                "display": game.display,
+                "combinations": combinations(game),
+                "buyout_cost": buyout_cost(game),
+                "break_even_jackpot": break_even_jackpot(game),
+                "rolldown_defect": False,
+            }
+        )
+    return out
+
+
 def render_lines() -> list[str]:
     lines = [
         "## Exploit watch",
@@ -59,12 +78,10 @@ def render_lines() -> list[str]:
         "| Game | Combinations | Full-buyout cost | Break-even advertised jackpot | Roll-down defect |",
         "|---|---|---|---|---|",
     ]
-    for game in GAMES.values():
-        if game.kind != "jackpot":
-            continue
+    for row in rows():
         lines.append(
-            f"| {game.display} | {combinations(game):,} | "
-            f"${buyout_cost(game):,.0f} | ${break_even_jackpot(game) / 1e6:,.0f}M | none |"
+            f"| {row['display']} | {row['combinations']:,} | "
+            f"${row['buyout_cost']:,.0f} | ${row['break_even_jackpot'] / 1e6:,.0f}M | none |"
         )
     lines += [
         "",
