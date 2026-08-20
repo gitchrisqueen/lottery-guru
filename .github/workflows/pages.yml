@@ -1,0 +1,67 @@
+name: Deploy dashboard to GitHub Pages
+
+on:
+  # Chained off the LAST stage of the daily commit chain
+  # (daily.yml -> predictions-board.yml -> here), so it fires exactly once
+  # per daily cycle, after the final commit has landed. A push-path trigger
+  # would double-fire (both upstream workflows push to main) and race.
+  workflow_run:
+    workflows: ["Publish predictions board"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  # false: queued runs still coalesce, but an in-flight deploy is never
+  # cancelled mid-publish (deploy-pages does not handle cancellation well).
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Skip deploys triggered by a failed/cancelled upstream run — the site
+    # would reflect newer data/ than the board commit that never landed.
+    # Manual dispatch always runs.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # workflow_run checks out the trigger-time SHA; we want the
+          # just-pushed commit on main. Manual dispatch builds the branch it
+          # was dispatched from, so the site can be tested pre-merge.
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.ref || 'main' }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Build static dashboard
+        run: lottery-guru site --out dist/
+
+      # enablement: true turns Pages on (source: GitHub Actions) if it isn't
+      # already, so the very first run doesn't fail on an unconfigured repo.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

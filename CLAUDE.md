@@ -28,6 +28,7 @@ lottery-guru predict [--date YYYY-MM-DD] [--no-llm]
 lottery-guru score                # score predictions whose results arrived (idempotent)
 lottery-guru report               # regenerate REPORT.md
 lottery-guru board                # render PREDICTIONS.md + README marker sections
+lottery-guru site [--out dist]    # build the static GitHub Pages dashboard (HTML + JSON)
 lottery-guru usage [--summary-only]       # log/report Fireworks usage → data/usage/fireworks.jsonl
 lottery-guru finetune export|train|eval   # MLX fine-tuning (macOS only)
 lottery-guru finetune train --provider fireworks --min-scored-days 60  # hosted (CI; monthly workflow)

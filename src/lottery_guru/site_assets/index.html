@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lottery Guru — Strategy Tracker</title>
+<meta name="description" content="An automated, honest lottery-prediction experiment. Null hypothesis: no strategy beats chance — this dashboard measures the convergence.">
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎰&lt;/text&gt;&lt;/svg&gt;">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">🎰</span>
+      <div>
+        <h1>Lottery Guru</h1>
+        <p class="tagline">An automated, honest lottery-prediction experiment</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span id="updated-stamp" class="updated-stamp"></span>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false"
+              aria-label="Switch to dark theme" title="Toggle theme">◐</button>
+    </div>
+  </div>
+  <div class="disclaimer" role="note">
+    <strong>Null hypothesis: no strategy beats chance.</strong>
+    Every arm is expected to score at chance, and the point of this experiment is to
+    measure that convergence honestly. z-scores hovering near 0 are the correct
+    result — nothing here is advice, and nothing here predicts winning numbers.
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Dashboard sections">
+  <button class="tab active" role="tab" id="tab-scoreboard" aria-controls="panel-scoreboard"
+          aria-selected="true" data-panel="scoreboard">Scoreboard</button>
+  <button class="tab" role="tab" id="tab-leaderboards" aria-controls="panel-leaderboards"
+          aria-selected="false" data-panel="leaderboards">Per-game leaderboards</button>
+  <button class="tab" role="tab" id="tab-picks" aria-controls="panel-picks"
+          aria-selected="false" data-panel="picks">Today's picks</button>
+  <button class="tab" role="tab" id="tab-exploit" aria-controls="panel-exploit"
+          aria-selected="false" data-panel="exploit">Exploit watch</button>
+</nav>
+
+<main>
+  <!-- ============ Scoreboard ============ -->
+  <section id="panel-scoreboard" aria-labelledby="tab-scoreboard" class="panel active" role="tabpanel">
+    <div class="panel-intro">
+      <h2>Cross-game strategy scoreboard</h2>
+      <p id="scoreboard-summary" class="summary-line"></p>
+    </div>
+    <div class="controls">
+      <input id="scoreboard-filter" class="filter-input" type="search"
+             placeholder="Filter strategies…" aria-label="Filter strategies">
+    </div>
+    <div class="table-scroll">
+      <table id="scoreboard-table" class="data-table">
+        <thead>
+          <tr>
+            <th data-sort="str">Strategy</th>
+            <th data-sort="num">Scored</th>
+            <th data-sort="num">Hits</th>
+            <th data-sort="num">Chance predicts</th>
+            <th data-sort="num">Hit rate</th>
+            <th data-sort="num" aria-sort="descending">vs chance (z)</th>
+            <th data-sort="num">Best single</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="reading-note">
+      <strong>Reading this:</strong> z measures how far a strategy sits from pure
+      chance, in standard deviations. Values bouncing around 0 mean it performs
+      exactly as randomness predicts — the expected result. Cell shading grows with
+      |z| in <em>either</em> direction; darker just means “further from chance so
+      far,” not “winning.” It would take a sustained |z| &gt; 3 over many draws to
+      suggest anything real, and no strategy is expected to get there.
+    </p>
+  </section>
+
+  <!-- ============ Per-game leaderboards ============ -->
+  <section id="panel-leaderboards" aria-labelledby="tab-leaderboards" class="panel" role="tabpanel" hidden>
+    <div class="panel-intro">
+      <h2>Per-game leaderboards</h2>
+      <p class="summary-line">Each game has its own exact null expectation
+        (hypergeometric for jackpot games, binomial for digit games) — arms are
+        never pooled across games here.</p>
+    </div>
+    <div class="controls">
+      <label class="select-label">Game
+        <select id="game-select"></select>
+      </label>
+    </div>
+    <div id="leaderboard-container"></div>
+  </section>
+
+  <!-- ============ Today's picks ============ -->
+  <section id="panel-picks" aria-labelledby="tab-picks" class="panel" role="tabpanel" hidden>
+    <div class="panel-intro">
+      <h2 id="picks-heading">Today's picks</h2>
+      <p class="summary-line">Experiment outputs, not advice — every arm is expected
+        to score at chance. Once results land, actual numbers and match counts
+        appear beside each pick.</p>
+    </div>
+    <div class="controls">
+      <label class="select-label">Game
+        <select id="picks-game-select"></select>
+      </label>
+    </div>
+    <div id="picks-container"></div>
+  </section>
+
+  <!-- ============ Exploit watch ============ -->
+  <section id="panel-exploit" aria-labelledby="tab-exploit" class="panel" role="tabpanel" hidden>
+    <div class="panel-intro">
+      <h2>Exploit watch</h2>
+      <p id="exploit-note" class="summary-line"></p>
+    </div>
+    <div class="table-scroll">
+      <table id="exploit-table" class="data-table">
+        <thead>
+          <tr>
+            <th data-sort="str">Game</th>
+            <th data-sort="num">Combinations</th>
+            <th data-sort="num">Full-buyout cost</th>
+            <th data-sort="num">Break-even jackpot</th>
+            <th data-sort="str">Roll-down defect</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="reading-note">
+      No tracked game has a capped-jackpot roll-down (the WinFall defect); unclaimed
+      jackpots roll over, keeping per-ticket EV below cost. Digit-game payouts are
+      fixed-odds — a structural house edge no monitor can wait out. “No opportunity”
+      is the expected, and real, finding.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>
+    Data source of truth: the repo's committed <code>data/*.json</code> —
+    <a href="https://github.com/gitchrisqueen/lottery-guru">source on GitHub</a> ·
+    <a href="https://github.com/gitchrisqueen/lottery-guru/blob/main/REPORT.md">REPORT.md</a> ·
+    <a href="https://github.com/gitchrisqueen/lottery-guru/blob/main/PREDICTIONS.md">PREDICTIONS.md</a> ·
+    <a href="https://github.com/gitchrisqueen/lottery-guru/blob/main/docs/RESEARCH.md">the research notes</a>
+  </p>
+  <p class="footer-fine">Rebuilt automatically after every daily loop. This page never
+    implies predictions can beat the lottery — that is the whole point.</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
