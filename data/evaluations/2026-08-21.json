@@ -1,0 +1,1640 @@
+[
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "random",
+  "numbers": [
+   13,
+   17,
+   26,
+   35,
+   46
+  ],
+  "special": 7,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "hot",
+  "numbers": [
+   21,
+   43,
+   49,
+   59,
+   63
+  ],
+  "special": 12,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "cold",
+  "numbers": [
+   6,
+   8,
+   11,
+   28,
+   69
+  ],
+  "special": 18,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "delta",
+  "numbers": [
+   8,
+   19,
+   31,
+   36,
+   40
+  ],
+  "special": 21,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "unpopular",
+  "numbers": [
+   32,
+   33,
+   37,
+   50,
+   52
+  ],
+  "special": 10,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "contrarian",
+  "numbers": [
+   19,
+   27,
+   59,
+   60,
+   68
+  ],
+  "special": 17,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "birthday",
+  "numbers": [
+   1,
+   3,
+   6,
+   23,
+   26
+  ],
+  "special": 5,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "balanced",
+  "numbers": [
+   35,
+   37,
+   40,
+   49,
+   56
+  ],
+  "special": 5,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "antibalanced",
+  "numbers": [
+   26,
+   52,
+   57,
+   61,
+   70
+  ],
+  "special": 20,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "skiphit",
+  "numbers": [
+   27,
+   30,
+   38,
+   46,
+   68
+  ],
+  "special": 21,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "benford",
+  "numbers": [
+   3,
+   16,
+   17,
+   23,
+   40
+  ],
+  "special": 19,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "persistent",
+  "numbers": [
+   1,
+   9,
+   37,
+   38,
+   39
+  ],
+  "special": 22,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "moonphase",
+  "numbers": [
+   12,
+   15,
+   37,
+   55,
+   65
+  ],
+  "special": 8,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "numerology",
+  "numbers": [
+   2,
+   10,
+   12,
+   20,
+   24
+  ],
+  "special": 1,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   7,
+   18,
+   33,
+   55,
+   68
+  ],
+  "special": 9,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "llm-tuned",
+  "numbers": [
+   11,
+   38,
+   43,
+   47,
+   50
+  ],
+  "special": 23,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "megamillions",
+  "draw_time": "main",
+  "strategy": "highest-frequency",
+  "numbers": [
+   26,
+   37,
+   38,
+   40,
+   68
+  ],
+  "special": 21,
+  "actual_numbers": [
+   1,
+   25,
+   34,
+   48,
+   57
+  ],
+  "actual_special": 24,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   3,
+   7,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   8,
+   5,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   6,
+   1,
+   8
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   4,
+   7,
+   8
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   9,
+   0,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   2,
+   2,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   4,
+   3,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   4,
+   6,
+   6
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   3,
+   9,
+   0
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   7,
+   5,
+   0
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "llm-tuned",
+  "numbers": [
+   3,
+   1,
+   9
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   3,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   7,
+   5
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   3,
+   9,
+   4
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   8,
+   5,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   6,
+   1,
+   8
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   7,
+   2,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   2,
+   0,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   9,
+   2,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   4,
+   3,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   8,
+   5,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   5,
+   9,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   3,
+   7,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "llm-tuned",
+  "numbers": [
+   7,
+   3,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   7,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   2,
+   4,
+   1
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   7,
+   9,
+   5,
+   9
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 2,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   8,
+   3,
+   6,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   0,
+   9,
+   3,
+   4
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   5,
+   4,
+   5,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   2,
+   6,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   2,
+   6,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   9,
+   6,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   5,
+   5,
+   3,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   5,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   4,
+   5,
+   2,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   4,
+   0,
+   3,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "llm-tuned",
+  "numbers": [
+   1,
+   0,
+   9,
+   9
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   5,
+   9,
+   3,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   9,
+   9,
+   5,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   7,
+   6,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   8,
+   3,
+   6,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   0,
+   9,
+   4,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 2,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   9,
+   4,
+   4,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   1,
+   6,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   2,
+   6,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   9,
+   6,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   9,
+   6,
+   0,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   5,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   9,
+   6,
+   9,
+   7
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   1,
+   5,
+   6,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "llm-tuned",
+  "numbers": [
+   1,
+   1,
+   1,
+   4
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   1,
+   6,
+   1,
+   5
+  ],
+  "special": null,
+  "actual_numbers": [
+   7,
+   9,
+   4,
+   0
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ }
+]
