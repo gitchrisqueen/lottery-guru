@@ -308,7 +308,7 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `random` | `3` `3` `6` `7` `2` |
 | `skiphit` | `1` `6` `0` `3` `1` |
 
-<sub>Updated 2026-09-01 12:56 UTC</sub>
+<sub>Updated 2026-09-01 15:01 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -318,33 +318,33 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 <!-- SCOREBOARD:START -->
 ### 📊 How it's performing
 
-**1563** predictions scored across **37** days. Combined, they've hit **589** numbers where pure chance predicts **552.5** (z = **+1.64**).
+**1627** predictions scored across **38** days. Combined, they've hit **612** numbers where pure chance predicts **575.1** (z = **+1.63**).
 
 | Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
 |---|---|---|---|---|---|---|
-| `contrarian` | 87 | 47 | 30.7 | 0.54/draw | +3.11 | 2 (NY Numbers (Pick 3)) |
-| `highest-frequency` | 120 | 56 | 42.4 | 0.47/draw | +2.21 | 2 (Mega Millions) |
-| `benford` | 15 | 9 | 5.4 | 0.60/draw | +1.66 | 3 (Mega Millions) |
-| `random` | 156 | 66 | 55.1 | 0.42/draw | +1.55 | 2 (Mega Millions) |
-| `positional` | 129 | 52 | 45.4 | 0.40/draw | +1.03 | 2 (NY Win 4) |
-| `hot` | 156 | 61 | 55.1 | 0.39/draw | +0.84 | 3 (NY Numbers (Pick 3)) |
-| `skiphit` | 87 | 35 | 30.7 | 0.40/draw | +0.82 | 2 (NY Win 4) |
-| `birthday` | 15 | 7 | 5.4 | 0.47/draw | +0.73 | 2 (Powerball) |
-| `persistent` | 87 | 33 | 30.7 | 0.38/draw | +0.44 | 2 (NY Numbers (Pick 3)) |
-| `numerology` | 87 | 33 | 30.7 | 0.38/draw | +0.44 | 2 (NY Numbers (Pick 3)) |
+| `contrarian` | 92 | 50 | 32.5 | 0.54/draw | +3.25 | 2 (NY Numbers (Pick 3)) |
+| `highest-frequency` | 125 | 58 | 44.1 | 0.46/draw | +2.21 | 2 (Mega Millions) |
+| `benford` | 16 | 9 | 5.8 | 0.56/draw | +1.44 | 3 (Mega Millions) |
+| `random` | 161 | 66 | 56.9 | 0.41/draw | +1.28 | 2 (Mega Millions) |
+| `birthday` | 16 | 8 | 5.8 | 0.50/draw | +1.00 | 2 (Powerball) |
+| `positional` | 133 | 53 | 46.8 | 0.40/draw | +0.96 | 2 (NY Win 4) |
+| `skiphit` | 92 | 37 | 32.5 | 0.40/draw | +0.84 | 2 (NY Win 4) |
+| `hot` | 161 | 62 | 56.9 | 0.39/draw | +0.72 | 3 (NY Numbers (Pick 3)) |
+| `numerology` | 92 | 36 | 32.5 | 0.39/draw | +0.66 | 2 (NY Numbers (Pick 3)) |
+| `persistent` | 92 | 35 | 32.5 | 0.38/draw | +0.47 | 2 (NY Numbers (Pick 3)) |
+| `antibalanced` | 16 | 6 | 5.8 | 0.38/draw | +0.10 | 1 (Powerball) |
 | `llm-tuned` | 79 | 27 | 27.9 | 0.34/draw | -0.18 | 3 (NY Win 4) |
-| `antibalanced` | 15 | 5 | 5.4 | 0.33/draw | -0.19 | 1 (Powerball) |
-| `unpopular` | 27 | 9 | 9.7 | 0.33/draw | -0.25 | 2 (Mega Millions) |
-| `moonphase` | 87 | 29 | 30.7 | 0.33/draw | -0.32 | 2 (NY Win 4) |
-| `delta` | 27 | 8 | 9.7 | 0.30/draw | -0.59 | 1 (Powerball) |
-| `balanced` | 15 | 4 | 5.4 | 0.27/draw | -0.65 | 2 (Mega Millions) |
-| `cold` | 156 | 47 | 55.1 | 0.30/draw | -1.16 | 3 (NY Win 4) |
-| `llm-fewshot` | 146 | 43 | 51.6 | 0.29/draw | -1.27 | 3 (NY Win 4) |
-| `dreambook` | 72 | 18 | 25.3 | 0.25/draw | -1.53 | 2 (NY Numbers (Pick 3)) |
+| `unpopular` | 28 | 9 | 10.1 | 0.32/draw | -0.37 | 2 (Mega Millions) |
+| `moonphase` | 92 | 30 | 32.5 | 0.33/draw | -0.46 | 2 (NY Win 4) |
+| `delta` | 28 | 8 | 10.1 | 0.29/draw | -0.70 | 1 (Powerball) |
+| `balanced` | 16 | 4 | 5.8 | 0.25/draw | -0.79 | 2 (Mega Millions) |
+| `cold` | 161 | 50 | 56.9 | 0.31/draw | -0.97 | 3 (NY Win 4) |
+| `llm-fewshot` | 151 | 44 | 53.4 | 0.29/draw | -1.36 | 3 (NY Win 4) |
+| `dreambook` | 76 | 20 | 26.7 | 0.26/draw | -1.37 | 2 (NY Numbers (Pick 3)) |
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-09-01 12:56 UTC</sub>
+<sub>Updated 2026-09-01 15:01 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
