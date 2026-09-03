@@ -57,7 +57,9 @@ lottery-guru finetune deploy [--only-if-drawings jackpot] | teardown   # tuned-m
   *other arms* picked them **for that one drawing** — never pooled across
   games or draw times. It is not `hot`: `hot` ranks by numbers actually drawn.
 - `src/lottery_guru/evaluation/` — scoring vs exact hypergeometric/binomial
-  null moments, cumulative z-tests, REPORT.md rendering, `monitors.py`
+  null moments, cumulative z-tests, REPORT.md rendering (arms with
+  n < `report.MIN_N` = 50 are flagged "not yet interpretable", never
+  dropped), `monitors.py`
   (the "Exploit watch" section: Mandel-gate buyout math and roll-down
   structural flags — offline-deterministic, expected verdict "no
   opportunity"), and `board.py`

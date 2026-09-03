@@ -84,7 +84,7 @@ def predictions_payload(date: str | None = None) -> dict:
 
 
 def leaderboard_payload() -> dict:
-    return {"generated_at": _now(), "games": report.leaderboard_data()}
+    return {"generated_at": _now(), "min_n": report.MIN_N, "games": report.leaderboard_data()}
 
 
 def monitors_payload() -> dict:

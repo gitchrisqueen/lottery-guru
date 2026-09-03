@@ -79,6 +79,7 @@ def test_leaderboard_payload_all_games_sorted_by_z(data_dir):
     games = payload["games"]
     assert set(games) == {"ny_numbers", "powerball"}
     assert games == report.leaderboard_data()
+    assert payload["min_n"] == report.MIN_N
     for entry in games.values():
         zs = [r["z"] for r in entry["rows"]]
         assert zs == sorted(zs, reverse=True)
