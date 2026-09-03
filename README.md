@@ -6,14 +6,48 @@
 
 **📊 [View the live dashboard →](https://gitchrisqueen.github.io/lottery-guru/)** — sortable leaderboards, today's picks, and the exploit watch, rebuilt after every daily loop.
 
-An automated, honest lottery-prediction experiment. Every day it:
+An automated, honest lottery-prediction experiment. It is a measurement
+harness first: every arm — folk method, LLM, or fine-tuned model — is scored
+against exact chance, and the expected finding is that nothing beats it.
+
+## What this measures
+
+**The null-hypothesis scorer.** Lottery draws are independent uniform samples,
+so the number of matches a ticket scores has an exact distribution under
+chance. For jackpot games, white-ball matches are hypergeometric (Powerball:
+5 picks from 69, so chance expects 25/69 ≈ 0.362 matches per ticket); for
+digit games, per-position matches are Binomial(k, 1/10). Every day the loop
+scores yesterday's predictions against the real drawings, sums observed
+matches per (strategy, game) arm, and reports the cumulative
+z = (observed − expected) / √(n · variance) with a two-sided p. The
+[leaderboard](REPORT.md) is that table, one section per game, never pooled
+across rule eras. Arms with fewer than 50 scored draws are marked
+_(n<50, not yet interpretable)_ rather than ranked as if a lucky week meant
+something. The math lives in
+[`evaluation/scoring.py`](src/lottery_guru/evaluation/scoring.py) and is
+checked against the exact hypergeometric PMF in the tests.
+
+**No arm is expected to beat chance.** The folk methods (`hot`, `cold`,
+`delta`, `numerology`, …) are here to be falsified with real data, and the
+`llm-fewshot` and `llm-tuned` arms exist for exactly the same reason: they are
+hypotheses, scored against the same null with no special treatment, and we
+expect them to converge to z ≈ 0 like everything else. Watching that
+convergence happen is the result.
+
+## How the loop runs
+
+Every day it:
 
 1. **Pulls real drawing results** (Powerball, Mega Millions, NY Numbers, NY Win 4) from official open-data feeds
-2. **Generates predictions** from a portfolio of strategies — statistical folk methods plus an LLM arm
+2. **Generates predictions** from a portfolio of strategies — statistical folk methods plus the LLM arms
 3. **Scores yesterday's predictions** against the actual drawings once results land
-4. **Updates a leaderboard** ([REPORT.md](REPORT.md)) comparing every strategy to the exact null hypothesis
+4. **Updates the leaderboard** ([REPORT.md](REPORT.md)) comparing every arm to the exact null hypothesis
 
-Periodically, a local **LLM fine-tuning loop** (MLX on Apple Silicon) trains on the accumulated history to measure whether predictions "improve" over time.
+Periodically, an **LLM fine-tuning loop** (Fireworks LoRA monthly, or MLX
+locally on Apple Silicon) trains on the accumulated history so the `llm-tuned`
+arm can be scored — and, we expect, falsified — like every other arm. It
+measures whether predictions "improve" with training; the honest expectation
+is that they do not.
 
 ## Today's board
 

@@ -204,6 +204,7 @@ function renderLeaderboards(data) {
       <div class="game-board">
         <h3>${esc(g.display)} <span class="kind-tag">${esc(g.kind)}</span></h3>
         <p class="null-line">Null expectation: ${g.null_expectation.toFixed(4)} matches per prediction.</p>
+        <p class="null-line">Arms with fewer than ${data.min_n} scored draws are greyed out — z and p are shown but not yet interpretable.</p>
         <div class="table-scroll">
           <table class="data-table" id="lb-table">
             <thead><tr>
@@ -216,8 +217,8 @@ function renderLeaderboards(data) {
               <th data-sort="num">Straights</th>
             </tr></thead>
             <tbody>${g.rows.map((r) => `
-              <tr>
-                <td data-value="${esc(r.strategy)}"><span class="strategy-name">${esc(r.strategy)}</span></td>
+              <tr class="${r.insufficient_sample ? "insufficient" : ""}">
+                <td data-value="${esc(r.strategy)}"><span class="strategy-name">${esc(r.strategy)}</span>${r.insufficient_sample ? ` <span class="sample-flag">(n&lt;${data.min_n}, not yet interpretable)</span>` : ""}</td>
                 <td class="num" data-value="${r.n}">${fmtInt(r.n)}</td>
                 <td class="num" data-value="${r.observed_matches}">${fmtInt(r.observed_matches)}</td>
                 <td class="num" data-value="${r.expected_matches}">${r.expected_matches}</td>
