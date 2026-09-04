@@ -89,9 +89,11 @@ Cron **10:15 UTC daily** (after NY's nightly batch):
 1. `lottery-guru pull` — fetch new results
 2. `lottery-guru score` — score all unscored past predictions that now have results
 3. `lottery-guru predict` — generate today's predictions for whichever games draw today
-   (LLM few-shot arm runs only if `ANTHROPIC_API_KEY` secret is set; skipped cleanly otherwise)
+   (LLM few-shot arm runs only if an LLM provider credential is set — `OLLAMA_API_KEY`,
+   `ANTHROPIC_API_KEY`, or `FIREWORKS_API_KEY`; skipped cleanly otherwise)
 4. `lottery-guru report` — regenerate REPORT.md
-5. Commit & push the changed JSON/report back to the repo
+5. `lottery-guru board` — render PREDICTIONS.md and the README board section
+6. Commit & push the changed JSON/report back to the repo
 
 The same commands run locally, so the Mac and CI are interchangeable.
 
