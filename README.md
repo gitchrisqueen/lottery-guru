@@ -20,8 +20,9 @@ digit games, per-position matches are Binomial(k, 1/10). Every day the loop
 scores yesterday's predictions against the real drawings, sums observed
 matches per (strategy, game) arm, and reports the cumulative
 z = (observed − expected) / √(n · variance) with a two-sided p. The
-[leaderboard](REPORT.md) is that table, one section per game, never pooled
-across rule eras. Arms with fewer than 50 scored draws are marked
+[leaderboard](REPORT.md) is that table, one section per game with scored
+results (Powerball, Mega Millions, NY Numbers, NY Win 4 today; the Florida games
+have no scored draws yet), never pooled across rule eras. Arms with fewer than 50 scored draws are marked
 _(n<50, not yet interpretable)_ rather than ranked as if a lucky week meant
 something. The math lives in
 [`evaluation/scoring.py`](src/lottery_guru/evaluation/scoring.py) and its
@@ -39,7 +40,7 @@ convergence happen is the result.
 
 Every day it:
 
-1. **Pulls real drawing results** for Powerball, Mega Millions, NY Numbers and NY Win 4 from NY Open Data, and for Florida's Fantasy 5, Lotto, Jackpot Triple Play and Pick 2–5 from the Florida Lottery's official PDF history files
+1. **Pulls real drawing results** for Powerball, Mega Millions, NY Numbers and NY Win 4 from NY Open Data, and attempts the same for Florida's Fantasy 5, Lotto, Jackpot Triple Play and Pick 2–5 from the Florida Lottery's PDF history files. As of 2026-09-04 no Florida result has landed: every scheduled run since 2026-08-10 fails the Florida fetch with a TLS handshake error (see the [run log](https://github.com/gitchrisqueen/lottery-guru/actions/workflows/daily.yml)), so Florida arms are predicted but not yet scored
 2. **Generates predictions** from a portfolio of strategies — statistical folk methods plus the LLM arms
 3. **Scores yesterday's predictions** against the actual drawings once results land
 4. **Updates the leaderboard** ([REPORT.md](REPORT.md)) comparing every arm to the exact null hypothesis
@@ -384,8 +385,8 @@ _**Reading this:** `z` measures how far a strategy sits from pure chance in stan
 
 ## The honest part
 
-Lottery draws are independent uniform samples. Well-run lotteries pass every
-randomness test, and no peer-reviewed work has ever demonstrated above-chance
+Lottery draws are independent uniform samples. Well-run lotteries consistently pass
+uniformity tests (chi-square, gap, runs — see docs/RESEARCH.md), and no peer-reviewed work has ever demonstrated above-chance
 draw prediction — the documented "wins" (Selbee, MIT/Cash WinFall, Mandel)
 exploited *payout structure*, never draw prediction. So the null hypothesis —
 **no strategy beats chance** — is almost certainly true, and this project is the
@@ -418,7 +419,7 @@ See [docs/PLAN.md](docs/PLAN.md) for the architecture and
 | `numerology` | Pythagorean numerology from a fixed project persona plus the day | chance |
 | `dreambook` | Harlem numbers-game dream-book lookup (digit games) | chance |
 | `llm-fewshot` | LLM (Ollama Cloud by default) with recent-draw context, no training | chance |
-| `llm-tuned` | LoRA-tuned on accumulated history (Fireworks, retrained monthly; or local MLX) | chance (measured rigorously) |
+| `llm-tuned` | LoRA-tuned on accumulated history, served from Fireworks (retrained monthly); local MLX adapters are evaluated offline with `finetune eval`, not scored as this arm | chance (measured rigorously) |
 | `highest-frequency` | consensus: ranks numbers by how many *other arms* picked them for that same drawing | chance |
 
 Which arms apply to which game is decided by `REGISTRY` in
@@ -454,7 +455,9 @@ Provider-pluggable, auto-detected from credentials:
   `OLLAMA_API_KEY` (as a repo secret for CI). Default model `gpt-oss:20b`;
   override with `LOTTERY_GURU_LLM_MODEL`.
 - **Local Ollama**: set `OLLAMA_HOST=http://localhost:11434` — no key needed.
-  A fused MLX fine-tune can be imported into Ollama and served the same way.
+  Pointing `LOTTERY_GURU_LLM_MODEL` at any model your Ollama serves runs it as
+  the `llm-fewshot` arm; there is no code path that scores an MLX adapter as
+  `llm-tuned`.
 - **Anthropic**: set `ANTHROPIC_API_KEY` and
   `LOTTERY_GURU_LLM_PROVIDER=anthropic` (needs `pip install -e ".[llm]"`).
 - **Fireworks.ai**: set `FIREWORKS_API_KEY` — also unlocks the `llm-tuned` arm
@@ -555,7 +558,9 @@ FIREWORKS_API_KEY=... lottery-guru finetune teardown # ALWAYS, to stop billing
 - **Florida Lottery PDF history files** — Florida has no open-data portal;
   the official machine-readable source is the per-game PDF at
   `files.floridalottery.com/exptkt/<stem>.pdf`, parsed with `pdfplumber`
-  ([`data/florida.py`](src/lottery_guru/data/florida.py)).
+  ([`data/florida.py`](src/lottery_guru/data/florida.py)). The fetch currently
+  fails from GitHub Actions runners with an SSL handshake error on both hosts,
+  so no Florida history is in `data/raw/` yet.
 - **Texas Lottery CSVs** — used as an integrity cross-check on the most recent
   Powerball draws.
 

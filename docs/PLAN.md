@@ -71,9 +71,11 @@ that gives free history, diffs, and reproducibility with zero infrastructure.
 
 ### 2. Strategy layer (`strategies/`)
 Common interface: `predict(game, history, rng) -> Prediction{numbers, special, probs?}`.
-Arms: `random` (null), `hot`, `cold`, `delta`, `positional` (digit games), `unpopular`
-(jackpot games), `llm-fewshot` (Claude API, no training — the LLM control arm),
-`llm-tuned` (local MLX model + latest LoRA adapter, once one exists).
+Arms: the 16 statistical arms in `strategies/__init__.py` `REGISTRY` (see the README
+table), `llm-fewshot` (provider-pluggable — Ollama by default, Anthropic or Fireworks by
+credential; no training — the LLM control arm), `llm-tuned` (the Fireworks LoRA model
+recorded in `data/finetune/fireworks.json`, once one exists), and `highest-frequency`
+(consensus over the other arms).
 Deterministic per (strategy, game, date) via seeded RNG so reruns are reproducible.
 
 ### 3. Evaluation layer (`evaluation/`)
@@ -89,8 +91,8 @@ Cron **10:15 UTC daily** (after NY's nightly batch):
 1. `lottery-guru pull` — fetch new results
 2. `lottery-guru score` — score all unscored past predictions that now have results
 3. `lottery-guru predict` — generate today's predictions for whichever games draw today
-   (LLM few-shot arm runs only if an LLM provider credential is set — `OLLAMA_API_KEY`,
-   `ANTHROPIC_API_KEY`, or `FIREWORKS_API_KEY`; skipped cleanly otherwise)
+   (LLM few-shot arm runs only if an LLM provider is configured — `OLLAMA_API_KEY` or
+   `OLLAMA_HOST`, `ANTHROPIC_API_KEY`, or `FIREWORKS_API_KEY`; skipped cleanly otherwise)
 4. `lottery-guru report` — regenerate REPORT.md
 5. `lottery-guru board` — render PREDICTIONS.md and the README board section
 6. Commit & push the changed JSON/report back to the repo

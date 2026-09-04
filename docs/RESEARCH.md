@@ -130,10 +130,10 @@ means you still shouldn't play.
 ## 3. Null-hypothesis baselines (what "no skill" scores)
 
 **Powerball (5/69 + 1/26), one ticket vs one draw:**
-- White matches ~ Hypergeometric(N=69, K=5, n=5): **E = 25/69 ≈ 0.3623**, var ≈ 0.3242
+- White matches ~ Hypergeometric(N=69, K=5, n=5): **E = 25/69 ≈ 0.3623**, var ≈ 0.3163
 - PMF: P(0)=.67840, P(1)=.28267, P(2)=.037073, P(3)=.0017939, P(4)=2.85e-5, P(5)=8.9e-8
 - P(red) = 1/26 ≈ 0.03846
-- Over D predictions: z = (observed − 0.3623·D) / √(0.3242·D)
+- Over D predictions: z = (observed − 0.3623·D) / √(0.3163·D)
 
 **Mega Millions (5/70 + 1/24):** E[white] = 25/70 ≈ 0.3571; P(mega) = 1/24.
 
