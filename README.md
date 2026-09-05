@@ -20,12 +20,14 @@ digit games, per-position matches are Binomial(k, 1/10). Every day the loop
 scores yesterday's predictions against the real drawings, sums observed
 matches per (strategy, game) arm, and reports the cumulative
 z = (observed − expected) / √(n · variance) with a two-sided p. The
-[leaderboard](REPORT.md) is that table, one section per game, never pooled
-across rule eras. Arms with fewer than 50 scored draws are marked
+[leaderboard](REPORT.md) is that table, one section per game with scored
+results (Powerball, Mega Millions, NY Numbers, NY Win 4 today; the Florida games
+have no scored draws yet), never pooled across rule eras. Arms with fewer than 50 scored draws are marked
 _(n<50, not yet interpretable)_ rather than ranked as if a lucky week meant
 something. The math lives in
-[`evaluation/scoring.py`](src/lottery_guru/evaluation/scoring.py) and is
-checked against the exact hypergeometric PMF in the tests.
+[`evaluation/scoring.py`](src/lottery_guru/evaluation/scoring.py) and its
+hypergeometric and binomial moments are checked in
+[`tests/test_scoring.py`](tests/test_scoring.py).
 
 **No arm is expected to beat chance.** The folk methods (`hot`, `cold`,
 `delta`, `numerology`, …) are here to be falsified with real data, and the
@@ -38,7 +40,7 @@ convergence happen is the result.
 
 Every day it:
 
-1. **Pulls real drawing results** (Powerball, Mega Millions, NY Numbers, NY Win 4) from official open-data feeds
+1. **Pulls real drawing results** for Powerball, Mega Millions, NY Numbers and NY Win 4 from NY Open Data, and attempts the same for Florida's Fantasy 5, Lotto, Jackpot Triple Play and Pick 2–5 from the Florida Lottery's PDF history files. As of 2026-09-04 no Florida result has landed: every scheduled run since 2026-08-10 fails the Florida fetch on both hosts — a TLS handshake error on most days, a connect timeout on the rest (see the [run log](https://github.com/gitchrisqueen/lottery-guru/actions/workflows/daily.yml)) — so Florida arms are predicted but not yet scored
 2. **Generates predictions** from a portfolio of strategies — statistical folk methods plus the LLM arms
 3. **Scores yesterday's predictions** against the actual drawings once results land
 4. **Updates the leaderboard** ([REPORT.md](REPORT.md)) comparing every arm to the exact null hypothesis
@@ -383,8 +385,8 @@ _**Reading this:** `z` measures how far a strategy sits from pure chance in stan
 
 ## The honest part
 
-Lottery draws are independent uniform samples. Well-run lotteries pass every
-randomness test, and no peer-reviewed work has ever demonstrated above-chance
+Lottery draws are independent uniform samples. Well-run lotteries consistently pass
+uniformity tests (chi-square, gap, runs — see docs/RESEARCH.md), and no peer-reviewed work has ever demonstrated above-chance
 draw prediction — the documented "wins" (Selbee, MIT/Cash WinFall, Mandel)
 exploited *payout structure*, never draw prediction. So the null hypothesis —
 **no strategy beats chance** — is almost certainly true, and this project is the
@@ -404,12 +406,25 @@ See [docs/PLAN.md](docs/PLAN.md) for the architecture and
 | `random` | uniform sample — defines chance | the baseline |
 | `hot` | most frequent numbers, trailing window | chance |
 | `cold` | most overdue numbers (gambler's-fallacy control) | chance |
-| `delta` | sample empirical gaps between sorted winners | chance |
-| `positional` | per-position digit frequency (Pick 3/Win 4) | chance |
-| `unpopular` | avoid birthday/sequence combos to reduce jackpot splitting | same matches, better EV-if-win |
+| `delta` | sample empirical gaps between sorted winners (jackpot games) | chance |
+| `positional` | per-position digit frequency (digit games) | chance |
+| `unpopular` | avoid birthday/sequence combos to reduce jackpot splitting (jackpot games with room above 31) | same matches, better EV-if-win |
+| `birthday` | the mirror of `unpopular`: deliberately popular 1–31 picks | chance, worse split |
+| `contrarian` | play numbers that just hit (Clotfelter & Cook's under-bet numbers) | chance |
+| `balanced` / `antibalanced` | the "winning tickets look average" sum/parity filter, and its inverse (jackpot games) | chance |
+| `skiphit` | Gail Howard's skip-and-hit system, mechanized | chance |
+| `benford` | score tickets by closeness to Benford's law — a deliberately wrong control (jackpot games) | chance |
+| `persistent` | one fixed ticket per game, never changed (Lustig) | chance |
+| `moonphase` | lunar phase folded into the seed — a seeded RNG in costume | chance |
+| `numerology` | Pythagorean numerology from a fixed project persona plus the day | chance |
+| `dreambook` | Harlem numbers-game dream-book lookup (digit games) | chance |
 | `llm-fewshot` | LLM (Ollama Cloud by default) with recent-draw context, no training | chance |
-| `llm-tuned` | LoRA-tuned on accumulated history (Fireworks, retrained monthly; or local MLX) | chance (measured rigorously) |
+| `llm-tuned` | LoRA-tuned on accumulated history, served from Fireworks (retrained monthly); local MLX adapters are evaluated offline with `finetune eval`, not scored as this arm | chance (measured rigorously) |
 | `highest-frequency` | consensus: ranks numbers by how many *other arms* picked them for that same drawing | chance |
+
+Which arms apply to which game is decided by `REGISTRY` in
+[`strategies/__init__.py`](src/lottery_guru/strategies/__init__.py); each
+strategy module's docstring carries the folk claim it exists to test.
 
 ## Quickstart
 
@@ -422,9 +437,14 @@ lottery-guru score               # score anything whose results are in
 lottery-guru report              # regenerate REPORT.md
 ```
 
-`lottery-guru daily` runs all four — it's the GitHub Actions cron entry point
-(`.github/workflows/daily.yml`, 10:15 UTC daily, after NY Open Data's nightly
-batch). Predictions and scores are committed to the repo: git is the database.
+`lottery-guru daily` runs all four and then `lottery-guru board`, which
+renders the predictions board into [PREDICTIONS.md](PREDICTIONS.md) and the
+section above. It's the GitHub Actions cron entry point
+(`.github/workflows/daily.yml`, scheduled for 10:15 UTC, after NY Open Data's
+nightly batch; GitHub starts scheduled runs late, often by hours — the
+[run log](https://github.com/gitchrisqueen/lottery-guru/actions/workflows/daily.yml)
+shows the actual start times). Predictions and scores are committed to the
+repo: git is the database.
 
 ### LLM arm
 
@@ -435,7 +455,9 @@ Provider-pluggable, auto-detected from credentials:
   `OLLAMA_API_KEY` (as a repo secret for CI). Default model `gpt-oss:20b`;
   override with `LOTTERY_GURU_LLM_MODEL`.
 - **Local Ollama**: set `OLLAMA_HOST=http://localhost:11434` — no key needed.
-  A fused MLX fine-tune can be imported into Ollama and served the same way.
+  Pointing `LOTTERY_GURU_LLM_MODEL` at any model your Ollama serves runs it as
+  the `llm-fewshot` arm; there is no code path that scores an MLX adapter as
+  `llm-tuned`.
 - **Anthropic**: set `ANTHROPIC_API_KEY` and
   `LOTTERY_GURU_LLM_PROVIDER=anthropic` (needs `pip install -e ".[llm]"`).
 - **Fireworks.ai**: set `FIREWORKS_API_KEY` — also unlocks the `llm-tuned` arm
@@ -489,15 +511,19 @@ The hosted path uses Fireworks.ai LoRA and runs on two schedules:
 - **Tuned predictions** — the [daily loop](.github/workflows/daily.yml) brings
   the tuned model up, predicts alongside every other arm, and tears it back
   down, so `llm-tuned` is scored against the same null as everything else.
-  It does this only on days a jackpot game draws (Mon/Tue/Wed/Fri/Sat) —
-  Sundays and Thursdays are NY-only, so the GPU stays off and the week costs
+  It does this only on days Powerball or Mega Millions draws
+  (Mon/Tue/Wed/Fri/Sat — `TUNED_ARM_GAMES` in
+  [`games.py`](src/lottery_guru/games.py)); Sundays and Thursdays have only
+  the daily NY and Florida games, so the GPU stays off and the week costs
   five sessions instead of seven. Every other arm still predicts all seven
   days; only the paid arm is trimmed.
 
 Setup: add the repo secret `FIREWORKS_API_KEY`
 ([fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys));
 the account slug is auto-resolved from the key (set `FIREWORKS_ACCOUNT_ID` to
-override). Training needs a Tier 2 account (add $50 in credits) for GPU quota.
+override). Training needs a Fireworks account tier with GPU quota; the
+accelerator classes tried, in order, are listed in
+[`finetune/fireworks.py`](src/lottery_guru/finetune/fireworks.py).
 
 **Serving costs GPU time.** Fireworks does not serve LoRA fine-tunes
 serverlessly — inference needs an on-demand deployment billed while it exists,
@@ -529,7 +555,14 @@ FIREWORKS_API_KEY=... lottery-guru finetune teardown # ALWAYS, to stop billing
 
 - **NY Open Data (Socrata)** — official, free, no auth; nightly refresh.
   Powerball `d6yy-54nr`, Mega Millions `5xaw-6ayf`, Numbers/Win4 `hsys-3def`.
-- **Texas Lottery CSVs** — used as an integrity cross-check for Powerball.
+- **Florida Lottery PDF history files** — Florida has no open-data portal;
+  the official machine-readable source is the per-game PDF at
+  `files.floridalottery.com/exptkt/<stem>.pdf`, parsed with `pdfplumber`
+  ([`data/florida.py`](src/lottery_guru/data/florida.py)). The fetch currently
+  fails from GitHub Actions runners with an SSL handshake error on both hosts,
+  so no Florida history is in `data/raw/` yet.
+- **Texas Lottery CSVs** — used as an integrity cross-check on the most recent
+  Powerball draws.
 
 ## Disclaimer
 
