@@ -54,297 +54,255 @@ is that they do not.
 ## Today's board
 
 <!-- PREDICTIONS:START -->
-### 🎟️ Predictions for 2026-09-09
+### 🎟️ Predictions for 2026-09-10
 
 _These are experiment outputs, not advice. Every arm is expected to score at chance — see the [leaderboard](REPORT.md)._
-
-**Powerball**
-
-| Strategy | Predicted |
-|---|---|
-| `antibalanced` | `05` `09` `17` `31` `65` + `05` |
-| `balanced` | `08` `19` `22` `47` `50` + `15` |
-| `benford` | `01` `12` `28` `35` `41` + `14` |
-| `birthday` | `01` `07` `08` `12` `21` + `09` |
-| `cold` | `01` `23` `34` `51` `52` + `19` |
-| `contrarian` | `03` `15` `19` `28` `64` + `14` |
-| `delta` | `04` `32` `45` `46` `55` + `19` |
-| `highest-frequency` | `01` `19` `28` `32` `36` + `09` |
-| `hot` | `03` `36` `58` `63` `64` + `03` |
-| `llm-fewshot` | `06` `49` `54` `58` `65` + `02` |
-| `moonphase` | `16` `25` `59` `66` `68` + `21` |
-| `numerology` | `10` `12` `20` `24` `36` + `09` |
-| `persistent` | `13` `21` `23` `32` `66` + `01` |
-| `random` | `17` `24` `32` `36` `37` + `15` |
-| `skiphit` | `19` `28` `39` `56` `64` + `09` |
-| `unpopular` | `20` `33` `50` `55` `60` + `10` |
 
 **NY Numbers (Pick 3) — evening**
 
 | Strategy | Predicted |
 |---|---|
 | `cold` | `7` `9` `2` |
-| `contrarian` | `3` `0` `3` |
-| `dreambook` | `4` `0` `9` |
-| `highest-frequency` | `4` `0` `3` |
+| `contrarian` | `6` `0` `5` |
+| `dreambook` | `7` `2` `4` |
+| `highest-frequency` | `4` `2` `4` |
 | `hot` | `8` `5` `4` |
-| `llm-fewshot` | `7` `7` `8` |
-| `moonphase` | `9` `6` `1` |
-| `numerology` | `1` `1` `3` |
+| `llm-fewshot` | `4` `0` `1` |
+| `moonphase` | `2` `6` `6` |
+| `numerology` | `1` `1` `4` |
 | `persistent` | `4` `3` `3` |
-| `positional` | `4` `0` `0` |
-| `random` | `9` `8` `3` |
-| `skiphit` | `1` `0` `4` |
+| `positional` | `6` `2` `5` |
+| `random` | `8` `2` `7` |
+| `skiphit` | `3` `5` `5` |
 
 **NY Numbers (Pick 3) — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `9` `2` |
-| `contrarian` | `3` `5` `5` |
-| `dreambook` | `0` `2` `4` |
-| `highest-frequency` | `1` `5` `3` |
+| `cold` | `7` `9` `8` |
+| `contrarian` | `6` `0` `0` |
+| `dreambook` | `5` `9` `2` |
+| `highest-frequency` | `5` `1` `4` |
 | `hot` | `8` `5` `4` |
-| `llm-fewshot` | `2` `9` `6` |
-| `moonphase` | `6` `3` `3` |
-| `numerology` | `1` `1` `3` |
+| `llm-fewshot` | `3` `1` `4` |
+| `moonphase` | `0` `2` `9` |
+| `numerology` | `1` `1` `4` |
 | `persistent` | `4` `3` `3` |
-| `positional` | `5` `5` `9` |
-| `random` | `0` `6` `1` |
-| `skiphit` | `1` `0` `5` |
+| `positional` | `5` `3` `1` |
+| `random` | `9` `1` `5` |
+| `skiphit` | `3` `5` `3` |
 
 **NY Win 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `0` `3` `1` `4` |
-| `contrarian` | `4` `6` `7` `2` |
-| `dreambook` | `1` `8` `3` `3` |
-| `highest-frequency` | `7` `6` `7` `5` |
-| `hot` | `8` `2` `9` `3` |
-| `llm-fewshot` | `9` `6` `2` `5` |
-| `moonphase` | `9` `1` `8` `8` |
-| `numerology` | `1` `1` `3` `5` |
+| `cold` | `0` `3` `6` `2` |
+| `contrarian` | `1` `9` `4` `9` |
+| `dreambook` | `2` `0` `2` `5` |
+| `highest-frequency` | `1` `9` `6` `5` |
+| `hot` | `8` `9` `2` `1` |
+| `llm-fewshot` | `4` `8` `8` `0` |
+| `moonphase` | `0` `9` `7` `7` |
+| `numerology` | `1` `1` `4` `5` |
 | `persistent` | `5` `9` `6` `5` |
-| `positional` | `5` `5` `1` `0` |
-| `random` | `7` `8` `5` `4` |
-| `skiphit` | `7` `6` `7` `2` |
+| `positional` | `6` `8` `6` `4` |
+| `random` | `4` `5` `2` `5` |
+| `skiphit` | `9` `8` `4` `9` |
 
 **NY Win 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `0` `3` `1` `4` |
-| `contrarian` | `7` `6` `2` `4` |
-| `dreambook` | `9` `7` `5` `0` |
-| `highest-frequency` | `3` `9` `4` `3` |
-| `hot` | `8` `2` `9` `3` |
-| `llm-fewshot` | `9` `5` `4` `9` |
-| `moonphase` | `2` `8` `3` `3` |
-| `numerology` | `1` `1` `3` `5` |
+| `cold` | `0` `3` `6` `7` |
+| `contrarian` | `9` `8` `4` `9` |
+| `dreambook` | `4` `7` `3` `0` |
+| `highest-frequency` | `9` `1` `8` `9` |
+| `hot` | `8` `9` `2` `1` |
+| `llm-fewshot` | `7` `5` `8` `1` |
+| `moonphase` | `2` `5` `8` `7` |
+| `numerology` | `1` `1` `4` `5` |
 | `persistent` | `5` `9` `6` `5` |
-| `positional` | `3` `0` `4` `7` |
-| `random` | `3` `9` `6` `9` |
-| `skiphit` | `7` `8` `7` `2` |
+| `positional` | `5` `1` `8` `8` |
+| `random` | `6` `1` `4` `9` |
+| `skiphit` | `9` `8` `5` `2` |
 
 **FL Fantasy 5 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `antibalanced` | `19` `25` `26` `29` `30` |
-| `balanced` | `04` `14` `21` `33` `36` |
-| `benford` | `04` `17` `19` `25` `30` |
-| `birthday` | `01` `07` `10` `19` `30` |
-| `cold` | `02` `07` `17` `22` `26` |
-| `contrarian` | `09` `17` `21` `29` `32` |
-| `delta` | `04` `12` `15` `24` `33` |
-| `highest-frequency` | `04` `05` `14` `17` `19` |
-| `hot` | `03` `05` `09` `13` `33` |
-| `llm-fewshot` | `08` `14` `15` `16` `36` |
-| `moonphase` | `02` `04` `13` `17` `18` |
+| `antibalanced` | `20` `22` `23` `31` `35` |
+| `balanced` | `03` `04` `13` `28` `30` |
+| `benford` | `04` `13` `14` `23` `34` |
+| `birthday` | `04` `07` `08` `17` `26` |
+| `cold` | `07` `16` `19` `25` `35` |
+| `contrarian` | `05` `12` `20` `28` `32` |
+| `delta` | `08` `22` `24` `25` `28` |
+| `highest-frequency` | `04` `05` `23` `26` `35` |
+| `hot` | `03` `07` `20` `26` `32` |
+| `llm-fewshot` | `16` `23` `25` `34` `35` |
+| `moonphase` | `02` `04` `05` `10` `15` |
 | `numerology` | `10` `12` `20` `24` `36` |
 | `persistent` | `05` `14` `22` `26` `29` |
-| `random` | `01` `04` `06` `08` `23` |
-| `skiphit` | `05` `06` `14` `17` `35` |
+| `random` | `05` `08` `22` `28` `35` |
+| `skiphit` | `01` `09` `11` `23` `26` |
 
 **FL Fantasy 5 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `antibalanced` | `12` `18` `29` `30` `35` |
-| `balanced` | `08` `09` `18` `34` `35` |
-| `benford` | `04` `05` `13` `24` `32` |
-| `birthday` | `03` `05` `07` `10` `20` |
-| `cold` | `02` `04` `11` `29` `36` |
-| `contrarian` | `03` `13` `22` `23` `30` |
-| `delta` | `01` `03` `17` `20` `29` |
-| `highest-frequency` | `03` `12` `20` `22` `29` |
-| `hot` | `03` `15` `17` `34` `36` |
-| `llm-fewshot` | `03` `09` `12` `22` `30` |
-| `moonphase` | `02` `07` `12` `20` `31` |
+| `antibalanced` | `03` `06` `07` `09` `22` |
+| `balanced` | `12` `22` `24` `25` `29` |
+| `benford` | `03` `04` `14` `15` `23` |
+| `birthday` | `01` `06` `10` `13` `25` |
+| `cold` | `09` `18` `29` `31` `35` |
+| `contrarian` | `04` `07` `21` `22` `32` |
+| `delta` | `03` `04` `08` `16` `31` |
+| `highest-frequency` | `09` `12` `22` `28` `31` |
+| `hot` | `02` `08` `24` `28` `31` |
+| `llm-fewshot` | `11` `12` `23` `28` `33` |
+| `moonphase` | `07` `15` `26` `28` `31` |
 | `numerology` | `10` `12` `20` `24` `36` |
 | `persistent` | `05` `14` `22` `26` `29` |
-| `random` | `13` `19` `21` `22` `28` |
-| `skiphit` | `07` `08` `13` `19` `32` |
-
-**Florida Lotto**
-
-| Strategy | Predicted |
-|---|---|
-| `antibalanced` | `36` `37` `38` `43` `44` `50` |
-| `balanced` | `03` `10` `34` `46` `51` `53` |
-| `benford` | `02` `03` `05` `11` `19` `42` |
-| `birthday` | `01` `04` `11` `24` `27` `31` |
-| `cold` | `02` `16` `17` `22` `26` `27` |
-| `contrarian` | `02` `11` `25` `34` `39` `51` |
-| `delta` | `15` `21` `25` `31` `44` `48` |
-| `highest-frequency` | `02` `10` `12` `34` `36` `51` |
-| `hot` | `05` `12` `17` `29` `34` `49` |
-| `llm-fewshot` | `12` `27` `34` `41` `45` `52` |
-| `moonphase` | `10` `21` `28` `36` `51` `53` |
-| `numerology` | `10` `12` `20` `24` `30` `36` |
-| `persistent` | `05` `10` `32` `33` `38` `50` |
-| `random` | `02` `06` `10` `12` `13` `41` |
-| `skiphit` | `03` `16` `22` `31` `45` `46` |
-| `unpopular` | `15` `35` `36` `43` `50` `51` |
+| `random` | `01` `06` `09` `16` `34` |
+| `skiphit` | `05` `12` `28` `30` `36` |
 
 **FL Pick 2 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `0` `3` |
-| `contrarian` | `5` `6` |
-| `dreambook` | `3` `1` |
-| `highest-frequency` | `5` `1` |
-| `hot` | `4` `6` |
-| `llm-fewshot` | `2` `0` |
-| `moonphase` | `4` `6` |
+| `cold` | `3` `2` |
+| `contrarian` | `3` `3` |
+| `dreambook` | `4` `6` |
+| `highest-frequency` | `3` `6` |
+| `hot` | `4` `7` |
+| `llm-fewshot` | `2` `5` |
+| `moonphase` | `3` `9` |
 | `numerology` | `1` `1` |
 | `persistent` | `8` `1` |
-| `positional` | `3` `0` |
-| `random` | `6` `2` |
-| `skiphit` | `5` `8` |
+| `positional` | `9` `6` |
+| `random` | `5` `5` |
+| `skiphit` | `9` `4` |
 
 **FL Pick 2 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `9` `8` |
-| `contrarian` | `4` `6` |
-| `dreambook` | `3` `6` |
-| `highest-frequency` | `9` `6` |
-| `hot` | `9` `2` |
-| `llm-fewshot` | `7` `6` |
-| `moonphase` | `0` `6` |
+| `cold` | `5` `4` |
+| `contrarian` | `1` `6` |
+| `dreambook` | `9` `2` |
+| `highest-frequency` | `1` `1` |
+| `hot` | `9` `3` |
+| `llm-fewshot` | `4` `1` |
+| `moonphase` | `7` `9` |
 | `numerology` | `1` `1` |
 | `persistent` | `8` `1` |
-| `positional` | `0` `2` |
-| `random` | `1` `1` |
-| `skiphit` | `7` `5` |
+| `positional` | `3` `7` |
+| `random` | `5` `5` |
+| `skiphit` | `7` `3` |
 
 **FL Pick 3 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `1` `6` `5` |
-| `contrarian` | `7` `5` `6` |
-| `dreambook` | `2` `4` `3` |
-| `highest-frequency` | `2` `6` `1` |
-| `hot` | `9` `5` `1` |
-| `llm-fewshot` | `6` `8` `6` |
-| `moonphase` | `5` `2` `9` |
+| `cold` | `7` `6` `9` |
+| `contrarian` | `2` `8` `5` |
+| `dreambook` | `5` `7` `5` |
+| `highest-frequency` | `3` `8` `5` |
+| `hot` | `6` `1` `8` |
+| `llm-fewshot` | `9` `3` `8` |
+| `moonphase` | `6` `7` `1` |
 | `numerology` | `1` `1` `1` |
 | `persistent` | `8` `6` `4` |
-| `positional` | `6` `8` `3` |
-| `random` | `2` `7` `8` |
-| `skiphit` | `2` `2` `2` |
+| `positional` | `3` `8` `4` |
+| `random` | `3` `9` `5` |
+| `skiphit` | `3` `4` `9` |
 
 **FL Pick 3 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `3` `1` `9` |
-| `contrarian` | `0` `9` `3` |
-| `dreambook` | `2` `0` `4` |
-| `highest-frequency` | `1` `3` `2` |
-| `hot` | `4` `5` `2` |
-| `llm-fewshot` | `6` `8` `0` |
-| `moonphase` | `1` `3` `9` |
+| `cold` | `0` `5` `1` |
+| `contrarian` | `6` `1` `5` |
+| `dreambook` | `2` `6` `1` |
+| `highest-frequency` | `2` `6` `1` |
+| `hot` | `2` `6` `8` |
+| `llm-fewshot` | `4` `3` `3` |
+| `moonphase` | `2` `2` `5` |
 | `numerology` | `1` `1` `1` |
 | `persistent` | `8` `6` `4` |
-| `positional` | `9` `3` `8` |
-| `random` | `8` `8` `2` |
-| `skiphit` | `4` `3` `3` |
+| `positional` | `9` `7` `7` |
+| `random` | `2` `6` `9` |
+| `skiphit` | `5` `9` `8` |
 
 **FL Pick 4 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `6` `3` `1` |
-| `contrarian` | `2` `4` `4` `6` |
-| `dreambook` | `6` `2` `7` `4` |
-| `highest-frequency` | `2` `2` `4` `9` |
-| `hot` | `8` `2` `9` `3` |
-| `llm-fewshot` | `3` `5` `6` `9` |
-| `moonphase` | `4` `2` `5` `0` |
+| `cold` | `3` `7` `8` `6` |
+| `contrarian` | `8` `6` `9` `7` |
+| `dreambook` | `2` `4` `3` `2` |
+| `highest-frequency` | `2` `1` `8` `2` |
+| `hot` | `7` `1` `8` `2` |
+| `llm-fewshot` | `1` `1` `4` `6` |
+| `moonphase` | `6` `1` `8` `3` |
 | `numerology` | `1` `1` `1` `5` |
 | `persistent` | `2` `4` `6` `5` |
-| `positional` | `5` `4` `9` `9` |
-| `random` | `1` `7` `4` `2` |
-| `skiphit` | `4` `2` `7` `9` |
+| `positional` | `2` `6` `8` `6` |
+| `random` | `0` `7` `4` `2` |
+| `skiphit` | `8` `6` `8` `8` |
 
 **FL Pick 4 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `7` `3` `2` `9` |
-| `contrarian` | `0` `4` `9` `5` |
-| `dreambook` | `5` `7` `8` `2` |
-| `highest-frequency` | `4` `2` `6` `5` |
-| `hot` | `4` `2` `1` `8` |
-| `llm-fewshot` | `9` `2` `6` `3` |
-| `moonphase` | `6` `2` `6` `3` |
+| `cold` | `5` `6` `8` `2` |
+| `contrarian` | `7` `4` `8` `0` |
+| `dreambook` | `7` `9` `1` `4` |
+| `highest-frequency` | `2` `4` `6` `4` |
+| `hot` | `2` `3` `5` `4` |
+| `llm-fewshot` | `8` `4` `6` `4` |
+| `moonphase` | `5` `4` `0` `4` |
 | `numerology` | `1` `1` `1` `5` |
 | `persistent` | `2` `4` `6` `5` |
-| `positional` | `5` `2` `2` `6` |
-| `random` | `3` `8` `2` `1` |
-| `skiphit` | `4` `5` `4` `2` |
+| `positional` | `6` `1` `6` `5` |
+| `random` | `2` `7` `7` `9` |
+| `skiphit` | `1` `4` `4` `3` |
 
 **FL Pick 5 — evening**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `4` `3` `2` `0` `9` |
-| `contrarian` | `7` `1` `3` `5` `6` |
-| `dreambook` | `2` `3` `6` `9` `8` |
-| `highest-frequency` | `3` `3` `7` `5` `4` |
-| `hot` | `4` `3` `7` `5` `2` |
-| `llm-fewshot` | `0` `6` `9` `9` `0` |
-| `moonphase` | `6` `9` `7` `3` `4` |
+| `cold` | `9` `3` `0` `8` `7` |
+| `contrarian` | `7` `5` `7` `2` `4` |
+| `dreambook` | `7` `4` `2` `9` `5` |
+| `highest-frequency` | `7` `1` `0` `5` `4` |
+| `hot` | `1` `8` `9` `5` `4` |
+| `llm-fewshot` | `8` `1` `0` `7` `9` |
+| `moonphase` | `7` `7` `9` `1` `7` |
 | `numerology` | `1` `1` `1` `5` `4` |
 | `persistent` | `5` `1` `6` `4` `4` |
-| `positional` | `3` `2` `8` `5` `1` |
-| `random` | `3` `4` `0` `6` `7` |
-| `skiphit` | `6` `2` `2` `3` `4` |
+| `positional` | `6` `3` `6` `5` `4` |
+| `random` | `7` `9` `3` `7` `0` |
+| `skiphit` | `1` `5` `0` `6` `1` |
 
 **FL Pick 5 — midday**
 
 | Strategy | Predicted |
 |---|---|
-| `cold` | `2` `4` `6` `0` `8` |
-| `contrarian` | `1` `8` `8` `2` `0` |
-| `dreambook` | `9` `8` `0` `0` `2` |
-| `highest-frequency` | `1` `1` `6` `0` `4` |
-| `hot` | `1` `5` `0` `9` `6` |
-| `llm-fewshot` | `6` `0` `6` `0` `0` |
-| `moonphase` | `1` `6` `8` `3` `4` |
+| `cold` | `5` `7` `4` `2` `9` |
+| `contrarian` | `2` `4` `6` `1` `3` |
+| `dreambook` | `0` `0` `1` `2` `0` |
+| `highest-frequency` | `1` `4` `1` `5` `8` |
+| `hot` | `0` `5` `4` `1` `9` |
+| `llm-fewshot` | `2` `6` `9` `5` `8` |
+| `moonphase` | `4` `4` `1` `7` `3` |
 | `numerology` | `1` `1` `1` `5` `4` |
 | `persistent` | `5` `1` `6` `4` `4` |
-| `positional` | `0` `0` `6` `3` `3` |
-| `random` | `5` `4` `8` `6` `0` |
-| `skiphit` | `0` `9` `7` `2` `4` |
+| `positional` | `3` `9` `1` `8` `7` |
+| `random` | `7` `8` `2` `8` `2` |
+| `skiphit` | `1` `6` `5` `3` `8` |
 
-<sub>Updated 2026-09-09 14:45 UTC</sub>
+<sub>Updated 2026-09-10 14:35 UTC</sub>
 <!-- PREDICTIONS:END -->
 
 Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.md)
@@ -354,33 +312,33 @@ Full board: [PREDICTIONS.md](PREDICTIONS.md) · Leaderboard: [REPORT.md](REPORT.
 <!-- SCOREBOARD:START -->
 ### 📊 How it's performing
 
-**2071** predictions scored across **46** days. Combined, they've hit **752** numbers where pure chance predicts **733.3** (z = **+0.73**).
+**2123** predictions scored across **47** days. Combined, they've hit **770** numbers where pure chance predicts **752.2** (z = **+0.68**).
 
 | Strategy | Scored | Hits | Chance predicts | Hit rate | vs chance (z) | Best single |
 |---|---|---|---|---|---|---|
-| `contrarian` | 127 | 60 | 44.9 | 0.47/draw | +2.38 | 2 (NY Numbers (Pick 3)) |
-| `random` | 196 | 82 | 69.3 | 0.42/draw | +1.61 | 2 (Mega Millions) |
-| `highest-frequency` | 160 | 65 | 56.6 | 0.41/draw | +1.18 | 2 (Mega Millions) |
-| `positional` | 162 | 65 | 57.1 | 0.40/draw | +1.10 | 2 (NY Win 4) |
-| `numerology` | 127 | 51 | 44.9 | 0.40/draw | +0.96 | 3 (NY Numbers (Pick 3)) |
-| `birthday` | 22 | 10 | 7.9 | 0.45/draw | +0.79 | 2 (Powerball) |
-| `benford` | 22 | 10 | 7.9 | 0.45/draw | +0.79 | 3 (Mega Millions) |
-| `skiphit` | 127 | 49 | 44.9 | 0.39/draw | +0.64 | 3 (NY Win 4) |
-| `hot` | 196 | 72 | 69.3 | 0.37/draw | +0.34 | 3 (NY Numbers (Pick 3)) |
-| `persistent` | 127 | 47 | 44.9 | 0.37/draw | +0.33 | 2 (NY Numbers (Pick 3)) |
+| `contrarian` | 131 | 61 | 46.4 | 0.47/draw | +2.27 | 2 (NY Numbers (Pick 3)) |
+| `random` | 200 | 85 | 70.8 | 0.42/draw | +1.78 | 2 (Mega Millions) |
+| `highest-frequency` | 164 | 66 | 58.1 | 0.40/draw | +1.10 | 2 (Mega Millions) |
+| `numerology` | 131 | 53 | 46.4 | 0.40/draw | +1.03 | 3 (NY Numbers (Pick 3)) |
+| `positional` | 165 | 65 | 58.2 | 0.39/draw | +0.94 | 2 (NY Win 4) |
+| `birthday` | 23 | 10 | 8.3 | 0.43/draw | +0.64 | 2 (Powerball) |
+| `benford` | 23 | 10 | 8.3 | 0.43/draw | +0.64 | 3 (Mega Millions) |
+| `skiphit` | 131 | 49 | 46.4 | 0.37/draw | +0.41 | 3 (NY Win 4) |
+| `antibalanced` | 23 | 9 | 8.3 | 0.39/draw | +0.27 | 2 (Powerball) |
+| `persistent` | 131 | 48 | 46.4 | 0.37/draw | +0.25 | 2 (NY Numbers (Pick 3)) |
+| `hot` | 200 | 72 | 70.8 | 0.36/draw | +0.15 | 3 (NY Numbers (Pick 3)) |
 | `llm-tuned` | 79 | 27 | 27.9 | 0.34/draw | -0.18 | 3 (NY Win 4) |
-| `balanced` | 22 | 7 | 7.9 | 0.32/draw | -0.35 | 2 (Mega Millions) |
-| `antibalanced` | 22 | 7 | 7.9 | 0.32/draw | -0.35 | 1 (Powerball) |
-| `moonphase` | 127 | 41 | 44.9 | 0.32/draw | -0.62 | 2 (NY Win 4) |
-| `unpopular` | 34 | 10 | 12.2 | 0.29/draw | -0.69 | 2 (Mega Millions) |
-| `delta` | 34 | 9 | 12.2 | 0.26/draw | -0.99 | 1 (Powerball) |
-| `cold` | 196 | 58 | 69.3 | 0.30/draw | -1.44 | 3 (NY Win 4) |
-| `llm-fewshot` | 186 | 54 | 65.8 | 0.29/draw | -1.54 | 3 (NY Win 4) |
-| `dreambook` | 105 | 28 | 37.0 | 0.27/draw | -1.56 | 2 (NY Numbers (Pick 3)) |
+| `balanced` | 23 | 7 | 8.3 | 0.30/draw | -0.48 | 2 (Mega Millions) |
+| `unpopular` | 35 | 11 | 12.6 | 0.31/draw | -0.48 | 2 (Mega Millions) |
+| `moonphase` | 131 | 42 | 46.4 | 0.32/draw | -0.68 | 2 (NY Win 4) |
+| `delta` | 35 | 10 | 12.6 | 0.29/draw | -0.79 | 1 (Powerball) |
+| `llm-fewshot` | 190 | 57 | 67.3 | 0.30/draw | -1.33 | 3 (NY Win 4) |
+| `dreambook` | 108 | 30 | 38.1 | 0.28/draw | -1.38 | 2 (NY Numbers (Pick 3)) |
+| `cold` | 200 | 58 | 70.8 | 0.29/draw | -1.61 | 3 (NY Win 4) |
 
 _**Reading this:** `z` measures how far a strategy sits from pure chance in standard deviations. Values bouncing around 0 mean it is performing exactly as randomness predicts — which is the expected result. It would take a sustained |z| > 3 over many draws to suggest anything real, and no strategy is expected to get there._
 
-<sub>Updated 2026-09-09 14:45 UTC</sub>
+<sub>Updated 2026-09-10 14:35 UTC</sub>
 <!-- SCOREBOARD:END -->
 
 ## The honest part
