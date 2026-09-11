@@ -63171,5 +63171,27 @@
    9
   ],
   "special": null
+ },
+ {
+  "date": "2026-09-10",
+  "draw_time": "evening",
+  "numbers": [
+   5,
+   6,
+   6,
+   0
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-10",
+  "draw_time": "midday",
+  "numbers": [
+   5,
+   6,
+   8,
+   9
+  ],
+  "special": null
  }
 ]
