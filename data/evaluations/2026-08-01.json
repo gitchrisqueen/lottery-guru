@@ -683,5 +683,174 @@
    "special_hit": 0,
    "straight": 0
   }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   0,
+   4,
+   1,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   8,
+   1,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 2,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   5,
+   2,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   8,
+   1,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   6,
+   4,
+   1,
+   7
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   8,
+   1,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   1,
+   7,
+   3,
+   6
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   8,
+   1,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   0,
+   9,
+   7,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   8,
+   1,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "llm-tuned",
+  "numbers": [
+   8,
+   4,
+   7,
+   2
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   8,
+   1,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   6,
+   4,
+   1,
+   2
+  ],
+  "special": null,
+  "recorded_after_draw": true,
+  "actual_numbers": [
+   0,
+   8,
+   1,
+   3
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
  }
 ]

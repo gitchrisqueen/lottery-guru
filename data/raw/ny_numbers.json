@@ -54121,6 +54121,16 @@
  },
  {
   "date": "2026-03-10",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   8,
+   2
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-03-10",
   "draw_time": "midday",
   "numbers": [
    1,
@@ -54291,11 +54301,31 @@
  },
  {
   "date": "2026-03-19",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   4,
+   7
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-03-19",
   "draw_time": "midday",
   "numbers": [
    3,
    0,
    3
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-03-20",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   5,
+   5
   ],
   "special": null
  },
@@ -54500,6 +54530,16 @@
   "special": null
  },
  {
+  "date": "2026-03-30",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   9,
+   1
+  ],
+  "special": null
+ },
+ {
   "date": "2026-03-31",
   "draw_time": "evening",
   "numbers": [
@@ -54526,6 +54566,16 @@
    8,
    2,
    4
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-01",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   1,
+   3
   ],
   "special": null
  },
@@ -54596,6 +54646,16 @@
    8,
    3,
    8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-05",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   9,
+   0
   ],
   "special": null
  },
@@ -54881,6 +54941,16 @@
  },
  {
   "date": "2026-04-20",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   1,
+   8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-20",
   "draw_time": "midday",
   "numbers": [
    6,
@@ -54951,11 +55021,41 @@
  },
  {
   "date": "2026-04-24",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   5,
+   5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-24",
   "draw_time": "midday",
   "numbers": [
    1,
    9,
    5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-25",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   9,
+   5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-25",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   8,
+   0
   ],
   "special": null
  },
@@ -54990,6 +55090,26 @@
   "special": null
  },
  {
+  "date": "2026-04-27",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   9,
+   0
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-28",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   5,
+   8
+  ],
+  "special": null
+ },
+ {
   "date": "2026-04-28",
   "draw_time": "midday",
   "numbers": [
@@ -55006,6 +55126,16 @@
    2,
    2,
    4
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-04-29",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   5,
+   2
   ],
   "special": null
  },
@@ -55055,6 +55185,16 @@
   "numbers": [
    5,
    8,
+   6
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-05-02",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   6,
    6
   ],
   "special": null
@@ -55250,12 +55390,32 @@
   "special": null
  },
  {
+  "date": "2026-05-12",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   9,
+   6
+  ],
+  "special": null
+ },
+ {
   "date": "2026-05-13",
   "draw_time": "evening",
   "numbers": [
    4,
    6,
    5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-05-13",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   0,
+   3
   ],
   "special": null
  },
@@ -55550,6 +55710,16 @@
   "special": null
  },
  {
+  "date": "2026-05-28",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   8,
+   8
+  ],
+  "special": null
+ },
+ {
   "date": "2026-05-29",
   "draw_time": "evening",
   "numbers": [
@@ -55640,12 +55810,32 @@
   "special": null
  },
  {
+  "date": "2026-06-02",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   3,
+   3
+  ],
+  "special": null
+ },
+ {
   "date": "2026-06-03",
   "draw_time": "evening",
   "numbers": [
    3,
    4,
    8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-06-03",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   7,
+   5
   ],
   "special": null
  },
@@ -55676,6 +55866,16 @@
    9,
    5,
    5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-06-05",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   1,
+   9
   ],
   "special": null
  },
@@ -55901,6 +56101,16 @@
  },
  {
   "date": "2026-06-17",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   9,
+   7
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-06-17",
   "draw_time": "midday",
   "numbers": [
    8,
@@ -55915,6 +56125,16 @@
   "numbers": [
    3,
    3,
+   5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-06-18",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   8,
    5
   ],
   "special": null
@@ -55970,6 +56190,16 @@
   "special": null
  },
  {
+  "date": "2026-06-21",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   3,
+   9
+  ],
+  "special": null
+ },
+ {
   "date": "2026-06-22",
   "draw_time": "evening",
   "numbers": [
@@ -55996,6 +56226,16 @@
    5,
    1,
    5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-06-23",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   8,
+   4
   ],
   "special": null
  },
@@ -56050,6 +56290,16 @@
   "special": null
  },
  {
+  "date": "2026-06-26",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   6,
+   1
+  ],
+  "special": null
+ },
+ {
   "date": "2026-06-27",
   "draw_time": "evening",
   "numbers": [
@@ -56065,6 +56315,16 @@
   "numbers": [
    7,
    0,
+   4
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-06-28",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   5,
    4
   ],
   "special": null
@@ -56250,6 +56510,16 @@
   "special": null
  },
  {
+  "date": "2026-07-07",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   4,
+   0
+  ],
+  "special": null
+ },
+ {
   "date": "2026-07-08",
   "draw_time": "evening",
   "numbers": [
@@ -56300,6 +56570,16 @@
   "special": null
  },
  {
+  "date": "2026-07-10",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   2,
+   0
+  ],
+  "special": null
+ },
+ {
   "date": "2026-07-11",
   "draw_time": "evening",
   "numbers": [
@@ -56326,6 +56606,16 @@
    2,
    8,
    3
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-07-12",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   5,
+   6
   ],
   "special": null
  },
@@ -56460,12 +56750,32 @@
   "special": null
  },
  {
+  "date": "2026-07-19",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   9,
+   8
+  ],
+  "special": null
+ },
+ {
   "date": "2026-07-20",
   "draw_time": "evening",
   "numbers": [
    9,
    7,
    3
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-07-20",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   8,
+   4
   ],
   "special": null
  },
@@ -56631,6 +56941,16 @@
  },
  {
   "date": "2026-07-29",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   6,
+   1
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-07-29",
   "draw_time": "midday",
   "numbers": [
    5,
@@ -56645,6 +56965,16 @@
   "numbers": [
    9,
    8,
+   3
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-07-30",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   2,
    3
   ],
   "special": null
@@ -56700,6 +57030,16 @@
   "special": null
  },
  {
+  "date": "2026-08-02",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   7,
+   8
+  ],
+  "special": null
+ },
+ {
   "date": "2026-08-03",
   "draw_time": "evening",
   "numbers": [
@@ -56716,6 +57056,26 @@
    5,
    5,
    8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-04",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   9,
+   1
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-04",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   7,
+   0
   ],
   "special": null
  },
@@ -56860,6 +57220,26 @@
   "special": null
  },
  {
+  "date": "2026-08-12",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   5,
+   7
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-12",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   1,
+   4
+  ],
+  "special": null
+ },
+ {
   "date": "2026-08-13",
   "draw_time": "evening",
   "numbers": [
@@ -56876,6 +57256,16 @@
    1,
    2,
    8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-14",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   2,
+   1
   ],
   "special": null
  },
@@ -56936,6 +57326,16 @@
    9,
    5,
    2
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-17",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   0,
+   3
   ],
   "special": null
  },
@@ -57101,6 +57501,16 @@
  },
  {
   "date": "2026-08-26",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   6,
+   8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-26",
   "draw_time": "midday",
   "numbers": [
    9,
@@ -57115,6 +57525,16 @@
   "numbers": [
    7,
    6,
+   8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-27",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   7,
    8
   ],
   "special": null
@@ -57156,6 +57576,16 @@
    6,
    5,
    9
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-08-30",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   9,
+   6
   ],
   "special": null
  },
@@ -57271,11 +57701,41 @@
  },
  {
   "date": "2026-09-05",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   8,
+   6
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-05",
   "draw_time": "midday",
   "numbers": [
    4,
    3,
    8
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-06",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   9,
+   0
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-06",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   7,
+   7
   ],
   "special": null
  },
@@ -57321,11 +57781,31 @@
  },
  {
   "date": "2026-09-09",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   1,
+   5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-09",
   "draw_time": "midday",
   "numbers": [
    3,
    1,
    0
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-10",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   3,
+   7
   ],
   "special": null
  },
@@ -57356,6 +57836,26 @@
    6,
    5,
    5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-12",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   1,
+   5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-12",
+  "draw_time": "midday",
+  "numbers": [
+   0,
+   9,
+   7
   ],
   "special": null
  },
@@ -57521,6 +58021,16 @@
  },
  {
   "date": "2026-09-21",
+  "draw_time": "evening",
+  "numbers": [
+   0,
+   4,
+   6
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-21",
   "draw_time": "midday",
   "numbers": [
    5,
@@ -57546,6 +58056,36 @@
    7,
    6,
    4
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-23",
+  "draw_time": "evening",
+  "numbers": [
+   3,
+   5,
+   1
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-23",
+  "draw_time": "midday",
+  "numbers": [
+   2,
+   0,
+   1
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-09-24",
+  "draw_time": "evening",
+  "numbers": [
+   6,
+   3,
+   0
   ],
   "special": null
  }

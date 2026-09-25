@@ -682,5 +682,173 @@
    "special_hit": 0,
    "straight": 0
   }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   3,
+   4,
+   6,
+   1
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   5,
+   8,
+   8
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   2,
+   5,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   5,
+   8,
+   8
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   5,
+   2,
+   0,
+   7
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   5,
+   8,
+   8
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   8,
+   6,
+   4,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   5,
+   8,
+   8
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   2,
+   5,
+   0,
+   9
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   5,
+   8,
+   8
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   6,
+   2,
+   0,
+   3
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   5,
+   8,
+   8
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "llm-tuned",
+  "numbers": [
+   3,
+   7,
+   1,
+   7
+  ],
+  "special": null,
+  "actual_numbers": [
+   0,
+   5,
+   8,
+   8
+  ],
+  "actual_special": null,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
  }
 ]
