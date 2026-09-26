@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-09-25 10:36 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0. Arms with fewer than 50 scored draws are marked `(n<50, not yet interpretable)`: their z and p are printed for completeness but are too noisy to read as evidence either way._
+_Generated 2026-09-26 10:32 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0. Arms with fewer than 50 scored draws are marked `(n<50, not yet interpretable)`: their z and p are printed for completeness but are too noisy to read as evidence either way._
 
 ## Powerball
 
@@ -32,23 +32,23 @@ Null expectation: 0.3571 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| birthday _(n<50, not yet interpretable)_ | 13 | 8 | 4.643 | _1.666_ | _0.0957_ | 0 |
-| persistent _(n<50, not yet interpretable)_ | 13 | 6 | 4.643 | _0.673_ | _0.5007_ | 0 |
-| benford _(n<50, not yet interpretable)_ | 13 | 6 | 4.643 | _0.673_ | _0.5007_ | 0 |
+| birthday _(n<50, not yet interpretable)_ | 14 | 8 | 5.0 | _1.434_ | _0.1514_ | 0 |
+| skiphit _(n<50, not yet interpretable)_ | 14 | 7 | 5.0 | _0.956_ | _0.3389_ | 0 |
+| persistent _(n<50, not yet interpretable)_ | 14 | 6 | 5.0 | _0.478_ | _0.6325_ | 0 |
+| benford _(n<50, not yet interpretable)_ | 14 | 6 | 5.0 | _0.478_ | _0.6325_ | 0 |
 | llm-tuned _(n<50, not yet interpretable)_ | 7 | 3 | 2.5 | _0.338_ | _0.7353_ | 0 |
-| skiphit _(n<50, not yet interpretable)_ | 13 | 5 | 4.643 | _0.177_ | _0.8593_ | 0 |
-| balanced _(n<50, not yet interpretable)_ | 13 | 5 | 4.643 | _0.177_ | _0.8593_ | 0 |
-| unpopular _(n<50, not yet interpretable)_ | 18 | 6 | 6.429 | _-0.181_ | _0.8566_ | 0 |
-| numerology _(n<50, not yet interpretable)_ | 13 | 4 | 4.643 | _-0.319_ | _0.7497_ | 0 |
-| llm-fewshot _(n<50, not yet interpretable)_ | 17 | 5 | 6.071 | _-0.465_ | _0.642_ | 0 |
-| hot _(n<50, not yet interpretable)_ | 18 | 5 | 6.429 | _-0.602_ | _0.5469_ | 0 |
-| cold _(n<50, not yet interpretable)_ | 18 | 5 | 6.429 | _-0.602_ | _0.5469_ | 0 |
-| highest-frequency _(n<50, not yet interpretable)_ | 15 | 4 | 5.357 | _-0.627_ | _0.5307_ | 0 |
-| antibalanced _(n<50, not yet interpretable)_ | 13 | 3 | 4.643 | _-0.815_ | _0.415_ | 0 |
-| random _(n<50, not yet interpretable)_ | 18 | 4 | 6.429 | _-1.024_ | _0.3058_ | 0 |
-| delta _(n<50, not yet interpretable)_ | 18 | 4 | 6.429 | _-1.024_ | _0.3058_ | 0 |
-| moonphase _(n<50, not yet interpretable)_ | 13 | 2 | 4.643 | _-1.311_ | _0.1897_ | 0 |
-| contrarian _(n<50, not yet interpretable)_ | 13 | 2 | 4.643 | _-1.311_ | _0.1897_ | 0 |
+| balanced _(n<50, not yet interpretable)_ | 14 | 5 | 5.0 | _0.0_ | _1.0_ | 0 |
+| unpopular _(n<50, not yet interpretable)_ | 19 | 6 | 6.786 | _-0.322_ | _0.7471_ | 0 |
+| numerology _(n<50, not yet interpretable)_ | 14 | 4 | 5.0 | _-0.478_ | _0.6325_ | 0 |
+| antibalanced _(n<50, not yet interpretable)_ | 14 | 4 | 5.0 | _-0.478_ | _0.6325_ | 0 |
+| llm-fewshot _(n<50, not yet interpretable)_ | 18 | 5 | 6.429 | _-0.602_ | _0.5469_ | 0 |
+| hot _(n<50, not yet interpretable)_ | 19 | 5 | 6.786 | _-0.733_ | _0.4636_ | 0 |
+| cold _(n<50, not yet interpretable)_ | 19 | 5 | 6.786 | _-0.733_ | _0.4636_ | 0 |
+| highest-frequency _(n<50, not yet interpretable)_ | 16 | 4 | 5.714 | _-0.767_ | _0.4432_ | 0 |
+| contrarian _(n<50, not yet interpretable)_ | 14 | 3 | 5.0 | _-0.956_ | _0.3389_ | 0 |
+| random _(n<50, not yet interpretable)_ | 19 | 4 | 6.786 | _-1.143_ | _0.2529_ | 0 |
+| delta _(n<50, not yet interpretable)_ | 19 | 4 | 6.786 | _-1.143_ | _0.2529_ | 0 |
+| moonphase _(n<50, not yet interpretable)_ | 14 | 2 | 5.0 | _-1.434_ | _0.1514_ | 0 |
 
 ## NY Numbers (Pick 3)
 
@@ -56,19 +56,19 @@ Null expectation: 0.3000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| contrarian | 91 | 36 | 27.3 | 1.755 | 0.0792 | 0 |
-| random | 123 | 43 | 36.9 | 1.059 | 0.2898 | 0 |
-| hot | 123 | 43 | 36.9 | 1.059 | 0.2898 | 1 |
+| contrarian | 93 | 36 | 27.9 | 1.616 | 0.106 | 0 |
+| random | 125 | 44 | 37.5 | 1.119 | 0.2632 | 0 |
+| hot | 125 | 43 | 37.5 | 0.947 | 0.3438 | 1 |
 | llm-tuned _(n<50, not yet interpretable)_ | 36 | 13 | 10.8 | _0.706_ | _0.4804_ | 0 |
-| highest-frequency | 107 | 35 | 32.1 | 0.54 | 0.5895 | 0 |
-| skiphit | 91 | 29 | 27.3 | 0.343 | 0.7316 | 0 |
-| numerology | 91 | 28 | 27.3 | 0.141 | 0.8877 | 1 |
-| persistent | 91 | 25 | 27.3 | -0.464 | 0.6426 | 0 |
-| llm-fewshot | 119 | 33 | 35.7 | -0.476 | 0.6338 | 0 |
-| positional | 123 | 33 | 36.9 | -0.677 | 0.4986 | 0 |
-| moonphase | 91 | 22 | 27.3 | -1.069 | 0.285 | 0 |
-| dreambook | 91 | 22 | 27.3 | -1.069 | 0.285 | 0 |
-| cold | 123 | 29 | 36.9 | -1.371 | 0.1704 | 0 |
+| highest-frequency | 109 | 35 | 32.7 | 0.424 | 0.6716 | 0 |
+| skiphit | 93 | 29 | 27.9 | 0.22 | 0.8262 | 0 |
+| numerology | 93 | 28 | 27.9 | 0.02 | 0.9841 | 1 |
+| llm-fewshot | 121 | 35 | 36.3 | -0.227 | 0.8201 | 0 |
+| persistent | 93 | 25 | 27.9 | -0.579 | 0.5628 | 0 |
+| positional | 125 | 33 | 37.5 | -0.775 | 0.4386 | 0 |
+| moonphase | 93 | 23 | 27.9 | -0.978 | 0.3281 | 0 |
+| dreambook | 93 | 23 | 27.9 | -0.978 | 0.3281 | 0 |
+| cold | 125 | 31 | 37.5 | -1.119 | 0.2632 | 0 |
 
 ## NY Win 4
 
@@ -76,19 +76,19 @@ Null expectation: 0.4000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| positional | 123 | 65 | 49.2 | 2.374 | 0.0176 | 0 |
-| persistent | 91 | 43 | 36.4 | 1.153 | 0.2489 | 0 |
-| random | 123 | 56 | 49.2 | 1.022 | 0.3068 | 0 |
-| moonphase | 91 | 42 | 36.4 | 0.978 | 0.3279 | 0 |
-| numerology | 91 | 41 | 36.4 | 0.804 | 0.4216 | 0 |
-| contrarian | 91 | 40 | 36.4 | 0.629 | 0.5294 | 0 |
-| highest-frequency | 107 | 46 | 42.8 | 0.516 | 0.6061 | 0 |
-| cold | 123 | 48 | 49.2 | -0.18 | 0.8569 | 0 |
-| skiphit | 91 | 34 | 36.4 | -0.419 | 0.675 | 0 |
+| positional | 125 | 65 | 50.0 | 2.236 | 0.0253 | 0 |
+| persistent | 93 | 45 | 37.2 | 1.348 | 0.1776 | 0 |
+| moonphase | 93 | 43 | 37.2 | 1.002 | 0.3162 | 0 |
+| random | 125 | 56 | 50.0 | 0.894 | 0.3711 | 0 |
+| numerology | 93 | 41 | 37.2 | 0.657 | 0.5114 | 0 |
+| highest-frequency | 109 | 47 | 43.6 | 0.543 | 0.5873 | 0 |
+| contrarian | 93 | 40 | 37.2 | 0.484 | 0.6284 | 0 |
+| skiphit | 93 | 36 | 37.2 | -0.207 | 0.8357 | 0 |
+| cold | 125 | 48 | 50.0 | -0.298 | 0.7656 | 0 |
 | llm-tuned _(n<50, not yet interpretable)_ | 36 | 12 | 14.4 | _-0.667_ | _0.505_ | 0 |
-| llm-fewshot | 119 | 40 | 47.6 | -1.161 | 0.2456 | 0 |
-| dreambook | 91 | 28 | 36.4 | -1.468 | 0.1422 | 0 |
-| hot | 123 | 38 | 49.2 | -1.683 | 0.0924 | 0 |
+| llm-fewshot | 121 | 40 | 48.4 | -1.273 | 0.2031 | 0 |
+| dreambook | 93 | 28 | 37.2 | -1.59 | 0.1118 | 0 |
+| hot | 125 | 39 | 50.0 | -1.64 | 0.1011 | 0 |
 
 ## Exploit watch
 
