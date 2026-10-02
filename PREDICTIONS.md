@@ -290,4 +290,4 @@ _These are experiment outputs, not advice. Every arm is expected to score at cha
 | `random` | `0` `5` `8` `1` `5` |
 | `skiphit` | `2` `8` `2` `6` `5` |
 
-<sub>Updated 2026-10-02 10:36 UTC</sub>
+<sub>Updated 2026-10-02 10:37 UTC</sub>
