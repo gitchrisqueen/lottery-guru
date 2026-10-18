@@ -1,0 +1,2048 @@
+[
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   5,
+   3,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   0,
+   6,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   4,
+   3,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   7,
+   5,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   6,
+   9,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   9,
+   0,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   4,
+   3,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   4,
+   9,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   5,
+   7,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   1,
+   6,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   4,
+   3,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   3,
+   6,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   0,
+   9,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   4,
+   3,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   8,
+   8,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   2,
+   0,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   9,
+   0,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   4,
+   3,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   3,
+   0,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   1,
+   8,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   2,
+   9,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_numbers",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   3,
+   0,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   8,
+   3,
+   8,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   4,
+   6,
+   9,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   4,
+   2,
+   5,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   8,
+   7,
+   7,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   3,
+   5,
+   6,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   7,
+   0,
+   9,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   9,
+   6,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   3,
+   8,
+   5,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   4,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   9,
+   2,
+   7,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   6,
+   0,
+   7,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   4,
+   0,
+   7,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   8,
+   9,
+   7,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   4,
+   6,
+   9,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   4,
+   2,
+   5,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   6,
+   2,
+   3,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   8,
+   5,
+   6,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   7,
+   0,
+   1,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   9,
+   6,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   1,
+   9,
+   2,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   4,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   9,
+   3,
+   9,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   9,
+   6,
+   9,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "ny_win4",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   9,
+   9,
+   9,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   1,
+   16,
+   18,
+   19,
+   35
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   9,
+   25,
+   27,
+   32,
+   34
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   2,
+   6,
+   32,
+   34,
+   35
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "delta",
+  "numbers": [
+   9,
+   22,
+   27,
+   30,
+   35
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   1,
+   6,
+   19,
+   21,
+   32
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "birthday",
+  "numbers": [
+   9,
+   11,
+   12,
+   23,
+   26
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "balanced",
+  "numbers": [
+   15,
+   17,
+   19,
+   24,
+   28
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "antibalanced",
+  "numbers": [
+   9,
+   30,
+   32,
+   35,
+   36
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   19,
+   21,
+   22,
+   25,
+   36
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "benford",
+  "numbers": [
+   3,
+   4,
+   10,
+   11,
+   20
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   14,
+   22,
+   26,
+   29
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   10,
+   12,
+   20,
+   24,
+   36
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   3,
+   5,
+   7,
+   14,
+   31
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   9,
+   19,
+   22,
+   32,
+   35
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   9,
+   11,
+   14,
+   19,
+   28
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   8,
+   13,
+   23,
+   27
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   2,
+   6,
+   7,
+   18,
+   23
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "delta",
+  "numbers": [
+   1,
+   7,
+   17,
+   19,
+   28
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   3,
+   4,
+   19,
+   26,
+   31
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "birthday",
+  "numbers": [
+   1,
+   2,
+   12,
+   25,
+   26
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "balanced",
+  "numbers": [
+   4,
+   10,
+   11,
+   16,
+   31
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "antibalanced",
+  "numbers": [
+   6,
+   12,
+   14,
+   16,
+   18
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   1,
+   5,
+   6,
+   15,
+   24
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "benford",
+  "numbers": [
+   6,
+   14,
+   19,
+   23,
+   31
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   14,
+   22,
+   26,
+   29
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   9,
+   13,
+   17,
+   22,
+   33
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   10,
+   12,
+   20,
+   24,
+   36
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   8,
+   10,
+   28,
+   31,
+   36
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_fantasy5",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   6,
+   14,
+   19,
+   26,
+   31
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   1,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   4,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   0,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   0,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   0,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   2,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   8,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   4,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   1,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   1,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   1,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   8,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   8,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   1,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   9,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   5,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   5,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   8,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   8,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   9,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   6,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick2",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   8,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   7,
+   2,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   9,
+   1,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   8,
+   6,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   5,
+   1,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   3,
+   0,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   6,
+   4,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   8,
+   6,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   1,
+   6,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   5,
+   2,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   1,
+   5,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   1,
+   6,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   6,
+   9,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   5,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   0,
+   8,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   5,
+   0,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   2,
+   7,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   2,
+   1,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   8,
+   6,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   9,
+   2,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   2,
+   0,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   7,
+   7,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick3",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   2,
+   7,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   2,
+   3,
+   7,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   2,
+   5,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   6,
+   1,
+   7,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   5,
+   8,
+   0,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   1,
+   3,
+   4,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   3,
+   8,
+   0,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   2,
+   4,
+   6,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   3,
+   4,
+   5,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   1,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   9,
+   9,
+   0,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   3,
+   6,
+   6,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   3,
+   3,
+   0,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   0,
+   3,
+   6,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   1,
+   8,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   6,
+   2,
+   0,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   9,
+   4,
+   3,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   2,
+   2,
+   7,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   2,
+   2,
+   0,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   2,
+   4,
+   6,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   2,
+   9,
+   8,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   1,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   6,
+   2,
+   9,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   3,
+   6,
+   2,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick4",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   2,
+   2,
+   8,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "random",
+  "numbers": [
+   5,
+   7,
+   3,
+   8,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "hot",
+  "numbers": [
+   1,
+   2,
+   9,
+   5,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "cold",
+  "numbers": [
+   2,
+   3,
+   1,
+   9,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "positional",
+  "numbers": [
+   0,
+   1,
+   0,
+   0,
+   0
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "contrarian",
+  "numbers": [
+   3,
+   6,
+   3,
+   8,
+   8
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "skiphit",
+  "numbers": [
+   3,
+   5,
+   4,
+   9,
+   5
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   1,
+   6,
+   4,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "moonphase",
+  "numbers": [
+   4,
+   5,
+   6,
+   1,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   1,
+   5,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "dreambook",
+  "numbers": [
+   0,
+   6,
+   0,
+   0,
+   2
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   0,
+   8,
+   1,
+   6,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "midday",
+  "strategy": "highest-frequency",
+  "numbers": [
+   0,
+   1,
+   1,
+   9,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "random",
+  "numbers": [
+   4,
+   7,
+   2,
+   7,
+   9
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "hot",
+  "numbers": [
+   6,
+   3,
+   2,
+   0,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "cold",
+  "numbers": [
+   9,
+   2,
+   6,
+   5,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "positional",
+  "numbers": [
+   6,
+   4,
+   9,
+   4,
+   6
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "contrarian",
+  "numbers": [
+   1,
+   0,
+   4,
+   8,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "skiphit",
+  "numbers": [
+   6,
+   1,
+   5,
+   0,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "persistent",
+  "numbers": [
+   5,
+   1,
+   6,
+   4,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "moonphase",
+  "numbers": [
+   5,
+   5,
+   9,
+   6,
+   3
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "numerology",
+  "numbers": [
+   1,
+   1,
+   1,
+   5,
+   4
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "dreambook",
+  "numbers": [
+   0,
+   0,
+   2,
+   6,
+   1
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   6,
+   5,
+   7,
+   6,
+   7
+  ],
+  "special": null
+ },
+ {
+  "game": "fl_pick5",
+  "draw_time": "evening",
+  "strategy": "highest-frequency",
+  "numbers": [
+   6,
+   1,
+   2,
+   6,
+   1
+  ],
+  "special": null
+ }
+]
