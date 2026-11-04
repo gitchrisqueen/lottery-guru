@@ -58878,5 +58878,25 @@
    5
   ],
   "special": null
+ },
+ {
+  "date": "2026-11-03",
+  "draw_time": "evening",
+  "numbers": [
+   6,
+   3,
+   3
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-03",
+  "draw_time": "midday",
+  "numbers": [
+   5,
+   0,
+   6
+  ],
+  "special": null
  }
 ]
