@@ -64843,5 +64843,27 @@
    3
   ],
   "special": null
+ },
+ {
+  "date": "2026-11-11",
+  "draw_time": "evening",
+  "numbers": [
+   1,
+   8,
+   8,
+   5
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-11",
+  "draw_time": "midday",
+  "numbers": [
+   9,
+   5,
+   3,
+   9
+  ],
+  "special": null
  }
 ]
