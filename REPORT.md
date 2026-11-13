@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-11-12 10:27 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0. Arms with fewer than 50 scored draws are marked `(n<50, not yet interpretable)`: their z and p are printed for completeness but are too noisy to read as evidence either way._
+_Generated 2026-11-13 10:27 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0. Arms with fewer than 50 scored draws are marked `(n<50, not yet interpretable)`: their z and p are printed for completeness but are too noisy to read as evidence either way._
 
 ## Powerball
 
@@ -56,19 +56,19 @@ Null expectation: 0.3000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| random | 220 | 86 | 66.0 | 2.595 | 0.0095 | 0 |
-| contrarian | 188 | 66 | 56.4 | 1.347 | 0.1778 | 0 |
-| highest-frequency | 204 | 69 | 61.2 | 1.051 | 0.2933 | 0 |
-| numerology | 188 | 63 | 56.4 | 0.926 | 0.3543 | 1 |
-| llm-fewshot | 215 | 71 | 64.5 | 0.853 | 0.3936 | 0 |
+| random | 222 | 86 | 66.6 | 2.506 | 0.0122 | 0 |
+| contrarian | 190 | 67 | 57.0 | 1.396 | 0.1627 | 0 |
+| highest-frequency | 206 | 69 | 61.8 | 0.965 | 0.3343 | 0 |
+| llm-fewshot | 217 | 72 | 65.1 | 0.901 | 0.3674 | 0 |
+| numerology | 190 | 63 | 57.0 | 0.838 | 0.4022 | 1 |
 | llm-tuned _(n<50, not yet interpretable)_ | 36 | 13 | 10.8 | _0.706_ | _0.4804_ | 0 |
-| dreambook | 188 | 55 | 56.4 | -0.197 | 0.8442 | 0 |
-| skiphit | 188 | 54 | 56.4 | -0.337 | 0.7362 | 0 |
-| persistent | 188 | 53 | 56.4 | -0.477 | 0.6332 | 0 |
-| moonphase | 188 | 52 | 56.4 | -0.618 | 0.5369 | 1 |
-| hot | 220 | 60 | 66.0 | -0.778 | 0.4363 | 1 |
-| positional | 220 | 57 | 66.0 | -1.168 | 0.2429 | 0 |
-| cold | 220 | 57 | 66.0 | -1.168 | 0.2429 | 0 |
+| dreambook | 190 | 56 | 57.0 | -0.14 | 0.889 | 0 |
+| skiphit | 190 | 54 | 57.0 | -0.419 | 0.6753 | 0 |
+| persistent | 190 | 53 | 57.0 | -0.558 | 0.5765 | 0 |
+| hot | 222 | 62 | 66.6 | -0.594 | 0.5524 | 1 |
+| moonphase | 190 | 52 | 57.0 | -0.698 | 0.4851 | 1 |
+| cold | 222 | 58 | 66.6 | -1.111 | 0.2666 | 0 |
+| positional | 222 | 57 | 66.6 | -1.24 | 0.215 | 0 |
 
 ## NY Win 4
 
@@ -76,19 +76,19 @@ Null expectation: 0.4000 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| positional | 220 | 105 | 88.0 | 1.91 | 0.0561 | 0 |
-| persistent | 188 | 81 | 75.2 | 0.705 | 0.4808 | 0 |
-| random | 220 | 94 | 88.0 | 0.674 | 0.5002 | 0 |
-| cold | 220 | 93 | 88.0 | 0.562 | 0.5742 | 0 |
-| numerology | 188 | 77 | 75.2 | 0.219 | 0.8268 | 0 |
-| skiphit | 188 | 75 | 75.2 | -0.024 | 0.9806 | 0 |
-| highest-frequency | 204 | 80 | 81.6 | -0.187 | 0.8519 | 0 |
-| dreambook | 188 | 71 | 75.2 | -0.511 | 0.6097 | 0 |
+| positional | 222 | 106 | 88.8 | 1.924 | 0.0544 | 0 |
+| random | 222 | 96 | 88.8 | 0.805 | 0.4206 | 0 |
+| persistent | 190 | 82 | 76.0 | 0.725 | 0.4682 | 0 |
+| cold | 222 | 93 | 88.8 | 0.47 | 0.6385 | 0 |
+| skiphit | 190 | 78 | 76.0 | 0.242 | 0.8089 | 0 |
+| numerology | 190 | 78 | 76.0 | 0.242 | 0.8089 | 0 |
+| highest-frequency | 206 | 81 | 82.4 | -0.163 | 0.8709 | 0 |
+| dreambook | 190 | 71 | 76.0 | -0.605 | 0.5455 | 0 |
 | llm-tuned _(n<50, not yet interpretable)_ | 36 | 12 | 14.4 | _-0.667_ | _0.505_ | 0 |
-| contrarian | 188 | 68 | 75.2 | -0.875 | 0.3815 | 0 |
-| moonphase | 188 | 67 | 75.2 | -0.997 | 0.3189 | 0 |
-| llm-fewshot | 216 | 72 | 86.4 | -1.633 | 0.1025 | 0 |
-| hot | 220 | 71 | 88.0 | -1.91 | 0.0561 | 0 |
+| contrarian | 190 | 70 | 76.0 | -0.725 | 0.4682 | 0 |
+| moonphase | 190 | 67 | 76.0 | -1.088 | 0.2765 | 0 |
+| llm-fewshot | 218 | 73 | 87.2 | -1.603 | 0.109 | 0 |
+| hot | 222 | 72 | 88.8 | -1.879 | 0.0602 | 0 |
 
 ## Exploit watch
 
