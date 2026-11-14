@@ -1,6 +1,6 @@
 # Lottery Guru — Strategy Leaderboard
 
-_Generated 2026-11-13 10:27 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0. Arms with fewer than 50 scored draws are marked `(n<50, not yet interpretable)`: their z and p are printed for completeness but are too noisy to read as evidence either way._
+_Generated 2026-11-14 10:26 UTC. Null hypothesis: no strategy beats chance. A strategy is only interesting if |z| stays large as n grows — expect them all to converge to z ≈ 0. Arms with fewer than 50 scored draws are marked `(n<50, not yet interpretable)`: their z and p are printed for completeness but are too noisy to read as evidence either way._
 
 ## Powerball
 
@@ -32,23 +32,23 @@ Null expectation: 0.3571 matches per prediction.
 
 | Strategy | n | Observed | Expected | z | p | Straights |
 |---|---|---|---|---|---|---|
-| cold _(n<50, not yet interpretable)_ | 32 | 17 | 11.429 | _1.762_ | _0.0781_ | 0 |
-| benford _(n<50, not yet interpretable)_ | 27 | 14 | 9.643 | _1.5_ | _0.1336_ | 0 |
-| birthday _(n<50, not yet interpretable)_ | 27 | 13 | 9.643 | _1.156_ | _0.2477_ | 0 |
-| balanced _(n<50, not yet interpretable)_ | 27 | 13 | 9.643 | _1.156_ | _0.2477_ | 0 |
-| skiphit _(n<50, not yet interpretable)_ | 27 | 11 | 9.643 | _0.467_ | _0.6403_ | 0 |
+| benford _(n<50, not yet interpretable)_ | 28 | 17 | 10.0 | _2.367_ | _0.0179_ | 0 |
+| cold _(n<50, not yet interpretable)_ | 33 | 17 | 11.786 | _1.624_ | _0.1044_ | 0 |
+| birthday _(n<50, not yet interpretable)_ | 28 | 13 | 10.0 | _1.014_ | _0.3104_ | 0 |
+| balanced _(n<50, not yet interpretable)_ | 28 | 13 | 10.0 | _1.014_ | _0.3104_ | 0 |
+| skiphit _(n<50, not yet interpretable)_ | 28 | 11 | 10.0 | _0.338_ | _0.7353_ | 0 |
 | llm-tuned _(n<50, not yet interpretable)_ | 7 | 3 | 2.5 | _0.338_ | _0.7353_ | 0 |
-| highest-frequency _(n<50, not yet interpretable)_ | 29 | 11 | 10.357 | _0.214_ | _0.8309_ | 0 |
-| numerology _(n<50, not yet interpretable)_ | 27 | 9 | 9.643 | _-0.221_ | _0.8248_ | 0 |
-| unpopular _(n<50, not yet interpretable)_ | 32 | 10 | 11.429 | _-0.452_ | _0.6514_ | 0 |
-| persistent _(n<50, not yet interpretable)_ | 27 | 8 | 9.643 | _-0.566_ | _0.5716_ | 0 |
-| antibalanced _(n<50, not yet interpretable)_ | 27 | 8 | 9.643 | _-0.566_ | _0.5716_ | 0 |
-| hot _(n<50, not yet interpretable)_ | 32 | 9 | 11.429 | _-0.768_ | _0.4424_ | 0 |
-| delta _(n<50, not yet interpretable)_ | 32 | 9 | 11.429 | _-0.768_ | _0.4424_ | 0 |
-| llm-fewshot _(n<50, not yet interpretable)_ | 31 | 8 | 11.071 | _-0.987_ | _0.3237_ | 0 |
-| random _(n<50, not yet interpretable)_ | 32 | 8 | 11.429 | _-1.084_ | _0.2782_ | 0 |
-| moonphase _(n<50, not yet interpretable)_ | 27 | 6 | 9.643 | _-1.254_ | _0.2097_ | 0 |
-| contrarian _(n<50, not yet interpretable)_ | 27 | 6 | 9.643 | _-1.254_ | _0.2097_ | 0 |
+| highest-frequency _(n<50, not yet interpretable)_ | 30 | 11 | 10.714 | _0.093_ | _0.9256_ | 0 |
+| numerology _(n<50, not yet interpretable)_ | 28 | 10 | 10.0 | _0.0_ | _1.0_ | 0 |
+| unpopular _(n<50, not yet interpretable)_ | 33 | 10 | 11.786 | _-0.556_ | _0.5781_ | 0 |
+| hot _(n<50, not yet interpretable)_ | 33 | 10 | 11.786 | _-0.556_ | _0.5781_ | 0 |
+| delta _(n<50, not yet interpretable)_ | 33 | 10 | 11.786 | _-0.556_ | _0.5781_ | 0 |
+| persistent _(n<50, not yet interpretable)_ | 28 | 8 | 10.0 | _-0.676_ | _0.4989_ | 0 |
+| antibalanced _(n<50, not yet interpretable)_ | 28 | 8 | 10.0 | _-0.676_ | _0.4989_ | 0 |
+| random _(n<50, not yet interpretable)_ | 33 | 9 | 11.786 | _-0.868_ | _0.3856_ | 0 |
+| llm-fewshot _(n<50, not yet interpretable)_ | 32 | 8 | 11.429 | _-1.084_ | _0.2782_ | 0 |
+| moonphase _(n<50, not yet interpretable)_ | 28 | 6 | 10.0 | _-1.352_ | _0.1762_ | 0 |
+| contrarian _(n<50, not yet interpretable)_ | 28 | 6 | 10.0 | _-1.352_ | _0.1762_ | 0 |
 
 ## NY Numbers (Pick 3)
 
