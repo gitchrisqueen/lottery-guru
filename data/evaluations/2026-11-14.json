@@ -1,0 +1,418 @@
+[
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "random",
+  "numbers": [
+   36,
+   48,
+   49,
+   53,
+   58
+  ],
+  "special": 12,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "hot",
+  "numbers": [
+   3,
+   4,
+   42,
+   57,
+   64
+  ],
+  "special": 3,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "cold",
+  "numbers": [
+   10,
+   27,
+   43,
+   62,
+   63
+  ],
+  "special": 26,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "delta",
+  "numbers": [
+   8,
+   12,
+   17,
+   48,
+   59
+  ],
+  "special": 16,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "unpopular",
+  "numbers": [
+   33,
+   35,
+   38,
+   61,
+   62
+  ],
+  "special": 16,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "contrarian",
+  "numbers": [
+   8,
+   34,
+   41,
+   51,
+   56
+  ],
+  "special": 25,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "birthday",
+  "numbers": [
+   6,
+   7,
+   8,
+   10,
+   26
+  ],
+  "special": 17,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "balanced",
+  "numbers": [
+   23,
+   30,
+   33,
+   42,
+   64
+  ],
+  "special": 17,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "antibalanced",
+  "numbers": [
+   39,
+   54,
+   55,
+   60,
+   66
+  ],
+  "special": 7,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "skiphit",
+  "numbers": [
+   8,
+   42,
+   45,
+   51,
+   57
+  ],
+  "special": 19,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 1,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "benford",
+  "numbers": [
+   1,
+   13,
+   23,
+   36,
+   46
+  ],
+  "special": 14,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "persistent",
+  "numbers": [
+   13,
+   21,
+   23,
+   32,
+   66
+  ],
+  "special": 1,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "moonphase",
+  "numbers": [
+   2,
+   21,
+   24,
+   46,
+   69
+  ],
+  "special": 19,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "numerology",
+  "numbers": [
+   10,
+   12,
+   20,
+   24,
+   34
+  ],
+  "special": 7,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "llm-fewshot",
+  "numbers": [
+   6,
+   22,
+   26,
+   27,
+   69
+  ],
+  "special": 15,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ },
+ {
+  "game": "powerball",
+  "draw_time": "main",
+  "strategy": "highest-frequency",
+  "numbers": [
+   8,
+   10,
+   23,
+   34,
+   42
+  ],
+  "special": 17,
+  "actual_numbers": [
+   9,
+   44,
+   49,
+   51,
+   68
+  ],
+  "actual_special": 4,
+  "score": {
+   "matches": 0,
+   "special_hit": 0,
+   "straight": 0
+  }
+ }
+]
