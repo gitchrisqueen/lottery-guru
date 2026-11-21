@@ -59178,5 +59178,45 @@
    2
   ],
   "special": null
+ },
+ {
+  "date": "2026-11-19",
+  "draw_time": "evening",
+  "numbers": [
+   3,
+   5,
+   3
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-19",
+  "draw_time": "midday",
+  "numbers": [
+   6,
+   7,
+   1
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-20",
+  "draw_time": "evening",
+  "numbers": [
+   4,
+   6,
+   1
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-20",
+  "draw_time": "midday",
+  "numbers": [
+   8,
+   1,
+   6
+  ],
+  "special": null
  }
 ]

@@ -65008,5 +65008,49 @@
    1
   ],
   "special": null
+ },
+ {
+  "date": "2026-11-19",
+  "draw_time": "evening",
+  "numbers": [
+   3,
+   6,
+   2,
+   9
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-19",
+  "draw_time": "midday",
+  "numbers": [
+   5,
+   4,
+   4,
+   4
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-20",
+  "draw_time": "evening",
+  "numbers": [
+   7,
+   4,
+   3,
+   6
+  ],
+  "special": null
+ },
+ {
+  "date": "2026-11-20",
+  "draw_time": "midday",
+  "numbers": [
+   5,
+   0,
+   8,
+   6
+  ],
+  "special": null
  }
 ]
